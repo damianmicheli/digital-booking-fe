@@ -1,4 +1,4 @@
-package ar.com.dami.odontologica.entity;
+package com.backend.entity;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -8,24 +8,24 @@ import javax.persistence.*;
 @Getter @Setter
 @Entity
 @Table
-public class Domicilio {
+public class Categoria {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeDomicilio")
-    @SequenceGenerator(name = "secuenciaDeDomicilio", sequenceName = "DOMICILIO_SEQUENCE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeCategoria")
+    @SequenceGenerator(name = "secuenciaDeCategoria", sequenceName = "CATEGORIA_SEQUENCE", allocationSize = 1)
     private Long id;
-    private String calle;
-    private String numero;
-    private String localidad;
-    private String provincia;
+    private String titulo;
+    private String descripcion;
+    private String url;
 
-    public Domicilio() {
+    public Categoria() {
     }
 
-    public Domicilio(String calle, String numero, String localidad, String provincia) {
-        this.calle = calle;
-        this.numero = numero;
-        this.localidad = localidad;
-        this.provincia = provincia;
+    public Categoria(Long id, String titulo, String descripcion, String url) {
+        this.id = id;
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.url = url;
     }
+
 }

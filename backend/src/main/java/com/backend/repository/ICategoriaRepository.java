@@ -1,9 +1,9 @@
-package ar.com.dami.odontologica.repository;
+package com.backend.repository;
 
-import ar.com.dami.odontologica.entity.Domicilio;
+import com.backend.entity.Categoria;
 import org.springframework.data.jpa.repository.JpaRepository;
 
-public interface IDomicilioRepository extends JpaRepository<Domicilio, Long> {
+public interface ICategoriaRepository extends JpaRepository<Categoria, Long> {
 }
 
 
