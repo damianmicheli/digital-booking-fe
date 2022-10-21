@@ -26,10 +26,10 @@ public class CategoriaService implements ICategoriaService{
     @Override
     public CategoriaDTO guardar(CategoriaDTO categoriaDTO) {
 
-
         Categoria categoria = mapper.convertValue(categoriaDTO, Categoria.class);
 
         Categoria categoriaGuardado = categoriaRepository.save(categoria);
+
 
         CategoriaDTO categoriaDTOGuardado = mapper.convertValue(categoriaGuardado,CategoriaDTO.class);
 
