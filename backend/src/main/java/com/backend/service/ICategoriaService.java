@@ -5,11 +5,11 @@ import com.backend.dto.CategoriaDTO;
 
 public interface ICategoriaService {
 
-    CategoriaDTO guardar (CategoriaDTO categoriaDTO);
+    CategoriaDTO guardar (CategoriaDTO categoriaDTO) throws ConflictoException;
     CategoriaDTO buscar(Long id) throws NoEncontradoException;
     List<CategoriaDTO> listarTodos();
-    void eliminar(Long id);
-    CategoriaDTO actualizar (CategoriaDTO categoriaDTO);
+    void eliminar(Long id) throws NoEncontradoException;
+    CategoriaDTO actualizar (CategoriaDTO categoriaDTO) throws NoEncontradoException, ConflictoException;
 
 }
 

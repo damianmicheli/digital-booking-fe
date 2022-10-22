@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @Service
 public class CategoriaService implements ICategoriaService{
@@ -53,11 +54,34 @@ public class CategoriaService implements ICategoriaService{
 
     @Override
     public List<CategoriaDTO> listarTodos() {
-        return null;
+
+        List<Categoria> categorias = categoriaRepository.findAll();
+        List<CategoriaDTO> categoriasDTO = new ArrayList<>();
+
+        for (Categoria categoria : categorias){
+            categoriasDTO.add(mapper.convertValue(categoria, CategoriaDTO.class));
+        }
+
+        logger.info("Se listaron todas las categorias.");
+
+        return categoriasDTO;
     }
 
+
     @Override
-    public void eliminar(Long id) {
+    public void eliminar(Long id) throws NoEncontradoException {
+
+        Optional<Categoria> categoria = categoriaRepository.findById(id);
+
+        if (categoria.isEmpty()){
+            throw new NoEncontradoException("No se puede eliminar porque no existe la categoria con Id " + id + ",");
+        }
+
+        CategoriaDTO categoriaDTOAEliminar = mapper.convertValue(categoria,CategoriaDTO.class);
+
+        categoriaRepository.deleteById(id);
+
+        logger.info("Se eliminó la categoria: " + categoriaDTOAEliminar);
 
     }
 
@@ -65,4 +89,5 @@ public class CategoriaService implements ICategoriaService{
     public CategoriaDTO actualizar(CategoriaDTO categoriaDTO) {
         return null;
     }
+
 }
