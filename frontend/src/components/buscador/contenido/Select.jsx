@@ -1,6 +1,6 @@
 import React from "react";
 
-import PROVINCIAS_DATA from "../../../data/provincias.json";
+import PAISES_DATA from "../../../data/provincias.json";
 
 import styles from "./select.module.css";
 
@@ -19,8 +19,8 @@ export const Select = () => {
             <option selected disabled>
               ¿A dónde vamos?
             </option>
-            {PROVINCIAS_DATA.map((prov) => (
-              <option>{prov.provincia}</option>
+            {PAISES_DATA.map((pais) => (
+              <option>{pais.name}</option>
             ))}
           </select>
         </div>
