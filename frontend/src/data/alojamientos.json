@@ -1,0 +1,58 @@
+[
+    {
+        "img": "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "Hotel",
+        "title":"Hotel en las montañas a 25 minutos de Pasto        ",
+        "location":"Colombia",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat. Aut. Pariatur aute and ratione for tempora, but quis. Adipisicing vel but modi incidunt, so enim or nequeporro vel. Si. Officia. Consectetur reprehenderit so eiusmod yet exercitationem and mollit, and ipsam."
+    },
+    {
+        "img": "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "Hostel",
+        "title":"Para un poquito oasis hostel bar",
+        "location":"Uruguay",
+        "description": "Exercitation. Commodo est and beatae. Cillum ratione. Numquam. Magna. Quae. Magni. Commodo aspernatur quae for cillum. Eos voluptatem anim. Duis modi for beatae. Aut architecto esse yet eum quo and consequuntur for omnis. Aut quisquam or magna laborum. Magnam cillum magni, so dolorem. Nostrud illo tempora, so dolor but laudantium vitae."
+    },
+    {
+        "img": "https://images.pexels.com/photos/271643/pexels-photo-271643.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "Departamento",
+        "title":"Estudios de arte Soler IIIA en Palermo Hollywood",
+        "location":"Argentina",
+        "description": "Quae aspernatur or doloremque yet magni sed for cillum so ipsam. Voluptas amet, but minima aute tempor eius. Est quaerat nostrum, or aut id odit nisi. Quasi. Commodo architecto aliquip. Nisi ea or voluptatem for culpa laboriosam labore. Si explicabo excepteur. Pariatur odit yet aliquid and ipsam yet cillum, duis yet nihil. Elit ullam or ex beatae magna for exercitation pariatur."
+    },
+    {
+        "img": "https://images.pexels.com/photos/97083/pexels-photo-97083.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "Bed and Breakfast",
+        "title":"Alojamiento y buceo en el corazón de Mata Atlântica",
+        "location":"Brasil",
+        "description": "Ea. Eiusmod. Illo aut or magna. Sit quo so enim for doloremque lorem, for voluptate. Velitesse. Proident anim so dolore odit or proident so architecto. Veniam aliquam. Si dicta but natus aspernatur anim dolor nostrud. Laborum laboris quaerat. Deserunt. Error quis id so si. Nemo adipisicing ipsum or nesciunt. Sequi. Quasi ullamco illum but esse id or quasi. Ratione eum, or culpa, illo fugiat veniam."
+    },
+    {
+        "img": "https://images.pexels.com/photos/14025911/pexels-photo-14025911.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "Hotel",
+        "title":"",
+        "location":"",
+        "description": ""
+    },
+    {
+        "img": "https://images.pexels.com/photos/6782567/pexels-photo-6782567.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "Hostel",
+        "title":"",
+        "location":"",
+        "description": ""
+    },
+    {
+        "img": "https://images.pexels.com/photos/707581/pexels-photo-707581.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "Departamento",
+        "title":"",
+        "location":"",
+        "description": ""
+    },
+    {
+        "img": "https://images.pexels.com/photos/2725675/pexels-photo-2725675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "Bed and Breakfast",
+        "title":"",
+        "location":"",
+        "description": ""
+    }
+]
