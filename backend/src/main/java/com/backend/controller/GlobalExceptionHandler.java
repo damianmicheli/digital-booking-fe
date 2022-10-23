@@ -1,6 +1,5 @@
 package com.backend.controller;
 
-
 import com.backend.service.NoEncontradoException;
 import com.backend.util.Jsons;
 import org.apache.log4j.Logger;
@@ -24,7 +23,6 @@ public class GlobalExceptionHandler {
 
         return new ResponseEntity<>(Jsons.asJsonString(mensajeError), HttpStatus.NOT_FOUND);
     }
-
 
     @ExceptionHandler(java.time.format.DateTimeParseException.class)
     public ResponseEntity<?> handleDateTimeParseException(java.time.format.DateTimeParseException ex) {

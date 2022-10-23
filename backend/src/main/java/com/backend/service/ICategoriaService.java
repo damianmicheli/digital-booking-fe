@@ -9,7 +9,7 @@ public interface ICategoriaService {
     CategoriaDTO buscar(Long id) throws NoEncontradoException;
     List<CategoriaDTO> listarTodos();
     void eliminar(Long id);
-    CategoriaDTO actualizar (CategoriaDTO categoriaDTO);
+    CategoriaDTO actualizar (CategoriaDTO categoriaDTO) throws NoEncontradoException, ConflictoException;
 
 }
 
