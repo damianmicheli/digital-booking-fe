@@ -11,22 +11,28 @@ import Col from "react-bootstrap/Col";
 //Components
 import { Select } from "./contenido/Select";
 import { DatePickerRange } from "./contenido/DatePickerRange";
-import { Button } from "./contenido/Button";
+import { Button } from "../Button";
 
 const Buscador = () => {
   return (
     <div className={styles.containerPadre}>
       <Container className={styles.containerHijo}>
-        <Row className={styles.rowBuscador}>
-          <Col className={styles.title}>
+        <div className={styles.rowBuscador}>
+          <Row className={styles.title}>
             <h1>Busca ofertas en hoteles, casas y mucho más</h1>
-          </Col>
-          <Col className={styles.content}>
-            <Select />
-            <DatePickerRange />
-            <Button />
-          </Col>
-        </Row>
+          </Row>
+          <Row className={styles.content}>
+            <Col xs={12} md={4.5} lg={4}>
+              <Select />
+            </Col>
+            <Col xs={12} md={4.5} lg={4}>
+              <DatePickerRange />
+            </Col>
+            <Col xs={12} md={3} lg={2}>
+              <Button css="button1" text="Buscar" />
+            </Col>
+          </Row>
+        </div>
       </Container>
     </div>
   );
