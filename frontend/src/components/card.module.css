@@ -1,0 +1,28 @@
+.card {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  background-color: #ffff;
+  width: 639px;
+  min-height: 270px;
+  border: 0px solid transparent;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  margin-bottom: 20px;
+  justify-content: space-evenly;
+}
+
+.imgContainer {
+  position: relative;
+  width: 100vw;
+  height: 275px;
+  margin: 0;
+}
+
+img {
+  height: 100%;
+  width: 100%;
+  object-fit: cover;
+  border-radius: 8px;
+}
+
