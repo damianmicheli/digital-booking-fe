@@ -1,0 +1,33 @@
+.containerPadre {
+    background: #607D8B;
+}
+
+.containerHijo {
+    padding: 3rem;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 3rem;
+    width: 100vw;
+}
+
+.rowBuscador{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+}
+
+.content {
+    display: flex;
+    gap: 1rem;
+}
+
+.title h1{
+    color: #FFFFFF;
+    font-weight: 700;
+    font-size: 24pt;
+    text-align: center;
+}
+
