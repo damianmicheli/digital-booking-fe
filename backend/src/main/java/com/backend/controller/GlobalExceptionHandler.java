@@ -1,5 +1,6 @@
 package com.backend.controller;
 
+import com.backend.service.ConflictoException;
 import com.backend.service.NoEncontradoException;
 import com.backend.util.Jsons;
 import org.apache.log4j.Logger;
@@ -22,6 +23,17 @@ public class GlobalExceptionHandler {
         logger.error(mensajeError);
 
         return new ResponseEntity<>(Jsons.asJsonString(mensajeError), HttpStatus.NOT_FOUND);
+    }
+
+
+    @ExceptionHandler(ConflictoException.class)
+    public ResponseEntity<?> handleConflictoException(ConflictoException ex) {
+
+        String mensajeError = ex.getMessage();
+
+        logger.error(mensajeError);
+
+        return new ResponseEntity<>(Jsons.asJsonString(mensajeError), HttpStatus.CONFLICT);
     }
 
     @ExceptionHandler(java.time.format.DateTimeParseException.class)
