@@ -1,12 +1,19 @@
 import React from "react";
-import Buscador from "./components/buscador/Buscador";
+import { BrowserRouter } from "react-router-dom";
+import Header from "./components/header/Header";
+import Body from "./components/body/Body"
+import Footer from "./components/footer/Footer";
 
-function App() {
+const App = () => {
   return (
-    <div className="App">
-      <Buscador />
-    </div>
+    <>
+      <BrowserRouter>
+        <Header />
+        <Body />
+        <Footer />
+      </BrowserRouter>
+    </>
   );
-}
+};
 
 export default App;

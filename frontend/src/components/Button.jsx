@@ -1,7 +1,11 @@
-import React from 'react';
+import React from "react";
 
-export const Button = ({ css, event, text }) => {
+const Button = ({ css, event, text }) => {
   return (
-    <button className={css} onClick={event} > {text} </button>
-  )
-}
+    <button className={css} onClick={event}>
+      {text}
+    </button>
+  );
+};
+
+export default Button;
