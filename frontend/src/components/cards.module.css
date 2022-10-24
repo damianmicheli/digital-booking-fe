@@ -10,7 +10,6 @@
     .cardsContainer {
         padding: 1rem 0;
         display: flex;
-        flex-wrap: nowrap;
         gap: 2rem;
         justify-content: center;
     }
@@ -20,7 +19,6 @@
     .cardsContainer {
         padding: 1rem 0;
         display: flex;
-        flex-wrap: wrap;
         gap: 2rem;
         justify-content: center;
     }
