@@ -1,6 +1,5 @@
 .card {
   display: flex;
-  align-items: center;
   gap: 1rem;
   background-color: #ffff;
   width: 639px;
@@ -14,7 +13,7 @@
 
 .imgContainer {
   position: relative;
-  width: 100vw;
+  width: 50vw;
   height: 275px;
   margin: 0;
 }
@@ -25,4 +24,84 @@ img {
   object-fit: cover;
   border-radius: 8px;
 }
+
+.textContainer{
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  padding: 1rem 1rem 1rem 0;
+}
+
+.cardHeader{
+  display: flex;
+  justify-content: space-between;
+}
+
+.title {
+  color: var(--color-2);
+}
+
+.title h3 {
+  font-size: 1.3em;
+}
+
+.title span {
+  color: gray;
+  font-size: 0.8em;
+}
+
+.category {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+}
+
+.numberBox{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+}
+
+.number {
+  display: flex;
+  justify-content: center;
+  width: 2vw;
+  background: var(--color-2);
+  border-radius: 10px;
+}
+
+.number h3 {
+  color: var(--color-4);
+}
+
+.icon {
+  color: var(--color-3);
+  font-size: 1em;
+  padding-right: 0.5rem;
+}
+
+.icon2 {
+  font-size: 0.8em;
+}
+
+.icon3 {
+  font-size: 1em;
+  color: var(--color-principal);
+}
+
+h3, h4, h5 {
+  color: var(--color-2);
+}
+
+.description p {
+  font-size: 0.8em;
+  font-weight: 500;
+}
+
+.description {
+  display: flex;
+  flex-direction: column;
+  gap: 0.3rem;
+}
+
 

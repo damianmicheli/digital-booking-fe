@@ -1,58 +1,58 @@
 [
     {
-        "img": "https://images.pexels.com/photos/164595/pexels-photo-164595.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "category": "HOTEL",
-        "title":"Hotel en las montañas a 25 minutos de Pasto        ",
-        "location":"Colombia",
-        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat. Aut. Pariatur aute and ratione for tempora, but quis. Adipisicing vel but modi incidunt, so enim or nequeporro vel."
+        "img": "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "CASA",
+        "title":"Consequatur",
+        "location":"Boston, Estados Unidos",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat."
     },
     {
         "img": "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "category": "HOSTEL",
-        "title":"Para un poquito oasis hostel bar",
-        "location":"Uruguay",
-        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat. Aut. Pariatur aute and ratione for tempora, but quis. Adipisicing vel but modi incidunt, so enim or nequeporro vel."
+        "category": "DEPARTAMENTO",
+        "title":"Tempor",
+        "location":"Colonia, Uruguay",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat."
+    },
+    {
+        "img": "https://images.pexels.com/photos/10882330/pexels-photo-10882330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "CABAÑA",
+        "title":"Incididunt",
+        "location":"Córdoba, Argentina",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat."
+    },
+    {
+        "img": "https://images.pexels.com/photos/2476632/pexels-photo-2476632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "CASA DE PLAYA",
+        "title":"Molestiae iste",
+        "location":"Florianópolis, Brasil",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat."
+    },
+    {
+        "img": "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "CASA",
+        "title":"Magnam incidunt",
+        "location":"San Francisco, Estados Unidos",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat."
+    },
+    {
+        "img": "https://images.pexels.com/photos/813692/pexels-photo-813692.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "DEPARTAMENTO",
+        "title":"Cupidatat vitae",
+        "location":"Naples, Italia",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat."
+    },
+    {
+        "img": "https://images.pexels.com/photos/9056663/pexels-photo-9056663.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "CABAÑA",
+        "title":"Cupidatat ullamco",
+        "location":"Heredia, Costa Rica",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat."
     },
     {
         "img": "https://images.pexels.com/photos/271643/pexels-photo-271643.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "category": "DEPARTAMENTO",
-        "title":"Estudios de arte Soler IIIA en Palermo Hollywood",
-        "location":"Argentina",
-        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat. Aut. Pariatur aute and ratione for tempora, but quis. Adipisicing vel but modi incidunt, so enim or nequeporro vel."
-    },
-    {
-        "img": "https://images.pexels.com/photos/97083/pexels-photo-97083.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "category": "BED AND BREAKFAST",
-        "title":"Alojamiento y buceo en el corazón de Mata Atlântica",
-        "location":"Florianópolis, Brasil",
-        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat. Aut. Pariatur aute and ratione for tempora, but quis. Adipisicing vel but modi incidunt, so enim or nequeporro vel."
-    },
-    {
-        "img": "https://images.pexels.com/photos/14025911/pexels-photo-14025911.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "category": "HOTEL",
-        "title":"Hotel NY Downtown Manhattan",
-        "location":"Nueva York, Estados Unidos",
-        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat. Aut. Pariatur aute and ratione for tempora, but quis. Adipisicing vel but modi incidunt, so enim or nequeporro vel."
-    },
-    {
-        "img": "https://images.pexels.com/photos/6782567/pexels-photo-6782567.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "category": "HOSTEL",
-        "title":"Naples Experience Hostel",
-        "location":"Naples, Italia",
-        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat. Aut. Pariatur aute and ratione for tempora, but quis. Adipisicing vel but modi incidunt, so enim or nequeporro vel."
-    },
-    {
-        "img": "https://images.pexels.com/photos/707581/pexels-photo-707581.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "category": "DEPARTAMENTO",
-        "title":"Alianz Loft",
-        "location":"Heredia, Costa Rica",
-        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat. Aut. Pariatur aute and ratione for tempora, but quis. Adipisicing vel but modi incidunt, so enim or nequeporro vel."
-    },
-    {
-        "img": "https://images.pexels.com/photos/2725675/pexels-photo-2725675.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
-        "category": "BED AND BREAKFAST",
-        "title":"Villa colonial con jardín y acceso privado a la playa",
-        "location":"",
-        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat. Aut. Pariatur aute and ratione for tempora, but quis. Adipisicing vel but modi incidunt, so enim or nequeporro vel."
+        "category": "CASA DE PLAYA",
+        "title":"Tempora omnis ut",
+        "location":"Ibiza, España",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.s"
     }
 ]

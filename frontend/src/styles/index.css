@@ -11,6 +11,7 @@
     --color-2: #263238;
     --color-3: #607D8B;
     --color-4: #FFFBE2;
+    --color-icon: rgba(96, 125, 139, 0.5);
 }
 
 /* BOTONES */
@@ -22,7 +23,7 @@
     font-weight: 700;
     border: none;
     color: #fff;
-    background: #fbc02d;
+    background: var(--color-principal);
     box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
     cursor: pointer;
   }
@@ -30,15 +31,23 @@
 .button6{
     width: 164px;
     height: 40px;
-    border: 2px solid #FBC02D;
+    border: 2px solid var(--color-principal);
     background-color: transparent;
     border-radius: 5px;
-    color: #FBC02D;
+    color: var(--color-principal);
     font-size: 16px;
     font-weight: 700;
 }
 
-.icon-clear-tone {
-    color: rgba(96, 125, 139, 0.5);
-    font-size: 1.5em;
+.button1 {
+    height: 40px;
+    width: 100%;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    color: #fff;
+    background: var(--color-principal);
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
   }
