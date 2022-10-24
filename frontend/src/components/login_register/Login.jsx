@@ -23,7 +23,7 @@ const Login = () => {
             <div className={styles.groupForm}>
               <Button css="buttonForm" text="Ingresar" />
               <span  className="text2 spanForm">
-                ¿Aún tienes una cuenta? <a href="/">Registrate</a>
+                ¿Aún tienes una cuenta? <a href="/register">Registrate</a>
               </span>
             </div>
           </div>

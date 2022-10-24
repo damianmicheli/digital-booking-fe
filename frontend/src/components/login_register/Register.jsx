@@ -16,11 +16,11 @@ const Register = () => {
       <Container>
         <form onSubmit={sendEmail}>
           <div className={styles.divInputs}>
-            <div className={styles.groupForm}>
+            <div className={`${styles.groupForm} ${styles.groupWrap}`}>
               <label className="text2">Nombre</label>
               <input type="text" id="name" name="name" required />
             </div>
-            <div className={styles.groupForm}>
+            <div className={`${styles.groupForm} ${styles.groupWrap}`}>
               <label className="text2">Apellido</label>
               <input type="text" id="surname" name="surname" required />
             </div>
@@ -39,7 +39,7 @@ const Register = () => {
             <div className={styles.groupForm}>
               <Button css="buttonForm" text="Crear cuenta" />
               <span  className="text2 spanForm">
-                ¿Ya tienes una cuenta? <a href="/">Iniciar sesión</a>
+                ¿Ya tienes una cuenta? <a href="/login">Iniciar sesión</a>
               </span>
             </div>
           </div>
