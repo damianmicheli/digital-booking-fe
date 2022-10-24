@@ -1,0 +1,52 @@
+.container {
+  background: #607d8b;
+  padding: 3rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 3rem;
+  width: 100vw;
+}
+
+.buscador {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 3rem;
+}
+
+.content {
+  display: flex;
+  gap: 1rem;
+}
+
+.title h1 {
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 24pt;
+  text-align: center;
+}
+
+@media only screen and (max-width: 769px) {
+  .selectCities {
+    border: none;
+    width: 16.54vw;
+    height: 33px;
+  }
+
+  .container {
+    padding: 1rem;
+    gap: 1rem;
+  }
+}
+
+@media only screen and (max-width: 624px) {
+  .buscador {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 3rem;
+  }
+}

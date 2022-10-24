@@ -1,0 +1,35 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Poppins', sans-serif;
+}
+
+.button1 {
+    height: 40px;
+    width: 206px;
+    border-radius: 5px;
+    font-size: 16px;
+    font-weight: 700;
+    border: none;
+    color: #fff;
+    background: #fbc02d;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+    cursor: pointer;
+  }
+
+.button6{
+    width: 164px;
+    height: 40px;
+    border: 2px solid #FBC02D;
+    background-color: transparent;
+    border-radius: 5px;
+    color: #FBC02D;
+    font-size: 16px;
+    font-weight: 700;
+}
+
+.icon-clear-tone {
+    color: rgba(96, 125, 139, 0.5);
+    font-size: 1.5em;
+  }
+
