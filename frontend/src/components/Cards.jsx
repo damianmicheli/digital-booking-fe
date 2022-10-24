@@ -1,9 +1,10 @@
 import React from 'react';
 import { Card } from './Card';
+import styles from './cards.module.css';
 
 export const Cards = ({ items }) => {
   return (
-    <div>
+    <div className={styles.cardsContainer}>
         {items.map(alojamiento => 
                 <Card 
                     img={alojamiento.img}
