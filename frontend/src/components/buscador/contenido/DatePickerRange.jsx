@@ -75,7 +75,7 @@ export const DatePickerRange = () => {
             ranges={range}
             months={1}
             direction="horizontal"
-            className={styles.calendarElement }
+            className={styles.calendarElement}
             minDate={new Date()}
           />
         )}

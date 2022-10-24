@@ -22,6 +22,7 @@
 .selectCities{
     border: none;
     width: 27.47vw;
+    height: 33.5px;
 }
 
 .selectCities:focus{
@@ -29,7 +30,11 @@
     border: none;
 }
 
-.selectCities option{
-    padding: 1rem;
+@media only screen and (max-width: 769px) {
+    .selectCities{
+        border: none;
+        width: 16.54vw;
+        height: 33px;
+    }
 }
-
+  
