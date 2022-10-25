@@ -1,8 +1,8 @@
 import React from 'react'
 import { Container } from "react-bootstrap";
 import styles from "./loginRegister.module.css";
-import Button from "../Button";
-import Icon from "../Icon";
+import Button from "../global/Button";
+import Icon from "../global/Icon";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 
 const Login = () => {

@@ -4,10 +4,10 @@ import PAISES_DATA from "../../../data/provincias.json";
 
 import styles from "./select.module.css";
 
-import Icon from "../../Icon";
+import Icon from "../../global/Icon";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
-export const Select = () => {
+const Select = () => {
   return (
     <>
       <div className={styles.inputGroup}>
@@ -28,3 +28,5 @@ export const Select = () => {
     </>
   );
 };
+
+export default Select;

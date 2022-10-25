@@ -4,9 +4,9 @@ import React from "react";
 import styles from "./buscador.module.css";
 
 //Components
-import { Select } from "./contenido/Select";
-import { DatePickerRange } from "./contenido/DatePickerRange";
-import { Button } from "../Button";
+import Select from "./contenido/Select";
+import DatePickerRange from "./contenido/DatePickerRange";
+import Button from "../global/Button";
 
 const Buscador = () => {
   return (

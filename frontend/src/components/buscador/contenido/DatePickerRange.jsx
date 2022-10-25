@@ -4,7 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import styles from './datepickerrange.module.css';
 
 //fontawesome
-import Icon from '../../Icon';
+import Icon from '../../global/Icon';
 import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
 
 
@@ -83,3 +83,6 @@ export const DatePickerRange = () => {
     </div>
   );
 };
+
+
+export default DatePickerRange;
