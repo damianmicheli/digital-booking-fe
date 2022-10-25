@@ -6,6 +6,15 @@ body {
   font-weight: 500;
 }
 
+/* COLORES */
+:root{
+  --color-principal: #FBC02D;
+  --color-2: #263238;
+  --color-3: #607D8B;
+  --color-4: #FFFBE2;
+  --color-icon: rgba(96, 125, 139, 0.5);
+}
+
 flex{
   display: flex;
 }

@@ -1,6 +1,6 @@
 import React from "react";
 
-import PAISES_DATA from "../../../data/provincias.json";
+import PAISES_DATA from "../../../data/paises.json";
 
 import styles from "./select.module.css";
 

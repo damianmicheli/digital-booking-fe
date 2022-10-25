@@ -1,7 +1,7 @@
 import React from "react";
-import { Button } from "../global/Button";
+import Button from "../global/Button";
 import styles from "./card.module.css";
-import { Icon } from "../Icon";
+import Icon from "../global/Icon";
 import { faLocationDot, faWifi, faSwimmer, faStar,  faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 
 export const Card = ({ img, category, title, location, description }) => {
