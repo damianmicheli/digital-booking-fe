@@ -1,14 +1,14 @@
 import React from "react";
-import { Button } from "../global/Button";
+import Button from "../../components/global/Button";
 import styles from "./card.module.css";
-import { Icon } from "../Icon";
+import Icon from "../../components/global/Icon";
 import { faLocationDot, faWifi, faSwimmer, faStar,  faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
 
-export const Card = ({ img, category, title, location, description }) => {
+const Card = ({ img, category, title, location, description }) => {
   return (
     <div className={styles.card}>
       <div className={styles.imgContainer}>
-        <img src={img} alt="alojamiento" />
+        <img src={img} alt="alojamiento" className={styles.imgCard}/>
       </div>
       <div className={styles.textContainer}>
         <div className={styles.cardHeader}>
@@ -23,7 +23,7 @@ export const Card = ({ img, category, title, location, description }) => {
                 <Icon css={styles.icon3} icon={faStarHalfStroke}/>
               </div>
             </div>         
-            <h3>{title}</h3>
+            <h3 >{title}</h3>
           </div>
           <div className={styles.numberBox}>
             <div className={styles.number}>
@@ -45,3 +45,5 @@ export const Card = ({ img, category, title, location, description }) => {
     </div>
   );
 };
+
+export default Card;

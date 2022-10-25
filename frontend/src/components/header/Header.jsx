@@ -23,7 +23,7 @@ const Header = () => {
         <Row className={styles.rowHeader}>
           <Col xs={6} md={4} lg={4} className={styles.logoSlogan}>
             <a href="/">
-              <img src={logo} alt="logo" />
+              <img src={logo} alt="logo" className={styles.logo}/>
             </a>
             <a href="/">
               <span className={styles.slogan}>Sentite como en tu hogar</span>

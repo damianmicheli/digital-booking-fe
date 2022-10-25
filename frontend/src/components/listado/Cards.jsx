@@ -1,8 +1,8 @@
 import React from 'react';
-import { Card } from './Card';
+import Card  from './Card';
 import styles from './cards.module.css';
 
-export const Cards = ({ items }) => {
+const Cards = ({ items }) => {
   return (
     <div className={styles.cardsContainer}>
         {items.map(alojamiento => 
@@ -17,3 +17,5 @@ export const Cards = ({ items }) => {
     </div>
   )
 }
+
+export default Cards;

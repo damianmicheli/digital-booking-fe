@@ -18,7 +18,7 @@
   margin: 0;
 }
 
-img {
+.imgCard {
   height: 100%;
   width: 100%;
   object-fit: cover;
@@ -89,11 +89,6 @@ img {
   color: var(--color-principal);
 }
 
-h3,
-h4,
-h5 {
-  color: var(--color-2);
-}
 
 .description p {
   font-size: 0.8em;
@@ -120,7 +115,7 @@ h5 {
     padding-bottom: 1rem;
   }
 
-  img {
+  .imgCard {
     height: 100%;
     width: 100%;
     object-fit: cover;
