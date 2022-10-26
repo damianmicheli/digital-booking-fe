@@ -55,7 +55,7 @@ export const DatePickerRange = () => {
   
   return (
     <div className={`${styles.calendarWrap} ${styles.datePicker}`}>
-      <Icon css="icon-clear-tone" icon={faCalendarAlt} />
+      <Icon css="icon" icon={faCalendarAlt} />
       <input
         value={`${format(range[0].startDate, "MM/dd/yyyy")} - ${format(
           range[0].endDate,
@@ -73,6 +73,7 @@ export const DatePickerRange = () => {
             editableDateInputs={true}
             moveRangeOnFirstSelection={false}
             ranges={range}
+            rangeColors={["rgb(251, 192, 45, 1)"]}
             months={1}
             direction="horizontal"
             className={styles.calendarElement}

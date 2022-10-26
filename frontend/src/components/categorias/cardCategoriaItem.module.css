@@ -1,0 +1,37 @@
+.container {
+  /* height: ?; */
+  width: 310px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  display:flex;    
+  flex-direction: column;
+}
+
+.imgContainer {
+    height: 70%;
+}
+
+.img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 10px 10px 0 0 ;
+}
+
+.textContainer {
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+    padding: 0 0.5rem;
+}
+
+.textContainer h2 {
+    font-size: 1em;
+    color: var(--color-2);
+}
+
+.textContainer p {
+    font-size: 14px;
+    color: var(--color-2-transparecy);
+    font-weight: 700;
+}
