@@ -15,6 +15,11 @@
   margin-top: 35px;
   text-align: center;
 }
+.groupForm .pFormError{
+  font-size: 0.6rem;
+  text-align: right;
+  color: red;
+}
 
 .spanForm > a {
   color: #fbc02d;
@@ -27,6 +32,8 @@
   border-radius: 5px;
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
 }
+
+
 
 @media only screen and (min-width: 991px) {
   .divInputs {
