@@ -12,7 +12,7 @@ const Select = () => {
     <>
       <div className={styles.inputGroup}>
         <div className={styles.iconContainer}>
-          <Icon css="icon-clear-tone" icon={faLocationDot} />
+          <Icon css="icon" icon={faLocationDot} />
         </div>
         <div className={styles.selectContainer}>
           <select className={styles.selectCities}>
