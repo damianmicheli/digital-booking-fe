@@ -15,10 +15,12 @@
   margin-top: 35px;
   text-align: center;
 }
-.groupForm .pFormError{
-  font-size: 0.6rem;
+.pFormError{
+  font-size: 0.65rem;
   text-align: right;
   color: red;
+  margin-bottom: -15px;
+  padding: 0;
 }
 
 .spanForm > a {

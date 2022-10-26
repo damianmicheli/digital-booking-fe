@@ -22,8 +22,9 @@ const useForm = (initialForm, validateForm) => {
   const handleSubmit = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
+    console.log(errors);
 
-    if (Object.keys(errors) === 0) {
+    if (Object.values(errors) === "") {
       alert("Tu cuenta se creó exitosamente");
       navigate("/");
     } else {

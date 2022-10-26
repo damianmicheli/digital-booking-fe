@@ -26,15 +26,14 @@ const validateForm = (form) => {
 
   //Validación de email y contraseña
   if (!form.emailLogin.trim() || !password) {
-    errors.emailLogin = "Se requiere ingresar un correo eletrónico";
+    errors.emailLogin = "Se requiere ingresar un correo electrónico";
     errors.passwordLogin = "Se requiere ingresar una contraseña";
   } else if (!form.emailLogin.match(user1.email) || !password.match(user1.password) ) {
     errors.emailLogin = "Por favor vuelva a intentarlo, sus credenciales son inválidas";
   } else {
     errors.emailLogin = "";
     errors.passwordLogin = "";
-  }
-  
+  }  
 
   return errors;
 };
@@ -66,6 +65,7 @@ const Login = () => {
                 onChange={handleChange}
                 value={form.emailLogin}
               />
+              {errors.emailLogin && <p className={styles.pFormError}>{errors.emailLogin}</p>}
             </div>
             <div className={styles.groupForm}>
               <label className="text2">Contraseña</label>
@@ -82,9 +82,9 @@ const Login = () => {
                   />
                 }
               />
+              {errors.passwordLogin && <p className={styles.pFormError}>{errors.passwordLogin}</p>}
             </div>
-            {errors.emailLogin && <p>{errors.emailLogin}</p>}
-            {errors.passwordLogin && <p>{errors.passwordLogin}</p>}
+            
             <div className={styles.groupForm}>
               <Button css="buttonForm" text="Ingresar" type="submit" />
               <span className="text2 spanForm">

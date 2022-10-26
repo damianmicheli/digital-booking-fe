@@ -16,31 +16,32 @@ const initialForm = {
 
 const validateForm = (form) => {
   let errors = {};
-  let regexName = /^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/;
-  let regexEmail = /^(\w+[/./-]?){1,}@[a-z]+[/.]\w{2,}$/;
+  let regexName = "/^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/";
+  let regexEmail = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
+  /* /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$ */
+
 
   //Validación de nombre
   if (!form.fName.trim()) {
-    errors.name = "Debe ingresar su nombre";
-  } else if (regexName.test(form.fName.trim())) {
-    errors.name = "El campo nombre sólo admite letras";
-  } else {
+    errors.fName = "Debe ingresar su nombre";
+  } /* else if (regexName.test(form.fName.trim())) {
+    errors.fName = "El campo nombre sólo admite letras";
+  } */ else {
     errors.fName = "";
   }
 
   //Validación de apellido
   if (!form.surname.trim()) {
     errors.surname = "Debe ingresar su apellido";
-  }
-  if (regexName.test(form.surname.trim())) {
-    errors.name = "El campo apellido sólo admite letras";
-  } else {
+  }/* else if (regexName.test(form.surname.trim())) {
+    errors.surname = "El campo apellido sólo admite letras";
+  } */ else {
     errors.surname = "";
   }
 
   //Validación de email
   if (!form.email.trim()) {
-    errors.email = "Se requiere ingresar un correo eletrónico";
+    errors.email = "Se requiere ingresar un correo electrónico";
   } else if (!form.email.match(regexEmail)) {
     errors.email = "Por favor ingresar un correo electrónico válido";
   } else {
@@ -97,7 +98,7 @@ const Register = () => {
                 onChange={handleChange}
                 value={form.fName}
               />
-              {errors.fName && <p>{errors.fName}</p>}
+              {errors.fName && <p className={styles.pFormError}>{errors.fName}</p>}
             </div>
             <div className={`${styles.groupForm} ${styles.groupWrap}`}>
               <label className="text2">Apellido</label>
@@ -108,7 +109,7 @@ const Register = () => {
                 onChange={handleChange}
                 value={form.surname}
               />
-              {errors.surname && <p>{errors.surname}</p>}
+              {errors.surname && <p className={styles.pFormError}>{errors.surname}</p>}
             </div>
             <div className={styles.groupForm}>
               <label className="text2">Correo electrónico</label>
@@ -119,7 +120,7 @@ const Register = () => {
                 onChange={handleChange}
                 value={form.email}
               />
-              {errors.email && <p>{errors.email}</p>}
+              {errors.email && <p className={styles.pFormError}>{errors.email}</p>}
             </div>
             <div className={styles.groupForm}>
               <label className="text2">Contraseña</label>
@@ -131,7 +132,7 @@ const Register = () => {
                 onChange={handleChange}
                 value={form.password}
               />
-              {errors.password && <p>{errors.password}</p>}
+              {errors.password && <p className={styles.pFormError}>{errors.password}</p>}
             </div>
             <div className={styles.groupForm}>
               <label className="text2">Confirmar contraseña</label>
@@ -142,7 +143,7 @@ const Register = () => {
                 onChange={handleChange}
                 value={form.confirmPassword}
               />
-              {errors.confirmPassword && <p>{errors.confirmPassword}</p>}
+              {errors.confirmPassword && <p className={styles.pFormError}>{errors.confirmPassword}</p>}
             </div>
             <div className={styles.groupForm}>
               <Button css="buttonForm" text="Crear cuenta" />
