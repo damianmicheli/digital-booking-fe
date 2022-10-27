@@ -24,9 +24,9 @@ h1, h2, h3, h4, h5, p {
   color: var(--color-2);
 }
 
-.flex{
+/* .flex{
   display: flex;
-} */
+}  */
 
 .disabled{
   display: none;
