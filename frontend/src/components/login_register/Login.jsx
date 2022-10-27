@@ -24,25 +24,6 @@ const validateForm = (form) => {
 
   const password = form.passwordLogin;
 
-  /* //Validación de email
-  if (!form.emailLogin.trim()) {
-    errors.emailLogin = "Debe ingresar su correo electrónico";   
-  } else if (!form.emailLogin.match(user1.email)) {
-    errors.emailLogin = "Por favor vuelva a intentarlo, sus credenciales son inválidas";
-  } else {
-    errors.emailLogin = "";
-  }  
-
-  //Validación de contraseña
-  if (!password) {
-    errors.passwordLogin = "Debe ingresar su contraseña";   
-  } else if (!password.match(user1.password)) {
-    errors.passwordLogin = "Por favor vuelva a intentarlo, sus credenciales son inválidas";
-  } else {
-    errors.passwordLogin = "";
-  } 
- */
-
   //Validación de email
   if (!form.emailLogin.trim()) {
     errors.emailLogin = "Debe ingresar su correo electrónico";   
@@ -60,12 +41,12 @@ const validateForm = (form) => {
   } else {
     errors.passwordLogin = "";
   } 
-
+ 
 
   return errors;
 };
 
-const message = "Su ingreso fue exitoso"
+const message = "Su ingreso fue exitoso";
 
 const Login = () => {
   const { form, errors, handleChange, handleBlur, handleSubmit } = useForm(
@@ -78,12 +59,7 @@ const Login = () => {
     <div className="bgGray flex">
       <p className="headings heading1">Iniciar sesión</p>
       <Container>
-        <form 
-        id="loginForm"
-        action="/"
-        method="POST"
-        onSubmit={handleSubmit}
-        >
+        <form id="loginForm" action="/" method="POST" onSubmit={handleSubmit}>
           <div className={styles.divInputs}>
             <div className={styles.groupForm}>
               <label className="text2">Correo electrónico</label>
@@ -95,7 +71,9 @@ const Login = () => {
                 onChange={handleChange}
                 value={form.emailLogin}
               />
-              {errors.emailLogin && <p className={styles.pFormError}>{errors.emailLogin}</p>}
+              {errors.emailLogin && (
+                <p className={styles.pFormError}>{errors.emailLogin}</p>
+              )}
             </div>
             <div className={styles.groupForm}>
               <label className="text2">Contraseña</label>
@@ -112,9 +90,11 @@ const Login = () => {
                   />
                 }
               />
-              {errors.passwordLogin && <p className={styles.pFormError}>{errors.passwordLogin}</p>}
+              {errors.passwordLogin && (
+                <p className={styles.pFormError}>{errors.passwordLogin}</p>
+              )}
             </div>
-            
+
             <div className={styles.groupForm}>
               <Button css="buttonForm" text="Ingresar" type="submit" />
               <span className="text2 spanForm">
@@ -129,7 +109,6 @@ const Login = () => {
 };
 
 export default Login;
-
 
 /* const vpassword = (value) => {
   if (value.length < 6 || value.length > 40) {
