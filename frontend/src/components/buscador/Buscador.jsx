@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 //Styles
 import styles from "./buscador.module.css";
@@ -9,6 +9,9 @@ import DatePickerRange from "./contenido/DatePickerRange";
 import Button from "../global/Button";
 
 const Buscador = () => {
+
+  const [selected, setSelected] = useState("¿A dónde vamos?");
+
   return (
       <div className={styles.container}>
         <div className={styles.buscador}>
@@ -17,7 +20,7 @@ const Buscador = () => {
           </div>
           <div className={styles.content}>
             <div className={styles.select}>
-              <Select />
+              <Select selected={selected} setSelected={setSelected}/>
             </div>
             <div className={styles.datepicker}>
               <DatePickerRange />

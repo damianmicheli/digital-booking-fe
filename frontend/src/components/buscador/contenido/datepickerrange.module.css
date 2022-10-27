@@ -1,42 +1,35 @@
-.calendarWrap .inputBox {
-    padding: 0.5rem;
-    border-radius: 5px;
+.inputBox {
     border: none;
     font-family: "Poppins", sans-serif;
-    color: gray;
+    color: rgba(0, 0, 0, 0.7);
     position: relative;
+    font-weight: 500;
+    font-size: 1;
   }
   
   .calendarElement {
     position: absolute;
     top: 40px;
-    left: 3rem;
+    left: 2rem;
   }
 
   .datePicker{
     display: flex;
     align-items: center;
-    padding: 1rem;
-    gap: 1rem;
+    gap: 0.5rem;
     height: 40px;
-    width: 27.47vw;
+    width: 422px;
     background-color: #FFFFFF;
-    border-radius: 7px;
+    border-radius: 5px;
     position: relative;
+    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
   }
 
   input:focus {
     outline: none;
   }
 
-  
-@media only screen and (max-width: 769px) {
-  .datePicker {
-    height: 40px;
-    width: 16.54vw;
+  .icon {
+    color: var(--color-2-transparecy);
+    padding-left: 0.7rem;
   }
-
-  button {
-    width: 10.80vw;
-  }
-}
