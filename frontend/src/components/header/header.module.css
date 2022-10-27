@@ -24,10 +24,6 @@
   justify-content: flex-start;
 }
 
-.logoSlogan :last-child {
-  padding-left: 15px;
-  margin-top: 20px;
-}
 
 .logo {
   height: 50px;
@@ -46,9 +42,20 @@
   display: none;
 }
 
-.disableTablet {
+.btnWrapper{
+  background-color:transparent;
+  width: 35px;
+  height: 35px;
+  border: none;
   display: flex;
 }
+.barsWrapper{
+  font-size: 1.5rem;
+  color: var(--color-2)
+ }
+ 
+
+
 
 @media only screen and (min-width: 624px) {
   .disableMobile {
@@ -58,6 +65,12 @@
   .disableTablet {
     display: none;
   }
+
+  .btnWrapper{
+    display: none;
+  }
+
+  
 }
 
 @media only screen and (min-width: 769px) {
@@ -67,5 +80,9 @@
     font-weight: 300;
     font-size: 18px;
     color: #263238;
+  }
+  .logoSlogan :last-child {
+    padding-left: 15px;
+    margin-top: 20px;
   }
 }

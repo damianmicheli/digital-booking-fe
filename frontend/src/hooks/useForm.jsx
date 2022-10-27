@@ -23,17 +23,12 @@ const useForm = (initialForm, validateForm, message) => {
   
     e.preventDefault();   
     setErrors(validateForm(form));   
-  
-    console.log(Object.values(errors));
-    console.log(Object.keys(errors));
-
 
     if(Object.values(errors)[0] === "") {
       console.log(errors);
       alert(message);
       navigate("/");
     }
-    console.log("No entra al if");
   };
 
   return {

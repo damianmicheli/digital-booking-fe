@@ -8,24 +8,27 @@ import {
   faTwitter,
 } from "@fortawesome/free-brands-svg-icons";
 
-const SocialNetworks = ({ color }) => {
-  const SocialNetworks = styled.div`
-    font-size: 24px;
-    gap: 25px;
-    display: none;
-    color:${color};
+const SocialNet = styled.div`
+font-size: 24px;
+gap: 25px;
+display: none;
+color:${(props)=>{return props.color}};
 
-    @media only screen and (min-width: 624px) {
-      display: flex;
-    }
-  `;
+
+@media only screen and (min-width: 624px) {
+  display: flex;
+}
+`;
+
+const SocialNetworks = ({ color }) => {
+ 
   return (
-    <SocialNetworks>
+    <SocialNet color={color}>
       <Icon icon={faFacebook} />
       <Icon icon={faLinkedinIn} />
       <Icon icon={faTwitter} />
       <Icon icon={faInstagram} />
-    </SocialNetworks>
+    </SocialNet>
   );
 };
 
