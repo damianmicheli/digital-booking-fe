@@ -16,8 +16,8 @@ const initialForm = {
 
 const validateForm = (form) => {
   let errors = {};
-  let regexName = "/^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/";
-  let regexEmail = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:\.[a-zA-Z0-9-]+)*$";
+ /*  let regexName = "/^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/"; */
+  let regexEmail = "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$";
   /* /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$ */
 
 
@@ -72,10 +72,13 @@ const validateForm = (form) => {
   return errors;
 };
 
+const message = "Su cuenta se creó exitosamente";
+
 const Register = () => {
   const { form, errors, handleChange, handleBlur, handleSubmit } = useForm(
     initialForm,
-    validateForm
+    validateForm,
+    message
   );
 
   return (
@@ -146,6 +149,7 @@ const Register = () => {
               {errors.confirmPassword && <p className={styles.pFormError}>{errors.confirmPassword}</p>}
             </div>
             <div className={styles.groupForm}>
+            {/* <button className="buttonForm" type="submit" /> */}
               <Button css="buttonForm" text="Crear cuenta" />
               <span className="text2 spanForm">
                 ¿Ya tienes una cuenta? <a href="/login">Iniciar sesión</a>

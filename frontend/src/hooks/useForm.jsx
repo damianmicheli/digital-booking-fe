@@ -1,7 +1,7 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
-const useForm = (initialForm, validateForm) => {
+const useForm = (initialForm, validateForm, message) => {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
   /*   const [loading, setLoading] = useState(false);
@@ -20,16 +20,20 @@ const useForm = (initialForm, validateForm) => {
   const navigate = useNavigate();
   
   const handleSubmit = (e) => {
-    e.preventDefault();
-    setErrors(validateForm(form));
-    console.log(errors);
+  
+    e.preventDefault();   
+    setErrors(validateForm(form));   
+  
+    console.log(Object.values(errors));
+    console.log(Object.keys(errors));
 
-    if (Object.values(errors) === "") {
-      alert("Tu cuenta se creó exitosamente");
+
+    if(Object.values(errors)[0] === "") {
+      console.log(errors);
+      alert(message);
       navigate("/");
-    } else {
-      return;
     }
+    console.log("No entra al if");
   };
 
   return {

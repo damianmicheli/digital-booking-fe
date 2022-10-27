@@ -24,24 +24,35 @@ const validateForm = (form) => {
 
   const password = form.passwordLogin;
 
-  //Validación de email y contraseña
-  if (!form.emailLogin.trim() || !password) {
-    errors.emailLogin = "Se requiere ingresar un correo electrónico";
-    errors.passwordLogin = "Se requiere ingresar una contraseña";
-  } else if (!form.emailLogin.match(user1.email) || !password.match(user1.password) ) {
+  //Validación de email
+  if (!form.emailLogin.trim()) {
+    errors.emailLogin = "Debe ingresar su correo electrónico";   
+  } else if (!form.emailLogin.match(user1.email)) {
     errors.emailLogin = "Por favor vuelva a intentarlo, sus credenciales son inválidas";
   } else {
     errors.emailLogin = "";
-    errors.passwordLogin = "";
   }  
+
+  //Validación de contraseña
+  if (!password) {
+    errors.passwordLogin = "Debe ingresar su contraseña";   
+  } else if (!password.match(user1.password)) {
+    errors.passwordLogin = "Por favor vuelva a intentarlo, sus credenciales son inválidas";
+  } else {
+    errors.passwordLogin = "";
+  } 
+
 
   return errors;
 };
 
+const message = "Su ingreso fue exitoso"
+
 const Login = () => {
   const { form, errors, handleChange, handleBlur, handleSubmit } = useForm(
     initialForm,
-    validateForm
+    validateForm,
+    message
   );
 
   return (
@@ -99,3 +110,25 @@ const Login = () => {
 };
 
 export default Login;
+
+
+/* const vpassword = (value) => {
+  if (value.length < 6 || value.length > 40) {
+    setPasswordClass("invalid-input");
+    return (
+      <div className="alert alert-danger" role="alert">
+        La contraseña debe tener entre 6 y 40 caracteres.
+      </div>
+    );
+  } else if (!value.match(/^(?!.* )\S/)) {
+    setPasswordClass("invalid-input");
+    return (
+      <div className="alert alert-danger" role="alert">
+        La contraseña no puede contener espacios
+      </div>
+    );
+  } else {
+    setPasswordClass("");
+  }
+};
+ */
