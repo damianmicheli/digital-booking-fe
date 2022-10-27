@@ -8,8 +8,8 @@ const CardCategoriaItem = ({ category, img }) => {
             <img className={styles.img} src={img} alt="" />
         </div>
         <div className={styles.textContainer}>
-            <h2>{category}</h2>
-            <p>807.105 hoteles</p>
+            <h2 className='heading2'>{category}</h2>
+            <p className='heading4'>807.105 hoteles</p>
         </div>
     </div>
   )

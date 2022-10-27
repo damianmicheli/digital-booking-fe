@@ -2,12 +2,13 @@ import React from "react";
 import Button from "../global/Button";
 import styles from "./card.module.css";
 import Icon from "../global/Icon";
-import { faLocationDot, faWifi, faSwimmer, faStar,  faStarHalfStroke } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot, faWifi, faSwimmer, faStar,  faStarHalfStroke, faHeart } from "@fortawesome/free-solid-svg-icons";
 
 const Card = ({ img, category, title, location, description }) => {
   return (
     <div className={styles.card}>
       <div className={styles.imgContainer}>
+        <Icon css={styles.iconHeart} icon={faHeart} />
         <img className={styles.imgCard} src={img} alt="alojamiento" />
       </div>
       <div className={styles.textContainer}>

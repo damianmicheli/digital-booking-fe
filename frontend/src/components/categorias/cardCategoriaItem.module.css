@@ -8,7 +8,7 @@
 }
 
 .imgContainer {
-    height: 70%;
+    height: 75%;
 }
 
 .img {
@@ -21,17 +21,15 @@
 .textContainer {
     display: flex;
     flex-direction: column;
+    justify-content: center;
     height: 30%;
     padding: 0 0.5rem;
 }
 
 .textContainer h2 {
-    font-size: 1em;
     color: var(--color-2);
 }
 
 .textContainer p {
-    font-size: 14px;
     color: var(--color-2-transparecy);
-    font-weight: 700;
 }
