@@ -17,7 +17,7 @@ const Body = () => {
   return (
     <div className={styles.body}>
       <Routes>
-        <Route path="/" element={<Buscador/>} />
+        <Route path="/buscador" element={<Buscador/>} />
         <Route path="/cards" element={<Cards items={ALOJAMIENTOS_DATA}/>}/>
         <Route path="/categorias" element={<CardsCategorias items={CATEGORIAS_DATA}/>}/>
         <Route path="/register" element={<Register/>} />

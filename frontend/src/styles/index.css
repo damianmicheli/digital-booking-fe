@@ -19,8 +19,12 @@ body {
   color: var(--color-2);
 }
 
-flex{
+/* .flex{
   display: flex;
+} */
+
+.disabled{
+  display: none;
 }
 
 a {
@@ -30,7 +34,7 @@ a {
 .buttonForm {
   width: 100%;
   height: 40px;
-  background-color: #fbc02d ;
+  background-color: var(--color-principal);
   border: none;
   border-radius: 5px;
   color: white;
@@ -46,7 +50,7 @@ a {
   font-weight: 700;
   border: none;
   color: #fff;
-  background: #fbc02d;
+  background: var(--color-principal);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
   cursor: pointer;
 }
@@ -54,7 +58,7 @@ a {
 .button6 {
   width: 164px;
   height: 40px;
-  border: 2px solid #fbc02d;
+  border: 2px solid var(--color-principal);
   background-color: transparent;
   border-radius: 5px;
   color: #fbc02d;
@@ -69,7 +73,7 @@ a {
 
 .headings{
   padding-top: 25px;
-  padding-bottom: 15px;
+  padding-bottom: 10px;
 }
 
 .heading1{
@@ -88,3 +92,5 @@ a {
   color: var(--color-2-transparecy);
   font-size: 1.2em;
 } 
+
+

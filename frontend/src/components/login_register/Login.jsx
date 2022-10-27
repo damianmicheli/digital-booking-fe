@@ -24,6 +24,25 @@ const validateForm = (form) => {
 
   const password = form.passwordLogin;
 
+  /* //Validación de email
+  if (!form.emailLogin.trim()) {
+    errors.emailLogin = "Debe ingresar su correo electrónico";   
+  } else if (!form.emailLogin.match(user1.email)) {
+    errors.emailLogin = "Por favor vuelva a intentarlo, sus credenciales son inválidas";
+  } else {
+    errors.emailLogin = "";
+  }  
+
+  //Validación de contraseña
+  if (!password) {
+    errors.passwordLogin = "Debe ingresar su contraseña";   
+  } else if (!password.match(user1.password)) {
+    errors.passwordLogin = "Por favor vuelva a intentarlo, sus credenciales son inválidas";
+  } else {
+    errors.passwordLogin = "";
+  } 
+ */
+
   //Validación de email
   if (!form.emailLogin.trim()) {
     errors.emailLogin = "Debe ingresar su correo electrónico";   
