@@ -15,11 +15,16 @@ body {
   --color-2-transparecy: rgba(96, 125, 139, 0.5);
 }
 
+h1, h2, h3, h4, h5, p {
+  margin: 0;
+  padding: 0;
+}
+
 .color2 {
   color: var(--color-2);
 }
 
-flex{
+.flex{
   display: flex;
 }
 
