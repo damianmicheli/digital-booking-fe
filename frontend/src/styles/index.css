@@ -2,8 +2,8 @@ body {
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
-  font-size: 14pt;
-  font-weight: 500;
+  /* font-size: 14pt;
+  font-weight: 500; */
 }
 
 /* COLORES */
@@ -15,13 +15,18 @@ body {
   --color-2-transparecy: rgba(96, 125, 139, 0.5);
 }
 
+h1, h2, h3, h4, h5, p {
+  margin: 0;
+  padding: 0;
+}
+
 .color2 {
   color: var(--color-2);
 }
 
 /* .flex{
   display: flex;
-} */
+}  */
 
 .disabled{
   display: none;
@@ -31,6 +36,7 @@ a {
   text-decoration: none;
   color:#607D8B;
 }
+
 .buttonForm {
   width: 100%;
   height: 40px;
@@ -83,6 +89,7 @@ a {
   color: var(--color-principal);
   margin: 0;
 }
+
 .text2{
   font-size: 12px;
   font-weight: 500;

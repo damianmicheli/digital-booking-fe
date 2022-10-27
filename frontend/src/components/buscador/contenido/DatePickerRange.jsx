@@ -55,7 +55,7 @@ export const DatePickerRange = () => {
   
   return (
     <div className={`${styles.calendarWrap} ${styles.datePicker}`}>
-      <Icon css="icon" icon={faCalendarAlt} />
+      <Icon css={styles.icon} icon={faCalendarAlt} />
       <input
         value={`${format(range[0].startDate, "MM/dd/yyyy")} - ${format(
           range[0].endDate,
