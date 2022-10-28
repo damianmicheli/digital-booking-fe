@@ -1,4 +1,4 @@
 .body{
     /* height: calc(100vh - 151px); */ /* restando header y footer*/
-    height: 100%;
+    height: auto;
 }

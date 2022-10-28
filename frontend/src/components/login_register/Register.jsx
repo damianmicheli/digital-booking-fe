@@ -5,7 +5,7 @@ import Button from "../global/Button";
 import Icon from "../global/Icon";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import useForm from "../../hooks/useForm";
-import Buscador from "../buscador/Buscador";
+// import Buscador from "../buscador/Buscador";
 
 const initialForm = {
   fName: "",
@@ -84,7 +84,7 @@ const Register = () => {
 
   return (
     <>
-      <Buscador />
+      {/* <Buscador /> */}
       <div className="bgGray flex">
         <p className="headings heading1">Crear cuenta</p>
         <Container>
