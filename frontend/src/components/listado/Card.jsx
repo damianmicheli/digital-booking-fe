@@ -40,7 +40,7 @@ const Card = ({ img, category, title, location, description }) => {
         </div>
         <div className={styles.description}>
           <p>{description}</p>
-          <Button css="button1" text="Ver detalle" />
+          <Button css="buttonCard" text="Ver detalle" />
         </div>
       </div>
     </div>

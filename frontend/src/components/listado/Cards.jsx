@@ -4,7 +4,9 @@ import styles from './cards.module.css';
 
 const Cards = ({ items }) => {
   return (
-    <div className={styles.cardsContainer}>
+    <div className={styles.container}>
+      <h2>Recomendaciones</h2>
+      <div className={styles.cardsContainer}>
         {items.map(alojamiento => 
                 <Card 
                     img={alojamiento.img}
@@ -13,7 +15,8 @@ const Cards = ({ items }) => {
                     location={alojamiento.location} 
                     description={alojamiento.description} 
                 />
-            )}
+        )}
+      </div>
     </div>
   )
 }

@@ -5,7 +5,7 @@
   gap: 1rem;
   background-color: #ffff;
   width: 639px;
-  min-height: 270px;
+  height: 283px;
   border: 0px solid transparent;
   border-radius: 8px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
@@ -15,7 +15,7 @@
 .imgContainer {
   position: relative;
   width: 50vw;
-  height: 275px;
+  height: 283px;
   margin: 0;
   position: relative;
   display: flex;

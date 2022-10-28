@@ -5,8 +5,7 @@ import styles from './datepickerrange.module.css';
 
 //fontawesome
 import Icon from '../../global/Icon';
-import { faCalendarAlt } from "@fortawesome/free-solid-svg-icons";
-
+import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 
 //date-range
 import { DateRange } from "react-date-range";
@@ -55,7 +54,7 @@ export const DatePickerRange = () => {
   
   return (
     <div className={`${styles.calendarWrap} ${styles.datePicker}`}>
-      <Icon css={styles.icon} icon={faCalendarAlt} />
+      <Icon css={styles.icon} icon={faCalendar} />
       <input
         value={`${format(range[0].startDate, "MM/dd/yyyy")} - ${format(
           range[0].endDate,
@@ -74,7 +73,7 @@ export const DatePickerRange = () => {
             moveRangeOnFirstSelection={false}
             ranges={range}
             rangeColors={["rgb(251, 192, 45, 1)"]}
-            months={1}
+            months={2}
             direction="horizontal"
             className={styles.calendarElement}
             minDate={new Date()}

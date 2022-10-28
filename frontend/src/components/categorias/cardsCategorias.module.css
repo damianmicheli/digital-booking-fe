@@ -1,6 +1,12 @@
 .container {
-    padding: 4rem;
     display: flex;
-    justify-content: space-around;
+    flex-direction: column;
+    padding: 1rem 6rem;
+    gap: 1rem;
+}
+
+.containerCategory {
+    display: flex;
+    justify-content: space-evenly;
     gap: 1rem;
 }

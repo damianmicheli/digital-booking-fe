@@ -1,4 +1,5 @@
 body {
+  box-sizing: border-box;
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
@@ -12,7 +13,8 @@ body {
   --color-2: #263238;
   --color-3: #607D8B;
   --color-4: #FFFBE2;
-  --color-2-transparecy: rgba(96, 125, 139, 0.5);
+  --color-2-transparency: rgba(96, 125, 139, 0.1);
+  --color-2-opacity: rgba(96, 125, 139, 0.5);
 }
 
 h1, h2, h3, h4, h5, p {
@@ -48,9 +50,22 @@ a {
   font-weight: 700;
 }
 
-.button1 {
+.buttonCard {
   height: 40px;
   width: 100%;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  color: #fff;
+  background: var(--color-principal);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
+.button1 {
+  height: 40px;
+  width: 206px;
   border-radius: 5px;
   font-size: 16px;
   font-weight: 700;
@@ -110,7 +125,7 @@ a {
 }
 
 .icon {
-  color: var(--color-2-transparecy);
+  color: var(--color-2-opacity);
   font-size: 1.2em;
 } 
 

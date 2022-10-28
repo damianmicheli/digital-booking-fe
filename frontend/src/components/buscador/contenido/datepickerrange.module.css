@@ -1,4 +1,6 @@
 .inputBox {
+    width: 100%;
+    cursor: pointer;
     border: none;
     font-family: "Poppins", sans-serif;
     color: rgba(0, 0, 0, 0.7);
@@ -9,8 +11,9 @@
   
   .calendarElement {
     position: absolute;
-    top: 40px;
-    left: 2rem;
+    top: 42px;
+    left: 0;
+    z-index: 98;
   }
 
   .datePicker{
@@ -30,6 +33,6 @@
   }
 
   .icon {
-    color: var(--color-2-transparecy);
+    color: var(--color-2-opacity);
     padding-left: 0.7rem;
   }
