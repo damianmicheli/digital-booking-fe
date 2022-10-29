@@ -29,20 +29,33 @@
   text-align: center;
 }
 
-@media only screen and (max-width: 769px) {
-  .selectCities {
-    border: none;
-    width: 16.54vw;
-    height: 33px;
-  }
+.button{
+  height: 40px;
+  width: 206px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  color: #fff;
+  background: var(--color-principal);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
 
-  .container {
-    padding: 1rem;
-    gap: 1rem;
+@media (max-width: 1105px){
+  .button {
+      width: 166px;
   }
 }
 
-@media only screen and (max-width: 624px) {
+@media (max-width: 1024px){
+  .button {
+      width: 166px;
+  }
+}
+
+@media (max-width: 1024px) {
+  
   .buscador {
     display: flex;
     flex-direction: column;
@@ -50,4 +63,18 @@
     justify-content: center;
     gap: 3rem;
   }
+
+  .content {
+    flex-direction: column;
+  }
+
+  .container {
+    height: 263px;
+    justify-content: center;
+  }
+
+  .button {
+    width: 100%;
+  }
+  
 }

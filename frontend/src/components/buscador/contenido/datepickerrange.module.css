@@ -1,38 +1,46 @@
 .inputBox {
-    width: 100%;
-    cursor: pointer;
-    border: none;
-    font-family: "Poppins", sans-serif;
-    color: rgba(0, 0, 0, 0.7);
-    position: relative;
-    font-weight: 500;
-    font-size: 1;
-  }
-  
-  .calendarElement {
-    position: absolute;
-    top: 42px;
-    left: 0;
-    z-index: 98;
-  }
+  width: 100%;
+  cursor: pointer;
+  border: none;
+  font-family: "Poppins", sans-serif;
+  color: rgba(0, 0, 0, 0.7);
+  position: relative;
+  font-weight: 500;
+  font-size: 1;
+}
 
-  .datePicker{
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    height: 40px;
-    width: 422px;
-    background-color: #FFFFFF;
-    border-radius: 5px;
-    position: relative;
-    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
-  }
+.calendarElement {
+  position: absolute;
+  top: 42px;
+  left: 0;
+  z-index: 98;
+}
 
-  input:focus {
-    outline: none;
-  }
+.datePicker {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  height: 40px;
+  min-height: 38px;
+  width: 422px;
+  min-width: 393.74px;
+  background-color: #ffffff;
+  border-radius: 5px;
+  position: relative;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+}
 
-  .icon {
-    color: var(--color-2-opacity);
-    padding-left: 0.7rem;
+input:focus {
+  outline: none;
+}
+
+.icon {
+  color: var(--color-2-opacity);
+  padding-left: 0.7rem;
+}
+
+@media (max-width: 1105px) {
+  .datePicker {
+    width: 393.74px;
   }
+}

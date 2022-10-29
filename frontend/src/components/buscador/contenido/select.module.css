@@ -1,5 +1,8 @@
 .dropdown {
     width: 422px;
+    min-width: 393.74px;
+    height: 40px;
+    min-height: 38px;
     margin: 0 auto;
     position: relative;
     cursor: pointer;
@@ -49,4 +52,10 @@
 .dropdown .dropdownContent .dropdownItem .icon{
     color: var(--color-2);
     font-size: 1em;
+}
+
+@media (max-width: 1105px){
+    .dropdown {
+        width: 393.74px;
+    }
 }

@@ -25,8 +25,8 @@ const Buscador = () => {
             <div className={styles.datepicker}>
               <DatePickerRange />
             </div>
-            <div>
-              <Button css="button1" text="Buscar" />
+            <div className={styles.buttonContainer}>
+              <Button css={styles.button} text="Buscar" />
             </div>
           </div>
         </div>
