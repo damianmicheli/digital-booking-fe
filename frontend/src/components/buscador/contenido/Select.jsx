@@ -22,7 +22,7 @@ const Select = ({ selected, setSelected }) => {
       {isActive && (
         <div className={styles.dropdownContent}>
           {CIUDADES_DATA.map(ciudad => (
-            <div onClick={(e) => {
+            <div onClick={() => {
               setSelected(`${ciudad.provincia}, ${ciudad.pais}`)
               setIsActive(false)
             }} 

@@ -13,7 +13,7 @@ import format from "date-fns/format";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 
-export const DatePickerRange = () => {
+export const DatePickerRange = ({ datePicked, setDatePicked }) => {
   // date state
   const [range, setRange] = useState([
     {
@@ -56,13 +56,16 @@ export const DatePickerRange = () => {
     <div className={`${styles.calendarWrap} ${styles.datePicker}`}>
       <Icon css={styles.icon} icon={faCalendar} />
       <input
-        value={`${format(range[0].startDate, "MM/dd/yyyy")} - ${format(
-          range[0].endDate,
-          "MM/dd/yyyy"
-        )}`}
+        value={datePicked}
         readOnly
         className={styles.inputBox}
-        onClick={() => setOpen((open) => !open)}
+        onClick={() => {
+          setDatePicked(`${format(range[0].startDate, "MM/dd/yyyy")} - ${format(
+            range[0].endDate,
+            "MM/dd/yyyy"
+          )}`)
+          setOpen((open) => !open)
+        }}
       />
 
       <div ref={refOne}>
