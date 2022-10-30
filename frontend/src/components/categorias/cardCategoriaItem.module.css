@@ -33,3 +33,10 @@
 .textContainer p {
     color: var(--color-2-transparecy);
 }
+
+@media (max-width: 1150px) {
+  .container {
+    height: 244px;
+    width: 347px;
+  }
+}
