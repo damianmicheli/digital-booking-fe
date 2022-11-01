@@ -17,32 +17,28 @@ const initialForm = {
 
 const validateForm = (form) => {
   let errors = {};
-  /*  let regexName = "/^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$/"; */
+  let isRequired = "Este campo es obligatorio";
+
   let regexEmail =
     "^[a-zA-Z0-9.!#$%&'*+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)*$";
-  /* /^[a-zA-Z0-9.!#$%&'+/=?^_`{|}~-]+@[a-zA-Z0-9-]+(?:.[a-zA-Z0-9-]+)$ */
 
   //Validación de nombre
   if (!form.fName.trim()) {
-    errors.fName = "Debe ingresar su nombre";
-  } /* else if (regexName.test(form.fName.trim())) {
-    errors.fName = "El campo nombre sólo admite letras";
-  } */ else {
+    errors.fName = isRequired;
+  } else {
     errors.fName = "";
   }
 
   //Validación de apellido
   if (!form.surname.trim()) {
-    errors.surname = "Debe ingresar su apellido";
-  } /* else if (regexName.test(form.surname.trim())) {
-    errors.surname = "El campo apellido sólo admite letras";
-  } */ else {
+    errors.surname = isRequired;
+  } else {
     errors.surname = "";
   }
 
   //Validación de email
   if (!form.email.trim()) {
-    errors.email = "Se requiere ingresar un correo electrónico";
+    errors.email = isRequired;
   } else if (!form.email.match(regexEmail)) {
     errors.email = "Por favor ingresar un correo electrónico válido";
   } else {
@@ -52,7 +48,7 @@ const validateForm = (form) => {
   //Validación de contraseña
   const password = form.password;
   if (!password) {
-    errors.password = "Se requiere ingresar una contraseña";
+    errors.password = isRequired;
   } else if (password.length < 6) {
     errors.password = "La contraseña debe tener más de 6 caracteres";
   } else if (password.length >= 20) {
@@ -63,7 +59,7 @@ const validateForm = (form) => {
 
   //Validación de confirmación de contraseña
   if (!form.confirmPassword) {
-    errors.confirmPassword = "Se requiere confirmar la contraseña";
+    errors.confirmPassword = isRequired;
   } else if (form.confirmPassword !== form.password) {
     errors.confirmPassword = "Las contraseñas ingresadas no coinciden";
   } else {
@@ -136,14 +132,16 @@ const Register = () => {
               </div>
               <div className={styles.groupForm}>
                 <label className="text2">Contraseña</label>
-                <input
-                  type="password"
-                  name="password"
-                  placeholder={<Icon icon={faEyeSlash} />}
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={form.password}
-                />
+                <div className={styles.iconInput}>
+                  <input
+                    type="password"
+                    name="password"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={form.password}
+                  />
+                  <Icon icon={faEyeSlash} css={styles.iconEye} />
+                </div>
                 {errors.password && (
                   <p className={styles.pFormError}>{errors.password}</p>
                 )}

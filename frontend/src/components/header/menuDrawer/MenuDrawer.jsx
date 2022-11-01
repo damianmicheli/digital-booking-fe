@@ -51,7 +51,7 @@ const MenuDrawer = ({ open, handleClick }) => {
         <div className={styles.line}></div>
         <NavLink to="/login">Iniciar sesión</NavLink>
       </div>
-      <div><SocialNetworks color={"red"} /></div>
+     <SocialNetworks color={"red"} />
     </NavbarWrapper>
   );
 };

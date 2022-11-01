@@ -22,6 +22,10 @@
   gap: 1rem;
 }
 
+.title{
+  width: 80%;
+}
+
 .title h1 {
   color: #ffffff;
   font-weight: 700;

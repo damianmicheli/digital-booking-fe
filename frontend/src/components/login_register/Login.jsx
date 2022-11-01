@@ -14,6 +14,7 @@ const initialForm = {
 
 const validateForm = (form) => {
   let errors = {};
+  let isRequired = "Este campo es obligatorio";
 
   const user1 = {
     id: 1,
@@ -27,7 +28,7 @@ const validateForm = (form) => {
 
   //Validación de email
   if (!form.emailLogin.trim()) {
-    errors.emailLogin = "Debe ingresar su correo electrónico";
+    errors.emailLogin = isRequired;
   } else if (!form.emailLogin.match(user1.email)) {
     errors.emailLogin =
       "Por favor vuelva a intentarlo, sus credenciales son inválidas";
@@ -37,7 +38,7 @@ const validateForm = (form) => {
 
   //Validación de contraseña
   if (!password) {
-    errors.passwordLogin = "Debe ingresar su contraseña";
+    errors.passwordLogin = isRequired;
   } else if (!password.match(user1.password)) {
     errors.passwordLogin =
       "Por favor vuelva a intentarlo, sus credenciales son inválidas";
@@ -81,19 +82,17 @@ const Login = () => {
               </div>
               <div className={styles.groupForm}>
                 <label className="text2">Contraseña</label>
-                <input
-                  type="password"
-                  id="passwordLogin"
-                  name="passwordLogin"
-                  placeholder={
-                    <Icon
-                      icon={faEyeSlash}
-                      onBlur={handleBlur}
-                      onChange={handleChange}
-                      value={form.passwordLogin}
-                    />
-                  }
-                />
+                <div className={styles.iconInput}>
+                  <input
+                    type="password"
+                    id="passwordLogin"
+                    name="passwordLogin"
+                    onBlur={handleBlur}
+                    onChange={handleChange}
+                    value={form.passwordLogin}
+                  />
+                  <Icon icon={faEyeSlash} css={styles.iconEye} />
+                </div>
                 {errors.passwordLogin && (
                   <p className={styles.pFormError}>{errors.passwordLogin}</p>
                 )}
