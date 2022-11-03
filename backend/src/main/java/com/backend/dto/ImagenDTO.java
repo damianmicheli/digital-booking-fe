@@ -7,10 +7,9 @@ import lombok.ToString;
 
 @Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-
-public class CiudadesDTO {
-
+public class ImagenDTO {
     private Long id;
-    private String Ciudad;
-    private String Pais;
+    private String titulo;
+    private String url;
+
 }
