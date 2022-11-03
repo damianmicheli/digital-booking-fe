@@ -9,11 +9,11 @@ import javax.persistence.*;
 @Entity
 @Table
 
-public class Productos {
+public class Producto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeProductos")
-    @SequenceGenerator(name = "secuenciaDeProductos", sequenceName = "PRODUCTOS_SEQUENCE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeProducto")
+    @SequenceGenerator(name = "secuenciaDeProducto", sequenceName = "PRODUCTO_SEQUENCE", allocationSize = 1)
 
     private Long id;
     private String titulo;
@@ -31,10 +31,10 @@ public class Productos {
 
 
 
-    public Productos() {
+    public Producto() {
     }
 
-    public Productos(Long id, String titulo, String nombre, String caracteristicas, String descripcion, String direccion, String politica_de_uso, String politica_de_salud_y_seguridad, String politica_de_cancelacion  ) {
+    public Producto(Long id, String titulo, String nombre, String caracteristicas, String descripcion, String direccion, String politica_de_uso, String politica_de_salud_y_seguridad, String politica_de_cancelacion  ) {
         this.id = id;
         this.titulo = titulo;
         this.nombre = nombre;

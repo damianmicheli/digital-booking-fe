@@ -9,19 +9,19 @@ import javax.persistence.*;
 @Entity
 @Table
 
-public class Caracteristicas {
+public class Caracteristica {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeCaracteristicas")
-    @SequenceGenerator(name = "secuenciaDeCaracteristicas", sequenceName = "CARACTERISTICAS_SEQUENCE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeCaracteristica")
+    @SequenceGenerator(name = "secuenciaDeCaracteristica", sequenceName = "CARACTERISTICA_SEQUENCE", allocationSize = 1)
     private Long id;
     private String nombre;
     private Boolean disponible;
     private String icono;
 
-    public Caracteristicas() {
+    public Caracteristica() {
     }
 
-    public Caracteristicas(Long id, String nombre, Boolean disponible, String icono) {
+    public Caracteristica(Long id, String nombre, Boolean disponible, String icono) {
         this.id = id;
         this.nombre = nombre;
         this.disponible = disponible;

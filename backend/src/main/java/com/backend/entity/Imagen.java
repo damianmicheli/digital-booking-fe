@@ -8,19 +8,19 @@ import javax.persistence.*;
 @Entity
 @Table
 
-public class Imagenes {
+public class Imagen {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeImagenes")
-    @SequenceGenerator(name = "secuenciaDeImagenes", sequenceName = "IMAGENES_SEQUENCE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeImagen")
+    @SequenceGenerator(name = "secuenciaDeImagen", sequenceName = "IMAGEN_SEQUENCE", allocationSize = 1)
     private Long id;
     private String titulo;
     private String url;
 
-    public Imagenes() {
+    public Imagen() {
     }
 
-    public Imagenes(Long id, String titulo, String url) {
+    public Imagen(Long id, String titulo, String url) {
         this.id = id;
         this.titulo = titulo;
         this.url = url;

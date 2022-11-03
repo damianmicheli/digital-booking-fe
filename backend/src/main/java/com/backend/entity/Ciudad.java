@@ -9,19 +9,19 @@ import javax.persistence.*;
 @Entity
 @Table
 
-public class Ciudades {
+public class Ciudad {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeCiudades")
-    @SequenceGenerator(name = "secuenciaDeCiudades", sequenceName = "CIUDADES_SEQUENCE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeCiudad")
+    @SequenceGenerator(name = "secuenciaDeCiudad", sequenceName = "CIUDAD_SEQUENCE", allocationSize = 1)
     private Long id;
     private String ciudad;
     private String pais;
 
-    public Ciudades() {
+    public Ciudad() {
     }
 
-    public Ciudades(Long id, String ciudad, String pais) {
+    public Ciudad(Long id, String ciudad, String pais) {
         this.id = id;
         this.ciudad = ciudad;
         this.pais = pais;

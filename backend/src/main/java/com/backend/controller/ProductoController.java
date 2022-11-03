@@ -1,6 +1,6 @@
 package com.backend.controller;
 
-import com.backend.dto.ProductosDTO;
+import com.backend.dto.ProductoDTO;
 import com.backend.service.*;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,29 +12,29 @@ import java.util.List;
 
 @RestController
 @RequestMapping("productos")
-public class ProductosController {
+public class ProductoController {
 
     @Autowired
-    private IProductosService productoService;
+    private IProductoService productoService;
 
     @Operation(summary = "Buscar un producto por su Id")
     @GetMapping("/{id}")
-    public ResponseEntity<ProductosDTO> buscar(@PathVariable Long id) throws NoEncontradoException {
+    public ResponseEntity<ProductoDTO> buscar(@PathVariable Long id) throws NoEncontradoException {
 
         return new ResponseEntity<>(productoService.buscar(id), HttpStatus.OK);
     }
 
     @Operation(summary = "Crear un producto")
     @PostMapping
-    public ResponseEntity<ProductosDTO> guardar(@RequestBody ProductosDTO productosDTO) throws ConflictoException {
+    public ResponseEntity<ProductoDTO> guardar(@RequestBody ProductoDTO productoDTO) throws ConflictoException {
 
-        return new ResponseEntity<>(productoService.guardar(productosDTO), HttpStatus.OK);
+        return new ResponseEntity<>(productoService.guardar(productoDTO), HttpStatus.OK);
 
     }
 
     @Operation(summary = "Listar todos los productos")
     @GetMapping
-    public ResponseEntity<List<ProductosDTO>> listarTodos(){
+    public ResponseEntity<List<ProductoDTO>> listarTodos(){
         return new ResponseEntity<>(productoService.listarTodos(), HttpStatus.OK);
 
     }
