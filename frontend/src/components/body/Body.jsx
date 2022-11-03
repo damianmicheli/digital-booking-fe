@@ -8,9 +8,11 @@ import Register from "../login_register/Register"
 import Buscador from "../buscador/Buscador"
 import Cards from "../listado/Cards";
 import CardsCategorias from "../categorias/CardsCategorias";
+import GalleryContainer from "../gallery/GalleryContainer";
 
 import ALOJAMIENTOS_DATA from '../../data/alojamientos.json';
 import CATEGORIAS_DATA from '../../data/categorias.json';
+import IMAGES_DATA from '../../data/images.json';
 
 const Body = () => {
 
@@ -23,6 +25,7 @@ const Body = () => {
         <Route path="/categorias" element={<CardsCategorias items={CATEGORIAS_DATA}/>}/>
         <Route path="/register" element={<Register/>} />
         <Route path="/login" element={<Login/>} />
+        <Route path="/images" element={<GalleryContainer images={IMAGES_DATA}/>} />
       </Routes>
     </div>
   );
