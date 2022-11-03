@@ -7,7 +7,7 @@ import lombok.ToString;
 
 @Getter @Setter @ToString
 @JsonIgnoreProperties(ignoreUnknown = true)
-public class CaracteristicasDTO {
+public class CaracteristicaDTO {
 
     private Long id;
     private String nombre;
