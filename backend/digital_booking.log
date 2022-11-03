@@ -14,3 +14,19 @@
 [2022-10-21 15:44:03] [INFO] [CategoriaService:50] Se buscó por Id la categoria: CategoriaDTO(id=2, titulo=Casa1, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
 [2022-10-21 19:44:08] [INFO] [CategoriaService:50] Se buscó por Id la categoria: CategoriaDTO(id=1, titulo=Casa2, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
 [2022-10-21 19:44:18] [INFO] [CategoriaService:50] Se buscó por Id la categoria: CategoriaDTO(id=2, titulo=Casa1, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
+[2022-11-03 13:07:16] [INFO] [CategoriaService:36] Se guard? la categoria: CategoriaDTO(id=13, titulo=Casa, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
+[2022-11-03 13:07:16] [INFO] [CategoriaService:50] Se busc? por Id la categoria: CategoriaDTO(id=13, titulo=Casa, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
+[2022-11-03 13:10:34] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-03 13:10:43] [INFO] [ProductosService:63] Se listaron todos los productos.
+[2022-11-03 13:51:16] [INFO] [CategoriaService:36] Se guard? la categoria: CategoriaDTO(id=14, titulo=Casa, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
+[2022-11-03 13:51:16] [INFO] [CategoriaService:50] Se busc? por Id la categoria: CategoriaDTO(id=14, titulo=Casa, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
+[2022-11-03 13:52:04] [INFO] [ProductoService:63] Se listaron todos los productos.
+[2022-11-03 13:52:13] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-03 13:52:27] [ERROR] [GlobalExceptionHandler:23] Categoria con Id 1 no encontrada.
+[2022-11-03 13:52:34] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-03 13:52:40] [INFO] [CategoriaService:50] Se buscó por Id la categoria: CategoriaDTO(id=2, titulo=Casa, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
+[2022-11-03 13:52:48] [INFO] [ProductoService:63] Se listaron todos los productos.
+[2022-11-03 14:16:40] [INFO] [ProductoService:35] Se creo el producto : ProductoDTO(id=1, titulo=Casa 1, nombre=Casa Kari, caracteristicas=blabla, descripcion=casa con parque, direccion=null, politica_de_uso=null, politica_de_salud_y_seguridad=null, politica_de_cancelacion=null)
+[2022-11-03 14:17:49] [INFO] [ProductoService:63] Se listaron todos los productos.
+[2022-11-03 14:18:56] [INFO] [ProductoService:49] Se buscó por Id el producto: ProductoDTO(id=1, titulo=Casa 1, nombre=Casa Kari, caracteristicas=blabla, descripcion=casa con parque, direccion=null, politica_de_uso=null, politica_de_salud_y_seguridad=null, politica_de_cancelacion=null)
+[2022-11-03 14:19:34] [ERROR] [GlobalExceptionHandler:23] Producto con Id 2 no encontrado.
