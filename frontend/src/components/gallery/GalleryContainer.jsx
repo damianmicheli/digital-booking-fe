@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 /* import GalleryMobile from "./GalleryMobile"; */
-import ImagesGallery from "./ImagesGallery";
-import GalleryDesktop from "./GalleryDesktop";
+import MobileGallery from "./MobileGallery";
+import DesktopGallery from "./DesktopGallery";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
 
@@ -11,9 +11,9 @@ const GalleryContainer = ({ images }) => {
   const isMobileOrTablet = useMediaQuery(1024);
 
   return isMobileOrTablet ? (
-    <ImagesGallery />
+    <MobileGallery images={images} />
   ) : (
-    <GalleryDesktop images={images} />
+    <DesktopGallery images={images} />
   );
 };
 
