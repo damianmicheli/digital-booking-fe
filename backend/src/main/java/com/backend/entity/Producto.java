@@ -4,6 +4,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Getter @Setter
 @Entity
@@ -29,6 +30,10 @@ public class Producto {
 
     private String politica_de_cancelacion;
 
+    @NotBlank
+    @ManyToOne
+    @JoinColumn(name = "categoria_id", nullable = false)
+    private Categoria categoria;
 
 
     public Producto() {
