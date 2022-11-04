@@ -12,8 +12,7 @@ import { DateRange } from "react-date-range";
 import format from "date-fns/format";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
-
-export const DatePickerRange = ({ datePicked, setDatePicked }) => {
+const DatePickerRange = ({ datePicked, setDatePicked }) => {
   // date state
   const [range, setRange] = useState([
     {

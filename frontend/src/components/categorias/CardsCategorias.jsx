@@ -5,7 +5,7 @@ import styles from "./cardsCategorias.module.css";
 const CardsCategorias = ({ items }) => {
   return (
     <div className={styles.container}>
-        <h2>Buscar por tipo de alojamiento, pepito</h2>
+        <h2>Buscar por tipo de alojamiento</h2>
       <div className={styles.containerCategory}>
         {items.map((alojamiento) => (
           <CardCategoriaItem

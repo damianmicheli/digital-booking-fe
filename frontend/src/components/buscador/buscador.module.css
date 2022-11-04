@@ -46,7 +46,7 @@
   cursor: pointer;
 }
 
-@media (max-width: 1105px){
+/* @media (max-width: 1105px){
   .button {
       width: 166px;
   }
@@ -81,4 +81,4 @@
     width: 100%;
   }
   
-}
+} */
