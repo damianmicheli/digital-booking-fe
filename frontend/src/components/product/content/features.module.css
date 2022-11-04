@@ -1,0 +1,66 @@
+.container {
+    padding: 2rem 0;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+}
+
+.title {
+    padding: 0 0.8rem;
+    color: var(--color-2);
+    font-size: 20pt;
+}
+
+.hr {
+    height: 0.5px;
+    background-color: var(--color-principal);
+}
+
+.featuresContainer {
+    padding: 1rem 1.2rem;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5rem;
+}
+
+.icon {
+    color: var(--color-principal);
+    font-size: 14pt;
+}
+
+.item {
+    display: flex;
+    gap: 0.8rem;
+    width: 41%;
+    font-size: 12pt;
+}
+
+.p {
+    color: rgb(79, 79, 80);
+    font-weight: 500;
+}
+
+@media only screen and (min-width: 624px) {  
+    .title {
+        padding: 0 1.5rem;
+    }
+    .featuresContainer {
+        padding: 1rem 1.5rem;
+    }
+    .item {
+        width: 40%;
+    }
+}
+  
+@media only screen and (min-width: 769px) {
+    .title {
+        padding: 0 2rem;
+    }
+    .featuresContainer {
+        padding: 1rem 2rem;
+    }
+    .item {
+        width: 20%;
+    }
+}
+  

@@ -1,0 +1,29 @@
+.container {
+    background-color: var(--color-4);
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 1rem 0.8rem;
+}
+
+.icon {
+    color: var(--color-3);
+}
+
+.location {
+    font-weight: 500;
+    font-size: 12pt;
+    color: var(--color-2);
+}
+
+@media only screen and (min-width: 624px) {  
+    .container {
+        padding: 1rem 1.5rem;
+    }    
+}
+  
+@media only screen and (min-width: 769px) {
+    .container {
+        padding: 1rem 2rem;
+    }    
+}
