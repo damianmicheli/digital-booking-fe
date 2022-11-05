@@ -1,9 +1,11 @@
 package com.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter @Setter
 @Entity
@@ -17,6 +19,10 @@ public class Ciudad {
     private Long id;
     private String ciudad;
     private String pais;
+
+    @OneToMany(mappedBy = "ciudad", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    private List<Producto> productos;
 
     public Ciudad() {
     }
