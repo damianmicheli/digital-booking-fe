@@ -1,14 +1,11 @@
 package com.backend.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Getter @Setter
 @Entity
@@ -33,12 +30,17 @@ public class Producto {
 
     private String politica_de_cancelacion;
 
-    @ManyToMany(targetEntity = Caracteristica.class, cascade = {CascadeType.DETACH, CascadeType.MERGE, CascadeType.REFRESH})
-    @JoinTable(
-            name = "caracteristica_Producto",
-            joinColumns = @JoinColumn(name = "caracteristica_id")
-    )
-    private List<Caracteristica> caracteristicas;
+    @ManyToMany(targetEntity = Caracteristica.class,cascade=CascadeType.ALL)
+    @JoinTable(name = "producto_caracteristica",
+            joinColumns = @JoinColumn(name = "producto_id"),
+            inverseJoinColumns = @JoinColumn(name = "caracteristica_id"))
+
+    private List<Caracteristica> caracteristica;
+
+    /*@JoinColumn(
+            name = "caracteristica_id", nullable = false)
+
+    private List<Caracteristica> caracteristica;*/
 
     @NotBlank
     @ManyToOne
@@ -55,22 +57,15 @@ public class Producto {
     @JoinColumn(name="producto_id")
     private List<Imagen> imagenes;
 
-    @ManyToMany
-    @JoinTable(
-            joinColumns = @JoinColumn(name = "producto_id", nullable = false),
-            inverseJoinColumns = @JoinColumn(name = "caracteristica_id", nullable = false)
-    )
-    @JsonIgnore
-    private List<Caracteristica> caracteristica;
 
     public Producto() {
     }
 
-    public Producto(Long id, String titulo, String nombre, String descripcion, String direccion, String politica_de_uso, String politica_de_salud_y_seguridad, String politica_de_cancelacion) {
+    public Producto(List<Caracteristica> caracteristica, Long id, String titulo, String nombre, String descripcion, String direccion, String politica_de_uso, String politica_de_salud_y_seguridad, String politica_de_cancelacion) {
         this.id = id;
         this.titulo = titulo;
         this.nombre = nombre;
-        this.caracteristicas = caracteristicas;
+        this.caracteristica = caracteristica;
         this.descripcion = descripcion;
         this.direccion = direccion;
         this.politica_de_uso = politica_de_uso;

@@ -6,6 +6,7 @@ import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
@@ -24,8 +25,12 @@ public class Caracteristica {
     private String icono;
 
     @ManyToMany(mappedBy = "caracteristica")
-    @JsonIgnore
-    private List<Producto> productos;
+    public List<Producto> productos = new ArrayList<>();
+
+    //private List<Producto> producto;
+
+
+
 
 
     public Caracteristica() {
