@@ -7,6 +7,10 @@
   flex-direction: column;
 }
 
+.container:hover {
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
+}
+
 .imgContainer {
   height: 75%;
 }
