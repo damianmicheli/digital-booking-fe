@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 
 import HeaderProduct from './content/HeaderProduct';
 import LocationProduct from './content/LocationProduct';
@@ -10,33 +10,30 @@ import Politics from './content/Politics';
 import ALOJAMIENTOS_DATA from '../../data/alojamientos.json';
 
 import useFetch from '../../hooks/useFetch';
-import { useParams } from "react-router-dom";
+
+// import { useParams } from "react-router-dom";
+
 
 const Product = () => {
 
-  const { id } = useParams();
+  // const { id } = useParams();
 
-  useEffect(() => {
-    window.scrollTo(0, 0);
-  }, []);
-
-  const [dataProduct] = useFetch(
-    `http://localhost:8080/productos/${id}`
+  const [dataProducto] = useFetch(
+    `http://localhost:8080/productos/1`
   );
 
-  const [dataCategory] = useFetch(
-    `http://localhost:8080/categorias/${id}`
-  )
+  const [dataCategoria] = useFetch(
+    `http://localhost:8080/categorias/1`
+  );
 
-  const category = dataCategory && dataCategory.titulo;
-  const nameProduct = dataProduct && dataProduct.nombre;
-  const location = dataProduct && dataProduct.direccion;
-
+  const nombre = dataProducto && dataProducto.nombre;
+  const titulo = dataProducto && dataProducto.titulo;
+  const categoria = dataCategoria && dataCategoria.titulo.toUpperCase();
 
   return (
     <div className='container'>
-        <HeaderProduct category={category} title={nameProduct}/>
-        <LocationProduct location={location}/>
+        <HeaderProduct category={categoria} title={titulo}/>
+        <LocationProduct location={nombre}/>
         <DescriptionProduct title={ALOJAMIENTOS_DATA[0].titleDescription} description={ALOJAMIENTOS_DATA[0].description} />
         <Features 
         // pasar features como props

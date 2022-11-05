@@ -2,15 +2,21 @@ import React from "react";
 import CardCategoriaItem from "./CardCategoriaItem";
 import styles from "./cardsCategorias.module.css";
 
+import useFetch from "../../hooks/useFetch";
+
 const CardsCategorias = ({ items }) => {
+
+  const [categorias] = useFetch('http://localhost:8080/categorias');
+
   return (
     <div className={styles.container}>
-        <h2>Buscar por tipo de alojamiento</h2>
+      <h2>Buscar por tipo de alojamiento</h2>
       <div className={styles.containerCategory}>
-        {items.map((alojamiento) => (
+        {categorias && categorias.map((alojamiento) => (
           <CardCategoriaItem
-            category={alojamiento.category}
-            img={alojamiento.img}
+            category={alojamiento.titulo}
+            img={alojamiento.url}
+            description={alojamiento.descripcion}
           />
         ))}
       </div>

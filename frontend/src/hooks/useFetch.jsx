@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 
 const useFetch = (url) => {
 
-    const [data, setData] = useState([]);
+    const [data, setData] = useState(null);
 
     useEffect(() => {
 
-        fetch(url, {mode: 'no-cors'})
+        fetch(url)
             .then(resp => {
                 if (resp.status !== 200) {
                     setData('No se encontraron resultados');
