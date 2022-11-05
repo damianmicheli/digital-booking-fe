@@ -1,12 +1,12 @@
 .container {
   background: var(--color-3);
-  padding: 3rem 0;
+  padding: 1rem 0.5rem;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 3rem;
   width: 100%;
-  height: 151px;
+  height: 350px;
 }
 
 .buscador {
@@ -20,6 +20,8 @@
 .content {
   display: flex;
   gap: 1rem;
+  flex-direction: column;
+
 }
 
 .title{
@@ -35,7 +37,7 @@
 
 .button{
   height: 40px;
-  width: 206px;
+  width: 100%;
   border-radius: 5px;
   font-size: 16px;
   font-weight: 700;

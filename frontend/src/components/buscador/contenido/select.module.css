@@ -1,54 +1,66 @@
 .dropdown {
-    width: 350px;
-    height: 38px;
-    min-height: 38px;
-    margin: 0 auto;
-    position: relative;
-    cursor: pointer;
-    user-select: none;
+  width: 350px;
+  height: 38px;
+  min-height: 38px;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
 }
 
 .dropdown .dropdownBtn {
-    display: flex;
-    gap: 0.5rem;
-    padding: 10px;
-    background-color: #FCFCFC;
-    color: rgba(0, 0, 0, 0.7);
-    border-radius: 5px;
-    font-weight: 500;
-    font-size: 14px;
-    box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  display: flex;
+  gap: 0.5rem;
+  padding: 10px;
+  background-color: #fcfcfc;
+  color: rgba(0, 0, 0, 0.7);
+  border-radius: 5px;
+  font-weight: 500;
+  font-size: 14px;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
 }
 
 .dropdown .dropdownContent {
-   position: absolute; 
-   top: 110%;
-   left: 0;
-   padding: 1rem;
-   background: #FFF;
-   box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
-   width: 90%;
-   font-size: 16px;
-   z-index: 1;
+  position: absolute;
+  top: 110%;
+  left: 0;
+  padding: 1rem;
+  background: #fff;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  width: 90%;
+  font-size: 16px;
+  z-index: 1;
 }
 
 .dropdown .dropdownContent .dropdownItem {
-    border-bottom: 1.5px solid var(--color-principal);
-    padding: 13px 0;
-    cursor: pointer;
-    transition: all 0.2s;
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    font-weight: 500;
-    font-size: 16px;
+  border-bottom: 1.5px solid var(--color-principal);
+  padding: 13px 0;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 500;
+  font-size: 16px;
 }
 
 /* .dropdown .dropdownContent .dropdownItem:hover {
     background: #F4F4F4;
 } */
 
-.dropdown .dropdownContent .dropdownItem .icon{
-    color: var(--color-2);
-    font-size: 1em;
+.dropdown .dropdownContent .dropdownItem .icon {
+  color: var(--color-2);
+  font-size: 1em;
+}
+
+@media only screen and (min-width: 624px) {
+  .dropdown {
+    width: 254px;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .dropdown {
+    width: 422px;
+  }
 }
