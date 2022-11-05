@@ -1,10 +1,10 @@
 import React, { useState, useRef, useEffect } from "react";
 
 //styles
-import styles from './datepickerrange.module.css';
+import styles from "./datepickerrange.module.css";
 
 //fontawesome
-import Icon from '../../global/Icon';
+import Icon from "../../global/Icon";
 import { faCalendar } from "@fortawesome/free-regular-svg-icons";
 
 //date-range
@@ -12,6 +12,9 @@ import { DateRange } from "react-date-range";
 import format from "date-fns/format";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
+
+import useMediaQuery from "../../../hooks/useMediaQuery";
+
 const DatePickerRange = ({ datePicked, setDatePicked }) => {
   // date state
   const [range, setRange] = useState([
@@ -50,41 +53,84 @@ const DatePickerRange = ({ datePicked, setDatePicked }) => {
       setOpen(false);
     }
   };
-  
-  return (
-    <div className={`${styles.calendarWrap} ${styles.datePicker}`}>
-      <Icon css={styles.icon} icon={faCalendar} />
-      <input
-        value={datePicked}
-        readOnly
-        className={styles.inputBox}
-        onClick={() => {
-          setDatePicked(`${format(range[0].startDate, "MM/dd/yyyy")} - ${format(
-            range[0].endDate,
-            "MM/dd/yyyy"
-          )}`)
-          setOpen((open) => !open)
-        }}
-      />
 
-      <div ref={refOne}>
-        {open && (
-          <DateRange
-            onChange={(item) => setRange([item.selection])}
-            editableDateInputs={true}
-            moveRangeOnFirstSelection={false}
-            ranges={range}
-            rangeColors={["rgb(251, 192, 45, 1)"]}
-            months={2}
-            direction="horizontal"
-            className={styles.calendarElement}
-            minDate={new Date()}
+  const isMobile = useMediaQuery(768);
+
+  return (
+    <>
+      {!isMobile && (
+        <div className={`${styles.calendarWrap} ${styles.datePicker}`}>
+          <Icon css={styles.icon} icon={faCalendar} />
+          <input
+            value={datePicked}
+            readOnly
+            className={styles.inputBox}
+            onClick={() => {
+              setDatePicked(
+                `${format(range[0].startDate, "MM/dd/yyyy")} - ${format(
+                  range[0].endDate,
+                  "MM/dd/yyyy"
+                )}`
+              );
+              setOpen((open) => !open);
+            }}
           />
-        )}
-      </div>
-    </div>
+
+          <div ref={refOne}>
+            {open && (
+              <DateRange
+                onChange={(item) => setRange([item.selection])}
+                editableDateInputs={true}
+                moveRangeOnFirstSelection={false}
+                ranges={range}
+                rangeColors={["rgb(251, 192, 45, 1)"]}
+                months={2}
+                direction="horizontal"
+                className={styles.calendarElement}
+                minDate={new Date()}
+              />
+            )}
+          </div>
+        </div>
+      )}
+
+      {isMobile && (
+        <div className={`${styles.calendarWrap} ${styles.datePicker}`}>
+          <Icon css={styles.icon} icon={faCalendar} />
+          <input
+            value={datePicked}
+            readOnly
+            className={styles.inputBox}
+            onClick={() => {
+              setDatePicked(
+                `${format(range[0].startDate, "MM/dd/yyyy")} - ${format(
+                  range[0].endDate,
+                  "MM/dd/yyyy"
+                )}`
+              );
+              setOpen((open) => !open);
+            }}
+          />
+
+          <div ref={refOne}>
+            {open && (
+              <DateRange
+                onChange={(item) => setRange([item.selection])}
+                editableDateInputs={true}
+                moveRangeOnFirstSelection={false}
+                ranges={range}
+                rangeColors={["rgb(251, 192, 45, 1)"]}
+                months={1}
+                direction="horizontal"
+                className={styles.calendarElement}
+                minDate={new Date()}
+              />
+            )}
+          </div>
+        </div>
+      )}
+    </>
   );
 };
-
 
 export default DatePickerRange;
