@@ -6,41 +6,45 @@ import DescriptionProduct from './content/DescriptionProduct';
 import Features from './content/Features';
 import Politics from './content/Politics';
 
-// import CATEGORIAS_DATA from '../../data/categorias.json';
 import ALOJAMIENTOS_DATA from '../../data/alojamientos.json';
 
 import useFetch from '../../hooks/useFetch';
 
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 
 
 const Product = () => {
 
-  // const { id } = useParams();
+  const { id } = useParams();
 
   const [dataProducto] = useFetch(
-    `http://localhost:8080/productos/1`
+    `http://localhost:8080/productos/${id}`
   );
 
   const [dataCategoria] = useFetch(
-    `http://localhost:8080/categorias/1`
+    `http://localhost:8080/categorias/${id}`
   );
+
 
   const nombre = dataProducto && dataProducto.nombre;
   const titulo = dataProducto && dataProducto.titulo;
+  const descripcion = dataProducto && dataProducto.descripcion;
+  const direccion = dataProducto && dataProducto.direccion;
+  const politicaDeCancelacion = dataProducto && dataProducto.politica_de_cancelacion;
+  const politicaDeSaludYSeguridad = dataProducto && dataProducto.politica_de_salud_y_seguridad;
+  const normasDeUso = dataProducto && dataProducto.politica_de_uso;
+
   const categoria = dataCategoria && dataCategoria.titulo.toUpperCase();
 
   return (
     <div className='container'>
-        <HeaderProduct category={categoria} title={titulo}/>
-        <LocationProduct location={nombre}/>
-        <DescriptionProduct title={ALOJAMIENTOS_DATA[0].titleDescription} description={ALOJAMIENTOS_DATA[0].description} />
+        <HeaderProduct category={categoria} title={nombre}/>
+        <LocationProduct location={direccion}/>
+        <DescriptionProduct title={`${titulo} ${direccion}`} description={descripcion} />
         <Features 
         // pasar features como props
         />
-        <Politics 
-        // pasar politics como props
-        />
+        <Politics normas={normasDeUso} politicaSalud={politicaDeSaludYSeguridad} politicaCancelacion={politicaDeCancelacion}/>
     </div>
   )
 }
