@@ -22,7 +22,7 @@ h2,
 h3,
 h4,
 h5,
-p {
+p, ul, li{
   margin: 0;
   padding: 0;
 }
@@ -40,10 +40,7 @@ a {
   color: #607d8b;
 }
 
-ul,
 li {
-  margin: 0;
-  padding: 0;
   list-style: none;
 }
 
@@ -71,7 +68,7 @@ li {
   cursor: pointer;
 }
 
-.button1 {
+.button1, .button1:visited {
   height: 40px;
   width: 206px;
   border-radius: 5px;
@@ -84,15 +81,26 @@ li {
   cursor: pointer;
 }
 
-.button6 {
+.button1:hover, .buttonCard:hover, .buttonForm:hover {
+  background-color: var(--color-3);
+}
+
+.button6, .button6:visited {
   width: 164px;
   height: 40px;
   border: 2px solid var(--color-principal);
   background-color: transparent;
   border-radius: 5px;
-  color: #fbc02d;
+  color: var(--color-principal);
   font-size: 16px;
   font-weight: 700;
+  transition: 0.3s;
+}
+
+.button6:hover {
+  border: none;
+  background-color: var(--color-principal);
+  color: white; 
 }
 
 .bgGray {
