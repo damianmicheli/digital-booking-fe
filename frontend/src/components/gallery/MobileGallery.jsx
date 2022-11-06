@@ -4,15 +4,13 @@ import "./image-gallery.css";
 import ImageGallery from "react-image-gallery";
 
 const MobileGallery = ({ images }) => {
-
   const [imagesGallery, setImagesGallery] = useState(null);
-
 
   useEffect(() => {
     setImagesGallery(
       images.map((image) => ({
-        original: `${image.original}=w100`,
-        thumbnail: `${image.thumbnail}=w100`,
+        original: `${image.URL}=w100`,
+        thumbnail: `${image.URL}=w100`,
       }))
     );
   }, []);
@@ -25,8 +23,6 @@ const MobileGallery = ({ images }) => {
       autoPlay={true}
       slideInterval={3000}
       indexSeparator={" | "}
-
-
     />
   ) : null;
 };
@@ -38,7 +34,7 @@ export default MobileGallery;
 
     const call = async () => {
       const response = await axios.get(
-        "https://google-photos-album-demo2.glitch.me/4eXXxxG3rYwQVf948"
+        "(endpoint)"
       );
       if (!shouldCancel && response.data && response.data.length > 0) {
         setImages(

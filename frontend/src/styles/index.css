@@ -8,16 +8,21 @@ body {
 }
 
 /* COLORES */
-:root{
-  --color-principal: #FBC02D;
+:root {
+  --color-principal: #fbc02d;
   --color-2: #263238;
-  --color-3: #607D8B;
-  --color-4: #FFFBE2;
+  --color-3: #607d8b;
+  --color-4: #fffbe2;
   --color-2-transparency: rgba(96, 125, 139, 0.1);
   --color-2-opacity: rgba(96, 125, 139, 0.5);
 }
 
-h1, h2, h3, h4, h5, p {
+h1,
+h2,
+h3,
+h4,
+h5,
+p {
   margin: 0;
   padding: 0;
 }
@@ -26,14 +31,20 @@ h1, h2, h3, h4, h5, p {
   color: var(--color-2);
 }
 
-
-.disabled{
+.disabled {
   display: none;
 }
 
 a {
   text-decoration: none;
-  color:#607D8B;
+  color: #607d8b;
+}
+
+ul,
+li {
+  margin: 0;
+  padding: 0;
+  list-style: none;
 }
 
 .buttonForm {
@@ -84,17 +95,17 @@ a {
   font-weight: 700;
 }
 
-.bgGray{
-  background-color: #F2F2F2;
+.bgGray {
+  background-color: #f2f2f2;
   height: 100vh;
 }
 
-.headings{
+.headings {
   padding-top: 25px;
   padding-bottom: 10px;
 }
 
-.heading1{
+.heading1 {
   font-size: 24px;
   font-weight: 700;
   text-align: center;
@@ -102,21 +113,21 @@ a {
   margin: 0;
 }
 
-.heading2{
+.heading2 {
   font-size: 20px;
   font-weight: 700;
   color: var(--color-principal);
   margin: 0;
 }
 
-.heading4{
+.heading4 {
   font-size: 14px;
   font-weight: 700;
   color: var(--color-principal);
   margin: 0;
 }
 
-.text2{
+.text2 {
   font-size: 12px;
   font-weight: 500;
 }
@@ -124,6 +135,4 @@ a {
 .icon {
   color: var(--color-2-opacity);
   font-size: 1.2em;
-} 
-
-
+}

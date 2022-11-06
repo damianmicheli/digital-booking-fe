@@ -1,0 +1,48 @@
+.container {
+  width: 90%;
+  margin: 0 auto;
+}
+
+.containerImages {
+  width: 100%;
+  max-height: 386px;
+  margin-top: 15px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.imgPpal {
+  width: 50%;
+  height: 100%;
+}
+
+.imgGrid {
+  width: 50%;
+  height: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  position: relative;
+}
+
+.imgGrid > li {
+  width: 48.8%;
+}
+
+li > img {
+  width: 100%;
+  border-radius: 10px;
+}
+
+.imgGrid > button {
+    background-color: transparent;
+    border: none;
+  color: white;
+  font-size: 0.8rem;
+  font-weight: 500;
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+}
