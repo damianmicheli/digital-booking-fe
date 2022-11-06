@@ -9,7 +9,7 @@ import Politics from './content/Politics';
 import ALOJAMIENTOS_DATA from '../../data/alojamientos.json';
 
 import useFetch from '../../hooks/useFetch';
-import { useParams } from "react-router-dom";
+import { useParams } from "react-router";
 import GalleryContainer from '../gallery/GalleryContainer';
 
 const Product = ({images}) => {
