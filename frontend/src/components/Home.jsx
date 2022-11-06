@@ -11,7 +11,7 @@ import useFetch from "../hooks/useFetch";
 const Home = () => {
 
   const [categorias] = useFetch('http://localhost:8080/categorias');
-  const [productos] = useFetch('http://localhost:8080/productos');
+/*   const [productos] = useFetch('http://localhost:8080/productos'); */
 
   return (
     <>

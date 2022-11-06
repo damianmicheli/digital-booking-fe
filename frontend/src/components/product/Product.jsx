@@ -6,8 +6,6 @@ import DescriptionProduct from './content/DescriptionProduct';
 import Features from './content/Features';
 import Politics from './content/Politics';
 
-import ALOJAMIENTOS_DATA from '../../data/alojamientos.json';
-
 import useFetch from '../../hooks/useFetch';
 import { useParams } from "react-router";
 import GalleryContainer from '../gallery/GalleryContainer';
@@ -37,9 +35,10 @@ const Product = ({images}) => {
 
   return (
     <div className='container'>
-        <HeaderProduct category={category} title={nameProduct}/>
-        <LocationProduct location={location}/>
-        <DescriptionProduct title={ALOJAMIENTOS_DATA[0].titleDescription} description={ALOJAMIENTOS_DATA[0].description} />
+        <HeaderProduct category={categoria} title={nombre}/>
+        <LocationProduct location={direccion}/>
+        <GalleryContainer images={images}/>
+        <DescriptionProduct title={titulo} description={descripcion} />
         <Features 
         // pasar features como props
         />
