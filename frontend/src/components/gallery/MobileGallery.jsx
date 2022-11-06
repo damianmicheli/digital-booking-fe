@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-/* import axios from "axios"; */
 import "./image-gallery.css";
 import ImageGallery from "react-image-gallery";
 
@@ -29,24 +28,3 @@ const MobileGallery = ({ images }) => {
 
 export default MobileGallery;
 
-/* React.useEffect(() => {
-    let shouldCancel = false;
-
-    const call = async () => {
-      const response = await axios.get(
-        "(endpoint)"
-      );
-      if (!shouldCancel && response.data && response.data.length > 0) {
-        setImages(
-          response.data.map((url) => ({
-            original: `${url}=w1024`,
-            thumbnail: `${url}=w100`,
-          }))
-          
-        );
-        console.log(response.data);
-      }
-    };
-    call();
-    return () => (shouldCancel = true);
-  }, []); */
