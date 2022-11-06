@@ -6,7 +6,6 @@ const Politics = ({ normas, politicaCancelacion, politicaSalud }) => {
     <div className={styles.container}>
       <div className={styles.titleContainer}>
         <h1 className={styles.title}>¿Qué tenés que saber?</h1>
-        <hr className={styles.hr} />
       </div>
       <div className={styles.contentContainer}>
         <div className={styles.contentItem}>

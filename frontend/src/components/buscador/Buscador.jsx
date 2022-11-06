@@ -14,6 +14,8 @@ const Buscador = () => {
 
   const [datePicked, setDatePicked] = useState("Check in - Check out");
 
+  
+
   return (
       <div className={styles.container}>
         <div className={styles.buscador}>

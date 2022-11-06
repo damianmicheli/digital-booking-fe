@@ -8,7 +8,6 @@ const Features = ({ features }) => {
     <div className={styles.container}>
         <div className={styles.titleContainer}>
             <h1 className={styles.title}>¿Qué ofrece este lugar?</h1>
-            <hr className={styles.hr}/>
         </div>
         <div className={styles.featuresContainer}>
             <div className={styles.item}>

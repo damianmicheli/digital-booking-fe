@@ -8,6 +8,7 @@
 .title {
     color: var(--color-2);
     font-size: 20pt;
+    padding-top: 2.5rem;
 }
 
 .description {
