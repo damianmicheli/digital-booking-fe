@@ -18,11 +18,6 @@ const Product = ({images}) => {
     `http://localhost:8080/productos/${id}`
   );
 
-  const [dataCategoria] = useFetch(
-    `http://localhost:8080/categorias/${id}`
-  );
-
-
   const nombre = dataProducto && dataProducto.nombre;
   const titulo = dataProducto && dataProducto.titulo;
   const descripcion = dataProducto && dataProducto.descripcion;
@@ -31,11 +26,13 @@ const Product = ({images}) => {
   const politicaDeSaludYSeguridad = dataProducto && dataProducto.politica_de_salud_y_seguridad;
   const normasDeUso = dataProducto && dataProducto.politica_de_uso;
 
-  const categoria = dataCategoria && dataCategoria.titulo.toUpperCase();
+  // const categoria = dataProducto && dataProducto.categoria.titulo.toUpperCase();
 
   return (
     <div className='container'>
-        <HeaderProduct category={categoria} title={nombre}/>
+        <HeaderProduct 
+        // category={categoria}
+        title={nombre}/>
         <LocationProduct location={direccion}/>
         <GalleryContainer images={images}/>
         <DescriptionProduct title={titulo} description={descripcion} />

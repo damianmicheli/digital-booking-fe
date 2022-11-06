@@ -12,7 +12,7 @@ const MobileGallery = ({ images }) => {
         thumbnail: `${image.URL}=w100`,
       }))
     );
-  }, []);
+  }, [images]);
 
   return imagesGallery ? (
     <ImageGallery
