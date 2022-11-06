@@ -11,8 +11,9 @@ import ALOJAMIENTOS_DATA from '../../data/alojamientos.json';
 
 import useFetch from '../../hooks/useFetch';
 import { useParams } from "react-router-dom";
+import GalleryContainer from '../gallery/GalleryContainer';
 
-const Product = () => {
+const Product = ({images}) => {
 
   const { id } = useParams();
 
@@ -37,6 +38,7 @@ const Product = () => {
     <div className='container'>
         <HeaderProduct category={category} title={nameProduct}/>
         <LocationProduct location={location}/>
+        <GalleryContainer images={images}/>
         <DescriptionProduct title={ALOJAMIENTOS_DATA[0].titleDescription} description={ALOJAMIENTOS_DATA[0].description} />
         <Features 
         // pasar features como props
