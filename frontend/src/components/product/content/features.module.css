@@ -18,8 +18,8 @@
 
 .featuresContainer {
   padding: 1rem 1.2rem;
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   gap: 5rem;
 }
 
@@ -40,24 +40,26 @@
   font-weight: 500;
 }
 
-@media only screen and (min-width: 624px) {
+@media only screen and (min-width: 768px) {
   .title {
     padding: 0 1.5rem;
   }
   .featuresContainer {
     padding: 1rem 1.5rem;
+    grid-template-columns: 1fr 1fr 1fr;
   }
   .item {
     width: 40%;
   }
 }
 
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 1200px) {
   .title {
     padding: 0 2rem;
   }
   .featuresContainer {
     padding: 1rem 2rem;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
   }
   .item {
     width: 20%;

@@ -53,7 +53,13 @@
   font-size: 1em;
 }
 
-@media only screen and (min-width: 769px) {
+@media only screen and (min-width: 780px) {
+  .dropdown {
+    width: 254px;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
   .dropdown {
     width: 422px;
   }

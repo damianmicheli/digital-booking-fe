@@ -15,7 +15,7 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 
 import useMediaQuery from "../../../hooks/useMediaQuery";
 
-const DatePickerRange = ({ datePicked, setDatePicked }) => {
+const DatePickerRange = () => {
   // date state
   const [range, setRange] = useState([
     {
@@ -62,16 +62,13 @@ const DatePickerRange = ({ datePicked, setDatePicked }) => {
         <div className={`${styles.calendarWrap} ${styles.datePicker}`}>
           <Icon css={styles.icon} icon={faCalendar} />
           <input
-            value={datePicked}
+            value={`${format(range[0].startDate, "dd/MM/yyyy")} - ${format(
+              range[0].endDate,
+              "dd/MM/yyyy"
+            )}`}
             readOnly
             className={styles.inputBox}
             onClick={() => {
-              setDatePicked(
-                `${format(range[0].startDate, "MM/dd/yyyy")} - ${format(
-                  range[0].endDate,
-                  "MM/dd/yyyy"
-                )}`
-              );
               setOpen((open) => !open);
             }}
           />
@@ -98,16 +95,13 @@ const DatePickerRange = ({ datePicked, setDatePicked }) => {
         <div className={`${styles.calendarWrap} ${styles.datePicker}`}>
           <Icon css={styles.icon} icon={faCalendar} />
           <input
-            value={datePicked}
+            value={`${format(range[0].startDate, "dd/MM/yyyy")} - ${format(
+              range[0].endDate,
+              "dd/MM/yyyy"
+            )}`}
             readOnly
             className={styles.inputBox}
             onClick={() => {
-              setDatePicked(
-                `${format(range[0].startDate, "MM/dd/yyyy")} - ${format(
-                  range[0].endDate,
-                  "MM/dd/yyyy"
-                )}`
-              );
               setOpen((open) => !open);
             }}
           />
@@ -121,7 +115,7 @@ const DatePickerRange = ({ datePicked, setDatePicked }) => {
                 ranges={range}
                 rangeColors={["rgb(251, 192, 45, 1)"]}
                 months={1}
-                direction="horizontal"
+                direction="vertical"
                 className={styles.calendarElement}
                 minDate={new Date()}
               />
