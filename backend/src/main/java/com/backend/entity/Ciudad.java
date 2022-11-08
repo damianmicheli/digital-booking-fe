@@ -1,9 +1,11 @@
 package com.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Getter @Setter
 @Entity
@@ -12,11 +14,14 @@ import javax.persistence.*;
 public class Ciudad {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeCiudad")
-    @SequenceGenerator(name = "secuenciaDeCiudad", sequenceName = "CIUDAD_SEQUENCE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String ciudad;
     private String pais;
+
+    @OneToMany(mappedBy = "ciudad", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    private List<Producto> productos;
 
     public Ciudad() {
     }
