@@ -11,8 +11,7 @@ import javax.persistence.*;
 public class Imagen {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeImagen")
-    @SequenceGenerator(name = "secuenciaDeImagen", sequenceName = "IMAGEN_SEQUENCE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
     private String url;
