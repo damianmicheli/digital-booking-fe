@@ -83,6 +83,7 @@ li {
 
 .button1:hover, .buttonCard:hover, .buttonForm:hover {
   background-color: var(--color-3);
+  transition: all 0.2s ease-in-out;
 }
 
 .button6, .button6:visited {
@@ -101,6 +102,7 @@ li {
   border: none;
   background-color: var(--color-principal);
   color: white; 
+  transition: all 0.2s ease-in-out;
 }
 
 .bgGray {

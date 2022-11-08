@@ -30,6 +30,7 @@
 
 .item {
   display: flex;
+  align-items: center;
   gap: 0.8rem;
   width: 41%;
   font-size: 12pt;

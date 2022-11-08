@@ -47,6 +47,11 @@
   cursor: pointer;
 }
 
+.button:hover {
+  background-color: #fdcc52;
+  transition: all 0.2s ease-out; 
+}
+
 @media only screen and (min-width: 780px) {
   .container {
     padding: 2rem 0rem;

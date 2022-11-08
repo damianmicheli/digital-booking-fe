@@ -2,6 +2,10 @@ import React from "react";
 import styles from "./politics.module.css";
 
 const Politics = ({ normas, politicaCancelacion, politicaSalud }) => {
+
+  const normasDeUso = normas && normas.split(',');
+  const politicaDeSaludYSeguridad = politicaSalud && politicaSalud.split(',');
+
   return (
     <div className={styles.container}>
       <div className={styles.titleContainer}>
@@ -10,11 +14,21 @@ const Politics = ({ normas, politicaCancelacion, politicaSalud }) => {
       <div className={styles.contentContainer}>
         <div className={styles.contentItem}>
           <h2 className={styles.contentTitle}>Normas de la casa</h2>
-          {normas}
+          {
+            normasDeUso &&
+            normasDeUso.map((norma, index) => (
+              <p key={index}>{norma}</p>
+            ))
+          }
         </div>
         <div className={styles.contentItem}>
           <h2 className={styles.contentTitle}>Salud y seguridad</h2>
-          {politicaSalud}
+          {
+            politicaDeSaludYSeguridad &&
+            politicaDeSaludYSeguridad.map((politica, index) => (
+              <p key={index}>{politica}</p>
+            ))
+          }
         </div>
         <div className={styles.contentItem}>
           <h2 className={styles.contentTitle}>Política de cancelación</h2>

@@ -11,6 +11,7 @@ const CardsCategorias = ({ items }) => {
       <div className={styles.containerCategory}>
         {items && items.map((alojamiento) => (
           <CardCategoriaItem
+            key={alojamiento.id}
             category={alojamiento.titulo}
             img={alojamiento.url}
             description={alojamiento.descripcion}
