@@ -15,7 +15,7 @@
 .container:hover {
   box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.3);
   transform: scale(1.02);
-  transition: all 0.2s ease-out;
+  transition: all 0.5s;
 }
 
 .imgContainer {
@@ -54,7 +54,7 @@
   }
 }
 
-@media only screen and (min-width: 1315px) {
+@media only screen and (min-width: 1350px) {
   .container {
     height: 246.67px;
     width: 310px;
