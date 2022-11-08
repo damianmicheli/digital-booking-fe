@@ -26,7 +26,7 @@ public class ProductoController {
 
     @Operation(summary = "Crear un producto")
     @PostMapping
-    public ResponseEntity<ProductoDTO> guardar(@RequestBody ProductoDTO productoDTO) throws ConflictoException {
+    public ResponseEntity<ProductoDTO> guardar(@RequestBody ProductoDTO productoDTO) throws ConflictoException, DatosIncorrectosException {
 
         return new ResponseEntity<>(productoService.guardar(productoDTO), HttpStatus.OK);
 
@@ -36,6 +36,20 @@ public class ProductoController {
     @GetMapping
     public ResponseEntity<List<ProductoDTO>> listarTodos(){
         return new ResponseEntity<>(productoService.listarTodos(), HttpStatus.OK);
+
+    }
+
+    @Operation(summary = "Listar productos filtrados por ciudad")
+    @GetMapping("/ciudad/{id}")
+    public ResponseEntity<List<ProductoDTO>> listarPorCiudad(@PathVariable Long id) {
+        return new ResponseEntity<>(productoService.listarPorCiudad(id), HttpStatus.OK);
+
+    }
+
+    @Operation(summary = "Listar productos filtrados por categoria")
+    @GetMapping("/categoria/{id}")
+    public ResponseEntity<List<ProductoDTO>> listarPorCategoria(@PathVariable Long id) {
+        return new ResponseEntity<>(productoService.listarPorCiudad(id), HttpStatus.OK);
 
     }
 }

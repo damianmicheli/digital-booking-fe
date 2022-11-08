@@ -11,7 +11,6 @@ public class CaracteristicaDTO {
 
     private Long id;
     private String nombre;
-    private Boolean disponible;
     private String icono;
 }
 

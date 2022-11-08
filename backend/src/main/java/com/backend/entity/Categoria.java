@@ -13,8 +13,7 @@ import java.util.List;
 public class Categoria {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeCategoria")
-    @SequenceGenerator(name = "secuenciaDeCategoria", sequenceName = "CATEGORIA_SEQUENCE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String titulo;
     private String descripcion;

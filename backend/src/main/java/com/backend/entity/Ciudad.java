@@ -14,8 +14,7 @@ import java.util.List;
 public class Ciudad {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeCiudad")
-    @SequenceGenerator(name = "secuenciaDeCiudad", sequenceName = "CIUDAD_SEQUENCE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String ciudad;
     private String pais;

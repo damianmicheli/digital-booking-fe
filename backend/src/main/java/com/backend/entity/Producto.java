@@ -14,8 +14,7 @@ import java.util.List;
 public class Producto {
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeProducto")
-    @SequenceGenerator(name = "secuenciaDeProducto", sequenceName = "PRODUCTO_SEQUENCE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
 
     private Long id;
     private String titulo;
@@ -30,17 +29,12 @@ public class Producto {
 
     private String politica_de_cancelacion;
 
-    @ManyToMany(targetEntity = Caracteristica.class,cascade=CascadeType.ALL)
+    //@ManyToMany(targetEntity = Caracteristica.class,cascade=CascadeType.REMOVE)
+    @ManyToMany(cascade=CascadeType.REMOVE)
     @JoinTable(name = "producto_caracteristica",
             joinColumns = @JoinColumn(name = "producto_id"),
             inverseJoinColumns = @JoinColumn(name = "caracteristica_id"))
-
-    private List<Caracteristica> caracteristica;
-
-    /*@JoinColumn(
-            name = "caracteristica_id", nullable = false)
-
-    private List<Caracteristica> caracteristica;*/
+    private List<Caracteristica> caracteristicas;
 
     @NotBlank
     @ManyToOne
@@ -53,7 +47,7 @@ public class Producto {
     private Ciudad ciudad;
 
 
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(name="producto_id")
     private List<Imagen> imagenes;
 
@@ -61,15 +55,17 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(List<Caracteristica> caracteristica, Long id, String titulo, String nombre, String descripcion, String direccion, String politica_de_uso, String politica_de_salud_y_seguridad, String politica_de_cancelacion) {
-        this.id = id;
+    public Producto(String titulo, String nombre, String descripcion, String direccion, String politica_de_uso, String politica_de_salud_y_seguridad, String politica_de_cancelacion, List<Caracteristica> caracteristicas, Categoria categoria, Ciudad ciudad, List<Imagen> imagenes) {
         this.titulo = titulo;
         this.nombre = nombre;
-        this.caracteristica = caracteristica;
         this.descripcion = descripcion;
         this.direccion = direccion;
         this.politica_de_uso = politica_de_uso;
         this.politica_de_salud_y_seguridad = politica_de_salud_y_seguridad;
         this.politica_de_cancelacion = politica_de_cancelacion;
+        this.caracteristicas = caracteristicas;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.imagenes = imagenes;
     }
 }

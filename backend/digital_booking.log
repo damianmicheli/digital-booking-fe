@@ -30,3 +30,44 @@
 [2022-11-03 14:17:49] [INFO] [ProductoService:63] Se listaron todos los productos.
 [2022-11-03 14:18:56] [INFO] [ProductoService:49] Se buscó por Id el producto: ProductoDTO(id=1, titulo=Casa 1, nombre=Casa Kari, caracteristicas=blabla, descripcion=casa con parque, direccion=null, politica_de_uso=null, politica_de_salud_y_seguridad=null, politica_de_cancelacion=null)
 [2022-11-03 14:19:34] [ERROR] [GlobalExceptionHandler:23] Producto con Id 2 no encontrado.
+[2022-11-08 10:57:31] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 10:57:40] [ERROR] [GlobalExceptionHandler:56] JSON parse error: Unexpected character (`"` (code 34)): was expecting comma to separate Object entries; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character (`"` (code 34)): was expecting comma to separate Object entries
+ at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 11, column: 2]
+[2022-11-08 10:57:57] [ERROR] [GlobalExceptionHandler:56] JSON parse error: Unexpected character (`"` (code 34)): was expecting comma to separate Object entries; nested exception is com.fasterxml.jackson.core.JsonParseException: Unexpected character (`"` (code 34)): was expecting comma to separate Object entries
+ at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 11, column: 2]
+[2022-11-08 10:58:28] [ERROR] [GlobalExceptionHandler:56] could not execute statement; nested exception is org.hibernate.exception.GenericJDBCException: could not execute statement
+[2022-11-08 11:01:36] [ERROR] [GlobalExceptionHandler:56] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-11-08 11:03:27] [ERROR] [GlobalExceptionHandler:56] detached entity passed to persist: com.backend.entity.Caracteristica; nested exception is org.hibernate.PersistentObjectException: detached entity passed to persist: com.backend.entity.Caracteristica
+[2022-11-08 11:18:19] [ERROR] [GlobalExceptionHandler:56] detached entity passed to persist: com.backend.entity.Caracteristica; nested exception is org.hibernate.PersistentObjectException: detached entity passed to persist: com.backend.entity.Caracteristica
+[2022-11-08 11:22:49] [ERROR] [GlobalExceptionHandler:56] detached entity passed to persist: com.backend.entity.Imagen; nested exception is org.hibernate.PersistentObjectException: detached entity passed to persist: com.backend.entity.Imagen
+[2022-11-08 11:23:41] [ERROR] [GlobalExceptionHandler:56] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-11-08 11:30:18] [ERROR] [GlobalExceptionHandler:56] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-11-08 11:34:41] [ERROR] [GlobalExceptionHandler:56] detached entity passed to persist: com.backend.entity.Caracteristica; nested exception is org.hibernate.PersistentObjectException: detached entity passed to persist: com.backend.entity.Caracteristica
+[2022-11-08 11:35:35] [ERROR] [GlobalExceptionHandler:56] detached entity passed to persist: com.backend.entity.Caracteristica; nested exception is org.hibernate.PersistentObjectException: detached entity passed to persist: com.backend.entity.Caracteristica
+[2022-11-08 11:36:16] [ERROR] [GlobalExceptionHandler:56] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-11-08 11:44:06] [ERROR] [GlobalExceptionHandler:56] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-11-08 11:44:22] [INFO] [ProductoService:43] Se creo el producto : ProductoDTO(id=11, titulo=Un Titulo, nombre=Un Nombre, descripcion=Una descripcion, direccion=Calle falsa 123, politica_de_uso=checkin a las 10 no mascotas, politica_de_salud_y_seguridad=No prender fuego, no fumar, politica_de_cancelacion=No se puede cancelar, no hay devolucion, categoria=com.backend.entity.Categoria@3f579031, ciudad=com.backend.entity.Ciudad@3cf14bb9, imagenes=[com.backend.entity.Imagen@55ee58b6, com.backend.entity.Imagen@3fb8e776, com.backend.entity.Imagen@3ced3ea8], caracteristicas=null)
+[2022-11-08 11:46:32] [INFO] [ProductoService:43] Se creo el producto : ProductoDTO(id=12, titulo=Un Titulo, nombre=Un Nombre, descripcion=Una descripcion, direccion=Calle falsa 123, politica_de_uso=checkin a las 10 
+ no mascotas, politica_de_salud_y_seguridad=No prender fuego, no fumar, politica_de_cancelacion=No se puede cancelar, no hay devolucion, categoria=com.backend.entity.Categoria@7adb6158, ciudad=com.backend.entity.Ciudad@320de85a, imagenes=[com.backend.entity.Imagen@89028ac, com.backend.entity.Imagen@75bb3cfd, com.backend.entity.Imagen@544b52b3], caracteristicas=null)
+[2022-11-08 11:47:37] [ERROR] [GlobalExceptionHandler:56] JSON parse error: Cannot deserialize value of type `java.lang.String` from Array value (token `JsonToken.START_ARRAY`); nested exception is com.fasterxml.jackson.databind.exc.MismatchedInputException: Cannot deserialize value of type `java.lang.String` from Array value (token `JsonToken.START_ARRAY`)
+ at [Source: (org.springframework.util.StreamUtils$NonClosingInputStream); line: 6, column: 20] (through reference chain: com.backend.dto.ProductoDTO["politica_de_uso"])
+[2022-11-08 11:47:56] [INFO] [ProductoService:43] Se creo el producto : ProductoDTO(id=13, titulo=Un Titulo, nombre=Un Nombre, descripcion=Una descripcion, direccion=Calle falsa 123, politica_de_uso=checkin a las 10 
+ no mascotas, politica_de_salud_y_seguridad=No prender fuego, no fumar, politica_de_cancelacion=No se puede cancelar, no hay devolucion, categoria=com.backend.entity.Categoria@36129fbd, ciudad=com.backend.entity.Ciudad@3d19a453, imagenes=[com.backend.entity.Imagen@21debdfa, com.backend.entity.Imagen@6c9df571, com.backend.entity.Imagen@4e507028], caracteristicas=null)
+[2022-11-08 11:48:09] [INFO] [ProductoService:43] Se creo el producto : ProductoDTO(id=14, titulo=Un Titulo, nombre=Un Nombre, descripcion=Una descripcion, direccion=Calle falsa 123, politica_de_uso=checkin a las 10 '
+' no mascotas, politica_de_salud_y_seguridad=No prender fuego, no fumar, politica_de_cancelacion=No se puede cancelar, no hay devolucion, categoria=com.backend.entity.Categoria@39c09675, ciudad=com.backend.entity.Ciudad@330dfb85, imagenes=[com.backend.entity.Imagen@284f1e51, com.backend.entity.Imagen@19c72f64, com.backend.entity.Imagen@24896117], caracteristicas=null)
+[2022-11-08 11:48:28] [INFO] [ProductoService:43] Se creo el producto : ProductoDTO(id=15, titulo=Un Titulo, nombre=Un Nombre, descripcion=Una descripcion, direccion=Calle falsa 123, politica_de_uso=checkin a las 10 
+ no mascotas, politica_de_salud_y_seguridad=No prender fuego, no fumar, politica_de_cancelacion=No se puede cancelar, no hay devolucion, categoria=com.backend.entity.Categoria@1ff03312, ciudad=com.backend.entity.Ciudad@cceaebf, imagenes=[com.backend.entity.Imagen@45b6882, com.backend.entity.Imagen@3f6b70ef, com.backend.entity.Imagen@219dbcb3], caracteristicas=null)
+[2022-11-08 11:49:05] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 11:49:16] [ERROR] [GlobalExceptionHandler:56] Required URI template variable `id` for method parameter type Long is not present
+[2022-11-08 11:51:59] [INFO] [ProductoService:89] Se listaron todos los productos con ciudad id: 1
+[2022-11-08 11:52:24] [INFO] [ProductoService:89] Se listaron todos los productos con ciudad id: 2
+[2022-11-08 11:52:30] [INFO] [ProductoService:89] Se listaron todos los productos con ciudad id: 2
+[2022-11-08 11:52:44] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-08 11:53:08] [ERROR] [GlobalExceptionHandler:56] Failed to convert value of type `java.lang.String` to required type `java.lang.Long`; nested exception is java.lang.NumberFormatException: For input string: "ciudad"
+[2022-11-08 11:53:11] [INFO] [ProductoService:89] Se listaron todos los productos con ciudad id: 1
+[2022-11-08 11:53:14] [INFO] [ProductoService:89] Se listaron todos los productos con ciudad id: 2
+[2022-11-08 11:53:17] [INFO] [ProductoService:89] Se listaron todos los productos con ciudad id: 3
+[2022-11-08 11:53:45] [INFO] [ProductoService:89] Se listaron todos los productos con ciudad id: 1
+[2022-11-08 11:53:47] [INFO] [ProductoService:89] Se listaron todos los productos con ciudad id: 2
+[2022-11-08 11:53:53] [INFO] [ProductoService:89] Se listaron todos los productos con ciudad id: 1
+[2022-11-08 11:53:57] [INFO] [ProductoService:89] Se listaron todos los productos con ciudad id: 2

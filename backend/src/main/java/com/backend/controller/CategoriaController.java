@@ -45,7 +45,7 @@ public class CategoriaController {
 
     }
 
-    @Operation(summary = "Actualizar los datos de una categoria")
+    @Operation(summary = "Actualizar los datos de una Categoría")
     @PutMapping
     public ResponseEntity<CategoriaDTO> actualizar(@RequestBody CategoriaDTO categoriaDTO) throws NoEncontradoException, ConflictoException {
 

@@ -17,14 +17,13 @@ import java.util.Set;
 
 public class Caracteristica {
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "secuenciaDeCaracteristica")
-    @SequenceGenerator(name = "secuenciaDeCaracteristica", sequenceName = "CARACTERISTICA_SEQUENCE", allocationSize = 1)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
     private Boolean disponible;
     private String icono;
 
-    @ManyToMany(mappedBy = "caracteristica")
+    @ManyToMany(mappedBy = "caracteristicas")
     public List<Producto> productos = new ArrayList<>();
 
     //private List<Producto> producto;
