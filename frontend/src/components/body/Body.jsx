@@ -14,6 +14,7 @@ import Product from "../product/Product";
 import ALOJAMIENTOS_DATA from '../../data/alojamientos.json';
 import useFetch from "../../hooks/useFetch";
 import IMAGES_DATA from '../../data/images.json';
+import BookingCalendar from "../booking_calendar/BookingCalendar";
 
 const Body = () => {
 
@@ -30,6 +31,7 @@ const Body = () => {
         <Route path="/register" element={<Register/>} />
         <Route path="/login" element={<Login/>} />
         <Route path="/images" element={<GalleryContainer images={IMAGES_DATA}/>} />
+        <Route path="/booking" element={<BookingCalendar/>} />
       </Routes>
     </div>
   );

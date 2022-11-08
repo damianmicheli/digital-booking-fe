@@ -341,3 +341,13 @@
 [2022-11-06 17:19:01] [INFO] [CategoriaService:50] Se buscó por Id la categoria: CategoriaDTO(id=1, titulo=Casa, descripcion=807.105, url=https://images.pexels.com/photos/1029599/pexels-photo-1029599.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1)
 [2022-11-06 17:19:01] [INFO] [CategoriaService:64] Se listaron todas las categorias.
 [2022-11-06 17:19:01] [INFO] [ProductoService:49] Se buscó por Id el producto: ProductoDTO(id=1, titulo=Alójate en el corazón de, nombre=Lorem, caracteristicas=null, descripcion=Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat., direccion=Córdoba, Argentina, politica_de_uso=Check-out: 10:00, politica_de_salud_y_seguridad=Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, politica_de_cancelacion=Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía)
+[2022-11-06 19:18:30] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-06 19:18:30] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-06 19:18:30] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-06 19:18:30] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-06 19:18:58] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-06 19:18:59] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-06 19:18:59] [ERROR] [GlobalExceptionHandler:23] Categoria con Id 1 no encontrada.
+[2022-11-06 19:18:59] [ERROR] [GlobalExceptionHandler:23] Producto con Id 1 no encontrado.
+[2022-11-06 19:18:59] [ERROR] [GlobalExceptionHandler:23] Categoria con Id 1 no encontrada.
+[2022-11-06 19:18:59] [ERROR] [GlobalExceptionHandler:23] Producto con Id 1 no encontrado.
