@@ -24,6 +24,7 @@ public class Caracteristica {
     private String icono;
 
     @ManyToMany(mappedBy = "caracteristicas")
+    @JsonIgnore
     public List<Producto> productos = new ArrayList<>();
 
     //private List<Producto> producto;

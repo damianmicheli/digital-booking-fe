@@ -71,3 +71,5 @@
 [2022-11-08 11:53:47] [INFO] [ProductoService:89] Se listaron todos los productos con ciudad id: 2
 [2022-11-08 11:53:53] [INFO] [ProductoService:89] Se listaron todos los productos con ciudad id: 1
 [2022-11-08 11:53:57] [INFO] [ProductoService:89] Se listaron todos los productos con ciudad id: 2
+[2022-11-08 13:56:01] [INFO] [ProductoService:43] Se creo el producto : ProductoDTO(id=16, titulo=Un Titulo, nombre=Un Nombre, descripcion=Una descripcion, direccion=Calle falsa 123, politica_de_uso='checkin a las', 'no mascotas', politica_de_salud_y_seguridad=No prender fuego, no fumar, politica_de_cancelacion=No se puede cancelar, no hay devolucion, categoria=com.backend.entity.Categoria@2b14b305, ciudad=com.backend.entity.Ciudad@5f96547f, imagenes=[com.backend.entity.Imagen@40b25985, com.backend.entity.Imagen@48314655, com.backend.entity.Imagen@46b358cd], caracteristicas=null)
+[2022-11-08 14:28:22] [ERROR] [GlobalExceptionHandler:56] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement

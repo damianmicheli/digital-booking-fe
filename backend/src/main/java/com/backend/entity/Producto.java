@@ -1,5 +1,6 @@
 package com.backend.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -49,6 +50,7 @@ public class Producto {
 
     @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(name="producto_id")
+    @JsonIgnore
     private List<Imagen> imagenes;
 
 
