@@ -1,6 +1,6 @@
 import React from "react";
-import CardCategoriaItem from "./CardCategoriaItem";
-import styles from "./cardsCategorias.module.css";
+import CardCategory from "./CardCategory";
+import styles from "./cardsCategories.module.css";
 
 
 const CardsCategorias = ({ items }) => {
@@ -10,12 +10,13 @@ const CardsCategorias = ({ items }) => {
       <h2>Buscar por tipo de alojamiento</h2>
       <div className={styles.containerCategory}>
         {items && items.map((alojamiento) => (
-          <CardCategoriaItem
-            key={alojamiento.id}
-            category={alojamiento.titulo}
-            img={alojamiento.url}
-            description={alojamiento.descripcion}
-          />
+          <div key={alojamiento.id}>
+            <CardCategory
+              category={alojamiento.titulo}
+              img={alojamiento.url}
+              description={alojamiento.descripcion}
+            />
+          </div>
         ))}
       </div>
     </div>

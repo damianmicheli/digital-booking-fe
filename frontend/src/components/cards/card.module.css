@@ -31,10 +31,15 @@
 .location {
   display: flex;
   align-items: center;
-  gap: 0.5rem;
-  font-size: 16px;
+  gap: 0.2rem;
+  font-size: 14px;
   font-weight: 700;
   color: var(--color-2);
+}
+
+.enlace {
+  font-size: 13px;
+  color: var(--color-principal);
 }
 
 .title > h3 {

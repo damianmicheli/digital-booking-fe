@@ -1,9 +1,9 @@
 .container {
     background-color: var(--color-4);
     display: flex;
-    align-items: center;
-    gap: 0.5rem;
-    padding: 1rem 0.8rem;
+    flex-direction: column;
+    gap: 0.1rem;
+    padding: 0.5rem;
 }
 
 .icon {
@@ -11,19 +11,38 @@
 }
 
 .location {
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.text1 {
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
     font-weight: 500;
     font-size: 12pt;
     color: var(--color-2);
 }
 
+.text2 {
+    align-items: center;
+    font-weight: 500;
+    font-size: 11pt;
+    color: var(--color-2);
+    padding-left: 1.2rem;
+}
+
 @media only screen and (min-width: 624px) {  
     .container {
-        padding: 1rem 1.5rem;
+        padding: 0.5rem 1.5rem;
+    }    
+}
+
+
+@media only screen and (min-width: 1025px) {
+    .container {
+        padding: 0.5rem 4rem;
     }    
 }
   
-@media only screen and (min-width: 769px) {
-    .container {
-        padding: 1rem 2rem;
-    }    
-}

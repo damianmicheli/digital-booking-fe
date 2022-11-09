@@ -9,7 +9,6 @@
   background-color: #f2f8f9;
   z-index: 0;
   overflow: hidden;
-  border: 1px solid #f2f8f9;
 }
 
 .container:hover {

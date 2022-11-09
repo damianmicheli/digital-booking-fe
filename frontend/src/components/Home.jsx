@@ -1,8 +1,8 @@
 import React from 'react';
 
-import Buscador from './buscador/Buscador';
-import CardsCategorias from './categorias/CardsCategorias';
-import Cards from './listado/Cards';
+import Buscador from './search/Search';
+import CardsCategories from './categories/CardsCategories';
+import Cards from './cards/Cards';
 
 import useFetch from "../hooks/useFetch";
 
@@ -15,7 +15,7 @@ const Home = () => {
   return (
     <>
         <Buscador />
-        <CardsCategorias items={categorias}/>
+        <CardsCategories items={categorias}/>
         <Cards items={productos}/>
     </>
   )

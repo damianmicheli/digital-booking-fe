@@ -8,7 +8,6 @@
 .title {
     color: var(--color-2);
     font-size: 20pt;
-    padding-top: 2.5rem;
 }
 
 .description {
@@ -19,13 +18,38 @@
 
 @media only screen and (min-width: 624px) {  
     .container {
-        padding: 3rem 1.5rem;
+        padding: 2rem 1.5rem;
     }    
 }
   
 @media only screen and (min-width: 769px) {
     .container {
-        padding: 3rem 2rem;
+        padding: 2rem 4rem;
     }    
 }
+
+@media only screen and (min-width: 1300px) {
+    .title {
+        padding-top: 4rem;
+    }
+}
+
+@media only screen and (min-width: 1400px) {
+    .title {
+        padding-top: 5rem;
+    }
+}
+
+@media only screen and (min-width: 1500px) {
+    .title {
+        padding-top: 6rem;
+    }
+}
+
+@media only screen and (min-width: 1600px) {
+    .title {
+        padding-top: 6.5rem;
+    }
+}
+
   

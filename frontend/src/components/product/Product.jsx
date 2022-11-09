@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect } from 'react';
 
 import HeaderProduct from './content/HeaderProduct';
 import LocationProduct from './content/LocationProduct';
@@ -25,17 +25,22 @@ const Product = ({images}) => {
   const politicaDeCancelacion = dataProducto && dataProducto.politica_de_cancelacion;
   const politicaDeSaludYSeguridad = dataProducto && dataProducto.politica_de_salud_y_seguridad;
   const normasDeUso = dataProducto && dataProducto.politica_de_uso;
+  const categoria = dataProducto && dataProducto.categoria.titulo.toUpperCase();
+  const ciudad = dataProducto && dataProducto.ciudad.ciudad;
+  const pais = dataProducto && dataProducto.ciudad.pais;
 
-  // const categoria = dataProducto && dataProducto.categoria.titulo.toUpperCase();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <div className='container'>
         <HeaderProduct 
-        // category={categoria}
+        category={categoria}
         title={nombre}/>
-        <LocationProduct location={direccion}/>
+        <LocationProduct direction={direccion} city={ciudad} country={pais}/>
         <GalleryContainer images={images}/>
-        <DescriptionProduct title={titulo} description={descripcion} />
+        <DescriptionProduct title={titulo} description={descripcion} ciudad={ciudad} />
         <Features 
         // pasar features como props
         />

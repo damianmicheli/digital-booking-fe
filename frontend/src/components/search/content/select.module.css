@@ -22,35 +22,38 @@
 
 .dropdown .dropdownContent {
   position: absolute;
-  top: 110%;
+  top: 115%;
   left: 0;
-  padding: 1rem;
   background: #fff;
   box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
-  width: 90%;
+  width: 100%;
   font-size: 16px;
   z-index: 1;
 }
 
 .dropdown .dropdownContent .dropdownItem {
   border-bottom: 1.5px solid var(--color-principal);
-  padding: 13px 0;
+  padding: 10px 0;
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-weight: 500;
-  font-size: 16px;
+  font-size: 15px;
 }
 
-/* .dropdown .dropdownContent .dropdownItem:hover {
-    background: #F4F4F4;
-} */
+.dropdown .dropdownContent .dropdownItem:hover {
+    background: var(--color-4)
+}
 
 .dropdown .dropdownContent .dropdownItem .icon {
   color: var(--color-2);
   font-size: 1em;
+}
+
+.icon {
+  padding-left: 1rem;
 }
 
 @media only screen and (min-width: 780px) {

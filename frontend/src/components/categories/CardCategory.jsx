@@ -1,5 +1,5 @@
 import React from 'react';
-import styles from './cardCategoriaItem.module.css';
+import styles from './cardCategory.module.css';
 
 const CardCategoriaItem = ({ category, img, description }) => {
   return (

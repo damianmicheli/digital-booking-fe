@@ -73,3 +73,230 @@
 [2022-11-08 11:53:57] [INFO] [ProductoService:89] Se listaron todos los productos con ciudad id: 2
 [2022-11-08 13:56:01] [INFO] [ProductoService:43] Se creo el producto : ProductoDTO(id=16, titulo=Un Titulo, nombre=Un Nombre, descripcion=Una descripcion, direccion=Calle falsa 123, politica_de_uso='checkin a las', 'no mascotas', politica_de_salud_y_seguridad=No prender fuego, no fumar, politica_de_cancelacion=No se puede cancelar, no hay devolucion, categoria=com.backend.entity.Categoria@2b14b305, ciudad=com.backend.entity.Ciudad@5f96547f, imagenes=[com.backend.entity.Imagen@40b25985, com.backend.entity.Imagen@48314655, com.backend.entity.Imagen@46b358cd], caracteristicas=null)
 [2022-11-08 14:28:22] [ERROR] [GlobalExceptionHandler:56] could not execute statement; SQL [n/a]; constraint [null]; nested exception is org.hibernate.exception.ConstraintViolationException: could not execute statement
+[2022-11-08 16:53:59] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 16:53:59] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 16:53:59] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 16:53:59] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 16:53:59] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 16:53:59] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 16:55:29] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 16:55:29] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 16:55:29] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 16:55:29] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 16:55:29] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 16:55:29] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 16:55:32] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 16:55:32] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 16:55:32] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 16:55:32] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 16:55:32] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 16:55:32] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 16:57:58] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 17:03:45] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 17:03:45] [ERROR] [GlobalExceptionHandler:23] Producto con Id 1 no encontrado.
+[2022-11-08 17:03:45] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 17:03:45] [ERROR] [GlobalExceptionHandler:23] Producto con Id 1 no encontrado.
+[2022-11-08 17:03:58] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 17:03:58] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 17:03:58] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 17:03:58] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 17:03:58] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 17:03:58] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 17:04:08] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 17:04:13] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 19:27:53] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 19:27:53] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 19:27:54] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 19:27:54] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 19:27:54] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 19:27:54] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:37:27] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 20:37:27] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 20:37:27] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:37:27] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:37:27] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:37:27] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:37:31] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:37:31] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 20:37:31] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:37:31] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 20:37:31] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:37:31] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:37:34] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:37:34] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 20:37:34] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:37:34] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 20:37:34] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:37:34] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:37:41] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:37:41] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:08] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:08] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:20] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:20] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:20] [ERROR] [GlobalExceptionHandler:23] Producto con Id 1 no encontrado.
+[2022-11-08 20:38:20] [ERROR] [GlobalExceptionHandler:23] Producto con Id 1 no encontrado.
+[2022-11-08 20:38:36] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:36] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 20:38:36] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:36] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 20:38:36] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:36] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:48] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:48] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 20:38:48] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:48] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 20:38:48] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:48] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:50] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:50] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 20:38:50] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:50] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 20:38:50] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:50] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:55] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:38:55] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:39:03] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:39:03] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:39:19] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:39:19] [ERROR] [GlobalExceptionHandler:23] Producto con Id 1 no encontrado.
+[2022-11-08 20:39:19] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:39:19] [ERROR] [GlobalExceptionHandler:23] Producto con Id 1 no encontrado.
+[2022-11-08 20:39:34] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:39:34] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 20:39:34] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:39:34] [ERROR] [GlobalExceptionHandler:56] Unable to find com.backend.entity.Categoria with id 0; nested exception is javax.persistence.EntityNotFoundException: Unable to find com.backend.entity.Categoria with id 0
+[2022-11-08 20:39:34] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:39:34] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:46:04] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:46:04] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:46:04] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:46:04] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:46:05] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-08 20:46:05] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-08 20:50:28] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:50:28] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:50:28] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:50:28] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-08 20:50:28] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:50:28] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-08 20:50:49] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:50:49] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:50:49] [INFO] [ProductoService:57] Se buscó por Id el producto: ProductoDTO(id=1, titulo=Alójate en el corazón de, nombre=Lorem, descripcion=Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat., direccion=Córdoba, Argentina, politica_de_uso=Check-out: 10:00, No se permiten fiestas, No fumar, politica_de_salud_y_seguridad=Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad, politica_de_cancelacion=Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía, categoria=com.backend.entity.Categoria@fe8e7fa, ciudad=com.backend.entity.Ciudad@113f6200, imagenes=null, caracteristicas=[])
+[2022-11-08 20:50:49] [INFO] [ProductoService:57] Se buscó por Id el producto: ProductoDTO(id=1, titulo=Alójate en el corazón de, nombre=Lorem, descripcion=Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat., direccion=Córdoba, Argentina, politica_de_uso=Check-out: 10:00, No se permiten fiestas, No fumar, politica_de_salud_y_seguridad=Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad, politica_de_cancelacion=Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía, categoria=com.backend.entity.Categoria@4e06b6bd, ciudad=com.backend.entity.Ciudad@7a82ce69, imagenes=null, caracteristicas=[])
+[2022-11-08 20:51:39] [INFO] [ProductoService:57] Se buscó por Id el producto: ProductoDTO(id=1, titulo=Alójate en el corazón de, nombre=Lorem, descripcion=Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat., direccion=Córdoba, Argentina, politica_de_uso=Check-out: 10:00, No se permiten fiestas, No fumar, politica_de_salud_y_seguridad=Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad, politica_de_cancelacion=Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía, categoria=com.backend.entity.Categoria@18665513, ciudad=com.backend.entity.Ciudad@3f0f16cb, imagenes=null, caracteristicas=[])
+[2022-11-08 20:52:12] [INFO] [ProductoService:57] Se buscó por Id el producto: ProductoDTO(id=1, titulo=Alójate en el corazón de, nombre=Lorem, descripcion=Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat., direccion=Córdoba, Argentina, politica_de_uso=Check-out: 10:00, No se permiten fiestas, No fumar, politica_de_salud_y_seguridad=Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad, politica_de_cancelacion=Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía, categoria=com.backend.entity.Categoria@665061d6, ciudad=com.backend.entity.Ciudad@24aa2ec9, imagenes=null, caracteristicas=[])
+[2022-11-08 20:52:22] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:52:22] [INFO] [ProductoService:57] Se buscó por Id el producto: ProductoDTO(id=8, titulo=Alójate en el corazón de, nombre=Tempora, descripcion=Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat., direccion=Buenos Aires, Argentina, politica_de_uso=Check-out: 10:00, No se permiten fiestas, No fumar, politica_de_salud_y_seguridad=Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad, politica_de_cancelacion=Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía, categoria=com.backend.entity.Categoria@39c7a797, ciudad=com.backend.entity.Ciudad@37af0901, imagenes=null, caracteristicas=[])
+[2022-11-08 20:52:22] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:52:22] [INFO] [ProductoService:57] Se buscó por Id el producto: ProductoDTO(id=8, titulo=Alójate en el corazón de, nombre=Tempora, descripcion=Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat., direccion=Buenos Aires, Argentina, politica_de_uso=Check-out: 10:00, No se permiten fiestas, No fumar, politica_de_salud_y_seguridad=Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad, politica_de_cancelacion=Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía, categoria=com.backend.entity.Categoria@1edd665c, ciudad=com.backend.entity.Ciudad@80e92e, imagenes=null, caracteristicas=[])
+[2022-11-08 20:52:34] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:52:34] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:52:34] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:52:34] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-08 20:52:34] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-08 20:52:34] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 09:27:42] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:27:42] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 09:27:42] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:27:42] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:27:42] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:27:42] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 09:32:44] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:32:44] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:32:44] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:32:44] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 09:32:44] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:32:44] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 09:47:41] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:47:41] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:47:41] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:47:41] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 09:47:41] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:47:41] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 09:49:31] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:49:31] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:49:31] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:49:31] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:49:31] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 09:49:31] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 09:50:22] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:50:22] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:50:22] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:50:22] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 09:50:22] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:50:22] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 09:53:53] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:53:53] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:53:53] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:53:53] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:53:53] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 09:53:53] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 09:58:01] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:58:01] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:58:01] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:58:01] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:58:01] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 09:58:01] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 09:58:58] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:58:58] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:58:58] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:58:58] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 09:58:58] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 09:58:58] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:04:30] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:04:30] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:04:30] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:04:30] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:04:30] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:04:30] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:09:06] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:09:06] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:09:06] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:09:06] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:09:06] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:09:06] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:10:24] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:10:24] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:10:24] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:10:24] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:10:24] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:10:25] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:12:14] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:12:14] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:12:14] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:12:14] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:12:14] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:12:14] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:12:33] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:12:33] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:12:59] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:12:59] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:12:59] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:12:59] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:12:59] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:12:59] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:14:30] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:14:30] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:14:30] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:14:30] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:14:30] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:14:30] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:15:36] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:15:36] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:15:36] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:15:36] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:15:36] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:15:36] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:22:22] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:22:22] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:22:22] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:22:22] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:22:22] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:22:22] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:22:47] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:22:47] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:22:47] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:22:48] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-09 10:22:48] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-09 10:22:48] [INFO] [ProductoService:71] Se listaron todos los productos.

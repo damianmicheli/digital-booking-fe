@@ -22,5 +22,5 @@
     {"provincia":"La Rioja","poblacion":333642, "pais":"Argentina"},
     {"provincia":"La Pampa","poblacion":318951, "pais":"Argentina"},
     {"provincia":"Santa Cruz","poblacion":273964, "pais":"Argentina"},
-    {"provincia":"Tierra del Fuego, Antártida e Islas del Atlántico Sur","poblacion":127205, "pais":"Argentina"}
+    {"provincia":"Tierra del Fuego","poblacion":127205, "pais":"Argentina"}
     ]

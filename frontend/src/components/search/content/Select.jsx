@@ -16,7 +16,7 @@ const Select = ({ selected, setSelected }) => {
       <div className={styles.dropdownBtn} onClick={
         e => setIsActive(!isActive)
       }>
-        <Icon css="icon" icon={faLocationDot}/>
+        <Icon css={"icon"} icon={faLocationDot}/>
         {selected}
       </div>
       {isActive && (

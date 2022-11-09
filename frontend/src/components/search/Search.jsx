@@ -4,11 +4,11 @@ import React, { useState } from "react";
 import styles from "./buscador.module.css";
 
 //Components
-import Select from "./contenido/Select";
-import DatePickerRange from "./contenido/DatePickerRange";
+import Select from "./content/Select";
+import DatePickerRange from "./content/DatePickerRange";
 import Button from "../global/Button";
 
-const Buscador = () => {
+const Search = () => {
 
   const [selected, setSelected] = useState("¿A dónde vamos?");
 
@@ -34,4 +34,4 @@ const Buscador = () => {
   );
 };
 
-export default Buscador;
+export default Search;
