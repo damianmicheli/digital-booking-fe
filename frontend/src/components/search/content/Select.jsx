@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 
-import CIUDADES_DATA from "../../../data/ciudades.json";
+import useFetch from "../../../hooks/useFetch";
 
 import styles from "./select.module.css";
 
@@ -8,6 +8,8 @@ import Icon from "../../global/Icon";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
 const Select = ({ selected, setSelected }) => {
+
+  const [ciudades] = useFetch('http://localhost:8080/ciudades');
 
   const [isActive, setIsActive] = useState(false);
 
@@ -21,14 +23,14 @@ const Select = ({ selected, setSelected }) => {
       </div>
       {isActive && (
         <div className={styles.dropdownContent}>
-          {CIUDADES_DATA.map(ciudad => (
+          {ciudades.map(ciudad => (
             <div onClick={() => {
-              setSelected(`${ciudad.provincia}, ${ciudad.pais}`)
+              setSelected(`${ciudad.ciudad}, ${ciudad.pais}`)
               setIsActive(false)
             }} 
               className={styles.dropdownItem}>
                 <Icon css={styles.icon} icon={faLocationDot}/>
-                {`${ciudad.provincia}, ${ciudad.pais}`}
+                {`${ciudad.ciudad}, ${ciudad.pais}`}
                 </div>
           ))}
 
