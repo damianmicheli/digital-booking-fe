@@ -4,7 +4,6 @@ import styles from "./cardsCategories.module.css";
 
 
 const CardsCategorias = ({ items }) => {
-
   return (
     <div className={styles.container}>
       <h2>Buscar por tipo de alojamiento</h2>
