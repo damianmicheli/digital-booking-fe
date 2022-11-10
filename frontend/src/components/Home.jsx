@@ -10,13 +10,13 @@ import useFetch from "../hooks/useFetch";
 const Home = () => {
 
   const [categorias] = useFetch('http://localhost:8080/categorias');
-  const [productos] = useFetch('http://localhost:8080/productos'); 
+  const [random] = useFetch('http://localhost:8080/productos/random'); 
 
   return (
     <>
         <Search />
         <CardsCategories items={categorias}/>
-        <Cards data={productos}/>
+        <Cards data={random}/>
     </>
   )
 }
