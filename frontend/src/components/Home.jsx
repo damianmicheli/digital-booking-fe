@@ -1,6 +1,6 @@
 import React from 'react';
 
-import Buscador from './search/Search';
+import Search from './search/Search';
 import CardsCategories from './categories/CardsCategories';
 import Cards from './cards/Cards';
 
@@ -14,7 +14,7 @@ const Home = () => {
 
   return (
     <>
-        <Buscador />
+        <Search />
         <CardsCategories items={categorias}/>
         <Cards data={productos}/>
     </>

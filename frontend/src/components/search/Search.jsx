@@ -9,6 +9,7 @@ import DatePickerRange from "./content/DatePickerRange";
 import Button from "../global/Button";
 
 const Search = () => {
+
   const [selected, setSelected] = useState("¿A dónde vamos?");
 
   return (
@@ -25,7 +26,7 @@ const Search = () => {
             <DatePickerRange />
           </div>
           <div className={styles.buttonContainer}>
-            <Button css={styles.button} text="Buscar" type="submit" />
+            <Button css={styles.button} text="Buscar" type="submit"/>
           </div>
         </form>
       </div>
