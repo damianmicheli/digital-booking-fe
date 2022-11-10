@@ -4,6 +4,7 @@ import com.backend.entity.Categoria;
 import com.backend.entity.Ciudad;
 import com.backend.entity.Producto;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 import java.util.Optional;
@@ -12,5 +13,8 @@ public interface IProductoRepository extends  JpaRepository <Producto, Long>{
 
     List<Producto> findByCiudad(Ciudad ciudad);
     List<Producto> findByCategoria(Categoria categoria);
+
+    @Query("select p from Producto p order by RAND()")
+    List<Producto> findRandom();
 
 }

@@ -39,6 +39,13 @@ public class ProductoController {
 
     }
 
+    @Operation(summary = "Listar todos los productos de forma aleatoria")
+    @GetMapping("/random")
+    public ResponseEntity<List<ProductoDTO>> listarRandom(){
+        return new ResponseEntity<>(productoService.listarRandom(), HttpStatus.OK);
+
+    }
+
     @Operation(summary = "Listar productos filtrados por ciudad")
     @GetMapping("/ciudad/{id}")
     public ResponseEntity<List<ProductoDTO>> listarPorCiudad(@PathVariable Long id) {

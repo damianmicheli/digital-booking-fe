@@ -351,3 +351,16 @@
 [2022-11-06 19:18:59] [ERROR] [GlobalExceptionHandler:23] Producto con Id 1 no encontrado.
 [2022-11-06 19:18:59] [ERROR] [GlobalExceptionHandler:23] Categoria con Id 1 no encontrada.
 [2022-11-06 19:18:59] [ERROR] [GlobalExceptionHandler:23] Producto con Id 1 no encontrado.
+[2022-11-10 17:11:00] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-10 17:11:05] [INFO] [ProductoService:107] Se listaron todos los productos con ciudad id: 3
+[2022-11-10 17:12:10] [INFO] [ProductoService:89] Se listaron todos los productos con ciudad id: 4
+[2022-11-10 17:12:14] [INFO] [ProductoService:89] Se listaron todos los productos con ciudad id: 2
+[2022-11-10 17:23:09] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-10 17:23:12] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-10 17:23:14] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-10 17:23:17] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-10 17:23:19] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-10 17:24:25] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-10 17:24:29] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-10 17:24:32] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-10 17:24:35] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.

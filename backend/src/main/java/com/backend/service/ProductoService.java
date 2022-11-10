@@ -108,4 +108,19 @@ public class ProductoService implements IProductoService {
         return productosDTO;
     }
 
+    @Override
+    public List<ProductoDTO> listarRandom() {
+
+        List<Producto> productos = productoRepository.findRandom();
+        List<ProductoDTO> productosDTO = new ArrayList<>();
+
+        for (Producto producto : productos){
+            productosDTO.add(mapper.convertValue(producto, ProductoDTO.class));
+        }
+
+        logger.info("Se listaron todos los productos de forma aleatoria.");
+
+        return productosDTO;
+    }
+
 }

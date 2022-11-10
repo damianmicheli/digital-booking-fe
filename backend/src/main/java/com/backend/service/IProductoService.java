@@ -13,4 +13,6 @@ public interface IProductoService {
     List<ProductoDTO> listarPorCiudad(Long id) ;
 
     List<ProductoDTO> listarPorCategoria(Long idCategoria);
+
+    List<ProductoDTO> listarRandom();
 }
