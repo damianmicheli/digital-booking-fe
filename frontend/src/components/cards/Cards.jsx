@@ -12,9 +12,7 @@ const Cards = ({ data }) => {
             <div key={producto.id}>
               <Card
                 id={producto.id}
-                img={
-                  "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1"
-                }
+                img={producto.imagenes[0] ? producto.imagenes[0].url : 'https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/categorias/placeholder.jpeg'}
                 category={producto.categoria.titulo.toUpperCase()}
                 title={producto.nombre}
                 location={producto.direccion}

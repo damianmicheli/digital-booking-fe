@@ -5,6 +5,7 @@
   background-color: var(--color-2-transparency);
   gap: 1rem;
   padding-bottom: 2rem;
+  width: 100%;
 }
 
 .cardsContainer {
