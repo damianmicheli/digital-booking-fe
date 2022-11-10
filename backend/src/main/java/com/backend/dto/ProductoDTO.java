@@ -29,4 +29,11 @@ public class ProductoDTO {
     private List<Imagen> imagenes;
     private List<Caracteristica> caracteristicas;
 
+    //todo
+//    private CategoriaDTO categoria;
+//    private CiudadDTO ciudad;
+//    private List<ImagenDTO> imagenes;
+//    private List<CaracteristicaDTO> caracteristicas;
 }
+
+

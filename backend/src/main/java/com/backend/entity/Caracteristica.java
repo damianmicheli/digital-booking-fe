@@ -20,7 +20,6 @@ public class Caracteristica {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private String nombre;
-    private Boolean disponible;
     private String icono;
 
     @ManyToMany(mappedBy = "caracteristicas")
@@ -38,10 +37,9 @@ public class Caracteristica {
     }
 
 
-    public Caracteristica(Long id, String nombre, Boolean disponible, String icono) {
+    public Caracteristica(Long id, String nombre, String icono) {
         this.id = id;
         this.nombre = nombre;
-        this.disponible = disponible;
         this.icono = icono;
     }
 }

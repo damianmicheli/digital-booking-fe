@@ -50,7 +50,6 @@ public class Producto {
 
     @OneToMany(cascade = CascadeType.REMOVE)
     @JoinColumn(name="producto_id")
-    @JsonIgnore
     private List<Imagen> imagenes;
 
 
