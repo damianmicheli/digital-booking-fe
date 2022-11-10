@@ -2,13 +2,13 @@ import React from "react";
 import Card from "./Card";
 import styles from "./cards.module.css";
 
-const Cards = ({ items }) => {
+const Cards = ({ data }) => {
   return (
     <div className={styles.container}>
       <h2>Recomendaciones</h2>
       <div className={styles.cardsContainer}>
-        {items &&
-          items.map((producto) => (
+        {data &&
+          data.map((producto) => (
             <div key={producto.id}>
               <Card
                 id={producto.id}

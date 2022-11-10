@@ -2,7 +2,7 @@ import React from "react";
 
 const Button = ({ css, event, type, text }) => {
   return (
-    <button className={css} onClick={event}>
+    <button className={css} onClick={event} type={type} >
       {text}
     </button>
   );

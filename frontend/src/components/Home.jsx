@@ -16,7 +16,7 @@ const Home = () => {
     <>
         <Buscador />
         <CardsCategories items={categorias}/>
-        <Cards items={productos}/>
+        <Cards data={productos}/>
     </>
   )
 }
