@@ -5,6 +5,7 @@ import LocationProduct from './content/LocationProduct';
 import DescriptionProduct from './content/DescriptionProduct';
 import Features from './content/Features';
 import Politics from './content/Politics';
+import BookingCalendar from '../booking_calendar/BookingCalendar';
 
 import useFetch from '../../hooks/useFetch';
 import { useParams } from "react-router";
@@ -44,6 +45,7 @@ const Product = ({images}) => {
         <Features 
         // pasar features como props
         />
+        <BookingCalendar />
         <Politics normas={normasDeUso} politicaSalud={politicaDeSaludYSeguridad} politicaCancelacion={politicaDeCancelacion}/>
     </div>
   )
