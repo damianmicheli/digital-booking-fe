@@ -12,7 +12,7 @@ const BookingCalendar = ({ monhts, bookings }) => {
 
   return (
     <>
-      <div className="bgGray">
+      <div className={styles.booking}>
         <div className={styles.container}>
           <h2 className="heading3">Fechas disponibles</h2>
           <div className={styles.calendarPButton}>
