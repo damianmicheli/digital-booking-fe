@@ -60,6 +60,8 @@ li {
 
 .buttonCard {
   height: 40px;
+  min-width: 296px;
+  min-width: 362px;
   width: 100%;
   border-radius: 5px;
   font-size: 16px;
