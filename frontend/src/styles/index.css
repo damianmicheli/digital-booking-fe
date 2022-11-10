@@ -58,7 +58,7 @@ li {
 .buttonCard {
   height: 40px;
   min-width: 296px;
-  min-width: 362px;
+  max-width: 362px;
   width: 100%;
   border-radius: 5px;
   font-size: 16px;
@@ -83,10 +83,25 @@ li {
   cursor: pointer;
 }
 
-.button1:hover, .buttonCard:hover, .buttonForm:hover {
+.button1:hover, .buttonCard:hover, .buttonForm:hover, .button4:hover{
   background-color: var(--color-3);
   transition: all 0.5s;
 }
+
+.button4, .button4:visited{
+  height: 40px;
+  width: 100%;
+  max-width: 362px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  color: #fff;
+  background: var(--color-principal);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
+}
+
 
 .button6, .button6:visited {
   width: 164px;

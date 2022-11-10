@@ -1,5 +1,6 @@
 .booking{
     background-color: #f2f2f2;
+    padding-bottom: 30px;
 }
 
 .container{
@@ -18,7 +19,6 @@
 
 .calendar{
     width: 100%;
-    /* margin: 10px auto; */
 }
 
 .pButton{
@@ -34,11 +34,6 @@
    margin-bottom: 15px;
 }
 
-/* -----  CUSTOM REACT CALENDAR  ------ */
-
-.react-calendar {
-    font-family: inherit;
-}
 
 @media only screen and (min-width: 624px) {
     .pButton{
@@ -56,13 +51,14 @@
         gap: 15px;
     }
     .calendar{
-        width: 63%;
+        width: 66%;
     }
     .pButton{
         width: 33%;
         height: 30%;
         flex-direction: column;
         justify-content: center;
+        align-items: center;
         background-color: white;
         box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
         padding: 10px 15px;
