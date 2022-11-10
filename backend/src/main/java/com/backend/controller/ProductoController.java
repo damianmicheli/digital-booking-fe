@@ -49,7 +49,7 @@ public class ProductoController {
     @Operation(summary = "Listar productos filtrados por categoria")
     @GetMapping("/categoria/{id}")
     public ResponseEntity<List<ProductoDTO>> listarPorCategoria(@PathVariable Long id) {
-        return new ResponseEntity<>(productoService.listarPorCiudad(id), HttpStatus.OK);
+        return new ResponseEntity<>(productoService.listarPorCategoria(id), HttpStatus.OK);
 
     }
 }
