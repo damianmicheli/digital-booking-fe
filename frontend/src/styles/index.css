@@ -7,6 +7,7 @@ body {
   font-weight: 500; */
 }
 
+
 /* COLORES */
 :root {
   --color-principal: #fbc02d;
@@ -53,6 +54,7 @@ li {
   color: white;
   font-size: 16px;
   font-weight: 700;
+  transition: 0.3s;
 }
 
 .buttonCard {
@@ -66,6 +68,7 @@ li {
   background: var(--color-principal);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
   cursor: pointer;
+  transition: 0.3s;
 }
 
 .button1, .button1:visited {
@@ -79,9 +82,10 @@ li {
   background: var(--color-principal);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
   cursor: pointer;
+  transition: 0.3s;
 }
 
-.button1:hover, .buttonCard:hover, .buttonForm:hover {
+.button1:hover, .buttonCard:hover, .buttonForm:hover, .button4:hover {
   background-color: var(--color-3);
 }
 
@@ -101,6 +105,20 @@ li {
   border: none;
   background-color: var(--color-principal);
   color: white; 
+}
+
+.button4, .button4:visited{
+  height: 40px;
+  width: 100%;
+  max-width: 362px;
+  border-radius: 5px;
+  font-size: 16px;
+  font-weight: 700;
+  border: none;
+  color: #fff;
+  background: var(--color-principal);
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
+  cursor: pointer;
 }
 
 .bgGray {
@@ -125,6 +143,13 @@ li {
   font-size: 20px;
   font-weight: 700;
   color: var(--color-principal);
+  margin: 0;
+}
+
+.heading3 {
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--color-3);
   margin: 0;
 }
 
