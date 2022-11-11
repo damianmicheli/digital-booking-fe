@@ -364,3 +364,65 @@
 [2022-11-10 17:24:29] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
 [2022-11-10 17:24:32] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
 [2022-11-10 17:24:35] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-11 10:43:19] [INFO] [CiudadService:34] Se listaron todas las ciudades.
+[2022-11-11 10:43:19] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:43:20] [INFO] [CiudadService:34] Se listaron todas las ciudades.
+[2022-11-11 10:43:20] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:43:21] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:43:23] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:43:38] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-11 10:43:39] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-11 10:43:54] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-11 10:43:55] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-11 10:44:05] [INFO] [ProductoService:57] Se buscó por Id el producto: ProductoDTO(id=4, titulo=Alójate en el corazón de, nombre=Un Nombre, descripcion=Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat., direccion=Calle falsa 123, politica_de_uso=checkin a las 10 
+ no mascotas, politica_de_salud_y_seguridad=No prender fuego, no fumar, politica_de_cancelacion=No se puede cancelar, no hay devolucion, categoria=com.backend.entity.Categoria@47b68547, ciudad=com.backend.entity.Ciudad@7de6a55d, imagenes=[com.backend.entity.Imagen@6df4ee74, com.backend.entity.Imagen@81abfd2], caracteristicas=[])
+[2022-11-11 10:44:06] [INFO] [ProductoService:57] Se buscó por Id el producto: ProductoDTO(id=4, titulo=Alójate en el corazón de, nombre=Un Nombre, descripcion=Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat., direccion=Calle falsa 123, politica_de_uso=checkin a las 10 
+ no mascotas, politica_de_salud_y_seguridad=No prender fuego, no fumar, politica_de_cancelacion=No se puede cancelar, no hay devolucion, categoria=com.backend.entity.Categoria@5b722645, ciudad=com.backend.entity.Ciudad@7110bb12, imagenes=[com.backend.entity.Imagen@c85c96, com.backend.entity.Imagen@6fff793], caracteristicas=[])
+[2022-11-11 10:44:25] [INFO] [CiudadService:34] Se listaron todas las ciudades.
+[2022-11-11 10:44:25] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:44:26] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:44:26] [INFO] [CiudadService:34] Se listaron todas las ciudades.
+[2022-11-11 10:44:41] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-11 10:44:59] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-11 10:47:04] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:47:04] [INFO] [CiudadService:34] Se listaron todas las ciudades.
+[2022-11-11 10:47:05] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:47:05] [INFO] [CiudadService:34] Se listaron todas las ciudades.
+[2022-11-11 10:47:06] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:47:07] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:47:19] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-11 10:47:20] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-11 10:47:37] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-11 10:47:38] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-11 10:50:31] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:50:31] [INFO] [CiudadService:34] Se listaron todas las ciudades.
+[2022-11-11 10:50:32] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:50:32] [INFO] [CiudadService:34] Se listaron todas las ciudades.
+[2022-11-11 10:50:32] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:50:32] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:50:32] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-11 10:50:32] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-11 10:50:32] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-11 10:50:32] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-11 10:50:38] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:50:38] [INFO] [CiudadService:34] Se listaron todas las ciudades.
+[2022-11-11 10:50:38] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:50:38] [INFO] [CiudadService:34] Se listaron todas las ciudades.
+[2022-11-11 10:50:38] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:50:38] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 10:50:38] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-11 10:50:38] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-11 10:50:38] [INFO] [ProductoService:121] Se listaron todos los productos de forma aleatoria.
+[2022-11-11 10:50:38] [INFO] [ProductoService:71] Se listaron todos los productos.
+[2022-11-11 16:22:51] [INFO] [CategoriaService:36] Se guardó la categoria: CategoriaDTO(id=6, titulo=Casa, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
+[2022-11-11 16:22:51] [INFO] [CategoriaService:50] Se buscó por Id la categoria: CategoriaDTO(id=6, titulo=Casa, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
+[2022-11-11 16:50:50] [INFO] [CategoriaService:36] Se guardó la categoria: CategoriaDTO(id=6, titulo=Casa, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
+[2022-11-11 16:50:50] [INFO] [CategoriaService:50] Se buscó por Id la categoria: CategoriaDTO(id=6, titulo=Casa, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
+[2022-11-11 18:10:56] [INFO] [CategoriaService:36] Se guardó la categoria: CategoriaDTO(id=6, titulo=Casa, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
+[2022-11-11 18:10:56] [INFO] [CategoriaService:50] Se buscó por Id la categoria: CategoriaDTO(id=6, titulo=Casa, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
+[2022-11-11 18:25:44] [INFO] [CategoriaService:36] Se guardó la categoria: CategoriaDTO(id=6, titulo=Casa, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
+[2022-11-11 18:25:45] [INFO] [CategoriaService:50] Se buscó por Id la categoria: CategoriaDTO(id=6, titulo=Casa, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
+[2022-11-11 18:32:55] [INFO] [CategoriaService:36] Se guardó la categoria: CategoriaDTO(id=6, titulo=Casa, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
+[2022-11-11 18:32:55] [INFO] [CategoriaService:50] Se buscó por Id la categoria: CategoriaDTO(id=6, titulo=Casa, descripcion=Casa completa, url=https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80)
+[2022-11-11 19:25:09] [INFO] [CategoriaService:64] Se listaron todas las categorias.
+[2022-11-11 19:25:15] [INFO] [ProductoService:71] Se listaron todos los productos.

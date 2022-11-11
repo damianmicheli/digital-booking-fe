@@ -39,7 +39,6 @@ CREATE TABLE `caracteristica` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `icono` varchar(255) DEFAULT NULL,
   `nombre` varchar(255) DEFAULT NULL,
-  `disponible` bit(1) DEFAULT NULL,
   PRIMARY KEY (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
@@ -50,7 +49,7 @@ CREATE TABLE `caracteristica` (
 
 LOCK TABLES `caracteristica` WRITE;
 /*!40000 ALTER TABLE `caracteristica` DISABLE KEYS */;
-INSERT INTO `caracteristica` VALUES (1,'icono1','Piscina',NULL),(2,'icono2','Parrilla',NULL),(3,'icono3','Aire Acondicionado',NULL),(4,'icono4','Wi Fi',NULL);
+INSERT INTO `caracteristica` VALUES (1,'icono1','Piscina'),(2,'icono2','Parrilla'),(3,'icono3','Aire Acondicionado'),(4,'icono4','Wi Fi');
 /*!40000 ALTER TABLE `caracteristica` ENABLE KEYS */;
 UNLOCK TABLES;
 
