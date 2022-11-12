@@ -11,7 +11,7 @@ import {
 const SocialNet = styled.div`
 font-size: 24px;
 gap: 25px;
-display: none;
+display: flex;
 color:${(props)=>{return props.color}};
 
 

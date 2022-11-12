@@ -10,13 +10,11 @@
 }
 
 .rowHeader {
-  width: 90%;
   height: 93px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: auto 5%;
 }
 
 .logoSlogan {
@@ -24,7 +22,6 @@
   flex-direction: row;
   justify-content: flex-start;
 }
-
 
 .logo {
   height: 50px;

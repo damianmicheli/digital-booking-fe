@@ -1,21 +1,18 @@
-import { Container, Row, Col } from "react-bootstrap";
+import useMediaQuery from "../../hooks/useMediaQuery";
 import SocialNetworks from "../header/SocialNetworks";
 import styles from "./footer.module.css";
 
-
 const Footer = () => {
+ const isMobile = useMediaQuery(768);
+
   return (
     <footer className={styles.footer}>
-      <Container>
-        <Row className={styles.rowFooter}>
-          <Col xs={8} md={8} lg={6}>
-            <span>©2021 Digital Booking</span>
-          </Col>
-          <Col xs={4} md={4} lg={6}>
-            <SocialNetworks color={"white"}/>
-          </Col>
-        </Row>
-      </Container>
+      <div className="container">
+        <div className={styles.rowFooter}>
+          <span>©2021 Digital Booking</span>
+          {!isMobile && <SocialNetworks color={"white"} />}
+        </div>
+      </div>
     </footer>
   );
 };
