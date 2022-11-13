@@ -1,0 +1,39 @@
+.iconPagination {
+    color: var(--color-3);
+    font-size: 1.5em;
+    cursor: pointer;
+  }
+  
+  .iconPaginate:hover {
+    color: var(--color-3);
+  }
+  
+  .containerPagination {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+    padding: 1.5rem;
+    background-color: var(--color-2-transparency);
+  }
+  
+  .itemPagination {
+    padding: 0.3rem;
+    cursor: pointer;
+    border-radius: 10px;
+  }
+  
+  .itemPagination:hover {
+    background-color: var(--color-2-opacity);
+    transition: all 0.2s;
+  }
+  
+  .itemLinkPagination {
+    padding: 0.5rem;
+    font-weight: 700;
+    color: var(--color-2);
+  }
+  
+  .activePagination {
+    background-color: var(--color-2-opacity);
+  }

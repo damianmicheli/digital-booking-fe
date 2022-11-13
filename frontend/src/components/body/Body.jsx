@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import styles from "./body.module.css";
-import Home from "../Home"
+import Home from "../home/Home"
 import Login from "../login_register/Login"
 import Register from "../login_register/Register"
 import Search from "../search/Search"

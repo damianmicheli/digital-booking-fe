@@ -35,7 +35,7 @@ const Product = ({images}) => {
   }, []);
 
   return (
-    <div className='container'>
+    <div className='containerProduct'>
         <HeaderProduct 
         category={categoria}
         title={nombre}/>
