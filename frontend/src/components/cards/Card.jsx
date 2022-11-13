@@ -1,6 +1,5 @@
 import React from "react";
 
-import Button from "../global/Button";
 import Icon from "../global/Icon";
 
 import styles from "./card.module.css";
@@ -25,9 +24,7 @@ const Card = ({ id, img, category, title, location, description }) => {
         </div>
         <div className={styles.description}>
           <p>{description}</p>
-          <Link to={`/producto/${id}`}>
-            <Button css="buttonCard" text="Ver detalle" />
-          </Link>
+          <Link className="buttonCard" to={`/producto/${id}`}> Ver detalle </Link>
         </div>
       </div>
     </div>

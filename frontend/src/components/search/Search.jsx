@@ -26,7 +26,7 @@ const Search = () => {
             <DatePickerRange />
           </div>
           <div className={styles.buttonContainer}>
-            <Button css={styles.button} text="Buscar" type="submit"/>
+            <Button css={styles.button} text="Buscar" />
           </div>
         </form>
       </div>
