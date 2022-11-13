@@ -8,13 +8,11 @@
 }
 
 .rowFooter {
-  width: 90%;
   height: 58px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
-  margin: auto 5%;
 }
 
 .rowFooter span {

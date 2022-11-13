@@ -5,7 +5,7 @@ import Button from "../global/Button";
 import Icon from "../global/Icon";
 import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
 import useForm from "../../hooks/useForm";
-// import Buscador from "../buscador/Buscador";
+
 
 const initialForm = {
   emailLogin: "",
@@ -52,6 +52,8 @@ const validateForm = (form) => {
 const message = "Su ingreso fue exitoso";
 
 const Login = () => {
+  
+
   const { form, errors, handleChange, handleBlur, handleSubmit } = useForm(
     initialForm,
     validateForm,
