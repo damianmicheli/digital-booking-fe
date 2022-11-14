@@ -46,7 +46,7 @@ const Product = ({images}) => {
         <HeaderProduct category={categoria} title={nombre}/>
         <LocationProduct direction={direccion} city={ciudad} country={pais}/>
         <div className={styles.socialMediaContainer}>
-          <SocialMediaShare url={`http://www.calific.ar/producto/${id}`}/>
+          <SocialMediaShare url={`http://www.digitalbooking.ar/producto/${id}`}/>
           <Icon css={styles.icon} icon={faHeart}/>
         </div>
         <GalleryContainer images={images}/>
