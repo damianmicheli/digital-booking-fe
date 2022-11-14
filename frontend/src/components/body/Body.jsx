@@ -2,7 +2,7 @@ import React from "react";
 import { Route, Routes } from "react-router-dom";
 
 import styles from "./body.module.css";
-import Home from "../Home"
+import Home from "../home/Home"
 import Login from "../login_register/Login"
 import Register from "../login_register/Register"
 import Search from "../search/Search"
@@ -14,6 +14,7 @@ import Product from "../product/Product";
 import useFetch from "../../hooks/useFetch";
 import IMAGES_DATA from '../../data/images.json';
 import BookingCalendar from "../booking_calendar/BookingCalendar";
+
 
 const Body = () => {
 
