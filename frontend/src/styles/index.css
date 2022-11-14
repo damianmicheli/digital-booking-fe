@@ -134,6 +134,23 @@ li {
   transition: all 0.2s ease-in-out;
 }
 
+.btnFav{
+  border: none;
+  background-color: transparent;
+}
+
+.iconFav {
+  color: var(--color-principal);;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+.iconFavDetail {
+  color: var(--color-3);;
+  font-size: 1.6em;
+  cursor: pointer;
+}
+
 .bgGray {
   background-color: #f2f2f2;
   height: 100vh;

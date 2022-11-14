@@ -11,6 +11,10 @@
   background-color: #fff;
 }
 
+.imgContainer{
+  position: relative;
+}
+
 .cardImg {
   width: 393px;
   height: 231px;
@@ -27,6 +31,15 @@
 .iconCard {
   font-size: 0.9em;
   color: var(--color-2);
+}
+
+.btnFav{
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 20px;
+  right: 15px;
+  font-size: 1.3rem;
 }
 
 .location {
@@ -85,6 +98,11 @@
     padding: 0 1rem;
     gap: 1.5rem;
   }
+
+  .btnFav{
+    top: 30px;  
+  }
+
 }
 
 @media screen and (min-width: 1350px) {
@@ -101,5 +119,9 @@
   .textContainer {
     padding: 1rem;
     gap: 1rem;
+  }
+
+  .btnFav{
+    top: 40px;  
   }
 }
