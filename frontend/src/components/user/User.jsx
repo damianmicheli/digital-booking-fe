@@ -1,7 +1,13 @@
-import React from "react";
+import React, {useContext} from "react";
+import Button from "../global/Button";
+import Icon from "../global/Icon";
 import styles from "./user.module.css";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import AuthContext from "../../context/AuthContext";
 
 const User = ({ user }) => {
+
+  const { handleAuth } = useContext(AuthContext); 
 
   const user1 = {
     id: 1,
@@ -18,8 +24,15 @@ const User = ({ user }) => {
       <p>
         Hola,
         <br />
-        <span>{user1.fName} {user1.surname}</span>
+        <span>
+          {user1.fName} {user1.surname}
+        </span>
       </p>
+      <Button
+        css={styles.closeSession}
+        event={handleAuth}
+        text={<Icon css={styles.closeSession} icon={faXmark} />}
+      />
     </div>
   );
 };

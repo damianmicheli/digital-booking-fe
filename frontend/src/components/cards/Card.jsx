@@ -1,16 +1,26 @@
 import React from "react";
 
 import Icon from "../global/Icon";
+import Button from "../global/Button";
 
 import styles from "./card.module.css";
-import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
+import { faLocationDot, faHeart as faSolideHeart } from '@fortawesome/free-solid-svg-icons';
+import { faHeart as faRegularHeart } from '@fortawesome/free-regular-svg-icons';
+
 import { Link } from "react-router-dom";
 
+import useFavorites from "../../hooks/useFavorites";
+
 const Card = ({ id, img, category, title, location, description }) => {
+
+  const [favorites, toggleItemInLocalStorage] = useFavorites();
+  const isFavorite = favorites.includes(id);
+
   return (
     <div className={styles.cardContainer} key={id}>
       <div className={styles.imgContainer}>
         <img className={styles.cardImg} src={img} alt="imagen" />
+        <Button event={toggleItemInLocalStorage(id)} css={`${styles.btnFav}`} text={<Icon css="iconFav" icon={isFavorite ? faSolideHeart : faRegularHeart } />}/>
       </div>
       <div className={styles.textContainer}>
         <div className={styles.title}>
