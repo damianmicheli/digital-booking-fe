@@ -40,9 +40,9 @@ p, ul, li{
   color: var(--color-2);
 }
 
-/* .disabled {
+.disabled {
   display: none;
-} */
+}
 
 a {
   text-decoration: none;

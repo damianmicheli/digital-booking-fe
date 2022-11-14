@@ -2,8 +2,8 @@ import React, { useState, useEffect } from "react";
 import ReactPaginate from "react-paginate";
 import Icon from "../global/Icon";
 import {
-  faCircleArrowLeft,
-  faCircleArrowRight,
+  faArrowLeft,
+  faArrowRight,
 } from "@fortawesome/free-solid-svg-icons";
 import styles from "./pagination.module.css";
 import useFetch from "../../hooks/useFetch";
@@ -34,10 +34,10 @@ const Paginate = ({ itemsPerPage }) => {
       <Cards data={currentItems}/>
       <ReactPaginate
         previousLabel={
-          <Icon css={styles.iconPagination} icon={faCircleArrowLeft} />
+          <Icon css={styles.iconPagination} icon={faArrowLeft} />
         }
         nextLabel={
-          <Icon css={styles.iconPagination} icon={faCircleArrowRight} />
+          <Icon css={styles.iconPagination} icon={faArrowRight} />
         }
         breakLabel={"..."}
         pageCount={pageCount}

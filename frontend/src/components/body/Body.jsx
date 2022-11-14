@@ -15,6 +15,7 @@ import useFetch from "../../hooks/useFetch";
 import IMAGES_DATA from '../../data/images.json';
 import BookingCalendar from "../booking_calendar/BookingCalendar";
 
+
 const Body = () => {
 
   const [categorias] = useFetch('http://localhost:8080/categorias');

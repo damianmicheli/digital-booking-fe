@@ -8,12 +8,12 @@ const CardsCategorias = ({ items }) => {
     <div className={styles.container}>
       <h2>Buscar por tipo de alojamiento</h2>
       <div className={styles.containerCategory}>
-        {items && items.map((alojamiento) => (
-          <div key={alojamiento.id}>
+        {items && items.map((category) => (
+          <div key={category.id}>
             <CardCategory
-              category={alojamiento.titulo}
-              img={alojamiento.url}
-              description={alojamiento.descripcion}
+              category={category.titulo}
+              img={category.url}
+              description={category.descripcion}
             />
           </div>
         ))}

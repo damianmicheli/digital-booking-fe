@@ -11,40 +11,47 @@ import useFetch from '../../hooks/useFetch';
 import { useParams } from "react-router";
 import GalleryContainer from '../gallery/GalleryContainer';
 
+import SocialMediaShare from './content/SocialMediaShare';
+import Icon from '../global/Icon';
+import { faHeart } from '@fortawesome/free-regular-svg-icons';
+
+import styles from './product.module.css';
+
 const Product = ({images}) => {
 
   const { id } = useParams();
 
-  const [dataProducto] = useFetch(
+  const [data] = useFetch(
     `http://localhost:8080/productos/${id}`
   );
 
-  const nombre = dataProducto && dataProducto.nombre;
-  const titulo = dataProducto && dataProducto.titulo;
-  const descripcion = dataProducto && dataProducto.descripcion;
-  const direccion = dataProducto && dataProducto.direccion;
-  const politicaDeCancelacion = dataProducto && dataProducto.politica_de_cancelacion;
-  const politicaDeSaludYSeguridad = dataProducto && dataProducto.politica_de_salud_y_seguridad;
-  const normasDeUso = dataProducto && dataProducto.politica_de_uso;
-  const categoria = dataProducto && dataProducto.categoria.titulo.toUpperCase();
-  const ciudad = dataProducto && dataProducto.ciudad.ciudad;
-  const pais = dataProducto && dataProducto.ciudad.pais;
+  const nombre = data && data.nombre;
+  const titulo = data && data.titulo;
+  const descripcion = data && data.descripcion;
+  const direccion = data && data.direccion;
+  const caracteristicas = data && data.caracteristicas;
+  const politicaDeCancelacion = data && data.politica_de_cancelacion;
+  const politicaDeSaludYSeguridad = data && data.politica_de_salud_y_seguridad;
+  const normasDeUso = data && data.politica_de_uso;
+  const categoria = data && data.categoria.titulo.toUpperCase();
+  const ciudad = data && data.ciudad.ciudad;
+  const pais = data && data.ciudad.pais;
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   return (
-    <div className='containerProduct'>
-        <HeaderProduct 
-        category={categoria}
-        title={nombre}/>
+    <div className={styles.containerProduct}>
+        <HeaderProduct category={categoria} title={nombre}/>
         <LocationProduct direction={direccion} city={ciudad} country={pais}/>
+        <div className={styles.socialMediaContainer}>
+          <SocialMediaShare url={`http://www.calific.ar/producto/${id}`}/>
+          <Icon css={styles.icon} icon={faHeart}/>
+        </div>
         <GalleryContainer images={images}/>
         <DescriptionProduct title={titulo} description={descripcion} ciudad={ciudad} />
-        <Features 
-        // pasar features como props
-        />
+        <Features features={caracteristicas}/>
         <BookingCalendar />
         <Politics normas={normasDeUso} politicaSalud={politicaDeSaludYSeguridad} politicaCancelacion={politicaDeCancelacion}/>
     </div>

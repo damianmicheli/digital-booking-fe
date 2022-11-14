@@ -1,7 +1,7 @@
 import React from 'react';
 import styles from './cardCategory.module.css';
 
-const CardCategoriaItem = ({ category, img, description }) => {
+const CardCategory = ({ category, img, description }) => {
   return (
     <div className={styles.container}>
         <div className={styles.imgContainer}>
@@ -15,4 +15,4 @@ const CardCategoriaItem = ({ category, img, description }) => {
   )
 }
 
-export default CardCategoriaItem;
+export default CardCategory;
