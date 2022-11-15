@@ -36,12 +36,14 @@ const Product = ({images}) => {
   const descripcion = data && data.descripcion;
   const direccion = data && data.direccion;
   const caracteristicas = data && data.caracteristicas;
+  const imagenes = data && data.imagenes;
   const politicaDeCancelacion = data && data.politica_de_cancelacion;
   const politicaDeSaludYSeguridad = data && data.politica_de_salud_y_seguridad;
   const normasDeUso = data && data.politica_de_uso;
   const categoria = data && data.categoria.titulo.toUpperCase();
   const ciudad = data && data.ciudad.ciudad;
   const pais = data && data.ciudad.pais;
+
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -61,7 +63,7 @@ const Product = ({images}) => {
           <SocialMediaShare url={`http://www.digitalbooking.ar/producto/${id}`}/>
           <Button event ={toggleItemInLocalStorage(idNumber)} css="btnFav" text={<Icon css="iconFavDetail" icon={isFavorite ? faSolideHeart : faRegularHeart} />}/>
         </div>
-        <GalleryContainer images={images}/>
+        <GalleryContainer images={imagenes}/>
         <DescriptionProduct title={titulo} description={descripcion} ciudad={ciudad} />
         <Features features={caracteristicas}/>
         <BookingCalendar />

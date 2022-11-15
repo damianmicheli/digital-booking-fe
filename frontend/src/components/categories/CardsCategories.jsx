@@ -1,9 +1,16 @@
 import React from "react";
 import CardCategory from "./CardCategory";
 import styles from "./cardsCategories.module.css";
+import useFetch from "../../hooks/useFetch";
+import { useParams } from "react-router";
 
 
 const CardsCategorias = ({ items }) => {
+
+  const { id } = useParams();
+
+  const [data] = useFetch(`http://localhost:8080/productos/categoria/${id}`);
+
   return (
     <div className={styles.container}>
       <h2>Buscar por tipo de alojamiento</h2>
@@ -13,7 +20,7 @@ const CardsCategorias = ({ items }) => {
             <CardCategory
               category={category.titulo}
               img={category.url}
-              description={category.descripcion}
+              description={data.length}
             />
           </div>
         ))}

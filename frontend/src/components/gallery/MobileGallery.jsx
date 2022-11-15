@@ -7,9 +7,9 @@ const MobileGallery = ({ images }) => {
 
   useEffect(() => {
     setImagesGallery(
-      images.map((image) => ({
-        original: `${image.URL}=w100`,
-        thumbnail: `${image.URL}=w100`,
+      images && images.map((image) => ({
+        original: `${image.url}=w100`,
+        thumbnail: `${image.url}=w100`,
       }))
     );
   }, [images]);

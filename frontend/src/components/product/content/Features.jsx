@@ -15,10 +15,9 @@ const Features = ({ features }) => {
         ) : (
           features.map((feature) => {
             return (
-              <div key={feature.id} className>
+              <div key={feature.id} className={styles.item}>
                 {getIcons(feature)}
-
-                <h4 className="product_h4_paddingleft">{feature.title}</h4>
+                {feature.nombre}
               </div>
             );
           })

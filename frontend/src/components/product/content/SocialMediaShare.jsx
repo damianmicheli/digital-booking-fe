@@ -34,17 +34,17 @@ const SocialMediaShare = ({ url }) => {
           </div>
           <div className={styles.socialMediaContainer}>
             <FacebookShareButton url={url} hashtag="#DigitalBooking">
-              <FacebookIcon logoFillColor="white" round={true} size={50} />
+              <FacebookIcon logofillcolor="white" round={true} size={50} />
             </FacebookShareButton>
             <WhatsappShareButton title="Mira este alojamiento!" url={url}>
-              <WhatsappIcon logoFillColor="white" round={true} size={50} />
+              <WhatsappIcon logofillcolor="white" round={true} size={50} />
             </WhatsappShareButton>
             <TwitterShareButton
               title="Mira este alojamiento!"
               url={url}
               hashtags={["DigitalBooking", "Moderno", "Confiable"]}
             >
-              <TwitterIcon logoFillColor="white" round={true} size={50} />
+              <TwitterIcon logofillcolor="white" round={true} size={50} />
             </TwitterShareButton>
           </div>
         </div>

@@ -8,15 +8,15 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 
 export const getIcons = (element) => {
-  return element.type === "Piscina" ? (
+  return element.nombre === "Piscina" ? (
 
     <Icon css={styles.icon} icon={faSwimmer} />
 
-  ) : element.type === "Parrilla" ? (
+  ) : element.nombre === "Parrilla" ? (
 
     <Icon css={styles.icon} icon={faFire} />
 
-  ) : element.type === "Aire Acondicionado" ? (
+  ) : element.nombre === "Aire Acondicionado" ? (
 
     <Icon css={styles.icon} icon={faSnowflake} />
     
