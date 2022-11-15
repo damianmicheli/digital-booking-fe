@@ -21,7 +21,7 @@ import Button from '../global/Button';
 
 import useFavorites from "../../hooks/useFavorites";
 
-const Product = ({images}) => {
+const Product = () => {
 
   const { id } = useParams();
 
