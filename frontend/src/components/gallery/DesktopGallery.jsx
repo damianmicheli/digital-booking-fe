@@ -1,4 +1,4 @@
-import React /* , {useState, useEffect} */ from "react";
+import React from "react";
 import styles from "./gallery.module.css";
 import useModal from "../../hooks/useModal";
 import Modal from "../global/modal/Modal";
@@ -40,8 +40,8 @@ const GalleryDesktop = ({ images }) => {
             <li id={images[2] ? images[2].id : "No disponible"}>
               <img
                 src={
-                  images[1]
-                    ? images[1].url
+                  images[2]
+                    ? images[2].url
                     : "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/categorias/placeholder.jpeg"
                 }
                 alt={images[2] ? images[2].titulo : "No disponible"}

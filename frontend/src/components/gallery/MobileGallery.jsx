@@ -5,11 +5,13 @@ import ImageGallery from "react-image-gallery";
 const MobileGallery = ({ images }) => {
   const [imagesGallery, setImagesGallery] = useState(null);
 
+  console.log(images);
+
   useEffect(() => {
     setImagesGallery(
       images && images.map((image) => ({
-        original: `${image.url}=w100`,
-        thumbnail: `${image.url}=w100`,
+        original: `${image.url ? image.url : "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/categorias/placeholder.jpeg"}`,
+        thumbnail: `${image ? image.url : "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/categorias/placeholder.jpeg"}`,
       }))
     );
   }, [images]);
