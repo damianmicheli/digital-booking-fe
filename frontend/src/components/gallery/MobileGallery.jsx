@@ -5,8 +5,6 @@ import ImageGallery from "react-image-gallery";
 const MobileGallery = ({ images }) => {
   const [imagesGallery, setImagesGallery] = useState(null);
 
-  console.log(images);
-
   useEffect(() => {
     setImagesGallery(
       images && images.map((image) => ({

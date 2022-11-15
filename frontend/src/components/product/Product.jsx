@@ -50,10 +50,8 @@ const Product = ({images}) => {
   }, []);
 
   const [favorites, toggleItemInLocalStorage] = useFavorites();
-
   
-  const isFavorite = favorites.includes(id);
-  console.log("es favorito?" + isFavorite);
+  const isFavorite = favorites.includes(idNumber);
 
   return (
     <div className={styles.containerProduct}>
