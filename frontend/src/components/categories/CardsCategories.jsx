@@ -1,25 +1,25 @@
-import React from "react";
+import React, { useContext } from "react";
 import CardCategory from "./CardCategory";
 import styles from "./cardsCategories.module.css";
-// import useFetch from "../../hooks/useFetch";
-// import { useParams } from "react-router";
-
+import { FilterContext } from '../../context/FilterContext';
 
 const CardsCategorias = ({ items }) => {
 
-  // const { id } = useParams();
+  const { setSelectedCategory } = useContext(FilterContext);
 
-  // const [data] = useFetch(`http://localhost:8080/productos/categoria/${id}`);
+  const handleClick = (title) => {
+    setSelectedCategory(title);
+}
 
   return (
     <div className={styles.container}>
       <h2>Buscar por tipo de alojamiento</h2>
       <div className={styles.containerCategory}>
         {items && items.map((category) => (
-          <div key={category.id}>
+          <div onClick={() => handleClick(category.titulo)} key={category.id}>
             <CardCategory
-              category={category.titulo}
               img={category.url}
+              category={category.titulo}
               description="807.105"
             />
           </div>

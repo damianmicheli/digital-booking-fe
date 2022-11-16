@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
+import { FilterContext } from "../../context/FilterContext";
 
 //Styles
 import styles from "./buscador.module.css";
@@ -9,8 +10,19 @@ import DatePickerRange from "./content/DatePickerRange";
 import Button from "../global/Button";
 
 const Search = () => {
-
   const [selected, setSelected] = useState("¿A dónde vamos?");
+  
+  const { setValuesForm } = useContext(FilterContext);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setValuesForm((prevState) => {
+      return {
+        ...prevState,
+        city: selected
+      };
+    });
+  };
 
   return (
     <div className={styles.container}>
@@ -18,7 +30,7 @@ const Search = () => {
         <div className={styles.title}>
           <h1>Busca ofertas en hoteles, casas y mucho más</h1>
         </div>
-        <form className={styles.content}>
+        <form onSubmit={(e) => handleSubmit(e)} className={styles.content}>
           <div className={styles.select}>
             <Select selected={selected} setSelected={setSelected} />
           </div>
