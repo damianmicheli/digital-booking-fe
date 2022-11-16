@@ -6,6 +6,8 @@ import com.backend.util.Jsons;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.authentication.BadCredentialsException;
+import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 
@@ -44,6 +46,17 @@ public class GlobalExceptionHandler {
         logger.error(mensajeError);
 
         return new ResponseEntity<>(Jsons.asJsonString(mensajeError), HttpStatus.BAD_REQUEST);
+    }
+
+
+    @ExceptionHandler(AuthenticationException.class)
+    public ResponseEntity<?> handleAuthenticationException(AuthenticationException ex) {
+
+        String mensajeError = "Credenciales incorrectas";
+
+        logger.error(mensajeError);
+
+        return new ResponseEntity<>(Jsons.asJsonString(mensajeError), HttpStatus.UNAUTHORIZED);
     }
 
     @ExceptionHandler(Exception.class)
