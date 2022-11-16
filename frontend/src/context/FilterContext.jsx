@@ -7,23 +7,21 @@ export const FilterContextProvider = ({ children }) => {
   const [selectedCategory, setSelectedCategory] = useState(null);
   
   const [valuesForm, setValuesForm] = useState({
-    city: null,
-    date: {
-      startDate: null,
-      endDate: null,
-    },
+    city: null
   });
 
   const filterHandlers = {
     handleClearFilters: () => {
       setSelectedCategory(null);
       setValuesForm({
-        city: null,
+        city: null
       });
     },
+
     handleDeleteCategory: () => {
       setSelectedCategory(null);
     },
+
     handleDeleteCity: () => {
       setValuesForm((prevState) => {
         return {

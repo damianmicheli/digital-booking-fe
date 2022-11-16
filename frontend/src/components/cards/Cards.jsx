@@ -29,26 +29,14 @@ const Cards = ({ data }) => {
             ""
           ) : (
             <span className={styles.filterItem}>
-              {" "}
-              {selectedCategory}{" "}
-              <Icon
-                onClick={filterHandlers.handleDeleteCategory}
-                css={styles.iconDelete}
-                icon={faXmark}
-              />{" "}
+              {selectedCategory}
             </span>
           )}
           {valuesForm.city === null ? (
             ""
           ) : (
             <span className={styles.filterItem}>
-              {" "}
-              {valuesForm.city}{" "}
-              <Icon
-                onClick={filterHandlers.handleDeleteCity}
-                css={styles.iconDelete}
-                icon={faXmark}
-              />
+              {valuesForm.city}
             </span>
           )}
         </div>
