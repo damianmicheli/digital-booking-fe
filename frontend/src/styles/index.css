@@ -22,6 +22,10 @@ body {
   margin: 0 auto;
 }
 
+.containerProduct {
+  margin: 0 auto;
+}
+
 h1,
 h2,
 h3,
@@ -73,6 +77,9 @@ li {
   background: var(--color-principal);
   box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.12);
   cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 .button1, .button1:visited {
@@ -125,6 +132,23 @@ li {
   background-color: var(--color-principal);
   color: white; 
   transition: all 0.2s ease-in-out;
+}
+
+.btnFav{
+  border: none;
+  background-color: transparent;
+}
+
+.iconFav {
+  color: var(--color-principal);;
+  font-size: 1.3em;
+  cursor: pointer;
+}
+
+.iconFavDetail {
+  color: var(--color-3);;
+  font-size: 1.6em;
+  cursor: pointer;
 }
 
 .bgGray {

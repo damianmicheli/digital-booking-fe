@@ -1,54 +1,89 @@
-import React, { useEffect } from 'react';
+import React, { useEffect } from "react";
 
-import HeaderProduct from './content/HeaderProduct';
-import LocationProduct from './content/LocationProduct';
-import DescriptionProduct from './content/DescriptionProduct';
-import Features from './content/Features';
-import Politics from './content/Politics';
-import BookingCalendar from '../booking_calendar/BookingCalendar';
+import HeaderProduct from "./content/HeaderProduct";
+import LocationProduct from "./content/LocationProduct";
+import DescriptionProduct from "./content/DescriptionProduct";
+import Features from "./content/Features";
+import Politics from "./content/Politics";
+import BookingCalendar from "../booking_calendar/BookingCalendar";
 
-import useFetch from '../../hooks/useFetch';
+import useFetch from "../../hooks/useFetch";
 import { useParams } from "react-router";
-import GalleryContainer from '../gallery/GalleryContainer';
+import GalleryContainer from "../gallery/GalleryContainer";
 
-const Product = ({images}) => {
+import SocialMediaShare from "./content/SocialMediaShare";
+import Icon from "../global/Icon";
+import { faHeart as faSolideHeart } from "@fortawesome/free-solid-svg-icons";
+import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
+
+import styles from "./product.module.css";
+import Button from "../global/Button";
+
+import useFavorites from "../../hooks/useFavorites";
+
+const Product = () => {
 
   const { id } = useParams();
 
-  const [dataProducto] = useFetch(
-    `http://localhost:8080/productos/${id}`
-  );
+  const idNumber = Number(id);
 
-  const nombre = dataProducto && dataProducto.nombre;
-  const titulo = dataProducto && dataProducto.titulo;
-  const descripcion = dataProducto && dataProducto.descripcion;
-  const direccion = dataProducto && dataProducto.direccion;
-  const politicaDeCancelacion = dataProducto && dataProducto.politica_de_cancelacion;
-  const politicaDeSaludYSeguridad = dataProducto && dataProducto.politica_de_salud_y_seguridad;
-  const normasDeUso = dataProducto && dataProducto.politica_de_uso;
-  const categoria = dataProducto && dataProducto.categoria.titulo.toUpperCase();
-  const ciudad = dataProducto && dataProducto.ciudad.ciudad;
-  const pais = dataProducto && dataProducto.ciudad.pais;
+  const [data] = useFetch(`http://localhost:8080/productos/${id}`);
+
+  const nombre = data && data.nombre;
+  const titulo = data && data.titulo;
+  const descripcion = data && data.descripcion;
+  const direccion = data && data.direccion;
+  const caracteristicas = data && data.caracteristicas;
+  const imagenes = data && data.imagenes;
+  const politicaDeCancelacion = data && data.politica_de_cancelacion;
+  const politicaDeSaludYSeguridad = data && data.politica_de_salud_y_seguridad;
+  const normasDeUso = data && data.politica_de_uso;
+  const categoria = data && data.categoria.titulo.toUpperCase();
+  const ciudad = data && data.ciudad.ciudad;
+  const pais = data && data.ciudad.pais;
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
+  const [favorites, toggleItemInLocalStorage] = useFavorites();
+  
+  const isFavorite = favorites.includes(idNumber);
+
   return (
-    <div className='container'>
-        <HeaderProduct 
-        category={categoria}
-        title={nombre}/>
-        <LocationProduct direction={direccion} city={ciudad} country={pais}/>
-        <GalleryContainer images={images}/>
-        <DescriptionProduct title={titulo} description={descripcion} ciudad={ciudad} />
-        <Features 
-        // pasar features como props
+    <div className={styles.containerProduct}>
+      <HeaderProduct category={categoria} title={nombre} />
+      <LocationProduct direction={direccion} city={ciudad} country={pais} />
+      <div className={styles.socialMediaContainer}>
+        <SocialMediaShare url={`http://www.digitalbooking.ar/producto/${id}`} />
+        <Button
+          event={toggleItemInLocalStorage(idNumber)}
+          css="btnFav"
+          text={
+            <Icon
+              css="iconFavDetail"
+              icon={isFavorite ? faSolideHeart : faRegularHeart}
+            />
+          }
         />
-        <BookingCalendar />
-        <Politics normas={normasDeUso} politicaSalud={politicaDeSaludYSeguridad} politicaCancelacion={politicaDeCancelacion}/>
+      </div>
+      <GalleryContainer images={imagenes} />
+      <div className={styles.descriptionContainer}>
+        <DescriptionProduct
+          title={titulo}
+          description={descripcion}
+          ciudad={ciudad}
+        />
+      </div>
+      <Features features={caracteristicas} />
+      <BookingCalendar />
+      <Politics
+        normas={normasDeUso}
+        politicaSalud={politicaDeSaludYSeguridad}
+        politicaCancelacion={politicaDeCancelacion}
+      />
     </div>
-  )
-}
+  );
+};
 
 export default Product;

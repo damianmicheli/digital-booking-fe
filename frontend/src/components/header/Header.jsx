@@ -7,11 +7,15 @@ import logo from "../../assets/img/logo.svg";
 import MenuDrawer from "../header/menuDrawer/MenuDrawer";
 import { faBars } from "@fortawesome/free-solid-svg-icons";
 import AuthContext from "../../context/AuthContext";
+
 import User from "../user/User";
 
 const Header = () => {
   const { auth } = useContext(AuthContext);
+
   const refMenu = useRef(null);
+/*   const refBtnLogin = useRef(null);
+  const refBtnRegister = useRef(null); */
 
   /* --- menú mobile --- */
   const [open, setOpen] = useState(false);
@@ -21,6 +25,15 @@ const Header = () => {
       setOpen(false);
     }
   };
+  /* 
+  const toggleStyleButton = (e) => {
+    if (refBtnRegister.current && !refBtnRegister.current.contains(e.target)) {
+      refBtnRegister.current.classname="disabled";
+    }
+    if (refBtnRegister.current && !refBtnRegister.current.contains(e.target)) {
+      refBtnRegister.current.classname="disabled"
+    }
+  }; */
 
   const handleClick = () => {
     setOpen(!open);
@@ -31,6 +44,7 @@ const Header = () => {
 
   const linkToLogin = () => {
     navigate("/login");
+  
   };
   const linkToRegister = () => {
     navigate("/register");
@@ -63,13 +77,17 @@ const Header = () => {
               <div className={`${styles.disableMobile} ${styles.divButtons}`}>
                 <Button
                   id="btnRegister"
-                  css="button6"
+                  css={`button6 ${
+                    path === "/" || path === "/login" ? "" : "disabled"
+                  }`}
                   text="Crear cuenta"
                   event={linkToRegister}
                 ></Button>
                 <Button
                   id="btnLogin"
-                  css="button6"
+                  css={`button6 ${
+                    path === "/" || path === "/register" ? "" : "disabled"
+                  }`}
                   text="Iniciar sesión"
                   event={linkToLogin}
                 ></Button>
@@ -97,18 +115,3 @@ const Header = () => {
 
 export default Header;
 
-/*   const btnLogin = useRef(null);
-
-  const btnRegister = useRef(null); */
-
-/*   const handleButtonsHeader = () => {
-    if (path === "/login") {
-      console.log(btnLogin.current);
-     btnLogin.current.classname=
-    } else if (path === "/register") {
-      
-    } else if (path === "/user") {
-     
-  }; 
-    
-*/

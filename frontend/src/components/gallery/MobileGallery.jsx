@@ -7,9 +7,9 @@ const MobileGallery = ({ images }) => {
 
   useEffect(() => {
     setImagesGallery(
-      images.map((image) => ({
-        original: `${image.URL}=w100`,
-        thumbnail: `${image.URL}=w100`,
+      images && images.map((image) => ({
+        original: `${image.url ? image.url : "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/categorias/placeholder.jpeg"}`,
+        thumbnail: `${image ? image.url : "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/categorias/placeholder.jpeg"}`,
       }))
     );
   }, [images]);

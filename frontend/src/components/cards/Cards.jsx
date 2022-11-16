@@ -1,8 +1,10 @@
 import React from "react";
+
 import Card from "./Card";
 import styles from "./cards.module.css";
 
 const Cards = ({ data }) => {
+
   return (
     <div className={styles.container}>
       <h2>Recomendaciones</h2>
