@@ -78,9 +78,10 @@
     font-weight: 300;
     font-size: 18px;
     color: #263238;
+    padding-left: 15px;
+    padding-top: 10px;
   }
   .logoSlogan :last-child {
-    padding-left: 15px;
-    margin-top: 20px;
+    margin-top: 10px;
   }
 }
