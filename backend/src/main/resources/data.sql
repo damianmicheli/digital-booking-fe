@@ -20,16 +20,16 @@ USE `0521PTC3N1db_GRUPO4`;
 --
 -- Drops
 --
+DROP TABLE IF EXISTS `reserva`;
 DROP TABLE IF EXISTS `producto_caracteristica`;
 DROP TABLE IF EXISTS `imagen`;
 DROP TABLE IF EXISTS `producto`;
 DROP TABLE IF EXISTS `caracteristica`;
 DROP TABLE IF EXISTS `categoria`;
-DROP TABLE IF EXISTS `ciudad`;
 DROP TABLE IF EXISTS `usuario_rol`;
 DROP TABLE IF EXISTS `usuario`;
 DROP TABLE IF EXISTS `rol`;
-
+DROP TABLE IF EXISTS `ciudad`;
 
 --
 -- Table structure for table `caracteristica`
@@ -206,6 +206,33 @@ UNLOCK TABLES;
 
 
 --
+-- Table structure for table `reserva`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `reserva` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `fecha_final_reserva` datetime(6) DEFAULT NULL,
+  `fecha_inicial_reserva` datetime(6) DEFAULT NULL,
+  `hora_comienzo_reserva` time DEFAULT NULL,
+  `producto_id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKnh6tntdsfc76618c8sxxrxn7t` (`producto_id`),
+  CONSTRAINT `FKnh6tntdsfc76618c8sxxrxn7t` FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reserva`
+--
+
+LOCK TABLES `reserva` WRITE;
+/*!40000 ALTER TABLE `reserva` DISABLE KEYS */;
+/*!40000 ALTER TABLE `reserva` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
 -- Table structure for table `rol`
 --
 
@@ -215,7 +242,7 @@ CREATE TABLE `rol` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+) ENGINE=InnoDB AUTO_INCREMENT=3 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -224,7 +251,7 @@ CREATE TABLE `rol` (
 
 LOCK TABLES `rol` WRITE;
 /*!40000 ALTER TABLE `rol` DISABLE KEYS */;
-INSERT INTO `rol` VALUES (1,'ROLE_ADMIN');
+INSERT INTO `rol` VALUES (1,'ROLE_ADMIN'),(2,'ROLE_USER');
 /*!40000 ALTER TABLE `rol` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -238,7 +265,12 @@ CREATE TABLE `usuario` (
   `id` bigint NOT NULL AUTO_INCREMENT,
   `nombre` varchar(255) DEFAULT NULL,
   `password` varchar(255) DEFAULT NULL,
-  PRIMARY KEY (`id`)
+  `apellido` varchar(255) DEFAULT NULL,
+  `email` varchar(255) DEFAULT NULL,
+  `ciudad_id` bigint DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKk27924x4epd4mbufjieopk183` (`ciudad_id`),
+  CONSTRAINT `FKk27924x4epd4mbufjieopk183` FOREIGN KEY (`ciudad_id`) REFERENCES `ciudad` (`id`)
 ) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
@@ -248,7 +280,7 @@ CREATE TABLE `usuario` (
 
 LOCK TABLES `usuario` WRITE;
 /*!40000 ALTER TABLE `usuario` DISABLE KEYS */;
-INSERT INTO `usuario` VALUES (1,'grupo4','Grupo42022');
+INSERT INTO `usuario` VALUES (1,'grupo4','Grupo42022','ctd','grupo4@ctd.com',1);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -286,6 +318,5 @@ UNLOCK TABLES;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
 
 -- Dump completed on 2022-11-10 18:54:52
