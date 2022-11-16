@@ -53,6 +53,11 @@ public class Producto {
     private List<Imagen> imagenes;
 
 
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    private List<Reserva> reservas;
+
+
     public Producto() {
     }
 

@@ -4,9 +4,11 @@ import Icon from "../global/Icon";
 import styles from "./user.module.css";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import AuthContext from "../../context/AuthContext";
+import useMediaQuery from "../../hooks/useMediaQuery";
 
 const User = ({ user }) => {
 
+  const isMobile = useMediaQuery(768);
   const { handleAuth } = useContext(AuthContext); 
 
   const user1 = {
@@ -28,11 +30,11 @@ const User = ({ user }) => {
           {user1.fName} {user1.surname}
         </span>
       </p>
-      <Button
+      {!isMobile && <Button
         css={styles.closeSession}
         event={handleAuth}
         text={<Icon css={styles.closeSession} icon={faXmark} />}
-      />
+      />}
     </div>
   );
 };
