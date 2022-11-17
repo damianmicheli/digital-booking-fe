@@ -25,7 +25,7 @@ const Select = ({ selected, setSelected, setIdCity }) => {
         <div className={styles.dropdownContent}>
           {ciudades.map(ciudad => (
             <div key={ciudad.id} onClick={() => {
-              setSelected(ciudad.ciudad)
+              setSelected(`${ciudad.ciudad}, ${ciudad.pais}`)
               setIdCity(ciudad.id)
               setIsActive(false)
             }} 
