@@ -16,14 +16,14 @@ const Paginate = ({ itemsPerPage }) => {
   let search;
 
   if(!city && !category){
-    search = "random"
+    search = "/random"
   } else if (category && !city) {
-    search = `categoria/${category}`
+    search = `?categoria=${category}`
   } else if (city) {
-    search = `ciudad/${city}`
+    search = `?ciudad=${city}`
   }
 
-  let [items] = useFetch(`http://localhost:8080/productos/${search}`);
+  let [items] = useFetch(`http://localhost:8080/productos${search}`);
 
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);

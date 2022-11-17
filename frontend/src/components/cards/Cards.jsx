@@ -25,7 +25,7 @@ const Cards = ({ data }) => {
       <div className={styles.container}>
         <h2>Recomendaciones</h2>
         <div className={styles.filterContainer}>
-          {selectedCategory.title === null ? (
+          {/* {selectedCategory.title === null ? (
             ""
           ) : (
             <span className={styles.filterItem}>
@@ -38,7 +38,7 @@ const Cards = ({ data }) => {
             <span className={styles.filterItem}>
               {valuesForm.city}
             </span>
-          )}
+          )} */}
         </div>
         <div className={styles.cardsContainer}>
           {typeof currentItems === "string"
