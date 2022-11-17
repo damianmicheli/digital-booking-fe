@@ -6,8 +6,9 @@ import styles from "./buscador.module.css";
 
 //Components
 import Select from "./content/Select";
-import DatePickerRange from "./content/DatePickerRange";
+import Calendar from './content/Calendar';
 import Button from "../global/Button";
+
 
 const Search = () => {
   const [selected, setSelected] = useState("¿A dónde vamos?");
@@ -37,7 +38,7 @@ const Search = () => {
             <Select selected={selected} setSelected={setSelected} setIdCity={setIdCity} />
           </div>
           <div className={styles.datepicker}>
-            <DatePickerRange />
+            <Calendar />
           </div>
           <div className={styles.buttonContainer}>
             <Button css={styles.button} text="Buscar" />

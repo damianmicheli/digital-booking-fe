@@ -10,6 +10,8 @@ import Product from "../product/Product";
 
 import useFetch from "../../hooks/useFetch";
 
+import Calendar from '../Calendar';
+
 const Body = () => {
 
   const [productos] = useFetch("http://localhost:8080/productos");
@@ -22,6 +24,7 @@ const Body = () => {
         <Route path="/productos" element={<Cards items={productos} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/calendar" element={<Calendar />} />
       </Routes>
     </div>
   );
