@@ -11,15 +11,17 @@ import Button from "../global/Button";
 
 const Search = () => {
   const [selected, setSelected] = useState("¿A dónde vamos?");
+
+  const [idCity, setIdCity] = useState(null);
   
   const { setValuesForm } = useContext(FilterContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    setValuesForm((prevState) => {
+    setValuesForm(() => {
       return {
-        ...prevState,
-        city: selected
+        city: selected,
+        id: idCity
       };
     });
   };
@@ -32,7 +34,7 @@ const Search = () => {
         </div>
         <form onSubmit={(e) => handleSubmit(e)} className={styles.content}>
           <div className={styles.select}>
-            <Select selected={selected} setSelected={setSelected} />
+            <Select selected={selected} setSelected={setSelected} setIdCity={setIdCity} />
           </div>
           <div className={styles.datepicker}>
             <DatePickerRange />

@@ -1,30 +1,29 @@
 import React, { useState, useEffect, useContext } from "react";
-import { FilterContext } from '../../context/FilterContext';
+import { FilterContext } from "../../context/FilterContext";
 // import { getDateFormat } from "../search/content/getDateFormat";
 import ReactPaginate from "react-paginate";
 import Icon from "../global/Icon";
-import {
-  faArrowLeft,
-  faArrowRight,
-} from "@fortawesome/free-solid-svg-icons";
+import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import styles from "./pagination.module.css";
 import useFetch from "../../hooks/useFetch";
 import Cards from "../cards/Cards";
 
 const Paginate = ({ itemsPerPage }) => {
+  const { valuesForm, selectedCategory} = useContext(FilterContext);
 
-  const { valuesForm, selectedCategory } = useContext(FilterContext);
+  const category = selectedCategory.id && selectedCategory.id;
+  const city = valuesForm.id && valuesForm.id;
+  let search;
 
-  const categoryName = selectedCategory && selectedCategory;
-  const locationName = valuesForm.city && valuesForm.city;
+  if(!city && !category){
+    search = "random"
+  } else if (category && !city) {
+    search = `categoria/${category}`
+  } else if (city) {
+    search = `ciudad/${city}`
+  }
 
-  const [products] = useFetch('http://localhost:8080/productos/random');
-
-  let allItems = products && products.filter(product => product.categoria.titulo === categoryName);
-
-  let itemsRandom = products && products;
-
-  let items = categoryName === null ? itemsRandom && itemsRandom : allItems && allItems;  
+  let [items] = useFetch(`http://localhost:8080/productos/${search}`);
 
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);
@@ -32,27 +31,21 @@ const Paginate = ({ itemsPerPage }) => {
 
   useEffect(() => {
     const endOffset = itemOffset + itemsPerPage;
-    setCurrentItems(
-      items && 
-      items.slice(itemOffset, endOffset));
+    setCurrentItems(items && items.slice(itemOffset, endOffset));
     setPageCount(Math.ceil(items && items.length / itemsPerPage));
   }, [itemOffset, itemsPerPage, items]);
 
   const handlePageClick = (event) => {
-    const newOffset = ((event.selected) * itemsPerPage)
+    const newOffset = event.selected * itemsPerPage;
     setItemOffset(newOffset);
   };
-    
+
   return (
     <>
-      <Cards data={currentItems}/>
+      <Cards data={currentItems} />
       <ReactPaginate
-        previousLabel={
-          <Icon css={styles.iconPagination} icon={faArrowLeft} />
-        }
-        nextLabel={
-          <Icon css={styles.iconPagination} icon={faArrowRight} />
-        }
+        previousLabel={<Icon css={styles.iconPagination} icon={faArrowLeft} />}
+        nextLabel={<Icon css={styles.iconPagination} icon={faArrowRight} />}
         breakLabel={"..."}
         pageCount={pageCount}
         pageRangeDisplayed={1}

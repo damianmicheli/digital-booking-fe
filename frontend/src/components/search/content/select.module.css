@@ -35,15 +35,30 @@
 
 .dropdown .dropdownContent .dropdownItem {
   border-bottom: 1.5px solid var(--color-principal);
-  padding: 10px 0;
+  padding: 7px 0;
   cursor: pointer;
   transition: all 0.2s;
   display: flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.7rem;
   font-weight: 500;
   font-size: 15px;
-  padding: 0.8rem 0;
+}
+
+.dropdown .dropdownContent .dropdownItem .dropdownItemCity {
+  display: flex;
+  flex-direction: column;
+}
+
+.dropdown .dropdownContent .dropdownItem .dropdownItemCity > p {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.dropdown .dropdownContent .dropdownItem .dropdownItemCity > span {
+  font-size: 13.5px;
+  font-weight: 700;
+  color: var(--color-3);
 }
 
 .dropdown .dropdownContent .dropdownItem:hover {
@@ -52,10 +67,7 @@
 
 .dropdown .dropdownContent .dropdownItem .icon {
   color: var(--color-2);
-  font-size: 1em;
-}
-
-.icon {
+  font-size: 1.2em;
   padding-left: 1rem;
 }
 

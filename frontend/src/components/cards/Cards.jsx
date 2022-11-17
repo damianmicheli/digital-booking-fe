@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import Card from "./Card";
 import { FilterContext } from "../../context/FilterContext";
 import Icon from "../global/Icon";
-import { faXmark, faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
 import styles from "./cards.module.css";
 
 const Cards = ({ data }) => {
@@ -12,7 +12,7 @@ const Cards = ({ data }) => {
 
   return (
     <>
-      {selectedCategory !== null ||
+      {selectedCategory.title !== null ||
       valuesForm.city !== null ? (
         <span className={styles.clearFilterDelete} onClick={filterHandlers.handleClearFilters}>
           {" "}
@@ -25,11 +25,11 @@ const Cards = ({ data }) => {
       <div className={styles.container}>
         <h2>Recomendaciones</h2>
         <div className={styles.filterContainer}>
-          {selectedCategory === null ? (
+          {selectedCategory.title === null ? (
             ""
           ) : (
             <span className={styles.filterItem}>
-              {selectedCategory}
+              {selectedCategory.title}
             </span>
           )}
           {valuesForm.city === null ? (
