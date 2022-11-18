@@ -9,6 +9,8 @@ import Cards from "../cards/Cards";
 import Product from "../product/Product";
 
 import useFetch from "../../hooks/useFetch";
+import { FavProvider } from "../../context/FavContext";
+import BookingCalendar from "../booking_calendar/BookingCalendar";
 
 const Body = () => {
   const [productos] = useFetch("http://localhost:8080/productos");
@@ -17,10 +19,18 @@ const Body = () => {
     <div className={styles.body}>
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/producto/:id" element={<Product />}></Route>
+        <Route
+          path="/producto/:id"
+          element={
+            <FavProvider>
+              <Product />
+            </FavProvider>
+          }
+        ></Route>
         <Route path="/productos" element={<Cards items={productos} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/calendario" element={<BookingCalendar />} />
       </Routes>
     </div>
   );

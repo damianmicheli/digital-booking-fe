@@ -27,7 +27,7 @@ const Product = () => {
 
   const idNumber = Number(id);
 
-  const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`);
+  const [data] = useFetch(`http://localhost:8080/productos/${id}`);
 
   const nombre = data && data.nombre;
   const titulo = data && data.titulo;
@@ -46,14 +46,16 @@ const Product = () => {
     window.scrollTo(0, 0);
   }, []);
 
+
+
   const { favorites, toggleItemInLocalStorage} = useContext(FavContext);
 
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
-  
-  const isFavorite = favorites.includes(idNumber);
 
+  const isFavorite = favorites.includes(idNumber);
+      
   return (
     <div className={styles.containerProduct}>
       <HeaderProduct category={categoria} title={nombre} />

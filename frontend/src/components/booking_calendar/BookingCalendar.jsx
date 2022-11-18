@@ -1,6 +1,5 @@
 import React, { useState } from "react";
-import Calendar from "react-calendar";
- import './Calendar.css';
+import Calendar from "./Calendar";
 import styles from "./booking.module.css";
 
 import useMediaQuery from "../../hooks/useMediaQuery";
@@ -10,10 +9,7 @@ const BookingCalendar = () => {
   const isMobile = useMediaQuery(624);
   const [date, setDate] = useState(new Date());
 
-  const [booking1, setBooking1] = useState([new Date(2022, 10, 18), new Date(2022, 10, 25)])
-/*   const [booking2, setBooking2] = useState([new Date(2022, 10, 29), new Date(2022, 11, 5)]) */
-
-/*   const [booking, setBooking] = useState([booking1,booking2]) */
+  const [booking1, setBooking1] = useState([ new Date(2022, 10, 25),new Date(2022, 10, 26),new Date(2022, 10, 27), new Date(2022, 11, 10),  new Date(2022, 11, 11),  new Date(2022, 11, 12),  new Date(2022, 11, 13),  new Date(2022, 11, 14),  new Date(2022, 11, 15), ])
 
   return (
     <>
@@ -23,9 +19,9 @@ const BookingCalendar = () => {
           <div className={styles.calendarPButton}>
             <div className={styles.calendar}>
               {isMobile ? (
-                <Calendar />
+                <Calendar months={1} bookings={booking1}/>
               ) : (
-                <Calendar view={"month"} tileDisabled={({activeStartDate, date, view })=> date == new Date()} minDate={date} selectRange={true} returnValue={"range"} showDoubleView={true} />
+                <Calendar months={2} bookings={booking1}/>
               )}
             </div>
             <div className={styles.pButton}>
