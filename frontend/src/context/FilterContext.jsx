@@ -1,8 +1,8 @@
 import { createContext, useState } from "react";
 
-export const FilterContext = createContext();
+const FilterContext = createContext();
 
-export const FilterContextProvider = ({ children }) => {
+const FilterContextProvider = ({ children }) => {
 
   const [selectedCategory, setSelectedCategory] = useState(null);
   
@@ -46,3 +46,7 @@ export const FilterContextProvider = ({ children }) => {
     </FilterContext.Provider>
   );
 };
+
+
+export { FilterContextProvider };
+export default FilterContext;

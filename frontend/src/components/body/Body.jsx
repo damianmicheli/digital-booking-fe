@@ -11,7 +11,6 @@ import Product from "../product/Product";
 import useFetch from "../../hooks/useFetch";
 
 const Body = () => {
-
   const [productos] = useFetch("http://localhost:8080/productos");
 
   return (

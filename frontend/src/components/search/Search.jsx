@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import { FilterContext } from "../../context/FilterContext";
+import FilterContext  from "../../context/FilterContext";
 
 //Styles
 import styles from "./buscador.module.css";

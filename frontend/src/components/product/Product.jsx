@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 
 import HeaderProduct from "./content/HeaderProduct";
 import LocationProduct from "./content/LocationProduct";
@@ -19,7 +19,7 @@ import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
 import styles from "./product.module.css";
 import Button from "../global/Button";
 
-import useFavorites from "../../hooks/useFavorites";
+import FavContext from "../../context/FavContext";
 
 const Product = () => {
 
@@ -46,7 +46,11 @@ const Product = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [favorites, toggleItemInLocalStorage] = useFavorites();
+  const { favorites, toggleItemInLocalStorage} = useContext(FavContext);
+
+  useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
   
   const isFavorite = favorites.includes(idNumber);
 
@@ -57,7 +61,7 @@ const Product = () => {
       <div className={styles.socialMediaContainer}>
         <SocialMediaShare url={`http://www.digitalbooking.ar/producto/${id}`} />
         <Button
-          event={toggleItemInLocalStorage(idNumber)}
+          event={toggleItemInLocalStorage(idNumber, isFavorite)}
           css="btnFav"
           text={
             <Icon

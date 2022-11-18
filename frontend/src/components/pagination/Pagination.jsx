@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useContext } from "react";
-import { FilterContext } from '../../context/FilterContext';
-// import { getDateFormat } from "../search/content/getDateFormat";
+import FilterContext from '../../context/FilterContext';
+
 import ReactPaginate from "react-paginate";
 import Icon from "../global/Icon";
 import {
