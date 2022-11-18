@@ -17,12 +17,14 @@ public class ProductoController {
     @Autowired
     private IProductoService productoService;
 
+
     @Operation(summary = "Buscar un producto por su Id")
-    @GetMapping("/{id}")
-    public ResponseEntity<ProductoDTO> buscar(@PathVariable Long id) throws NoEncontradoException {
+    @GetMapping("/buscar")
+    public ResponseEntity<ProductoDTO> buscar(@RequestParam Long id) throws NoEncontradoException {
 
         return new ResponseEntity<>(productoService.buscar(id), HttpStatus.OK);
     }
+
 
     @Operation(summary = "Crear un producto")
     @PostMapping
@@ -34,8 +36,16 @@ public class ProductoController {
 
     @Operation(summary = "Listar todos los productos")
     @GetMapping
-    public ResponseEntity<List<ProductoDTO>> listarTodos(){
-        return new ResponseEntity<>(productoService.listarTodos(), HttpStatus.OK);
+    public ResponseEntity<List<ProductoDTO>> listarTodos(@RequestParam(required = false) Long ciudad,
+                                                         @RequestParam(required=false) Long categoria){
+        if (ciudad != null) {
+            return new ResponseEntity<>(productoService.listarPorCiudad(ciudad), HttpStatus.OK);
+        }
+        else if (categoria !=null) {
+            return new ResponseEntity<>(productoService.listarPorCategoria(categoria), HttpStatus.OK);
+
+        }
+        else {return new ResponseEntity<>(productoService.listarTodos(), HttpStatus.OK);}
 
     }
 
@@ -46,17 +56,17 @@ public class ProductoController {
 
     }
 
-    @Operation(summary = "Listar productos filtrados por ciudad")
-    @GetMapping("/ciudad/{id}")
-    public ResponseEntity<List<ProductoDTO>> listarPorCiudad(@PathVariable Long id) {
-        return new ResponseEntity<>(productoService.listarPorCiudad(id), HttpStatus.OK);
+//    @Operation(summary = "Listar productos filtrados por ciudad")
+//    @GetMapping("/ciudad/{id}")
+//    public ResponseEntity<List<ProductoDTO>> listarPorCiudad(@PathVariable Long id) {
+//        return new ResponseEntity<>(productoService.listarPorCiudad(id), HttpStatus.OK);
+//
+//    }
 
-    }
-
-    @Operation(summary = "Listar productos filtrados por categoria")
-    @GetMapping("/categoria/{id}")
-    public ResponseEntity<List<ProductoDTO>> listarPorCategoria(@PathVariable Long id) {
-        return new ResponseEntity<>(productoService.listarPorCategoria(id), HttpStatus.OK);
-
-    }
+//    @Operation(summary = "Listar productos filtrados por categoria")
+//    @GetMapping("/categoria/{id}")
+//    public ResponseEntity<List<ProductoDTO>> listarPorCategoria(@PathVariable Long id) {
+//        return new ResponseEntity<>(productoService.listarPorCategoria(id), HttpStatus.OK);
+//
+//    }
 }

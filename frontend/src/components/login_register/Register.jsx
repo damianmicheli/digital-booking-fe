@@ -1,9 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container } from "react-bootstrap";
 import styles from "./loginRegister.module.css";
 import Button from "../global/Button";
 import Icon from "../global/Icon";
-import { faEyeSlash } from "@fortawesome/free-solid-svg-icons";
+import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 import useForm from "../../hooks/useForm";
 // import Buscador from "../buscador/Buscador";
 
@@ -78,6 +78,11 @@ const Register = () => {
     message
   );
 
+  const [showPass, setShowPass] = useState(false);
+  const toggleBtnPass = () => {
+    setShowPass((prevState) => !prevState);
+  };
+
   return (
     <>
       {/* <Buscador /> */}
@@ -134,13 +139,19 @@ const Register = () => {
                 <label className="text2">Contraseña</label>
                 <div className={styles.iconInput}>
                   <input
-                    type="password"
+                    type={showPass ? "text" : "password"}
                     name="password"
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={form.password}
                   />
-                  <Icon icon={faEyeSlash} css={styles.iconEye} />
+                  <span onClick={toggleBtnPass}>
+                    {showPass ? (
+                      <Icon icon={faEye} css={styles.iconEye} />
+                    ) : (
+                      <Icon icon={faEyeSlash} css={styles.iconEye} />
+                    )}
+                  </span>
                 </div>
                 {errors.password && (
                   <p className={styles.pFormError}>{errors.password}</p>

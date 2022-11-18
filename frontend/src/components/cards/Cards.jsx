@@ -19,12 +19,11 @@ const Cards = ({ data }) => {
 
   return (
     <>
-      {selectedCategory !== null || valuesForm.city !== null ? (
-        <span
-          className={styles.clearFilterDelete}
-          onClick={filterHandlers.handleClearFilters}
-        >
-          <Icon css={styles.iconClear} icon={faTrashCan} />
+      {selectedCategory.title !== null ||
+      valuesForm.city !== null ? (
+        <span className={styles.clearFilterDelete} onClick={filterHandlers.handleClearFilters}>
+          {" "}
+          <Icon css={styles.iconClear}icon={faTrashCan} />
           Limpiar Filtros
         </span>
       ) : (
@@ -33,16 +32,20 @@ const Cards = ({ data }) => {
       <div className={styles.container}>
         <h2>Recomendaciones</h2>
         <div className={styles.filterContainer}>
-          {selectedCategory === null ? (
+          {/* {selectedCategory.title === null ? (
             ""
           ) : (
-            <span className={styles.filterItem}>{selectedCategory}</span>
+            <span className={styles.filterItem}>
+              {selectedCategory.title}
+            </span>
           )}
           {valuesForm.city === null ? (
             ""
           ) : (
-            <span className={styles.filterItem}>{valuesForm.city}</span>
-          )}
+            <span className={styles.filterItem}>
+              {valuesForm.city}
+            </span>
+          )} */}
         </div>
         <div className={styles.cardsContainer}>
           {typeof currentItems === "string"

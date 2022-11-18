@@ -4,7 +4,9 @@ const FilterContext = createContext();
 
 const FilterContextProvider = ({ children }) => {
 
-  const [selectedCategory, setSelectedCategory] = useState(null);
+  const [selectedCategory, setSelectedCategory] = useState({
+    title: null
+  });
   
   const [valuesForm, setValuesForm] = useState({
     city: null
@@ -12,24 +14,13 @@ const FilterContextProvider = ({ children }) => {
 
   const filterHandlers = {
     handleClearFilters: () => {
-      setSelectedCategory(null);
+      setSelectedCategory({
+        title: null
+      });
       setValuesForm({
         city: null
       });
-    },
-
-    handleDeleteCategory: () => {
-      setSelectedCategory(null);
-    },
-
-    handleDeleteCity: () => {
-      setValuesForm((prevState) => {
-        return {
-          ...prevState,
-          city: null,
-        };
-      });
-    },
+    }
   };
 
   return (
