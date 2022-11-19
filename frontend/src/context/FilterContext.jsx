@@ -20,7 +20,19 @@ export const FilterContextProvider = ({ children }) => {
       setValuesForm({
         city: null
       });
-    }
+    },
+    handleClearCategory: () => {
+      setSelectedCategory({
+        title: null,
+        id: null
+      });
+    },
+    handleClearCity: () => {
+      setValuesForm({
+        city: null,
+        id: null
+      });
+    },
   };
 
   return (

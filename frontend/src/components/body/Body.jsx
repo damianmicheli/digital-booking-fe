@@ -5,26 +5,22 @@ import styles from "./body.module.css";
 import Home from "../home/Home";
 import Login from "../login_register/Login";
 import Register from "../login_register/Register";
-import Cards from "../cards/Cards";
 import Product from "../product/Product";
 
-import useFetch from "../../hooks/useFetch";
-
 import Calendar from '../Calendar';
+import Success from "../global/modal/success/Success";
 
 const Body = () => {
-
-  const [productos] = useFetch("http://localhost:8080/productos");
 
   return (
     <div className={styles.body}>
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/producto/:id" element={<Product />}></Route>
-        <Route path="/productos" element={<Cards items={productos} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/calendar" element={<Calendar />} />
+        <Route path="/success" element={< Success />}/>
       </Routes>
     </div>
   );

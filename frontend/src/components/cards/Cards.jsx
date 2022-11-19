@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import Card from "./Card";
 import { FilterContext } from "../../context/FilterContext";
 import Icon from "../global/Icon";
-import { faTrashCan } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan, faXmark } from "@fortawesome/free-solid-svg-icons";
 import styles from "./cards.module.css";
 
 const Cards = ({ data }) => {
@@ -12,7 +12,7 @@ const Cards = ({ data }) => {
 
   return (
     <>
-      {selectedCategory.title !== null ||
+      {/* {selectedCategory.title !== null ||
       valuesForm.city !== null ? (
         <span className={styles.clearFilterDelete} onClick={filterHandlers.handleClearFilters}>
           {" "}
@@ -21,7 +21,7 @@ const Cards = ({ data }) => {
         </span>
       ) : (
         ""
-      )}
+      )} */}
       <div className={styles.container}>
         <h2>Recomendaciones</h2>
         <div className={styles.filterContainer}>
@@ -30,6 +30,7 @@ const Cards = ({ data }) => {
           ) : (
             <span className={styles.filterItem}>
               {selectedCategory.title}
+              <Icon css={styles.iconDelete}icon={faXmark} event={filterHandlers.handleClearCategory} />
             </span>
           )}
           {valuesForm.city === null ? (
@@ -37,6 +38,7 @@ const Cards = ({ data }) => {
           ) : (
             <span className={styles.filterItem}>
               {valuesForm.city}
+              <Icon css={styles.iconDelete}icon={faXmark} event={filterHandlers.handleClearCity} />
             </span>
           )}
         </div>

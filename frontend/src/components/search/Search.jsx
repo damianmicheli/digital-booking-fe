@@ -6,23 +6,28 @@ import styles from "./buscador.module.css";
 
 //Components
 import Select from "./content/Select";
-import Calendar from './content/Calendar';
+import Calendar from "./content/Calendar";
 import Button from "../global/Button";
-
 
 const Search = () => {
   const [selected, setSelected] = useState("¿A dónde vamos?");
 
   const [idCity, setIdCity] = useState(null);
-  
-  const { setValuesForm } = useContext(FilterContext);
+
+  const { setValuesForm, setSelectedCategory } = useContext(FilterContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setValuesForm(() => {
       return {
         city: selected,
-        id: idCity
+        id: idCity,
+      };
+    });
+    setSelectedCategory(() => {
+      return {
+        title: null,
+        id: null,
       };
     });
   };
@@ -33,9 +38,21 @@ const Search = () => {
         <div className={styles.title}>
           <h1>Busca ofertas en hoteles, casas y mucho más</h1>
         </div>
-        <form onSubmit={(e) => handleSubmit(e)} className={styles.content}>
+        <form onSubmit={(e) => {
+          selected === "¿A dónde vamos?" 
+          ?
+          e.preventDefault()
+          :
+          handleSubmit(e)}
+        } 
+          className={styles.content}
+          >
           <div className={styles.select}>
-            <Select selected={selected} setSelected={setSelected} setIdCity={setIdCity} />
+            <Select
+              selected={selected}
+              setSelected={setSelected}
+              setIdCity={setIdCity}
+            />
           </div>
           <div className={styles.datepicker}>
             <Calendar />

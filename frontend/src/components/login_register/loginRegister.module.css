@@ -37,6 +37,7 @@
 
 .iconInput{
 position: relative;
+cursor: pointer;
 }
 
 .iconInput .iconEye{

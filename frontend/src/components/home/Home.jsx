@@ -10,7 +10,7 @@ import Pagination from "../pagination/Pagination";
 import { FilterContextProvider } from "../../context/FilterContext";
 
 const Home = () => {
-
+  
   const [categorias] = useFetch("http://localhost:8080/categorias");
 
   return (

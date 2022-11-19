@@ -1,19 +1,23 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import CardCategory from "./CardCategory";
 import styles from "./cardsCategories.module.css";
 import { FilterContext } from '../../context/FilterContext';
 
 const CardsCategorias = ({ items }) => {
 
-  const { setSelectedCategory } = useContext(FilterContext);
+  const { setSelectedCategory, setValuesForm } = useContext(FilterContext);
 
   const handleClick = (title, id) => {
     setSelectedCategory({
       title: title,
       id: id
     });
+    setValuesForm({
+      city: null,
+      id: null
+    })
   }
-
+  
   return (
     <div className={styles.container}>
       <h2>Buscar por tipo de alojamiento</h2>

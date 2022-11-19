@@ -1,7 +1,7 @@
-.calendarContainer > .calendarElement{
-    padding: 2rem 4rem;
+.calendarContainer {
+  padding: 5rem 4rem;
 }
 
-.calendarContainer > h2{
-    padding: 1.5rem 2rem;
+.calendarContainer > h2 {
+  padding: 1.5rem 2rem;
 }
