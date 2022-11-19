@@ -7,6 +7,7 @@ import lombok.Setter;
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.Date;
 import java.util.List;
 
@@ -22,9 +23,9 @@ public class Reserva {
 
     private Time hora_comienzo_reserva;
 
-    private Date fecha_inicial_reserva;
+    private LocalDate fecha_inicial_reserva;
 
-    private Date fecha_final_reserva;
+    private LocalDate fecha_final_reserva;
 
     @NotBlank
     @ManyToOne
@@ -34,7 +35,7 @@ public class Reserva {
     public Reserva() {
     }
 
-    public Reserva (Long id, Time hora_comienzo_reserva, Date fecha_inicial_reserva, Date fecha_final_reserva) {
+    public Reserva (Long id, Time hora_comienzo_reserva, LocalDate fecha_inicial_reserva, LocalDate fecha_final_reserva) {
         this.id = id;
         this.hora_comienzo_reserva = hora_comienzo_reserva;
         this.fecha_inicial_reserva = fecha_inicial_reserva;

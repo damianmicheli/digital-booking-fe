@@ -7,6 +7,7 @@ import lombok.Setter;
 import lombok.ToString;
 
 import java.sql.Time;
+import java.time.LocalDate;
 import java.util.Date;
 
 @Getter @Setter @ToString
@@ -16,7 +17,7 @@ public class ReservaDTO {
 
     private Long id;
     private Time hora_comienzo_reserva;
-    private Date fecha_inicial_reserva;
-    private Date fecha_final_reserva;
+    private LocalDate fecha_inicial_reserva;
+    private LocalDate fecha_final_reserva;
     private Producto producto;
 }
