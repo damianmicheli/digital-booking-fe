@@ -10,7 +10,7 @@ import Product from "../product/Product";
 
 import useFetch from "../../hooks/useFetch";
 import { FavProvider } from "../../context/FavContext";
-import BookingCalendar from "../booking_calendar/BookingCalendar";
+import BookingTemplate from "../booking_template/BookingTemplate";
 
 const Body = () => {
   const [productos] = useFetch("http://localhost:8080/productos");
@@ -30,7 +30,7 @@ const Body = () => {
         <Route path="/productos" element={<Cards items={productos} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/calendario" element={<BookingCalendar />} />
+        <Route path="/reservas/:id" element={<BookingTemplate />} />
       </Routes>
     </div>
   );

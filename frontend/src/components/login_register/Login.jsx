@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Container } from "react-bootstrap";
 import styles from "./loginRegister.module.css";
 import Button from "../global/Button";
 import Icon from "../global/Icon";
@@ -71,7 +70,7 @@ const Login = () => {
       {/* <Buscador /> */}
       <div className="bgGray flex">
         <p className="headings heading1">Iniciar sesión</p>
-        <Container>
+        <div>
           <form id="loginForm" action="/" method="POST" onSubmit={handleSubmit}>
             <div className={styles.divInputs}>
               <div className={styles.groupForm}>
@@ -113,14 +112,14 @@ const Login = () => {
               </div>
 
               <div className={styles.groupForm}>
-                <Button css="buttonForm" text="Ingresar" type="submit" />
+                <Button css="buttonForm" text="Ingresar"/>
                 <span className="text2 spanForm">
                   ¿Aún tienes una cuenta? <a href="/register">Registrate</a>
                 </span>
               </div>
             </div>
           </form>
-        </Container>
+        </div>
       </div>
     </>
   );

@@ -46,9 +46,7 @@ const Product = () => {
     window.scrollTo(0, 0);
   }, []);
 
-
-
-  const { favorites, toggleItemInLocalStorage} = useContext(FavContext);
+  const { favorites} = useContext(FavContext);
 
   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
@@ -63,7 +61,7 @@ const Product = () => {
       <div className={styles.socialMediaContainer}>
         <SocialMediaShare url={`http://www.digitalbooking.ar/producto/${id}`} />
         <Button
-          event={toggleItemInLocalStorage(idNumber, isFavorite)}
+          // event={toggleItemInLocalStorage(idNumber, isFavorite)}
           css="btnFav"
           text={
             <Icon
