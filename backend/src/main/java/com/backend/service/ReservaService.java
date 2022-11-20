@@ -10,6 +10,10 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.List;
+
 @Service
 public class ReservaService implements IReservaService {
 
@@ -26,22 +30,31 @@ public class ReservaService implements IReservaService {
     }
 
     @Override
-    public ReservaDTO guardar(ReservaDTO reservaDTO) throws NoEncontradoException {
+    public ReservaDTO guardar(ReservaDTO reservaDTO) throws NoEncontradoException, DatosIncorrectosException {
 
-            /*if (productoDTO.getCategoria() == null) {
-                throw new DatosIncorrectosException("No se especificó la categoría");
-            }
-            if (productoDTO.getCiudad() == null) {
-                throw new DatosIncorrectosException("No se especificó la ciudad");
-            }*/
+        //Obtengo el producto y las fechas
+        Producto producto = reservaDTO.getProducto();
+        LocalDate fechaInicio = reservaDTO.getFecha_inicial_reserva();
+        LocalDate fechaFin = reservaDTO.getFecha_final_reserva();
 
-            //Obtengo el producto
-            Producto producto = reservaDTO.getProducto();
+        //Verifico que el producto exista
+        ProductoDTO productoDTOEncontrado = productoService.buscar(producto.getId());
+        //Verifico que las fechas existan
+        if(fechaInicio == null) {
+            throw new DatosIncorrectosException("No se ingreso una fecha valida");
+        }
+        if(fechaFin == null) {
+            throw new DatosIncorrectosException("No se ingreso una fecha valida");
+        }
 
-            //Verifico que el producto exista
-            ProductoDTO productoDTOEncontrado = productoService.buscar(producto.getId());
+        //Verifico que la fecha no sea anterior a ahora
+        if (fechaInicio.isBefore(LocalDate.now())){
+            throw new DatosIncorrectosException("La fecha de la reserva no puede ser anterior a el dia de hoy.");
+        }
 
-            if(productoDTOEncontrado == null) {throw new NoEncontradoException("El producto no fue enconstrado");}
+        //TODO Verifico que el producto no este reservado en esa fecha
+
+        if(productoDTOEncontrado == null) {throw new NoEncontradoException("El producto no fue enconstrado");}
 
             Reserva reserva = mapper.convertValue(reservaDTO, Reserva.class);
 
@@ -52,5 +65,21 @@ public class ReservaService implements IReservaService {
             logger.info("Se creo la reserva : " + reservaDTOGuardado);
 
             return reservaDTOGuardado;    }
+
+    @Override
+    public List<ReservaDTO> findByProductoId(Long productoId) throws NoEncontradoException {
+        //Verifico que el producto exista
+        ProductoDTO productoDTOEncontrado = productoService.buscar(productoId);
+
+        List<Reserva> reservas = reservaRepository.findByProductoId(productoId);
+        List<ReservaDTO> reservasDTO = new ArrayList<>();
+        for(Reserva reserva : reservas){
+            reservasDTO.add(mapper.convertValue(reserva, ReservaDTO.class));
+        }
+        logger.info("Se listaron todas las reservas para el prodcuto con ID " + productoId);
+
+        return reservasDTO;
+
     }
+}
 
