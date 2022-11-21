@@ -20,4 +20,6 @@ public class ReservaDTO {
     private LocalDate fecha_inicial_reserva;
     private LocalDate fecha_final_reserva;
     private Producto producto;
+    private String aclaraciones;
+    private boolean vacunado;
 }

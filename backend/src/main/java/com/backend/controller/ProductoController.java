@@ -9,6 +9,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -38,8 +39,21 @@ public class ProductoController {
     @Operation(summary = "Listar todos los productos")
     @GetMapping
     public ResponseEntity<List<ProductoDTO>> listarTodos(@RequestParam(required = false) Long ciudad,
-                                                         @RequestParam(required=false) Long categoria){
-        if (ciudad != null) {
+                                                         @RequestParam(required=false) Long categoria,
+                                                         @RequestParam(required=false) LocalDate fechaInicio,
+                                                         @RequestParam(required=false) LocalDate fechaFin) throws NoEncontradoException {
+
+        if (fechaInicio != null && fechaFin != null && ciudad != null) {
+            return new ResponseEntity<>(productoService.listarPorCiudadYFechas(fechaInicio, fechaFin, ciudad), HttpStatus.OK);
+
+        }
+
+        else if (fechaInicio != null && fechaFin != null) {
+            return new ResponseEntity<>(productoService.listarPorFechas(fechaInicio, fechaFin), HttpStatus.OK);
+
+        }
+
+        else if (ciudad != null) {
             return new ResponseEntity<>(productoService.listarPorCiudad(ciudad), HttpStatus.OK);
         }
         else if (categoria !=null) {

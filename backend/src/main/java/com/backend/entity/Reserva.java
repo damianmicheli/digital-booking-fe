@@ -27,6 +27,10 @@ public class Reserva {
 
     private LocalDate fecha_final_reserva;
 
+    private String aclaraciones;
+
+    private boolean vacunado;
+
     @NotBlank
     @ManyToOne
     @JoinColumn(name = "producto_id", nullable = false)
@@ -35,11 +39,12 @@ public class Reserva {
     public Reserva() {
     }
 
-    public Reserva (Long id, Time hora_comienzo_reserva, LocalDate fecha_inicial_reserva, LocalDate fecha_final_reserva) {
-        this.id = id;
+    public Reserva(Time hora_comienzo_reserva, LocalDate fecha_inicial_reserva, LocalDate fecha_final_reserva, String aclaraciones, boolean vacunado, Producto producto) {
         this.hora_comienzo_reserva = hora_comienzo_reserva;
         this.fecha_inicial_reserva = fecha_inicial_reserva;
         this.fecha_final_reserva = fecha_final_reserva;
+        this.aclaraciones = aclaraciones;
+        this.vacunado = vacunado;
+        this.producto = producto;
     }
-
 }

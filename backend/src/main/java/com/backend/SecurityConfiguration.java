@@ -6,6 +6,7 @@ import com.backend.service.AuthenticationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -34,7 +35,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.cors();
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/usuario").hasRole("ADMIN")
-                .antMatchers("/autenticar", "/productos/**", "/ciudades/**", "/categorias/**", "/swagger-ui/**", "/v3/**" )
+                .antMatchers(HttpMethod.POST, "/reservas").hasRole("USER")
+                .antMatchers("/autenticar", "/productos/**", "/ciudades/**", "/categorias/**", "/swagger-ui/**", "/v3/**", "/reservas/**" )
                 .permitAll().anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);

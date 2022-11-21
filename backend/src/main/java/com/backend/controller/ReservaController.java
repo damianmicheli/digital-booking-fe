@@ -29,9 +29,10 @@ public class ReservaController {
     }
 
     @Operation(summary = "Listar reservas por Producto")
-    @GetMapping("/producto/{productoId}")
-    public ResponseEntity<List<ReservaDTO>> listarPorProducto(@PathVariable Long productoId) throws NoEncontradoException {
-        return new ResponseEntity<>(reservaService.findByProductoId(productoId), HttpStatus.OK);
+    @GetMapping
+    public ResponseEntity<List<ReservaDTO>> listarPorProducto(@RequestParam Long producto) throws NoEncontradoException {
+        return new ResponseEntity<>(reservaService.findByProductoId(producto), HttpStatus.OK);
     }
 
 }
+
