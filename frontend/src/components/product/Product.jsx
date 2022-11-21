@@ -46,13 +46,13 @@ const Product = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const { favorites} = useContext(FavContext);
+ /*  const { favorites} = useContext(FavContext); */
 
-  useEffect(() => {
+/*   useEffect(() => {
     localStorage.setItem("favorites", JSON.stringify(favorites));
   }, [favorites]);
 
-  const isFavorite = favorites.includes(idNumber);
+  const isFavorite = favorites.includes(idNumber); */
       
   return (
     <div className={styles.containerProduct}>
@@ -64,10 +64,10 @@ const Product = () => {
           // event={toggleItemInLocalStorage(idNumber, isFavorite)}
           css="btnFav"
           text={
-            <Icon
+            {/* <Icon
               css="iconFavDetail"
               icon={isFavorite ? faSolideHeart : faRegularHeart}
-            />
+            /> */}
           }
         />
       </div>
