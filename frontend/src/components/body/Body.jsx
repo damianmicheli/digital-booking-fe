@@ -5,17 +5,15 @@ import styles from "./body.module.css";
 import Home from "../home/Home";
 import Login from "../login_register/Login";
 import Register from "../login_register/Register";
-import Cards from "../cards/Cards";
 import Product from "../product/Product";
 
-import useFetch from "../../hooks/useFetch";
+import Calendar from '../Calendar';
+import Success from "../global/modal/success/Success";
 /* import { FavProvider } from "../../context/FavContext"; */
 import BookingTemplate from "../booking_template/BookingTemplate";
 import BookingDetail from "../booking_template/booking_detail/BookingDetail";
 
 const Body = () => {
-  const [productos] = useFetch("http://localhost:8080/productos");
-
   return (
     <div className={styles.body}>
       <Routes>
@@ -26,9 +24,10 @@ const Body = () => {
               <Product />         
           }
         ></Route>
-        <Route path="/productos" element={<Cards items={productos} />} />
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
+        <Route path="/calendar" element={<Calendar />} />
+        <Route path="/success" element={< Success />}/>
         <Route path="/reservas" element={<BookingTemplate />} />
         <Route path="/detalle" element={<BookingDetail />} />
       </Routes>
