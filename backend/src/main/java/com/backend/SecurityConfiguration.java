@@ -34,7 +34,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.cors();
         http.csrf().disable().authorizeRequests()
                 .antMatchers("/usuario").hasRole("ADMIN")
-                .antMatchers("/autenticar", "/productos/**", "/ciudades/**", "/categorias/**")
+                .antMatchers("/autenticar", "/productos/**", "/ciudades/**", "/categorias/**", "/swagger-ui/**", "/v3/**" )
                 .permitAll().anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
