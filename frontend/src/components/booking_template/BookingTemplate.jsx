@@ -1,16 +1,25 @@
-import React from "react";
+import React, {useState} from "react";
 import styles from "./bookingTemplate.module.css";
 
 /* import useFetch from "../../hooks/useFetch"; */
 import { useParams } from "react-router";
 
-import Calendar from "../booking_calendar/Calendar";
+import useMediaQuery from "../../hooks/useMediaQuery";
+import Calendar from "./Calendar";
 import HeaderProduct from "../product/content/HeaderProduct";
 import BookingDetail from "./booking_detail/BookingDetail";
 import Politics from "../product/content/Politics";
+import useFetch from "../../hooks/useFetch";
 
 const BookingTemplate = () => {
   const { id } = useParams();
+
+  const isMobile = useMediaQuery(624);
+
+  const [disabledDates] = useFetch(`http://localhost:8080/productos/fechasnodisponibles?id=${id}`)
+
+  const [bookings] = useFetch(`http://localhost:8080/reservas/producto/${id}`)
+ 
   /* 
   const [data] = useFetch(`http://localhost:8080/productos/${id}`);
 
@@ -25,7 +34,7 @@ const BookingTemplate = () => {
       <div className={styles.bookingTemplate}>
         <div className="container">
           <h2 className="heading2 color2 paddingTop">Completá tus datos</h2>
-          <form id="bookingForm" action="/" method="POST" onSubmit="">
+          <form id="bookingForm" action="/" method="POST" >
             <div className={styles.content}>
               <div className={styles.contentLeft}>
                 <div className={styles.divInputs}>
@@ -69,7 +78,12 @@ const BookingTemplate = () => {
                     />
                   </div>
                 </div>
-                <Calendar months={2} />
+                {isMobile ? (
+                <Calendar months={1} bookings={disabledDates}/>
+              ) : (
+                <Calendar months={2} bookings={disabledDates}/>
+              )}
+
               </div>
               <div className={styles.contentRight}>
                 <BookingDetail />

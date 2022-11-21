@@ -12,14 +12,14 @@ import { useParams } from "react-router";
 import GalleryContainer from "../gallery/GalleryContainer";
 
 import SocialMediaShare from "./content/SocialMediaShare";
-import Icon from "../global/Icon";
+/* import Icon from "../global/Icon";
 import { faHeart as faSolideHeart } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons"; */
 
 import styles from "./product.module.css";
-import Button from "../global/Button";
+/* import Button from "../global/Button"; */
 
-import FavContext from "../../context/FavContext";
+/* import FavContext from "../../context/FavContext"; */
 
 const Product = () => {
 
@@ -27,7 +27,7 @@ const Product = () => {
 
   const idNumber = Number(id);
 
-  const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`);
+  const data = useFetch(`http://localhost:8080/productos/buscar?id=${id}`);
 
   const nombre = data && data.nombre;
   const titulo = data && data.titulo;
@@ -60,16 +60,16 @@ const Product = () => {
       <LocationProduct direction={direccion} city={ciudad} country={pais} />
       <div className={styles.socialMediaContainer}>
         <SocialMediaShare url={`http://www.digitalbooking.ar/producto/${id}`} />
-        <Button
+          {/* <Button
           // event={toggleItemInLocalStorage(idNumber, isFavorite)}
           css="btnFav"
           text={
-            {/* <Icon
+          <Icon
               css="iconFavDetail"
               icon={isFavorite ? faSolideHeart : faRegularHeart}
-            /> */}
+            /> 
           }
-        />
+        />*/}
       </div>
       <GalleryContainer images={imagenes} />
       <div className={styles.descriptionContainer}>

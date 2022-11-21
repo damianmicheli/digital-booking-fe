@@ -127,23 +127,4 @@ const Login = () => {
 
 export default Login;
 
-/* const vpassword = (value) => {
-  if (value.length < 6 || value.length > 40) {
-    setPasswordClass("invalid-input");
-    return (
-      <div className="alert alert-danger" role="alert">
-        La contraseña debe tener entre 6 y 40 caracteres.
-      </div>
-    );
-  } else if (!value.match(/^(?!.* )\S/)) {
-    setPasswordClass("invalid-input");
-    return (
-      <div className="alert alert-danger" role="alert">
-        La contraseña no puede contener espacios
-      </div>
-    );
-  } else {
-    setPasswordClass("");
-  }
-};
- */
+
