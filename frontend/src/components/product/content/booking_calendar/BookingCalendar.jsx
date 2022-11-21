@@ -1,5 +1,8 @@
 import React, { useState } from "react";
+
 import Calendar from "./Calendar";
+import Button from "../../../global/Button";
+import useMediaQuery from "../../../../hooks/useMediaQuery";
 import styles from "./booking.module.css";
 
 import useFetch from "../../hooks/useFetch";
@@ -32,7 +35,7 @@ for (let date in disabledDates){
     <>
       <div className={styles.booking}>
         <div className={styles.container}>
-          <h2 className="heading3">Fechas disponibles</h2>
+          <h2 className="heading2">Fechas disponibles</h2>
           <div className={styles.calendarPButton}>
             <div className={styles.calendar}>
               {isMobile ? (

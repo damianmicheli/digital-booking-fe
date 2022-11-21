@@ -33,6 +33,7 @@
   font-size: 1.2rem;
   border: none;
   border-bottom-left-radius: 5px;
+  cursor: pointer;
 }
 
 .modal.isOpen {

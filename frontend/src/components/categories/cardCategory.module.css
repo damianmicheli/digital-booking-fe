@@ -37,13 +37,13 @@
 }
 
 .textContainer h3 {
-  font-size: 14pt;
+  font-size: 20px;
   color: var(--color-2);
 }
 
 .textContainer p {
   color: var(--color-2-opacity);
-  font-size: 10pt;
+  font-size: 14px;
 }
 
 @media only screen and (min-width: 768px) {
