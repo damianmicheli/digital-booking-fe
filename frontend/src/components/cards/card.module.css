@@ -64,7 +64,7 @@
 }
 
 .title > h5 {
-  font-size: 15px;
+  font-size: 14px;
   color: var(--color-2);
   opacity: 0.5;
   letter-spacing: 0.1em;
@@ -96,7 +96,7 @@
 
   .textContainer {
     padding: 0 1rem;
-    gap: 1.5rem;
+    gap: 1rem;
   }
 
   .btnFav{
@@ -105,7 +105,7 @@
 
 }
 
-@media screen and (min-width: 1390px) {
+@media screen and (min-width: 1350px) {
   .cardContainer {
     width: 635px;
     height: 283px;
@@ -118,7 +118,7 @@
 
   .textContainer {
     padding: 1rem;
-    gap: 1rem;
+    gap: 0.5rem;
   }
 
   .btnFav{

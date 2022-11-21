@@ -29,7 +29,7 @@ const SocialMediaShare = ({ url }) => {
       >
         <div className={styles.modalContainer}>
           <div className={styles.textContainer}>
-            <h4>¿Te gusto?</h4>
+            <h4>¿Te gustó?</h4>
             <p>Compartilo en tus redes:</p>
           </div>
           <div className={styles.socialMediaContainer}>

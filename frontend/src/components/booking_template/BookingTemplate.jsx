@@ -4,7 +4,7 @@ import styles from "./bookingTemplate.module.css";
 /* import useFetch from "../../hooks/useFetch"; */
 import { useParams } from "react-router";
 
-import Calendar from "../booking_calendar/Calendar";
+import Calendar from "./Calendar";
 import HeaderProduct from "../product/content/HeaderProduct";
 import BookingDetail from "./booking_detail/BookingDetail";
 import Politics from "../product/content/Politics";

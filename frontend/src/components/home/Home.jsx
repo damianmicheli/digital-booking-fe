@@ -11,6 +11,7 @@ import { FilterContextProvider } from "../../context/FilterContext";
 import { FavProvider } from "../../context/FavContext";
 
 const Home = () => {
+  
   const [categorias] = useFetch("http://localhost:8080/categorias");
 
   return (

@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import Card from "./Card";
 import FilterContext  from "../../context/FilterContext";
 import Icon from "../global/Icon";
-import { faTrashCan, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import styles from "./cards.module.css";
 
 const Cards = ({ data }) => {
