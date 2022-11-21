@@ -1,21 +1,14 @@
-import React, { useContext, useEffect} from "react";
+import React, { useContext } from "react";
 
 import Card from "./Card";
-import FilterContext from "../../context/FilterContext";
-import FavContext from "../../context/FavContext";
+import FilterContext  from "../../context/FilterContext";
 import Icon from "../global/Icon";
 import { faTrashCan, faXmark } from "@fortawesome/free-solid-svg-icons";
 import styles from "./cards.module.css";
 
 const Cards = ({ data }) => {
- 
+  
   const { valuesForm, selectedCategory, filterHandlers } = useContext(FilterContext);
-
-  const { favorites, toggleItemInLocalStorage} = useContext(FavContext);
-
-  useEffect(() => {
-    localStorage.setItem("favorites", JSON.stringify(favorites));
-  }, [favorites]);
 
   return (
     <>
@@ -32,7 +25,7 @@ const Cards = ({ data }) => {
       <div className={styles.container}>
         <h2>Recomendaciones</h2>
         <div className={styles.filterContainer}>
-          {/* {selectedCategory.title === null ? (
+          {selectedCategory.title === null ? (
             ""
           ) : (
             <span className={styles.filterItem}>
@@ -47,7 +40,7 @@ const Cards = ({ data }) => {
               {valuesForm.city}
               <Icon css={styles.iconDelete}icon={faXmark} event={filterHandlers.handleClearCity} />
             </span>
-          )} */}
+          )}
         </div>
         <div className={styles.cardsContainer}>
           {typeof currentItems === "string"
@@ -66,9 +59,7 @@ const Cards = ({ data }) => {
                     title={producto.nombre}
                     location={`${producto.ciudad.ciudad}, ${producto.ciudad.pais}`}
                     description={producto.descripcion}
-                    toggleItemInLocalStorage={toggleItemInLocalStorage}
-                    favorites={favorites}
-                  />
+                />
                 </div>
               ))}
         </div>
