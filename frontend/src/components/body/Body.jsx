@@ -22,10 +22,8 @@ const Body = () => {
         <Route path="/" element={<Home />} />
         <Route
           path="/producto/:id"
-          element={
-          
-              <Product />
-         
+          element={          
+              <Product />         
           }
         ></Route>
         <Route path="/productos" element={<Cards items={productos} />} />

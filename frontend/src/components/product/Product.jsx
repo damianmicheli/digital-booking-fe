@@ -27,7 +27,7 @@ const Product = () => {
 
   const idNumber = Number(id);
 
-  const [data] = useFetch(`http://localhost:8080/productos/${id}`);
+  const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`);
 
   const nombre = data && data.nombre;
   const titulo = data && data.titulo;
