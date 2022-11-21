@@ -5,6 +5,7 @@ import com.backend.dto.ProductoDTO;
 import com.backend.service.*;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -40,8 +41,9 @@ public class ProductoController {
     @GetMapping
     public ResponseEntity<List<ProductoDTO>> listarTodos(@RequestParam(required = false) Long ciudad,
                                                          @RequestParam(required=false) Long categoria,
-                                                         @RequestParam(required=false) LocalDate fechaInicio,
-                                                         @RequestParam(required=false) LocalDate fechaFin) throws NoEncontradoException {
+                                                         @RequestParam(required=false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaInicio,
+                                                         @RequestParam(required=false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaFin) throws NoEncontradoException {
+
 
         if (fechaInicio != null && fechaFin != null && ciudad != null) {
             return new ResponseEntity<>(productoService.listarPorCiudadYFechas(fechaInicio, fechaFin, ciudad), HttpStatus.OK);
