@@ -163,4 +163,27 @@ public class ProductoService implements IProductoService {
 
     }
 
+    public List<ProductoDTO> listarPorFechas(LocalDate inicio, LocalDate fin){
+
+        List<Producto> productos = productoRepository.findAll();
+        List<ProductoDTO> productosDTO = new ArrayList<>();
+
+        List<Producto> productosValidos = new ArrayList<>();
+
+        for (Producto producto : productos){
+            productosDTO.add(mapper.convertValue(producto, ProductoDTO.class));
+        }
+
+
+        for (Producto producto : productosValidos){
+            productosDTO.add(mapper.convertValue(producto, ProductoDTO.class));
+        }
+
+        logger.info("Se listaron todos los productos disponibles en las fechas indicadas.");
+
+        return productosDTO;
+
+
+    }
+
 }

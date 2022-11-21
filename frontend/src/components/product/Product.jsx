@@ -27,7 +27,7 @@ const Product = () => {
 
   const idNumber = Number(id);
 
-  const data = useFetch(`http://localhost:8080/productos/buscar?id=${id}`);
+  const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`);
 
   const nombre = data && data.nombre;
   const titulo = data && data.titulo;
@@ -64,9 +64,10 @@ const Product = () => {
           // event={toggleItemInLocalStorage(idNumber, isFavorite)}
           css="btnFav"
           text={
-          <Icon
+            <Icon
               css="iconFavDetail"
-              icon={isFavorite ? faSolideHeart : faRegularHeart}
+              icon={faRegularHeart}
+              // icon={isFavorite ? faSolideHeart : faRegularHeart}
             /> 
           }
         />*/}
