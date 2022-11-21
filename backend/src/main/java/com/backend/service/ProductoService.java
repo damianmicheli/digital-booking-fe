@@ -1,15 +1,17 @@
 package com.backend.service;
 
+import com.backend.dto.FechasOcupadasDTO;
 import com.backend.dto.ProductoDTO;
-import com.backend.entity.Categoria;
-import com.backend.entity.Ciudad;
-import com.backend.entity.Producto;
+import com.backend.entity.*;
 import com.backend.repository.IProductoRepository;
 
+import com.backend.repository.IReservaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -21,6 +23,9 @@ public class ProductoService implements IProductoService {
 
     @Autowired
     private IProductoRepository productoRepository;
+
+    @Autowired
+    private IReservaRepository reservaRepository;
 
     @Autowired
     private ObjectMapper mapper;
@@ -121,6 +126,41 @@ public class ProductoService implements IProductoService {
         logger.info("Se listaron todos los productos de forma aleatoria.");
 
         return productosDTO;
+    }
+
+    @Override
+    public FechasOcupadasDTO fechasOcupadas(Long id) throws NoEncontradoException {
+
+        Optional<Producto> producto = productoRepository.findById(id);
+
+        if (producto.isEmpty()){
+            throw new NoEncontradoException("Producto con Id " + id + " no encontrado.");
+        }
+
+        List<Reserva> reservas = reservaRepository.findByProductoId(id);
+        List<LocalDate> fechas = new ArrayList<>();
+
+        for (Reserva reserva : reservas){
+
+            LocalDate in = reserva.getFecha_inicial_reserva();
+            LocalDate out = reserva.getFecha_final_reserva();
+            LocalDate actual = in;
+
+            while (actual.isBefore(out) || actual.isEqual(out)) {
+                fechas.add(actual);
+                actual = actual.plusDays(1L);
+            }
+
+        }
+
+        FechasOcupadasDTO fechasOcupadas = new FechasOcupadasDTO();
+
+        fechasOcupadas.setFechasNoDisponibles(fechas);
+
+        logger.info("Se listaron las fechas ocupadas del producto con id: " + id);
+
+        return fechasOcupadas;
+
     }
 
 }

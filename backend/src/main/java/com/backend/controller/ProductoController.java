@@ -1,5 +1,6 @@
 package com.backend.controller;
 
+import com.backend.dto.FechasOcupadasDTO;
 import com.backend.dto.ProductoDTO;
 import com.backend.service.*;
 import io.swagger.v3.oas.annotations.Operation;
@@ -54,6 +55,13 @@ public class ProductoController {
     public ResponseEntity<List<ProductoDTO>> listarRandom(){
         return new ResponseEntity<>(productoService.listarRandom(), HttpStatus.OK);
 
+    }
+
+    @Operation(summary = "Mostrar fechas ocupadas de un producto por su Id")
+    @GetMapping("/fechasnodisponibles")
+    public ResponseEntity<FechasOcupadasDTO> fechasNoDisponibles(@RequestParam Long id) throws NoEncontradoException {
+
+        return new ResponseEntity<>(productoService.fechasOcupadas(id), HttpStatus.OK);
     }
 
 //    @Operation(summary = "Listar productos filtrados por ciudad")

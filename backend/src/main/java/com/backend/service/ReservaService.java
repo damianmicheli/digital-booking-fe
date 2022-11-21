@@ -1,5 +1,6 @@
 package com.backend.service;
 
+import com.backend.dto.FechasOcupadasDTO;
 import com.backend.dto.ProductoDTO;
 import com.backend.dto.ReservaDTO;
 import com.backend.entity.Producto;
@@ -13,6 +14,7 @@ import org.springframework.stereotype.Service;
 import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 public class ReservaService implements IReservaService {
@@ -41,10 +43,10 @@ public class ReservaService implements IReservaService {
         ProductoDTO productoDTOEncontrado = productoService.buscar(producto.getId());
         //Verifico que las fechas existan
         if(fechaInicio == null) {
-            throw new DatosIncorrectosException("No se ingreso una fecha valida");
+            throw new DatosIncorrectosException("No se ingreso una fecha de inicio valida");
         }
         if(fechaFin == null) {
-            throw new DatosIncorrectosException("No se ingreso una fecha valida");
+            throw new DatosIncorrectosException("No se ingreso una fecha de fin valida");
         }
 
         //Verifico que la fecha no sea anterior a ahora
@@ -54,17 +56,29 @@ public class ReservaService implements IReservaService {
 
         //TODO Verifico que el producto no este reservado en esa fecha
 
-        if(productoDTOEncontrado == null) {throw new NoEncontradoException("El producto no fue enconstrado");}
+        if(!esRangoValido(fechaInicio, fechaFin, fechasOcupadas(producto.getId()) )){
 
-            Reserva reserva = mapper.convertValue(reservaDTO, Reserva.class);
+            throw new DatosIncorrectosException("El producto posee dias reservados en ese intervalo");
 
-            Reserva reservaGuardado = reservaRepository.save(reserva);
+        }
 
-            ReservaDTO reservaDTOGuardado = mapper.convertValue(reservaGuardado, ReservaDTO.class);
+        if(productoDTOEncontrado == null) {
 
-            logger.info("Se creo la reserva : " + reservaDTOGuardado);
+            throw new NoEncontradoException("El producto no fue enconstrado");
 
-            return reservaDTOGuardado;    }
+        }
+
+        Reserva reserva = mapper.convertValue(reservaDTO, Reserva.class);
+
+        Reserva reservaGuardado = reservaRepository.save(reserva);
+
+        ReservaDTO reservaDTOGuardado = mapper.convertValue(reservaGuardado, ReservaDTO.class);
+
+        logger.info("Se creo la reserva : " + reservaDTOGuardado);
+
+        return reservaDTOGuardado;
+
+    }
 
     @Override
     public List<ReservaDTO> findByProductoId(Long productoId) throws NoEncontradoException {
@@ -80,6 +94,43 @@ public class ReservaService implements IReservaService {
 
         return reservasDTO;
 
+    }
+
+    private List<LocalDate> fechasOcupadas(Long productoId) {
+
+        List<Reserva> reservas = reservaRepository.findByProductoId(productoId);
+        List<LocalDate> fechas = new ArrayList<>();
+
+        for (Reserva reserva : reservas) {
+
+            LocalDate in = reserva.getFecha_inicial_reserva();
+            LocalDate out = reserva.getFecha_final_reserva();
+            LocalDate actual = in;
+
+            while (actual.isBefore(out) || actual.isEqual(out)) {
+                fechas.add(actual);
+                actual = actual.plusDays(1L);
+            }
+
+        }
+
+
+        logger.info("Se listaron las fechas ocupadas del producto con id: " + productoId);
+
+        return fechas;
+    }
+
+    private boolean esRangoValido (LocalDate fechaInicio, LocalDate fechaFin, List<LocalDate> fechasOcupadas) {
+        boolean valido = true;
+
+        LocalDate fechaActual;
+
+        while (valido && !fechasOcupadas.isEmpty()){
+            fechaActual = fechasOcupadas.remove(0);
+            valido = fechaActual.isBefore(fechaInicio) || fechaActual.isAfter(fechaFin);
+        }
+
+        return valido;
     }
 }
 

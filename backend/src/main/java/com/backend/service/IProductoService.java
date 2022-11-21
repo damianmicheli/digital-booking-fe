@@ -1,6 +1,8 @@
 package com.backend.service;
 
 import java.util.List;
+
+import com.backend.dto.FechasOcupadasDTO;
 import com.backend.dto.ProductoDTO;
 public interface IProductoService {
 
@@ -15,4 +17,6 @@ public interface IProductoService {
     List<ProductoDTO> listarPorCategoria(Long idCategoria);
 
     List<ProductoDTO> listarRandom();
+
+    FechasOcupadasDTO fechasOcupadas(Long id) throws NoEncontradoException;
 }

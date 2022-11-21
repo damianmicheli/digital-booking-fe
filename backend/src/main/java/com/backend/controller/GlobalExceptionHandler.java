@@ -1,6 +1,7 @@
 package com.backend.controller;
 
 import com.backend.service.ConflictoException;
+import com.backend.service.DatosIncorrectosException;
 import com.backend.service.NoEncontradoException;
 import com.backend.util.Jsons;
 import org.apache.log4j.Logger;
@@ -36,6 +37,16 @@ public class GlobalExceptionHandler {
         logger.error(mensajeError);
 
         return new ResponseEntity<>(Jsons.asJsonString(mensajeError), HttpStatus.CONFLICT);
+    }
+
+    @ExceptionHandler(DatosIncorrectosException.class)
+    public ResponseEntity<?> handleDatosIncorrectosException(DatosIncorrectosException ex) {
+
+        String mensajeError = ex.getMessage();
+
+        logger.error(mensajeError);
+
+        return new ResponseEntity<>(Jsons.asJsonString(mensajeError), HttpStatus.BAD_REQUEST);
     }
 
     @ExceptionHandler(java.time.format.DateTimeParseException.class)
