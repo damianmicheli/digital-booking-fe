@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect} from "react";
 
 import HeaderProduct from "./content/HeaderProduct";
 import LocationProduct from "./content/LocationProduct";
@@ -11,14 +11,13 @@ import useFetch from "../../hooks/useFetch";
 import { useParams } from "react-router";
 import GalleryContainer from "../gallery/GalleryContainer";
 
+import styles from "./product.module.css";
+
 import SocialMediaShare from "./content/SocialMediaShare";
 /* import Icon from "../global/Icon";
 import { faHeart as faSolideHeart } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons"; */
-
-import styles from "./product.module.css";
 /* import Button from "../global/Button"; */
-
 /* import FavContext from "../../context/FavContext"; */
 
 const Product = () => {
@@ -28,6 +27,7 @@ const Product = () => {
   const idNumber = Number(id);
 
   const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`);
+  
 
   const nombre = data && data.nombre;
   const titulo = data && data.titulo;

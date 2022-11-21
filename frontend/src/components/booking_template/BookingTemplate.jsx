@@ -1,4 +1,4 @@
-import React, {useState} from "react";
+import React from "react";
 import styles from "./bookingTemplate.module.css";
 
 /* import useFetch from "../../hooks/useFetch"; */
@@ -19,17 +19,16 @@ const BookingTemplate = () => {
   const [disabledDates] = useFetch(`http://localhost:8080/productos/fechasnodisponibles?id=${id}`)
 
   const [bookings] = useFetch(`http://localhost:8080/reservas/producto/${id}`)
- 
-  /* 
-  const [data] = useFetch(`http://localhost:8080/productos/${id}`);
+
+  const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`); 
+
 
   const nombre = data && data.nombre;
-  const categoria = data && data.categoria.titulo.toUpperCase(); */
-
+  const categoria = data && data.categoria.titulo.toUpperCase();
   return (
     <>
       <div className={styles.title}>
-        <HeaderProduct category={"categoria"} title={"nombre"} />
+        <HeaderProduct category={categoria} title={nombre} />
       </div>
       <div className={styles.bookingTemplate}>
         <div className="container">

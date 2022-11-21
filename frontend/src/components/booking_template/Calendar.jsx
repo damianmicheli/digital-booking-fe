@@ -1,7 +1,5 @@
 import React, { useState } from "react";
 
-import styles from "./calendar.module.css";
-
 //date-range
 import { DateRange } from "react-date-range";
 import format from "date-fns/format";
@@ -20,8 +18,8 @@ const Calendar = ({months, bookings}) => {
   ]);
 
   return (
-    <div className={styles.calendarContainer}>
-      <h2>Seleccioná tu fecha de reserva</h2>
+    <div>
+      <h2 className="heading2">Seleccioná tu fecha de reserva</h2>
       <DateRange
         onChange={(item) => setRange([item.selection])}
         moveRangeOnFirstSelection={false}
@@ -29,7 +27,6 @@ const Calendar = ({months, bookings}) => {
         rangeColors={["#607d8b"]}
         months={months}
         direction="horizontal"
-        className={styles.calendarElement}
         minDate={new Date()}
         monthDisplayFormat={"MMMM yyyy"}
         disabledDates={bookings}

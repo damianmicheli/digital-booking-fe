@@ -2,14 +2,31 @@ import React, { useState } from "react";
 import Calendar from "./Calendar";
 import styles from "./booking.module.css";
 
+import useFetch from "../../hooks/useFetch";
+import { useParams } from "react-router";
+
 import useMediaQuery from "../../hooks/useMediaQuery";
 import Button from "../global/Button";
 
 const BookingCalendar = () => {
-  const isMobile = useMediaQuery(624);
-  const [date, setDate] = useState(new Date());
 
-  const [booking1, setBooking1] = useState([ new Date(2022, 10, 25),new Date(2022, 10, 26),new Date(2022, 10, 27), new Date(2022, 11, 10),  new Date(2022, 11, 11),  new Date(2022, 11, 12),  new Date(2022, 11, 13),  new Date(2022, 11, 14),  new Date(2022, 11, 15), ])
+const isMobile = useMediaQuery(624);  
+
+const { id } = useParams();
+
+const [disabledDates] = useFetch(`http://localhost:8080/productos/fechasnodisponibles?id=${id}`)
+
+console.log(disabledDates);
+
+for (let date in disabledDates){
+  console.log(disabledDates[date]);
+ /*  setBooking1(current => [...current, 'Carl']) */
+ 
+}
+
+  const [booking1, setBooking1] = useState([ [2022,11,25] ])
+
+  console.log(booking1);
 
   return (
     <>
