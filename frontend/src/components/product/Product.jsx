@@ -1,31 +1,29 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect } from "react";
+import { useParams } from "react-router";
+import useFetch from "../../hooks/useFetch";
 
 import HeaderProduct from "./content/HeaderProduct";
 import LocationProduct from "./content/LocationProduct";
 import DescriptionProduct from "./content/DescriptionProduct";
 import Features from "./content/Features";
 import Politics from "./content/Politics";
-import BookingCalendar from "../booking_calendar/BookingCalendar";
-
-import useFetch from "../../hooks/useFetch";
-import { useParams } from "react-router";
+import BookingCalendar from "./content/booking_calendar/BookingCalendar";
 import GalleryContainer from "../gallery/GalleryContainer";
-
 import SocialMediaShare from "./content/SocialMediaShare";
-import Icon from "../global/Icon";
-import { faHeart as faSolideHeart } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
 
-import styles from "./product.module.css";
 import Button from "../global/Button";
+import Icon from "../global/Icon";
+import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
+// import { faHeart as faSolideHeart } from "@fortawesome/free-solid-svg-icons";
+import styles from "./product.module.css";
 
-import FavContext from "../../context/FavContext";
+//import FavContext from "../../context/FavContext";
 
 const Product = () => {
 
   const { id } = useParams();
 
-  const idNumber = Number(id);
+  //const idNumber = Number(id);
 
   const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`);
 

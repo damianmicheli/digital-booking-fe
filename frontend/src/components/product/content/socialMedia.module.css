@@ -12,8 +12,8 @@
 }
 
 .icon {
-    color: var(--color-2-opacity);
-    font-size: 2em;
+    color: var(--color-3);
+    font-size: 1.6em;
 }
 
 .textContainer {
