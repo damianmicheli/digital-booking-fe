@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useContext } from "react";
 
 import HeaderProduct from "./content/HeaderProduct";
 import LocationProduct from "./content/LocationProduct";
@@ -19,7 +19,7 @@ import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
 import styles from "./product.module.css";
 import Button from "../global/Button";
 
-import useFavorites from "../../hooks/useFavorites";
+import FavContext from "../../context/FavContext";
 
 const Product = () => {
 
@@ -28,6 +28,8 @@ const Product = () => {
   const idNumber = Number(id);
 
   const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`);
+
+  console.log(data);
 
   const nombre = data && data.nombre;
   const titulo = data && data.titulo;
@@ -46,10 +48,14 @@ const Product = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [favorites, toggleItemInLocalStorage] = useFavorites();
-  
-  const isFavorite = favorites.includes(idNumber);
+ /*  const { favorites} = useContext(FavContext); */
 
+/*   useEffect(() => {
+    localStorage.setItem("favorites", JSON.stringify(favorites));
+  }, [favorites]);
+
+  const isFavorite = favorites.includes(idNumber); */
+      
   return (
     <div className={styles.containerProduct}>
       <HeaderProduct category={categoria} title={nombre} />
@@ -57,13 +63,13 @@ const Product = () => {
       <div className={styles.socialMediaContainer}>
         <SocialMediaShare url={`http://www.digitalbooking.ar/producto/${id}`} />
         <Button
-          event={toggleItemInLocalStorage(idNumber)}
+          // event={toggleItemInLocalStorage(idNumber, isFavorite)}
           css="btnFav"
           text={
-            <Icon
+            {/* <Icon
               css="iconFavDetail"
               icon={isFavorite ? faSolideHeart : faRegularHeart}
-            />
+            /> */}
           }
         />
       </div>

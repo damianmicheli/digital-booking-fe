@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import Calendar from "react-calendar";
- import './Calendar.css';
+import Calendar from "./Calendar";
 import styles from "./booking.module.css";
 
 import useMediaQuery from "../../hooks/useMediaQuery";
 import Button from "../global/Button";
 
-const BookingCalendar = ({ monhts, bookings }) => {
+const BookingCalendar = () => {
   const isMobile = useMediaQuery(624);
   const [date, setDate] = useState(new Date());
+
+  const [booking1, setBooking1] = useState([ new Date(2022, 10, 25),new Date(2022, 10, 26),new Date(2022, 10, 27), new Date(2022, 11, 10),  new Date(2022, 11, 11),  new Date(2022, 11, 12),  new Date(2022, 11, 13),  new Date(2022, 11, 14),  new Date(2022, 11, 15), ])
 
   return (
     <>
@@ -18,13 +19,13 @@ const BookingCalendar = ({ monhts, bookings }) => {
           <div className={styles.calendarPButton}>
             <div className={styles.calendar}>
               {isMobile ? (
-                <Calendar />
+                <Calendar months={1} bookings={booking1}/>
               ) : (
-                <Calendar activeStartDate={date} showDoubleView={true} />
+                <Calendar months={2} bookings={booking1}/>
               )}
             </div>
             <div className={styles.pButton}>
-              <p>
+              <p> 
                 Agregá tus fechas exactas de viaje para obtener precios exactos
               </p>
               <Button css="button4" text="Iniciar reserva"></Button>

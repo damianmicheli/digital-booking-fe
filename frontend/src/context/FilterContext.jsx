@@ -1,8 +1,8 @@
 import { createContext, useState } from "react";
 
-export const FilterContext = createContext();
+const FilterContext = createContext();
 
-export const FilterContextProvider = ({ children }) => {
+const FilterContextProvider = ({ children }) => {
 
   const [selectedCategory, setSelectedCategory] = useState({
     title: null
@@ -20,7 +20,19 @@ export const FilterContextProvider = ({ children }) => {
       setValuesForm({
         city: null
       });
-    }
+    },
+    handleClearCategory: () => {
+      setSelectedCategory({
+        title: null,
+        id: null
+      });
+    },
+    handleClearCity: () => {
+      setValuesForm({
+        city: null,
+        id: null
+      });
+    },
   };
 
   return (
@@ -37,3 +49,7 @@ export const FilterContextProvider = ({ children }) => {
     </FilterContext.Provider>
   );
 };
+
+
+export { FilterContextProvider };
+export default FilterContext;

@@ -1,7 +1,7 @@
 import React, { useState, useRef, useEffect } from "react";
 
 //styles
-import styles from "./datepickerrange.module.css";
+import styles from "./calendar.module.css";
 
 //fontawesome
 import Icon from "../../global/Icon";
@@ -12,10 +12,11 @@ import { DateRange } from "react-date-range";
 import format from "date-fns/format";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
+import { es } from "react-date-range/dist/locale";
 
 import useMediaQuery from "../../../hooks/useMediaQuery";
 
-const DatePickerRange = () => {
+const Calendar = () => {
   // date state
   const [range, setRange] = useState([
     {
@@ -85,6 +86,8 @@ const DatePickerRange = () => {
                 direction="horizontal"
                 className={styles.calendarElement}
                 minDate={new Date()}
+                locale={es}
+                showDateDisplay={false}
               />
             )}
           </div>
@@ -127,4 +130,4 @@ const DatePickerRange = () => {
   );
 };
 
-export default DatePickerRange;
+export default Calendar;
