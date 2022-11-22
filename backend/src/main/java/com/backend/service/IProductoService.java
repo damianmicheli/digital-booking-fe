@@ -1,5 +1,6 @@
 package com.backend.service;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import com.backend.dto.FechasOcupadasDTO;
@@ -19,4 +20,8 @@ public interface IProductoService {
     List<ProductoDTO> listarRandom();
 
     FechasOcupadasDTO fechasOcupadas(Long id) throws NoEncontradoException;
+
+    List<ProductoDTO> listarPorCiudadYFechas(LocalDate inicio, LocalDate fin, Long idCiudad) throws NoEncontradoException;
+
+    List<ProductoDTO> listarPorFechas(LocalDate inicio, LocalDate fin) throws NoEncontradoException;
 }

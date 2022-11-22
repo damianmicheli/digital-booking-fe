@@ -1,7 +1,9 @@
 package com.backend.service;
 
+import com.backend.dto.FechasOcupadasDTO;
 import com.backend.dto.ReservaDTO;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface IReservaService {
@@ -9,4 +11,7 @@ public interface IReservaService {
     ReservaDTO guardar (ReservaDTO reservaDTO) throws NoEncontradoException, DatosIncorrectosException;
 
     List<ReservaDTO> findByProductoId(Long productoId) throws NoEncontradoException;
+
+    FechasOcupadasDTO fechasOcupadas(Long productoId);
+
 }

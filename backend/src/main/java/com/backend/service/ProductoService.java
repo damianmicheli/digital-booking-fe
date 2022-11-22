@@ -6,6 +6,7 @@ import com.backend.entity.*;
 import com.backend.repository.IProductoRepository;
 
 import com.backend.repository.IReservaRepository;
+import com.backend.util.Utiles;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -163,26 +164,57 @@ public class ProductoService implements IProductoService {
 
     }
 
-    public List<ProductoDTO> listarPorFechas(LocalDate inicio, LocalDate fin){
 
-        List<Producto> productos = productoRepository.findAll();
+
+    @Override
+    public List<ProductoDTO> listarPorCiudadYFechas(LocalDate inicio, LocalDate fin, Long idCiudad) throws NoEncontradoException {
+
+        Ciudad ciudad = new Ciudad();
+        ciudad.setId(idCiudad);
+
+        List<Producto> productos = productoRepository.findByCiudad(ciudad);
+
         List<ProductoDTO> productosDTO = new ArrayList<>();
 
-        List<Producto> productosValidos = new ArrayList<>();
-
         for (Producto producto : productos){
-            productosDTO.add(mapper.convertValue(producto, ProductoDTO.class));
+            if (esValido(inicio, fin, producto)) {
+                productosDTO.add(mapper.convertValue(producto, ProductoDTO.class));
+            }
         }
 
-
-        for (Producto producto : productosValidos){
-            productosDTO.add(mapper.convertValue(producto, ProductoDTO.class));
-        }
 
         logger.info("Se listaron todos los productos disponibles en las fechas indicadas.");
 
         return productosDTO;
 
+
+    }
+
+
+    @Override
+    public List<ProductoDTO> listarPorFechas(LocalDate inicio, LocalDate fin) throws NoEncontradoException {
+
+        List<Producto> productos = productoRepository.findAll();
+
+        List<ProductoDTO> productosDTO = new ArrayList<>();
+
+        for (Producto producto : productos){
+            if (esValido(inicio, fin, producto)) {
+                productosDTO.add(mapper.convertValue(producto, ProductoDTO.class));
+            }
+        }
+
+
+        logger.info("Se listaron todos los productos disponibles en las fechas indicadas.");
+
+        return productosDTO;
+
+
+    }
+
+    private boolean esValido(LocalDate in, LocalDate out, Producto producto) throws NoEncontradoException {
+
+        return Utiles.esRangoValido(in, out, fechasOcupadas(producto.getId()));
 
     }
 

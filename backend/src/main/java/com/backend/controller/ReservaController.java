@@ -25,13 +25,14 @@ public class ReservaController {
     @PostMapping
     public ResponseEntity<ReservaDTO> guardar(@RequestBody ReservaDTO reservaDTO) throws ConflictoException, NoEncontradoException, DatosIncorrectosException {
 
-        return new ResponseEntity<>(reservaService.guardar(reservaDTO), HttpStatus.OK);
+        return new ResponseEntity<>(reservaService.guardar(reservaDTO), HttpStatus.CREATED);
     }
 
     @Operation(summary = "Listar reservas por Producto")
-    @GetMapping("/producto/{productoId}")
-    public ResponseEntity<List<ReservaDTO>> listarPorProducto(@PathVariable Long productoId) throws NoEncontradoException {
-        return new ResponseEntity<>(reservaService.findByProductoId(productoId), HttpStatus.OK);
+    @GetMapping
+    public ResponseEntity<List<ReservaDTO>> listarPorProducto(@RequestParam Long producto) throws NoEncontradoException {
+        return new ResponseEntity<>(reservaService.findByProductoId(producto), HttpStatus.OK);
     }
 
 }
+
