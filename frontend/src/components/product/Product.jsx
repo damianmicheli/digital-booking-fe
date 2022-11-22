@@ -11,9 +11,9 @@ import BookingCalendar from "./content/booking_calendar/BookingCalendar";
 import GalleryContainer from "../gallery/GalleryContainer";
 import SocialMediaShare from "./content/SocialMediaShare";
 
-import Button from "../global/Button";
+/* import Button from "../global/Button";
 import Icon from "../global/Icon";
-import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
+import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons"; */
 // import { faHeart as faSolideHeart } from "@fortawesome/free-solid-svg-icons";
 import styles from "./product.module.css";
 
@@ -55,7 +55,7 @@ const Product = () => {
       
   return (
     <div className={styles.containerProduct}>
-      <HeaderProduct category={categoria} title={nombre} />
+      <HeaderProduct category={categoria} title={nombre} path={"/"}/>
       <LocationProduct direction={direccion} city={ciudad} country={pais} />
       <div className={styles.socialMediaContainer}>
         <SocialMediaShare url={`http://www.digitalbooking.ar/producto/${id}`} />

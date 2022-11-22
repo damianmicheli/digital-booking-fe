@@ -36,7 +36,7 @@ const BookingTemplate = () => {
   return (
     <>
       <div className={styles.title}>
-        <HeaderProduct category={categoria} title={nombre} />
+        <HeaderProduct category={categoria} title={nombre} path={`/producto/${id}`} />
       </div>
       <div className={styles.bookingTemplate}>
         <div className="container">

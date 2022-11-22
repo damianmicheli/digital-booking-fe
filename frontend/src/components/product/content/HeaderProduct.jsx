@@ -5,7 +5,7 @@ import arrowBackHome from '../../../assets/img/arrowBackHome.png';
 
 import { Link } from 'react-router-dom';
 
-const HeaderProduct = ({ category, title }) => {
+const HeaderProduct = ({ category, title, path }) => {
   return (
     <div className={styles.container}>
         <div className={styles.titleCategory}>
@@ -13,7 +13,7 @@ const HeaderProduct = ({ category, title }) => {
             <h1 className={styles.title}>{title}</h1>
         </div>
         <div className={styles.backHomeBtn}>
-            <Link to={"/"}>
+            <Link to={path}>
                 <img src={arrowBackHome} className={styles.arrowBackHome} alt="arrow-back-home" />
             </Link>
         </div>

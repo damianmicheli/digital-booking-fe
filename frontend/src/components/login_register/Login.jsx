@@ -15,22 +15,11 @@ const validateForm = (form) => {
   let errors = {};
   let isRequired = "Este campo es obligatorio";
 
-  const user1 = {
-    id: 1,
-    fName: "Gloria",
-    surname: "Lunar",
-    email: "glorialunar@gmail.com",
-    password: "theghost",
-  };
-
   const password = form.passwordLogin;
 
   //Validación de email
   if (!form.emailLogin.trim()) {
     errors.emailLogin = isRequired;
-  } else if (!form.emailLogin.match(user1.email)) {
-    errors.emailLogin =
-      "Por favor vuelva a intentarlo, sus credenciales son inválidas";
   } else {
     errors.emailLogin = "";
   }
@@ -38,25 +27,19 @@ const validateForm = (form) => {
   //Validación de contraseña
   if (!password) {
     errors.passwordLogin = isRequired;
-  } else if (!password.match(user1.password)) {
-    errors.passwordLogin =
-      "Por favor vuelva a intentarlo, sus credenciales son inválidas";
   } else {
     errors.passwordLogin = "";
   }
-
   return errors;
-};
+}; 
 
-const message = "Su ingreso fue exitoso";
+
 
 const Login = () => {
   
-
   const { form, errors, handleChange, handleBlur, handleSubmit } = useForm(
     initialForm,
-    validateForm,
-    message
+    validateForm
   );
 
   const [showPass, setShowPass] = useState(false);
@@ -64,10 +47,8 @@ const Login = () => {
     setShowPass((prevState) => !prevState);
   };
 
-
   return (
     <>
-      {/* <Buscador /> */}
       <div className="bgGray flex">
         <p className="headings heading1">Iniciar sesión</p>
         <div>

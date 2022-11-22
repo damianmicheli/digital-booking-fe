@@ -7,15 +7,18 @@ const initialAuth = null;
 const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(initialAuth);
 
-  const handleAuth = (e) => {
-    if (auth) {
-      setAuth(null);
-    } else {
+  
+  const handleAuth = (jwt) => {
+    if (jwt) {
+      localStorage.setItem("jwt", JSON.stringify(jwt));
       setAuth(true);
+    } else {
+      
+      setAuth(null);
     }
   };
 
-  const data = { auth, handleAuth };
+  const data = { auth, handleAuth};
 
   return <AuthContext.Provider value={data}>{children}</AuthContext.Provider>;
 };
