@@ -1,6 +1,5 @@
 package com.backend.controller;
 
-import com.backend.dto.CategoriaDTO;
 import com.backend.dto.CiudadDTO;
 import com.backend.service.ICiudadService;
 import io.swagger.v3.oas.annotations.Operation;

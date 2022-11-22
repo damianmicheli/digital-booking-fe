@@ -1,15 +1,12 @@
 package com.backend.entity;
 
-import com.backend.dto.CaracteristicaDTO;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.ArrayList;
-import java.util.HashSet;
 import java.util.List;
-import java.util.Set;
 
 @Getter @Setter
 @Entity
@@ -26,16 +23,8 @@ public class Caracteristica {
     @JsonIgnore
     public List<Producto> productos = new ArrayList<>();
 
-    //private List<Producto> producto;
-
-
-
-
-
     public Caracteristica() {
-
     }
-
 
     public Caracteristica(Long id, String nombre, String icono) {
         this.id = id;

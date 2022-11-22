@@ -1,7 +1,6 @@
 package com.backend.controller;
 
 import com.backend.dto.CategoriaDTO;
-import com.backend.service.CategoriaService;
 import com.backend.service.ConflictoException;
 import com.backend.service.ICategoriaService;
 import com.backend.service.NoEncontradoException;
@@ -34,7 +33,7 @@ public class CategoriaController {
     @PostMapping
     public ResponseEntity<CategoriaDTO> guardar(@RequestBody CategoriaDTO categoriaDTO) throws ConflictoException {
 
-        return new ResponseEntity<>(categoriaService.guardar(categoriaDTO), HttpStatus.OK);
+        return new ResponseEntity<>(categoriaService.guardar(categoriaDTO), HttpStatus.CREATED);
 
     }
 
@@ -63,27 +62,6 @@ public class CategoriaController {
         return new ResponseEntity<>(mensajeJSON, HttpStatus.OK);
 
     }
-
-
-
-//    @Operation(summary = "Eliminar el odontólogo con el Id indicado")
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<String> eliminar(@PathVariable Long id) throws NoEncontradoException {
-//
-//        categoriaService.eliminar(id);
-//        String mensaje = "El odontólogo con ID " + id + " se eliminó correctamente.";
-//        String mensajeJSON = Jsons.asJsonString(mensaje);
-//        return new ResponseEntity<>(mensajeJSON, HttpStatus.OK);
-//
-//    }
-//
-//    @Operation(summary = "Actualizar los datos de un odontólogo")
-//    @PutMapping
-//    public ResponseEntity<CategoriaDTO> actualizar(@RequestBody CategoriaDTO categoriaDTO) throws NoEncontradoException, ConflictoException {
-//
-//        return new ResponseEntity<>(categoriaService.actualizar(categoriaDTO), HttpStatus.OK);
-//
-//    }
 
 }
 

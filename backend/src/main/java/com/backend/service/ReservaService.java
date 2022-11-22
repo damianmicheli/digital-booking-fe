@@ -1,7 +1,6 @@
 package com.backend.service;
 
 import com.backend.dto.FechasOcupadasDTO;
-import com.backend.dto.ProductoDTO;
 import com.backend.dto.ReservaDTO;
 import com.backend.entity.Producto;
 import com.backend.entity.Reserva;
@@ -64,12 +63,10 @@ public class ReservaService implements IReservaService {
             throw new DatosIncorrectosException("La fecha de la reserva no puede ser anterior a el dia de hoy.");
         }
 
-        //TODO Verifico que el producto no este reservado en esa fecha
+        //Verifico que el producto no este reservado en esa fecha
 
         if(!Utiles.esRangoValido(fechaInicio, fechaFin, fechasOcupadas(producto.getId()) )){
-
-            throw new DatosIncorrectosException("El producto posee dias reservados en ese intervalo");
-
+            throw new DatosIncorrectosException("El producto posee dias reservados en el intervalo especificado");
         }
 
         Reserva reserva = mapper.convertValue(reservaDTO, Reserva.class);
@@ -89,13 +86,11 @@ public class ReservaService implements IReservaService {
 
         List<Reserva> reservas = reservaRepository.findByProductoId(productoId);
 
-
-
         List<ReservaDTO> reservasDTO = new ArrayList<>();
         for(Reserva reserva : reservas){
             reservasDTO.add(mapper.convertValue(reserva, ReservaDTO.class));
         }
-        logger.info("Se listaron todas las reservas para el prodcuto con ID " + productoId);
+        logger.info("Se listaron todas las reservas para el producto con ID " + productoId);
 
         return reservasDTO;
 

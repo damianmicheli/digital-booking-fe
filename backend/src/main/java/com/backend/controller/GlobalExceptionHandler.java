@@ -7,7 +7,6 @@ import com.backend.util.Jsons;
 import org.apache.log4j.Logger;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.BadCredentialsException;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -75,9 +74,7 @@ public class GlobalExceptionHandler {
 
         String mensajeError = ex.getMessage();
 
-        String mensajeErrorCorrecto = mensajeError.replace('\'','`');
-
-        logger.error(mensajeErrorCorrecto);
+        logger.error(mensajeError);
 
         return new ResponseEntity<>(Jsons.asJsonString(mensajeError), HttpStatus.INTERNAL_SERVER_ERROR);
     }

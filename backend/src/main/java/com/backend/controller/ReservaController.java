@@ -1,6 +1,5 @@
 package com.backend.controller;
 
-import com.backend.dto.CategoriaDTO;
 import com.backend.dto.ReservaDTO;
 import com.backend.service.ConflictoException;
 import com.backend.service.DatosIncorrectosException;

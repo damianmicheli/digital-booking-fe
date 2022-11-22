@@ -30,7 +30,6 @@ public class Producto {
 
     private String politica_de_cancelacion;
 
-    //@ManyToMany(targetEntity = Caracteristica.class,cascade=CascadeType.REMOVE)
     @ManyToMany(cascade=CascadeType.REMOVE)
     @JoinTable(name = "producto_caracteristica",
             joinColumns = @JoinColumn(name = "producto_id"),

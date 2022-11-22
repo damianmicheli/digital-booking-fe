@@ -7,6 +7,7 @@ import com.backend.repository.IUsuarioRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
+import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
@@ -33,7 +34,7 @@ public class AuthenticationService implements UserDetailsService {
             autorizaciones.add(autorizacion);
         }
 
-        org.springframework.security.core.userdetails.User userDetail = new org.springframework.security.core.userdetails.User(usuario.get().getNombre(),"{noop}" + usuario.get().getPassword(),true, true, true,true, autorizaciones );
+        User userDetail = new User(usuario.get().getNombre(),"{noop}" + usuario.get().getPassword(),true, true, true,true, autorizaciones );
 
         return userDetail;
     }
