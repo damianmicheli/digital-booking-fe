@@ -25,7 +25,7 @@ public class AuthenticationService implements UserDetailsService {
 
     @Override
     public UserDetails loadUserByUsername(String userName) throws UsernameNotFoundException {
-        Optional<Usuario> usuario = usuarioRepository.findUsuarioByNombre(userName);
+        Optional<Usuario> usuario = usuarioRepository.findUsuarioByEmail(userName);
 
         Set<GrantedAuthority> autorizaciones = new HashSet<>();
         GrantedAuthority autorizacion = null;
@@ -34,7 +34,7 @@ public class AuthenticationService implements UserDetailsService {
             autorizaciones.add(autorizacion);
         }
 
-        User userDetail = new User(usuario.get().getNombre(),"{noop}" + usuario.get().getPassword(),true, true, true,true, autorizaciones );
+        User userDetail = new User(usuario.get().getEmail(),"{noop}" + usuario.get().getPassword(),true, true, true,true, autorizaciones );
 
         return userDetail;
     }
