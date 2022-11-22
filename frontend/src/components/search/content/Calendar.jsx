@@ -16,7 +16,7 @@ import { es } from "react-date-range/dist/locale";
 
 import useMediaQuery from "../../../hooks/useMediaQuery";
 
-const Calendar = () => {
+const Calendar = ({ startDate, endDate, setReservationDate }) => {
   // date state
   const [range, setRange] = useState([
     {
@@ -77,7 +77,13 @@ const Calendar = () => {
           <div ref={refOne}>
             {open && (
               <DateRange
-                onChange={(item) => setRange([item.selection])}
+                onChange={(item) => {
+                  setRange([item.selection])
+                  setReservationDate({
+                    startDate: item.selection.startDate,
+                    endDate: item.selection.startDate
+                  })
+                }}
                 editableDateInputs={true}
                 moveRangeOnFirstSelection={false}
                 ranges={range}
@@ -88,6 +94,8 @@ const Calendar = () => {
                 minDate={new Date()}
                 locale={es}
                 showDateDisplay={false}
+                startDate={startDate}
+                endDate={endDate}
               />
             )}
           </div>
@@ -98,9 +106,9 @@ const Calendar = () => {
         <div className={`${styles.calendarWrap} ${styles.datePicker}`}>
           <Icon css={styles.icon} icon={faCalendar} />
           <input
-            value={`${format(range[0].startDate, "dd/MM/yyyy")} - ${format(
+            value={`${format(range[0].startDate, "yyyy/MM/dd")} - ${format(
               range[0].endDate,
-              "dd/MM/yyyy"
+              "yyyy/MM/dd"
             )}`}
             readOnly
             className={styles.inputBox}

@@ -1,5 +1,5 @@
 import React, { useState, useContext } from "react";
-import FilterContext  from "../../context/FilterContext";
+import FilterContext from "../../context/FilterContext";
 
 //Styles
 import styles from "./buscador.module.css";
@@ -15,6 +15,13 @@ const Search = () => {
   const [idCity, setIdCity] = useState(null);
 
   const { setValuesForm, setSelectedCategory } = useContext(FilterContext);
+
+  const [reservationDate, setReservationDate] = useState({
+    startDate: null,
+    endDate: null,
+  });
+
+  const { startDate, endDate } = reservationDate;
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -38,15 +45,14 @@ const Search = () => {
         <div className={styles.title}>
           <h1>Busca ofertas en hoteles, casas y mucho más</h1>
         </div>
-        <form onSubmit={(e) => {
-          selected === "¿A dónde vamos?" 
-          ?
-          e.preventDefault()
-          :
-          handleSubmit(e)}
-        } 
+        <form
+          onSubmit={(e) => {
+            selected === "¿A dónde vamos?"
+              ? e.preventDefault()
+              : handleSubmit(e);
+          }}
           className={styles.content}
-          >
+        >
           <div className={styles.select}>
             <Select
               selected={selected}
@@ -55,7 +61,11 @@ const Search = () => {
             />
           </div>
           <div className={styles.datepicker}>
-            <Calendar />
+            <Calendar
+              startDate={startDate}
+              endDate={endDate}
+              setReservationDate={setReservationDate}
+            />
           </div>
           <div className={styles.buttonContainer}>
             <Button css={styles.button} text="Buscar" />

@@ -16,7 +16,7 @@ const Calendar = ({months, bookings}) => {
       key: "selection",
     },
   ]);
-
+  
   return (
     <div>
       <h2 className="heading2">Seleccioná tu fecha de reserva</h2>
