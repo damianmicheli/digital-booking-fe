@@ -1,3 +1,7 @@
+.content{
+padding-top: 35px;
+}
+
 .divInputs {
   width: 80%;
   max-width: 346px;
@@ -48,6 +52,23 @@ cursor: pointer;
   right: 15px;
   }
 
+.loginRequired{
+  width: 80%;
+  max-width: 346px;
+  height: 60px;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: var(--color-4);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 60px;
+  text-align: center;
+  color: var(--color-3);
+}
+
+.iconError{
+  font-size: 20px;
+}
 
 @media only screen and (min-width: 991px) {
   .divInputs {

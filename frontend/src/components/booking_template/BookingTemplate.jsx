@@ -16,32 +16,38 @@ const BookingTemplate = () => {
 
   const isMobile = useMediaQuery(624);
 
-  const [disabledDates] = useFetch(`http://localhost:8080/productos/fechasnodisponibles?id=${id}`)
+  const [disabledDates] = useFetch(
+    `http://localhost:8080/productos/fechasnodisponibles?id=${id}`
+  );
 
-  const fechas = disabledDates && disabledDates.fechasNoDisponibles;     
+  const fechas = disabledDates && disabledDates.fechasNoDisponibles;
   let fechasInhabilitadas = [];
-  let newDate; 
-  fechas && fechas.map((array)=>{
-    newDate = new Date(array[0], array[1], array[2]);
-    return fechasInhabilitadas.push(newDate)   
-  })
+  let newDate;
+  fechas &&
+    fechas.map((array) => {
+      newDate = new Date(array[0], array[1], array[2]);
+      return fechasInhabilitadas.push(newDate);
+    });
 
-  const [bookings] = useFetch(`http://localhost:8080/reservas/producto/${id}`)
+  const [bookings] = useFetch(`http://localhost:8080/reservas/producto/${id}`);
 
-  const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`); 
-
+  const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`);
 
   const nombre = data && data.nombre;
   const categoria = data && data.categoria.titulo.toUpperCase();
   return (
     <>
       <div className={styles.title}>
-        <HeaderProduct category={categoria} title={nombre} path={`/producto/${id}`} />
+        <HeaderProduct
+          category={categoria}
+          title={nombre}
+          path={`/producto/${id}`}
+        />
       </div>
       <div className={styles.bookingTemplate}>
         <div className="container">
           <h2 className="heading2 color2 paddingTop">Completá tus datos</h2>
-          <form id="bookingForm" action="/" method="POST" >
+          <form id="bookingForm" action="/" method="POST">
             <div className={styles.content}>
               <div className={styles.contentLeft}>
                 <div className={styles.divInputs}>
@@ -85,15 +91,19 @@ const BookingTemplate = () => {
                     />
                   </div>
                 </div>
-                {isMobile ? (
-                <Calendar months={1} bookings={fechasInhabilitadas}/>
-              ) : (
-                <Calendar months={2} bookings={fechasInhabilitadas}/>
-              )}
-
+                <div className={styles.calendar}>
+                  <h2 className="heading2">Seleccioná tu fecha de reserva</h2>
+                  {isMobile ? (
+                    <Calendar months={1} bookings={fechasInhabilitadas} />
+                  ) : (
+                    <Calendar months={2} bookings={fechasInhabilitadas} />
+                  )}
+                </div>
               </div>
               <div className={styles.contentRight}>
-                <BookingDetail />
+                <div className={styles.detail}>
+                  <BookingDetail />
+                </div>
               </div>
             </div>
           </form>

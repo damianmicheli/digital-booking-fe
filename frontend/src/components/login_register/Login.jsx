@@ -2,9 +2,8 @@ import React, { useState } from "react";
 import styles from "./loginRegister.module.css";
 import Button from "../global/Button";
 import Icon from "../global/Icon";
-import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
+import { faEyeSlash, faEye, faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import useForm from "../../hooks/useForm";
-
 
 const initialForm = {
   emailLogin: "",
@@ -31,12 +30,9 @@ const validateForm = (form) => {
     errors.passwordLogin = "";
   }
   return errors;
-}; 
-
-
+};
 
 const Login = () => {
-  
   const { form, errors, handleChange, handleBlur, handleSubmit } = useForm(
     initialForm,
     validateForm
@@ -50,8 +46,11 @@ const Login = () => {
   return (
     <>
       <div className="bgGray flex">
-        <p className="headings heading1">Iniciar sesión</p>
-        <div>
+        <div className={styles.content}>
+          <div className={styles.loginRequired}>
+            <p><Icon icon={faCircleExclamation} css={styles.iconError} />  Para realizar una reserva necesitas estar logueado</p>
+          </div>
+          <p className="headings heading1">Iniciar sesión</p>
           <form id="loginForm" action="/" method="POST" onSubmit={handleSubmit}>
             <div className={styles.divInputs}>
               <div className={styles.groupForm}>
@@ -91,9 +90,9 @@ const Login = () => {
                   <p className={styles.pFormError}>{errors.passwordLogin}</p>
                 )}
               </div>
-
+            
               <div className={styles.groupForm}>
-                <Button css="buttonForm" text="Ingresar"/>
+                <Button css="buttonForm" text="Ingresar" />
                 <span className="text2 spanForm">
                   ¿Aún tienes una cuenta? <a href="/register">Registrate</a>
                 </span>
@@ -107,5 +106,3 @@ const Login = () => {
 };
 
 export default Login;
-
-

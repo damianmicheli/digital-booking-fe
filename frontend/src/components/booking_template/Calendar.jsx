@@ -18,8 +18,7 @@ const Calendar = ({months, bookings}) => {
   ]);
   
   return (
-    <div>
-      <h2 className="heading2">Seleccioná tu fecha de reserva</h2>
+      
       <DateRange
         onChange={(item) => setRange([item.selection])}
         moveRangeOnFirstSelection={false}
@@ -35,7 +34,7 @@ const Calendar = ({months, bookings}) => {
         showDateDisplay={false}
         locale={es}
       />
-    </div>
+   
   );
 };
 

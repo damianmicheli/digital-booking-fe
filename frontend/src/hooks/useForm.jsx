@@ -7,6 +7,8 @@ const useForm = (initialForm, validateForm) => {
   const [errors, setErrors] = useState({});
   const { handleAuth } = useContext(AuthContext);
 
+
+
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
@@ -25,7 +27,7 @@ const useForm = (initialForm, validateForm) => {
       .then((response) => {
         console.log(response);
         if (response.ok !== true) {
-          alert("Alguno de los datos es incorrecto.");
+          alert("Lamentablemente no ha podido iniciar sesión. Por favor intente más tarde");
         }
         return response.json();
       })
@@ -41,6 +43,8 @@ const useForm = (initialForm, validateForm) => {
         console.log(err);
       });
   }
+
+  
 
   const handleSubmit = (e) => {
 
@@ -65,6 +69,8 @@ const useForm = (initialForm, validateForm) => {
       console.log(errors);
       realizarLogin(settings);
       navigate("/");
+    }else{
+      return "Lamentablemente no ha podido iniciar sesión. Por favor intente más tarde";
     }     
   };
 
@@ -73,7 +79,7 @@ const useForm = (initialForm, validateForm) => {
     errors,
     handleChange,
     handleBlur,
-    handleSubmit,
+    handleSubmit
   };
 };
 
