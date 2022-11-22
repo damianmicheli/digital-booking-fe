@@ -51,6 +51,7 @@ const Search = () => {
     });
     let startDate = formatDate(reservationDate.startDate);
     let endDate = formatDate(reservationDate.endDate);
+    console.log(startDate, endDate);
   };
 
   const isMobile = useMediaQuery(768);
@@ -63,9 +64,7 @@ const Search = () => {
         </div>
         <form
           onSubmit={(e) => {
-            selected === "¿A dónde vamos?"
-              ? e.preventDefault()
-              : handleSubmit(e);
+            handleSubmit(e);
           }}
           className={styles.content}
         >

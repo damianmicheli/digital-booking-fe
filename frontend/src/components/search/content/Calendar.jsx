@@ -14,7 +14,7 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { es } from "react-date-range/dist/locale";
 
-const Calendar = ({ months, startDate, endDate, setReservationDate }) => {
+const Calendar = ({ months, startDate, endDate, setReservationDate}) => {
   // date state
   const [range, setRange] = useState([
     {

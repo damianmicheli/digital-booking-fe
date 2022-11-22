@@ -3,7 +3,7 @@ import React, { useContext } from "react";
 import Card from "./Card";
 import FilterContext from "../../context/FilterContext";
 import Icon from "../global/Icon";
-import { faTrashCan, faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import styles from "./cards.module.css";
 import { getDateFormat } from "../global/getDateFormat";
 
@@ -34,7 +34,9 @@ const Cards = ({ data }) => {
               />
             </span>
           )}
-          {valuesForm.city === null ? (
+          {valuesForm.city === null 
+          || valuesForm.city === "¿A dónde vamos?"
+          ? (
             ""
           ) : (
             <span className={styles.filterItem}>
@@ -46,11 +48,17 @@ const Cards = ({ data }) => {
               />
             </span>
           )}
-          {valuesForm.date === undefined ? (
+          {valuesForm.date === undefined 
+          ? (
             ""
           ) : (
             <span className={styles.filterItem}>
               {dateFormat}
+              <Icon
+                css={styles.iconDelete}
+                icon={faXmark}
+                event={filterHandlers.handleClearDate}
+              />
             </span>
           )}
         </div>

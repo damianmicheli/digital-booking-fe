@@ -28,10 +28,18 @@ const FilterContextProvider = ({ children }) => {
       });
     },
     handleClearCity: () => {
-      setValuesForm(() => {
+      setValuesForm((prevState) => {
         return {
+          ...prevState,
           city: null,
-          date: undefined
+        };
+      });
+    },
+    handleClearDate: () => {
+      setValuesForm((prevState) => {
+        return {
+          ...prevState,
+          date: undefined,
         };
       });
     },
