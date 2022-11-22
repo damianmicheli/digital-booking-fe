@@ -53,7 +53,7 @@
   background-color:var(--color-2); 
 }
 
-@media only screen and (min-width: 780px) {
+@media only screen and (min-width: 770px) {
   .container {
     padding: 2rem 0rem;
     height: 151px;
@@ -77,12 +77,10 @@
     padding: 2rem 0rem;
     height: 151px;
   }
-
   .title h1 {
     width: 100%;
     font-size: 24pt;
   }
-
   .content {
     flex-direction: row;
   }

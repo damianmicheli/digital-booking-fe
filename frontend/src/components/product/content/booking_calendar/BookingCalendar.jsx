@@ -10,6 +10,8 @@ import useFetch from "../../../../hooks/useFetch";
 import { useParams, useNavigate } from "react-router";
 
 import AuthContext from "../../../../context/AuthContext";
+import { addDays } from "date-fns"
+
 
 const BookingCalendar = () => {
   const isMobile = useMediaQuery(624);
@@ -25,9 +27,8 @@ const BookingCalendar = () => {
   let fechasInhabilitadas = [];
   let newDate;
 
-  fechas &&
-    fechas.map((array) => {
-      newDate = new Date(array[0], array[1], array[2]);
+  fechas && fechas.map((array) => {
+      newDate = addDays(new Date(array[0], array[1] - 1, array[2]), 1)
       return fechasInhabilitadas.push(newDate);
     });
 

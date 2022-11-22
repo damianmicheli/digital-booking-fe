@@ -5,7 +5,6 @@ import "react-date-range/dist/theme/default.css"; // theme css file
 import { es } from "react-date-range/dist/locale";
 import styles from "./booking.module.css";
 
-
 const Calendar = ({months, bookings}) => {
  
   return (

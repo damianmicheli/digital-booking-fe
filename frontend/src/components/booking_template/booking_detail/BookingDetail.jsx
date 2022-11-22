@@ -5,6 +5,11 @@ import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../global/Button";
 
 const BookingDetail = () => {
+
+  const onclick = () => {
+
+  }
+
   return (
     <div className={styles.bookingDetail}>
       <h2 className="heading2 color2">Detalle de la reserva</h2>
@@ -33,8 +38,7 @@ const BookingDetail = () => {
             <p>06/12/2022</p>
           </div>
           <div className="line marginBottom"></div>
-
-          <Button css="buttonCard" text={"Confirmar reserva"} />
+          <Button css="buttonCard" text={"Confirmar reserva"} event={onclick}/>
         </div>
       </div>
     </div>

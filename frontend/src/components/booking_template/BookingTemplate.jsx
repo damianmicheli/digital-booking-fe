@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./bookingTemplate.module.css";
 
-/* import useFetch from "../../hooks/useFetch"; */
 import { useParams } from "react-router";
 
 import useMediaQuery from "../../hooks/useMediaQuery";
@@ -25,9 +24,13 @@ const BookingTemplate = () => {
   let newDate;
   fechas &&
     fechas.map((array) => {
-      newDate = new Date(array[0], array[1], array[2]);
+      newDate = new Date(array[0], array[1] - 1, array[2]);
       return fechasInhabilitadas.push(newDate);
     });
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   const [bookings] = useFetch(`http://localhost:8080/reservas/producto/${id}`);
 
@@ -35,6 +38,18 @@ const BookingTemplate = () => {
 
   const nombre = data && data.nombre;
   const categoria = data && data.categoria.titulo.toUpperCase();
+  const politicaDeCancelacion = data && data.politica_de_cancelacion;
+  const politicaDeSaludYSeguridad = data && data.politica_de_salud_y_seguridad;
+  const normasDeUso = data && data.politica_de_uso;
+  const ciudad = data && data.ciudad.ciudad;
+
+  const [reservationDate, setReservationDate] = useState({
+    startDate: null,
+    endDate: null,
+  });
+
+  const { startDate, endDate } = reservationDate;
+
   return (
     <>
       <div className={styles.title}>
@@ -87,18 +102,27 @@ const BookingTemplate = () => {
                       type="text"
                       id="location"
                       name="location"
-                      value="Rosario, Santa Fe"
+                      value={ciudad}
                     />
                   </div>
                 </div>
-                <div className={styles.calendar}>
-                  <h2 className="heading2">Seleccioná tu fecha de reserva</h2>
-                  {isMobile ? (
-                    <Calendar months={1} bookings={fechasInhabilitadas} />
-                  ) : (
-                    <Calendar months={2} bookings={fechasInhabilitadas} />
-                  )}
-                </div>
+                {isMobile ? (
+                  <Calendar
+                    months={1}
+                    bookings={fechasInhabilitadas}
+                    startDate={startDate}
+                    endDate={endDate}
+                    setReservationDate={setReservationDate}
+                  />
+                ) : (
+                  <Calendar
+                    months={2}
+                    bookings={fechasInhabilitadas}
+                    startDate={startDate}
+                    endDate={endDate}
+                    setReservationDate={setReservationDate}
+                  />
+                )}
               </div>
               <div className={styles.contentRight}>
                 <div className={styles.detail}>
@@ -111,9 +135,9 @@ const BookingTemplate = () => {
       </div>
 
       <Politics
-        normas={"normasDeUso"}
-        politicaSalud={"politicaDeSaludYSeguridad"}
-        politicaCancelacion={"politicaDeCancelacion"}
+        normas={normasDeUso}
+        politicaSalud={politicaDeSaludYSeguridad}
+        politicaCancelacion={politicaDeCancelacion}
       />
     </>
   );

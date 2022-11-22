@@ -14,9 +14,7 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { es } from "react-date-range/dist/locale";
 
-import useMediaQuery from "../../../hooks/useMediaQuery";
-
-const Calendar = ({ startDate, endDate, setReservationDate }) => {
+const Calendar = ({ months, startDate, endDate, setReservationDate}) => {
   // date state
   const [range, setRange] = useState([
     {
@@ -25,6 +23,8 @@ const Calendar = ({ startDate, endDate, setReservationDate }) => {
       key: "selection",
     },
   ]);
+
+  // date value
 
   // open close
   const [open, setOpen] = useState(false);
@@ -55,85 +55,48 @@ const Calendar = ({ startDate, endDate, setReservationDate }) => {
     }
   };
 
-  const isMobile = useMediaQuery(768);
-
   return (
     <>
-      {!isMobile && (
-        <div className={`${styles.calendarWrap} ${styles.datePicker}`}>
-          <Icon css={styles.icon} icon={faCalendar} />
-          <input
-            value={`${format(range[0].startDate, "dd/MM/yyyy")} - ${format(
-              range[0].endDate,
-              "dd/MM/yyyy"
-            )}`}
-            readOnly
-            className={styles.inputBox}
-            onClick={() => {
-              setOpen((open) => !open);
-            }}
-          />
+      <div className={`${styles.calendarWrap} ${styles.datePicker}`}>
+        <Icon css={styles.icon} icon={faCalendar} />
+        <input
+          value={`${format(range[0].startDate, "dd/MM/yyyy")} - ${format(
+            range[0].endDate,
+            "dd/MM/yyyy"
+          )}`}
+          readOnly
+          className={styles.inputBox}
+          onClick={() => {
+            setOpen((open) => !open);
+          }}
+        />
 
-          <div ref={refOne}>
-            {open && (
-              <DateRange
-                onChange={(item) => {
-                  setRange([item.selection])
-                  setReservationDate({
-                    startDate: item.selection.startDate,
-                    endDate: item.selection.startDate
-                  })
-                }}
-                editableDateInputs={true}
-                moveRangeOnFirstSelection={false}
-                ranges={range}
-                rangeColors={["rgb(251, 192, 45, 1)"]}
-                months={2}
-                direction="horizontal"
-                className={styles.calendarElement}
-                minDate={new Date()}
-                locale={es}
-                showDateDisplay={false}
-                startDate={startDate}
-                endDate={endDate}
-              />
-            )}
-          </div>
+        <div ref={refOne}>
+          {open && (
+            <DateRange
+              onChange={(item) => {
+                setRange([item.selection]);
+                setReservationDate({
+                  startDate: item.selection.startDate,
+                  endDate: item.selection.endDate,
+                });
+              }}
+              editableDateInputs={true}
+              moveRangeOnFirstSelection={false}
+              ranges={range}
+              rangeColors={["rgb(251, 192, 45, 1)"]}
+              months={months}
+              direction="horizontal"
+              className={styles.calendarElement}
+              minDate={new Date()}
+              locale={es}
+              showDateDisplay={false}
+              startDate={startDate}
+              endDate={endDate}
+            />
+          )}
         </div>
-      )}
-
-      {isMobile && (
-        <div className={`${styles.calendarWrap} ${styles.datePicker}`}>
-          <Icon css={styles.icon} icon={faCalendar} />
-          <input
-            value={`${format(range[0].startDate, "yyyy/MM/dd")} - ${format(
-              range[0].endDate,
-              "yyyy/MM/dd"
-            )}`}
-            readOnly
-            className={styles.inputBox}
-            onClick={() => {
-              setOpen((open) => !open);
-            }}
-          />
-
-          <div ref={refOne}>
-            {open && (
-              <DateRange
-                onChange={(item) => setRange([item.selection])}
-                editableDateInputs={true}
-                moveRangeOnFirstSelection={false}
-                ranges={range}
-                rangeColors={["rgb(251, 192, 45, 1)"]}
-                months={1}
-                direction="vertical"
-                className={styles.calendarElement}
-                minDate={new Date()}
-              />
-            )}
-          </div>
-        </div>
-      )}
+      </div>
     </>
   );
 };

@@ -1,0 +1,36 @@
+.container {
+  display: flex;
+  flex-direction: column;
+}
+
+.calendarElement {
+  align-items: center;
+}
+
+@media only screen and (min-width: 624px) {
+  .calendarElement {
+    align-items: stretch;
+  }
+}
+
+@media only screen and (min-width: 790px) {
+    .calendarElement {
+      align-items: center;
+    }
+  }
+
+  @media only screen and (min-width: 985px) {
+    .calendarElement {
+      align-items: stretch;
+    }
+  }
+
+  @media only screen and (min-width: 1335px) {
+    .calendarElement {
+      align-items: center;
+    }
+  }
+  
+
+  
+  

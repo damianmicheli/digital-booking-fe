@@ -1,7 +1,7 @@
 .bookingDetail {
   width: 100%;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
-  margin: 0 auto;
+  margin: 20px auto;
   border-radius: 5px;
   padding-bottom: 25px;
   background-color: white;
@@ -68,6 +68,11 @@
   }
   .content {
     width: 90%;
+  }
+
+  .bookingDetail {
+    margin-top: 0;
+    margin-bottom: 50px;
   }
 
   .checkDate {

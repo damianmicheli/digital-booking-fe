@@ -7,21 +7,30 @@ import { faArrowLeft, faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import styles from "./pagination.module.css";
 import useFetch from "../../hooks/useFetch";
 import Cards from "../cards/Cards";
+import { getDateFormat } from "../global/getDateFormat";
 
 const Paginate = ({ itemsPerPage }) => {
-  const { valuesForm, selectedCategory} = useContext(FilterContext);
+  const { valuesForm, selectedCategory } = useContext(FilterContext);
 
   const category = selectedCategory.id && selectedCategory.id;
+  const date = valuesForm.date && valuesForm.date;  
+  const checkIn = date && getDateFormat.getFullDate(date.startDate);
+  const checkOut = date && getDateFormat.getFullDate(date.endDate);
   const city = valuesForm.id && valuesForm.id;
   let search;
 
-  if(!city && !category){
+  if(!city && !category && !checkIn && !checkOut){
     search = "/random"
   } else if (category && !city) {
     search = `?categoria=${category}`
+  } else if (checkIn && checkOut && city) {
+    search = `?fechaInicio=${checkIn}&fechaFin=${checkOut}&ciudad=${city}`
+  } else if (checkIn && checkOut && !city) {
+    search = `?fechaInicio=${checkIn}&fechaFin=${checkOut}`
   } else if (city) {
     search = `?ciudad=${city}`
-  }
+  } 
+  
 
   let [items] = useFetch(`http://localhost:8080/productos${search}`);
 
