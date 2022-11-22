@@ -106,23 +106,26 @@ const BookingTemplate = () => {
                     />
                   </div>
                 </div>
-                {isMobile ? (
-                  <Calendar
-                    months={1}
-                    bookings={fechasInhabilitadas}
-                    startDate={startDate}
-                    endDate={endDate}
-                    setReservationDate={setReservationDate}
-                  />
-                ) : (
-                  <Calendar
-                    months={2}
-                    bookings={fechasInhabilitadas}
-                    startDate={startDate}
-                    endDate={endDate}
-                    setReservationDate={setReservationDate}
-                  />
-                )}
+                <div className={styles.calendar}>
+                  <h2 className="heading2">Seleccioná tu fecha de reserva</h2>
+                  {isMobile ? (
+                    <Calendar
+                      months={1}
+                      bookings={fechasInhabilitadas}
+                      startDate={startDate}
+                      endDate={endDate}
+                      setReservationDate={setReservationDate}
+                    />
+                  ) : (
+                    <Calendar
+                      months={2}
+                      bookings={fechasInhabilitadas}
+                      startDate={startDate}
+                      endDate={endDate}
+                      setReservationDate={setReservationDate}
+                    />
+                  )}
+                </div>
               </div>
               <div className={styles.contentRight}>
                 <div className={styles.detail}>
