@@ -18,6 +18,14 @@ const BookingTemplate = () => {
 
   const [disabledDates] = useFetch(`http://localhost:8080/productos/fechasnodisponibles?id=${id}`)
 
+  const fechas = disabledDates && disabledDates.fechasNoDisponibles;     
+  let fechasInhabilitadas = [];
+  let newDate; 
+  fechas && fechas.map((array)=>{
+    newDate = new Date(array[0], array[1], array[2]);
+    return fechasInhabilitadas.push(newDate)   
+  })
+
   const [bookings] = useFetch(`http://localhost:8080/reservas/producto/${id}`)
 
   const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`); 
@@ -78,9 +86,9 @@ const BookingTemplate = () => {
                   </div>
                 </div>
                 {isMobile ? (
-                <Calendar months={1} bookings={disabledDates}/>
+                <Calendar months={1} bookings={fechasInhabilitadas}/>
               ) : (
-                <Calendar months={2} bookings={disabledDates}/>
+                <Calendar months={2} bookings={fechasInhabilitadas}/>
               )}
 
               </div>

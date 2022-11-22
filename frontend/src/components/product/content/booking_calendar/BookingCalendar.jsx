@@ -1,35 +1,32 @@
-import React, { useState } from "react";
+import React from "react";
 
 import Calendar from "./Calendar";
 import Button from "../../../global/Button";
 import useMediaQuery from "../../../../hooks/useMediaQuery";
 import styles from "./booking.module.css";
 
-import useFetch from "../../hooks/useFetch";
+import useFetch from "../../../../hooks/useFetch";
 import { useParams } from "react-router";
 
-import useMediaQuery from "../../hooks/useMediaQuery";
-import Button from "../global/Button";
-
 const BookingCalendar = () => {
+  const isMobile = useMediaQuery(624);
 
-const isMobile = useMediaQuery(624);  
+  const { id } = useParams();
 
-const { id } = useParams();
+  const [disabledDates] = useFetch(
+    `http://localhost:8080/productos/fechasnodisponibles?id=${id}`
+  );
 
-const [disabledDates] = useFetch(`http://localhost:8080/productos/fechasnodisponibles?id=${id}`)
-
-console.log(disabledDates);
-
-for (let date in disabledDates){
-  console.log(disabledDates[date]);
- /*  setBooking1(current => [...current, 'Carl']) */
- 
-}
-
-  const [booking1, setBooking1] = useState([ [2022,11,25] ])
-
-  console.log(booking1);
+  const fechas = disabledDates && disabledDates.fechasNoDisponibles;
+     
+    let fechasInhabilitadas = [];
+    let newDate; 
+  
+    fechas && fechas.map((array)=>{
+      newDate = new Date(array[0], array[1], array[2]);
+      return fechasInhabilitadas.push(newDate)   
+    })
+  
 
   return (
     <>
@@ -39,13 +36,13 @@ for (let date in disabledDates){
           <div className={styles.calendarPButton}>
             <div className={styles.calendar}>
               {isMobile ? (
-                <Calendar months={1} bookings={booking1}/>
+                <Calendar months={1} bookings={fechasInhabilitadas} />
               ) : (
-                <Calendar months={2} bookings={booking1}/>
+                <Calendar months={2} bookings={fechasInhabilitadas} />
               )}
             </div>
             <div className={styles.pButton}>
-              <p> 
+              <p>
                 Agregá tus fechas exactas de viaje para obtener precios exactos
               </p>
               <Button css="button4" text="Iniciar reserva"></Button>

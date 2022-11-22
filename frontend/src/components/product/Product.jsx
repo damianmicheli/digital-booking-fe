@@ -60,7 +60,7 @@ const Product = () => {
       <div className={styles.socialMediaContainer}>
         <SocialMediaShare url={`http://www.digitalbooking.ar/producto/${id}`} />
           {/* <Button
-          // event={toggleItemInLocalStorage(idNumber, isFavorite)}
+          event={toggleItemInLocalStorage(idNumber, isFavorite)}
           css="btnFav"
           text={
             <Icon
