@@ -10,6 +10,7 @@ import java.util.Set;
 @Table
 @Setter
 @Getter
+@Inheritance(strategy = InheritanceType.JOINED)
 public class Usuario {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

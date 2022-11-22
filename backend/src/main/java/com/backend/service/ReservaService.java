@@ -97,6 +97,21 @@ public class ReservaService implements IReservaService {
     }
 
     @Override
+    public List<ReservaDTO> findByClienteId(Long clienteId) {
+
+        List<Reserva> reservas = reservaRepository.findByClienteId(clienteId);
+
+        List<ReservaDTO> reservasDTO = new ArrayList<>();
+        for(Reserva reserva : reservas){
+            reservasDTO.add(mapper.convertValue(reserva, ReservaDTO.class));
+        }
+        logger.info("Se listaron todas las reservas para el cliente con ID " + clienteId);
+
+        return reservasDTO;
+
+    }
+
+    @Override
     public FechasOcupadasDTO fechasOcupadas(Long productoId) {
 
         List<Reserva> reservas = reservaRepository.findByProductoId(productoId);
