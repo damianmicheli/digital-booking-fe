@@ -1,9 +1,9 @@
 USE `0521PTC3N1db_GRUPO4`;
--- MySQL dump 10.13  Distrib 8.0.29, for Win64 (x86_64)
+-- MySQL dump 10.13  Distrib 8.0.31, for Win64 (x86_64)
 --
--- Host: digitalhouse.cluster-cnyqegjgetrv.us-east-2.rds.amazonaws.com    Database: 0521ptc3n1db_grupo4
+-- Host: localhost    Database: 0521ptc3n1db_grupo4
 -- ------------------------------------------------------
--- Server version	8.0.29
+-- Server version	8.0.31
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
@@ -16,20 +16,24 @@ USE `0521PTC3N1db_GRUPO4`;
 /*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
 /*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
+--
+-- Borrar todas las tablas
+--
 
---
--- Drops
---
-DROP TABLE IF EXISTS `reserva`;
+DROP TABLE IF EXISTS `usuario_rol`;
 DROP TABLE IF EXISTS `producto_caracteristica`;
+DROP TABLE IF EXISTS `reserva`;
+DROP TABLE IF EXISTS `cliente`;
+DROP TABLE IF EXISTS `usuario`;
 DROP TABLE IF EXISTS `imagen`;
+
 DROP TABLE IF EXISTS `producto`;
+
 DROP TABLE IF EXISTS `caracteristica`;
 DROP TABLE IF EXISTS `categoria`;
-DROP TABLE IF EXISTS `usuario_rol`;
-DROP TABLE IF EXISTS `usuario`;
-DROP TABLE IF EXISTS `rol`;
 DROP TABLE IF EXISTS `ciudad`;
+DROP TABLE IF EXISTS `rol`;
+
 
 --
 -- Table structure for table `caracteristica`
@@ -168,7 +172,6 @@ INSERT INTO `imagen` VALUES (1,'imagen_1','https://0521ptc3n1-grupo4-img.s3.us-e
 UNLOCK TABLES;
 
 
-
 --
 -- Table structure for table `producto_caracteristica`
 --
@@ -194,43 +197,7 @@ LOCK TABLES `producto_caracteristica` WRITE;
 INSERT INTO `producto_caracteristica` VALUES (20,1),(20,2),(20,3),(24,1),(24,2),(24,3),(25,1),(25,2),(25,3),(26,1),(26,2),(26,3),(30,1),(30,2),(30,3),(31,1),(31,2),(31,3),(32,1),(32,2),(32,3),(33,1),(33,2),(33,3),(34,1),(34,2),(34,3),(35,1),(35,2),(35,3);
 /*!40000 ALTER TABLE `producto_caracteristica` ENABLE KEYS */;
 UNLOCK TABLES;
-/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
-/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
-/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
-/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
-/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
-
-
---
--- Table structure for table `reserva`
---
-
-/*!40101 SET @saved_cs_client     = @@character_set_client */;
-/*!50503 SET character_set_client = utf8mb4 */;
-CREATE TABLE `reserva` (
-  `id` bigint NOT NULL AUTO_INCREMENT,
-  `fecha_final_reserva` datetime(6) DEFAULT NULL,
-  `fecha_inicial_reserva` datetime(6) DEFAULT NULL,
-  `hora_comienzo_reserva` time DEFAULT NULL,
-  `producto_id` bigint NOT NULL,
-  PRIMARY KEY (`id`),
-  KEY `FKnh6tntdsfc76618c8sxxrxn7t` (`producto_id`),
-  CONSTRAINT `FKnh6tntdsfc76618c8sxxrxn7t` FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
-/*!40101 SET character_set_client = @saved_cs_client */;
-
---
--- Dumping data for table `reserva`
---
-
-LOCK TABLES `reserva` WRITE;
-/*!40000 ALTER TABLE `reserva` DISABLE KEYS */;
-/*!40000 ALTER TABLE `reserva` ENABLE KEYS */;
-UNLOCK TABLES;
 
 --
 -- Table structure for table `rol`
@@ -284,6 +251,64 @@ INSERT INTO `usuario` VALUES (1,'grupo4','Grupo42022','ctd','grupo4@ctd.com',1);
 /*!40000 ALTER TABLE `usuario` ENABLE KEYS */;
 UNLOCK TABLES;
 
+
+--
+-- Table structure for table `cliente`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `cliente` (
+  `id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  CONSTRAINT `FKsitxst8o302fspskxfjatuyrl` FOREIGN KEY (`id`) REFERENCES `usuario` (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `cliente`
+--
+
+LOCK TABLES `cliente` WRITE;
+/*!40000 ALTER TABLE `cliente` DISABLE KEYS */;
+INSERT INTO `cliente` VALUES (1);
+/*!40000 ALTER TABLE `cliente` ENABLE KEYS */;
+UNLOCK TABLES;
+
+--
+-- Table structure for table `reserva`
+--
+
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
+CREATE TABLE `reserva` (
+  `id` bigint NOT NULL AUTO_INCREMENT,
+  `fecha_final_reserva` date DEFAULT NULL,
+  `fecha_inicial_reserva` date DEFAULT NULL,
+  `hora_comienzo_reserva` time DEFAULT NULL,
+  `producto_id` bigint NOT NULL,
+  `aclaraciones` varchar(255) DEFAULT NULL,
+  `vacunado` bit(1) NOT NULL,
+  `cliente_id` bigint NOT NULL,
+  PRIMARY KEY (`id`),
+  KEY `FKnh6tntdsfc76618c8sxxrxn7t` (`producto_id`),
+  KEY `FK7cg2jiyn5cf6f6elccvb6963k` (`cliente_id`),
+  CONSTRAINT `FK7cg2jiyn5cf6f6elccvb6963k` FOREIGN KEY (`cliente_id`) REFERENCES `cliente` (`id`),
+  CONSTRAINT `FKnh6tntdsfc76618c8sxxrxn7t` FOREIGN KEY (`producto_id`) REFERENCES `producto` (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=15 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_0900_ai_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
+
+--
+-- Dumping data for table `reserva`
+--
+
+LOCK TABLES `reserva` WRITE;
+/*!40000 ALTER TABLE `reserva` DISABLE KEYS */;
+INSERT INTO `reserva` VALUES (13,'2022-12-25','2022-12-20','10:00:00',7,NULL,_binary '\0',1),(14,'2022-12-25','2022-12-20','10:00:00',4,'',_binary '',1);
+/*!40000 ALTER TABLE `reserva` ENABLE KEYS */;
+UNLOCK TABLES;
+
+
 --
 -- Table structure for table `usuario_rol`
 --
@@ -306,7 +331,7 @@ CREATE TABLE `usuario_rol` (
 
 LOCK TABLES `usuario_rol` WRITE;
 /*!40000 ALTER TABLE `usuario_rol` DISABLE KEYS */;
-INSERT INTO `usuario_rol` VALUES (1,1);
+INSERT INTO `usuario_rol` VALUES (1,1),(1,2);
 /*!40000 ALTER TABLE `usuario_rol` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -319,4 +344,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2022-11-10 18:54:52
+-- Dump completed on 2022-11-22 10:51:23

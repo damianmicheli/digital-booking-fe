@@ -1,5 +1,6 @@
 package com.backend.dto;
 
+import com.backend.entity.Cliente;
 import com.backend.entity.Producto;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
@@ -19,6 +20,7 @@ public class ReservaDTO {
     private LocalDate fecha_inicial_reserva;
     private LocalDate fecha_final_reserva;
     private Producto producto;
+    private Cliente cliente;
     private String aclaraciones;
     private boolean vacunado;
 }
