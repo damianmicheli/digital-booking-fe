@@ -1,5 +1,4 @@
 import React, { useState } from "react";
-import { Container } from "react-bootstrap";
 import styles from "./loginRegister.module.css";
 import Button from "../global/Button";
 import Icon from "../global/Icon";
@@ -88,98 +87,97 @@ const Register = () => {
       {/* <Buscador /> */}
       <div className="bgGray flex">
         <p className="headings heading1">Crear cuenta</p>
-        <Container>
-          <form
-            id="registrationForm"
-            action="/"
-            method="POST"
-            onSubmit={handleSubmit}
-          >
-            <div className={styles.divInputs}>
-              <div className={`${styles.groupForm} ${styles.groupWrap}`}>
-                <label className="text2">Nombre</label>
+
+        <form
+          id="registrationForm"
+          action="/"
+          method="POST"
+          onSubmit={handleSubmit}
+        >
+          <div className={styles.divInputs}>
+            <div className={`${styles.groupForm} ${styles.groupWrap}`}>
+              <label className="text2">Nombre</label>
+              <input
+                type="text"
+                name="fName"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={form.fName}
+              />
+              {errors.fName && (
+                <p className={styles.pFormError}>{errors.fName}</p>
+              )}
+            </div>
+            <div className={`${styles.groupForm} ${styles.groupWrap}`}>
+              <label className="text2">Apellido</label>
+              <input
+                type="text"
+                name="surname"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={form.surname}
+              />
+              {errors.surname && (
+                <p className={styles.pFormError}>{errors.surname}</p>
+              )}
+            </div>
+            <div className={styles.groupForm}>
+              <label className="text2">Correo electrónico</label>
+              <input
+                type="email"
+                name="email"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={form.email}
+              />
+              {errors.email && (
+                <p className={styles.pFormError}>{errors.email}</p>
+              )}
+            </div>
+            <div className={styles.groupForm}>
+              <label className="text2">Contraseña</label>
+              <div className={styles.iconInput}>
                 <input
-                  type="text"
-                  name="fName"
+                  type={showPass ? "text" : "password"}
+                  name="password"
                   onBlur={handleBlur}
                   onChange={handleChange}
-                  value={form.fName}
+                  value={form.password}
                 />
-                {errors.fName && (
-                  <p className={styles.pFormError}>{errors.fName}</p>
-                )}
-              </div>
-              <div className={`${styles.groupForm} ${styles.groupWrap}`}>
-                <label className="text2">Apellido</label>
-                <input
-                  type="text"
-                  name="surname"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={form.surname}
-                />
-                {errors.surname && (
-                  <p className={styles.pFormError}>{errors.surname}</p>
-                )}
-              </div>
-              <div className={styles.groupForm}>
-                <label className="text2">Correo electrónico</label>
-                <input
-                  type="email"
-                  name="email"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={form.email}
-                />
-                {errors.email && (
-                  <p className={styles.pFormError}>{errors.email}</p>
-                )}
-              </div>
-              <div className={styles.groupForm}>
-                <label className="text2">Contraseña</label>
-                <div className={styles.iconInput}>
-                  <input
-                    type={showPass ? "text" : "password"}
-                    name="password"
-                    onBlur={handleBlur}
-                    onChange={handleChange}
-                    value={form.password}
-                  />
-                  <span onClick={toggleBtnPass}>
-                    {showPass ? (
-                      <Icon icon={faEye} css={styles.iconEye} />
-                    ) : (
-                      <Icon icon={faEyeSlash} css={styles.iconEye} />
-                    )}
-                  </span>
-                </div>
-                {errors.password && (
-                  <p className={styles.pFormError}>{errors.password}</p>
-                )}
-              </div>
-              <div className={styles.groupForm}>
-                <label className="text2">Confirmar contraseña</label>
-                <input
-                  type="password"
-                  name="confirmPassword"
-                  onBlur={handleBlur}
-                  onChange={handleChange}
-                  value={form.confirmPassword}
-                />
-                {errors.confirmPassword && (
-                  <p className={styles.pFormError}>{errors.confirmPassword}</p>
-                )}
-              </div>
-              <div className={styles.groupForm}>
-                {/* <button className="buttonForm" type="submit" /> */}
-                <Button css="buttonForm" text="Crear cuenta" />
-                <span className="text2 spanForm">
-                  ¿Ya tienes una cuenta? <a href="/login">Iniciar sesión</a>
+                <span onClick={toggleBtnPass}>
+                  {showPass ? (
+                    <Icon icon={faEye} css={styles.iconEye} />
+                  ) : (
+                    <Icon icon={faEyeSlash} css={styles.iconEye} />
+                  )}
                 </span>
               </div>
+              {errors.password && (
+                <p className={styles.pFormError}>{errors.password}</p>
+              )}
             </div>
-          </form>
-        </Container>
+            <div className={styles.groupForm}>
+              <label className="text2">Confirmar contraseña</label>
+              <input
+                type="password"
+                name="confirmPassword"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={form.confirmPassword}
+              />
+              {errors.confirmPassword && (
+                <p className={styles.pFormError}>{errors.confirmPassword}</p>
+              )}
+            </div>
+            <div className={styles.groupForm}>
+              {/* <button className="buttonForm" type="submit" /> */}
+              <Button css="buttonForm" text="Crear cuenta" />
+              <span className="text2 spanForm">
+                ¿Ya tienes una cuenta? <a href="/login">Iniciar sesión</a>
+              </span>
+            </div>
+          </div>
+        </form>
       </div>
     </>
   );

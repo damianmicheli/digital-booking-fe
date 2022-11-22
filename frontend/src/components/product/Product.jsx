@@ -26,6 +26,7 @@ const Product = () => {
   //const idNumber = Number(id);
 
   const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`);
+  
 
   const nombre = data && data.nombre;
   const titulo = data && data.titulo;
@@ -58,8 +59,8 @@ const Product = () => {
       <LocationProduct direction={direccion} city={ciudad} country={pais} />
       <div className={styles.socialMediaContainer}>
         <SocialMediaShare url={`http://www.digitalbooking.ar/producto/${id}`} />
-        <Button
-          // event={toggleItemInLocalStorage(idNumber, isFavorite)}
+          {/* <Button
+          event={toggleItemInLocalStorage(idNumber, isFavorite)}
           css="btnFav"
           text={
             <Icon
@@ -68,7 +69,7 @@ const Product = () => {
               // icon={isFavorite ? faSolideHeart : faRegularHeart}
             /> 
           }
-        />
+        />*/}
       </div>
       <GalleryContainer images={imagenes} />
       <div className={styles.descriptionContainer}>
