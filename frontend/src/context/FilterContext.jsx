@@ -28,9 +28,11 @@ const FilterContextProvider = ({ children }) => {
       });
     },
     handleClearCity: () => {
-      setValuesForm({
-        city: null,
-        id: null
+      setValuesForm(() => {
+        return {
+          city: null,
+          date: undefined
+        };
       });
     },
   };

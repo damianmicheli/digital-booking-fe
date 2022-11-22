@@ -1,7 +1,6 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./bookingTemplate.module.css";
 
-/* import useFetch from "../../hooks/useFetch"; */
 import { useParams } from "react-router";
 
 import useMediaQuery from "../../hooks/useMediaQuery";
@@ -16,23 +15,41 @@ const BookingTemplate = () => {
 
   const isMobile = useMediaQuery(624);
 
-  const [disabledDates] = useFetch(`http://localhost:8080/productos/fechasnodisponibles?id=${id}`)
+  const [disabledDates] = useFetch(
+    `http://localhost:8080/productos/fechasnodisponibles?id=${id}`
+  );
 
-  const fechas = disabledDates && disabledDates.fechasNoDisponibles;     
+  const fechas = disabledDates && disabledDates.fechasNoDisponibles;
   let fechasInhabilitadas = [];
-  let newDate; 
-  fechas && fechas.map((array)=>{
-    newDate = new Date(array[0], array[1], array[2]);
-    return fechasInhabilitadas.push(newDate)   
-  })
+  let newDate;
+  fechas &&
+    fechas.map((array) => {
+      newDate = new Date(array[0], array[1], array[2]);
+      return fechasInhabilitadas.push(newDate);
+    });
 
-  const [bookings] = useFetch(`http://localhost:8080/reservas/producto/${id}`)
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
-  const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`); 
+  // const [bookings] = useFetch(`http://localhost:8080/reservas/producto/${id}`)
 
+  const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`);
 
   const nombre = data && data.nombre;
   const categoria = data && data.categoria.titulo.toUpperCase();
+  const politicaDeCancelacion = data && data.politica_de_cancelacion;
+  const politicaDeSaludYSeguridad = data && data.politica_de_salud_y_seguridad;
+  const normasDeUso = data && data.politica_de_uso;
+  const ciudad = data && data.ciudad.ciudad;
+
+  const [reservationDate, setReservationDate] = useState({
+    startDate: null,
+    endDate: null,
+  });
+
+  const { startDate, endDate } = reservationDate;
+
   return (
     <>
       <div className={styles.title}>
@@ -41,7 +58,7 @@ const BookingTemplate = () => {
       <div className={styles.bookingTemplate}>
         <div className="container">
           <h2 className="heading2 color2 paddingTop">Completá tus datos</h2>
-          <form id="bookingForm" action="/" method="POST" >
+          <form id="bookingForm" action="/" method="POST">
             <div className={styles.content}>
               <div className={styles.contentLeft}>
                 <div className={styles.divInputs}>
@@ -81,16 +98,27 @@ const BookingTemplate = () => {
                       type="text"
                       id="location"
                       name="location"
-                      value="Rosario, Santa Fe"
+                      value={ciudad}
                     />
                   </div>
                 </div>
                 {isMobile ? (
-                <Calendar months={1} bookings={fechasInhabilitadas}/>
-              ) : (
-                <Calendar months={2} bookings={fechasInhabilitadas}/>
-              )}
-
+                  <Calendar
+                    months={1}
+                    bookings={fechasInhabilitadas}
+                    startDate={startDate}
+                    endDate={endDate}
+                    setReservationDate={setReservationDate}
+                  />
+                ) : (
+                  <Calendar
+                    months={2}
+                    bookings={fechasInhabilitadas}
+                    startDate={startDate}
+                    endDate={endDate}
+                    setReservationDate={setReservationDate}
+                  />
+                )}
               </div>
               <div className={styles.contentRight}>
                 <BookingDetail />
@@ -101,9 +129,9 @@ const BookingTemplate = () => {
       </div>
 
       <Politics
-        normas={"normasDeUso"}
-        politicaSalud={"politicaDeSaludYSeguridad"}
-        politicaCancelacion={"politicaDeCancelacion"}
+        normas={normasDeUso}
+        politicaSalud={politicaDeSaludYSeguridad}
+        politicaCancelacion={politicaDeCancelacion}
       />
     </>
   );

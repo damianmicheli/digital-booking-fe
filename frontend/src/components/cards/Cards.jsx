@@ -1,27 +1,24 @@
 import React, { useContext } from "react";
 
 import Card from "./Card";
-import FilterContext  from "../../context/FilterContext";
+import FilterContext from "../../context/FilterContext";
 import Icon from "../global/Icon";
-import { faXmark } from "@fortawesome/free-solid-svg-icons";
+import { faTrashCan, faXmark } from "@fortawesome/free-solid-svg-icons";
 import styles from "./cards.module.css";
+import { getDateFormat } from "../global/getDateFormat";
 
 const Cards = ({ data }) => {
-  
-  const { valuesForm, selectedCategory, filterHandlers } = useContext(FilterContext);
+  const { valuesForm, selectedCategory, filterHandlers } =
+    useContext(FilterContext);
+
+  const date = valuesForm.date && valuesForm.date;
+
+  const checkIn = date && getDateFormat.getDate(date.startDate);
+  const checkOut = date && getDateFormat.getDate(date.endDate);
+  const dateFormat = checkIn + " / " + checkOut;
 
   return (
     <>
-      {/* {selectedCategory.title !== null ||
-      valuesForm.city !== null ? (
-        <span className={styles.clearFilterDelete} onClick={filterHandlers.handleClearFilters}>
-          {" "}
-          <Icon css={styles.iconClear}icon={faTrashCan} />
-          Limpiar Filtros
-        </span>
-      ) : (
-        ""
-      )} */}
       <div className={styles.container}>
         <h2>Recomendaciones</h2>
         <div className={styles.filterContainer}>
@@ -30,7 +27,11 @@ const Cards = ({ data }) => {
           ) : (
             <span className={styles.filterItem}>
               {selectedCategory.title}
-              <Icon css={styles.iconDelete}icon={faXmark} event={filterHandlers.handleClearCategory} />
+              <Icon
+                css={styles.iconDelete}
+                icon={faXmark}
+                event={filterHandlers.handleClearCategory}
+              />
             </span>
           )}
           {valuesForm.city === null ? (
@@ -38,7 +39,18 @@ const Cards = ({ data }) => {
           ) : (
             <span className={styles.filterItem}>
               {valuesForm.city}
-              <Icon css={styles.iconDelete}icon={faXmark} event={filterHandlers.handleClearCity} />
+              <Icon
+                css={styles.iconDelete}
+                icon={faXmark}
+                event={filterHandlers.handleClearCity}
+              />
+            </span>
+          )}
+          {valuesForm.date === undefined ? (
+            ""
+          ) : (
+            <span className={styles.filterItem}>
+              {dateFormat}
             </span>
           )}
         </div>
@@ -59,7 +71,7 @@ const Cards = ({ data }) => {
                     title={producto.nombre}
                     location={`${producto.ciudad.ciudad}, ${producto.ciudad.pais}`}
                     description={producto.descripcion}
-                />
+                  />
                 </div>
               ))}
         </div>

@@ -51,14 +51,15 @@
   @media only screen and (min-width: 991px) {
     .content{
         display: flex;
-        flex-direction: row;
-        gap: 25px;
+        gap: 100px;
     }
+
     .contentLeft{
         display: flex;
         flex-direction: column;
         justify-content: flex-start;
         max-width: 66%;
+        gap: 60px;
     }
 
     .divInputs{

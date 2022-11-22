@@ -2,12 +2,14 @@ import React, { useState } from "react";
 
 //date-range
 import { DateRange } from "react-date-range";
-import format from "date-fns/format";
+// import format from "date-fns/format";
 import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { es } from "react-date-range/dist/locale";
 
-const Calendar = ({months, bookings}) => {
+import styles from "./calendar.module.css"
+
+const Calendar = ({months, bookings, startDate, endDate, setReservationDate}) => {
   // date state
   const [range, setRange] = useState([
     {
@@ -18,22 +20,29 @@ const Calendar = ({months, bookings}) => {
   ]);
   
   return (
-    <div>
-      <h2 className="heading2">Seleccioná tu fecha de reserva</h2>
+    <div className={styles.container}>
+      <h2 className="heading2 color2">Seleccioná tu fecha de reserva</h2>
       <DateRange
-        onChange={(item) => setRange([item.selection])}
+        onChange={(item) => {
+          setRange([item.selection])
+          setReservationDate({
+            startDate: item.selection.startDate,
+            endDate: item.selection.startDate
+          })
+        }}
         moveRangeOnFirstSelection={false}
         ranges={range}
-        rangeColors={["#607d8b"]}
+        rangeColors={["rgb(251, 192, 45, 1)"]}
         months={months}
         direction="horizontal"
         minDate={new Date()}
         monthDisplayFormat={"MMMM yyyy"}
         disabledDates={bookings}
-        startDate={format(range[0].startDate, "dd/MM/yyyy")}
-        endDate={format(range[0].endDate, "dd/MM/yyyy")}
         showDateDisplay={false}
         locale={es}
+        className={styles.calendarElement}
+        startDate={startDate}
+        endDate={endDate}
       />
     </div>
   );
