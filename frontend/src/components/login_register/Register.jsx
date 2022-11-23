@@ -71,7 +71,7 @@ const validateForm = (form) => {
 const message = "Su cuenta se creó exitosamente";
 
 const Register = () => {
-  const { form, errors, handleChange, handleBlur, handleSubmit } = useForm(
+  const { form, errors, handleChange, handleBlur, handleSubmitRegister } = useForm(
     initialForm,
     validateForm,
     message
@@ -92,7 +92,7 @@ const Register = () => {
           id="registrationForm"
           action="/"
           method="POST"
-          onSubmit={handleSubmit}
+          onSubmit={handleSubmitRegister}
         >
           <div className={styles.divInputs}>
             <div className={`${styles.groupForm} ${styles.groupWrap}`}>

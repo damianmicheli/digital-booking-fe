@@ -33,7 +33,7 @@ const validateForm = (form) => {
 };
 
 const Login = () => {
-  const { form, errors, handleChange, handleBlur, handleSubmit } = useForm(
+  const { form, errors, handleChange, handleBlur, handleSubmitLogin } = useForm(
     initialForm,
     validateForm
   );
@@ -55,7 +55,7 @@ const Login = () => {
             <p><Icon icon={faCircleExclamation} css={styles.iconError} />  Para realizar una reserva necesitas estar logueado</p>
           </div>
           <p className="headings heading1">Iniciar sesión</p>
-          <form id="loginForm" action="/" method="POST" onSubmit={handleSubmit}>
+          <form id="loginForm" action="/" method="POST" onSubmit={handleSubmitLogin}>
             <div className={styles.divInputs}>
               <div className={styles.groupForm}>
                 <label className="text2">Correo electrónico</label>
