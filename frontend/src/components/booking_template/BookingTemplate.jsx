@@ -10,6 +10,7 @@ import BookingDetail from "./booking_detail/BookingDetail";
 import Politics from "../product/content/Politics";
 import useFetch from "../../hooks/useFetch";
 import AuthContext from "../../context/AuthContext";
+import format from "date-fns/format";
 
 const BookingTemplate = () => {
   const { userLog } = useContext(AuthContext); 
@@ -34,7 +35,7 @@ const BookingTemplate = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [bookings] = useFetch(`http://localhost:8080/reservas/producto/${id}`);
+  //const [bookings] = useFetch(`http://localhost:8080/reservas/producto/${id}`)
 
   const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`);
 
@@ -43,6 +44,7 @@ const BookingTemplate = () => {
   const politicaDeCancelacion = data && data.politica_de_cancelacion;
   const politicaDeSaludYSeguridad = data && data.politica_de_salud_y_seguridad;
   const normasDeUso = data && data.politica_de_uso;
+  const ciudad = data && data.ciudad.ciudad;
 
   const [reservationDate, setReservationDate] = useState({
     startDate: null,
@@ -51,14 +53,13 @@ const BookingTemplate = () => {
 
   const { startDate, endDate } = reservationDate;
 
+  const checkIn = startDate === null ? "__/__/__" : `${format(startDate, "dd/MM/yyyy")}`;
+  const checkOut = endDate === null ? "__/__/__" : `${format(endDate, "dd/MM/yyyy")}`;
+
   return (
     <>
       <div className={styles.title}>
-        <HeaderProduct
-          category={categoria}
-          title={nombre}
-          path={`/producto/${id}`}
-        />
+        <HeaderProduct category={categoria} title={nombre} />
       </div>
       <div className={styles.bookingTemplate}>
         <div className="container">
@@ -107,31 +108,22 @@ const BookingTemplate = () => {
                     />
                   </div>
                 </div>
-                <div className={styles.calendar}>
-                  <h2 className="heading2">Seleccioná tu fecha de reserva</h2>
-                  {isMobile ? (
-                    <Calendar
-                      months={1}
-                      bookings={fechasInhabilitadas}
-                      startDate={startDate}
-                      endDate={endDate}
-                      setReservationDate={setReservationDate}
-                    />
-                  ) : (
-                    <Calendar
-                      months={2}
-                      bookings={fechasInhabilitadas}
-                      startDate={startDate}
-                      endDate={endDate}
-                      setReservationDate={setReservationDate}
-                    />
-                  )}
-                </div>
+                {isMobile ? (
+                  <Calendar
+                    months={1}
+                    bookings={fechasInhabilitadas}
+                    setReservationDate={setReservationDate}
+                  />
+                ) : (
+                  <Calendar
+                    months={2}
+                    bookings={fechasInhabilitadas}
+                    setReservationDate={setReservationDate}
+                  />
+                )}
               </div>
               <div className={styles.contentRight}>
-                <div className={styles.detail}>
-                  <BookingDetail />
-                </div>
+                <BookingDetail startDate={checkIn} endDate={checkOut}/>
               </div>
             </div>
           </form>

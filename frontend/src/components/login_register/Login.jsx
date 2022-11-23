@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./loginRegister.module.css";
 import Button from "../global/Button";
 import Icon from "../global/Icon";
@@ -42,6 +42,10 @@ const Login = () => {
   const toggleBtnPass = () => {
     setShowPass((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []);
 
   return (
     <>

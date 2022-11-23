@@ -9,7 +9,7 @@ import { es } from "react-date-range/dist/locale";
 
 import styles from "./calendar.module.css"
 
-const Calendar = ({months, bookings, startDate, endDate, setReservationDate}) => {
+const Calendar = ({months, bookings, setReservationDate}) => {
   // date state
   const [range, setRange] = useState([
     {
@@ -26,7 +26,7 @@ const Calendar = ({months, bookings, startDate, endDate, setReservationDate}) =>
           setRange([item.selection])
           setReservationDate({
             startDate: item.selection.startDate,
-            endDate: item.selection.startDate
+            endDate: item.selection.endDate
           })
         }}
         moveRangeOnFirstSelection={false}
@@ -40,8 +40,6 @@ const Calendar = ({months, bookings, startDate, endDate, setReservationDate}) =>
         showDateDisplay={false}
         locale={es}
         className={styles.calendarElement}
-        startDate={startDate}
-        endDate={endDate}
       />
    
   );

@@ -14,7 +14,11 @@ const CardsCategorias = ({ items }) => {
     });
     setValuesForm({
       city: null,
-      id: null
+      id: null,
+      date: {
+        startDate: null,
+        endDate: null
+      }
     })
   }
   

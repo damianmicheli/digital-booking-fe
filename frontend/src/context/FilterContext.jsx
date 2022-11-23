@@ -9,7 +9,11 @@ const FilterContextProvider = ({ children }) => {
   });
   
   const [valuesForm, setValuesForm] = useState({
-    city: null
+    city: null,
+    date: {
+      startDate: null,
+      endDate: null
+    }
   });
 
   const filterHandlers = {
@@ -39,7 +43,10 @@ const FilterContextProvider = ({ children }) => {
       setValuesForm((prevState) => {
         return {
           ...prevState,
-          date: undefined,
+          date: {
+            startDate: null,
+            endDate: null
+          }
         };
       });
     },

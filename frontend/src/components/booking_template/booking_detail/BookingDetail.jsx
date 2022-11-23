@@ -4,7 +4,7 @@ import styles from "./bookingDetail.module.css";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../global/Button";
 
-const BookingDetail = () => {
+const BookingDetail = ({ startDate, endDate }) => {
 
   const onclick = () => {
 
@@ -30,12 +30,12 @@ const BookingDetail = () => {
           <div className="line"></div>
           <div className={styles.checkDate}>
             <p>Check in</p>
-            <p>26/11/2022</p>
+            <p>{startDate}</p>
           </div>
           <div className="line"></div>
           <div className={styles.checkDate}>
             <p>Check out</p>
-            <p>06/12/2022</p>
+            <p>{endDate}</p>
           </div>
           <div className="line marginBottom"></div>
           <Button css="buttonCard" text={"Confirmar reserva"} event={onclick}/>
