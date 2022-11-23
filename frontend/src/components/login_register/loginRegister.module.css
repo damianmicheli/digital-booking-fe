@@ -1,5 +1,11 @@
-.content{
-padding-top: 35px;
+.container {
+  width: 100%;
+	height: 83vh;
+	text-align: center;
+	background: #eceff1;
+	justify-content: center;
+	padding-block-start: 100px;
+	padding-block-end: 100px;
 }
 
 .divInputs {
@@ -19,7 +25,7 @@ padding-top: 35px;
   margin-top: 25px;
   text-align: center;
 }
-.pFormError{
+.pFormError {
   font-size: 0.65rem;
   text-align: right;
   color: red;
@@ -39,20 +45,20 @@ padding-top: 35px;
   box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
 }
 
-.iconInput{
-position: relative;
-cursor: pointer;
+.iconInput {
+  position: relative;
+  cursor: pointer;
 }
 
-.iconInput .iconEye{
+.iconInput .iconEye {
   color: var(--color-2-opacity);
   font-size: 1.1em;
   position: absolute;
   top: 10px;
   right: 15px;
-  }
+}
 
-.loginRequired{
+.loginRequired {
   width: 80%;
   max-width: 346px;
   height: 60px;
@@ -66,7 +72,7 @@ cursor: pointer;
   color: var(--color-3);
 }
 
-.iconError{
+.iconError {
   font-size: 20px;
 }
 

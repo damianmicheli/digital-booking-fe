@@ -49,7 +49,7 @@ const Login = () => {
 
   return (
     <>
-      <div className="bgGray flex">
+      <div className={styles.container}>
         <div className={styles.content}>
           <div className={styles.loginRequired}>
             <p><Icon icon={faCircleExclamation} css={styles.iconError} />  Para realizar una reserva necesitas estar logueado</p>

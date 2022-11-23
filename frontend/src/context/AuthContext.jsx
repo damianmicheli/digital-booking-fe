@@ -1,4 +1,6 @@
 import { createContext, useState } from "react";
+import URL_BASE from "../components/global/getUrlBase";
+
 
 const AuthContext = createContext();
 
@@ -9,7 +11,7 @@ const AuthProvider = ({ children }) => {
   const [auth, setAuth] = useState(initialAuth);
   const [userLog, setUserLog] = useState(initialUser);
 
-  const urlAPI = "http://localhost:8080/usuario";
+const urlAPI = `${URL_BASE}/usuario`;
 
   const getUser = (url, token) => {
     console.log("Trae token: " + token);

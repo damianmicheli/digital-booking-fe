@@ -32,12 +32,6 @@
   margin-bottom: 15px;
 }
 
-.link {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-}
-
 @media only screen and (min-width: 624px) {
   .pButton {
     flex-direction: row;
@@ -67,4 +61,8 @@
     border-radius: 5px;
     margin: 0;
   }
+}
+
+@media only screen and (min-width: 1270px) {
+  
 }

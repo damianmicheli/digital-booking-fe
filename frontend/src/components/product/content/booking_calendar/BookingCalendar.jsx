@@ -12,6 +12,7 @@ import { useParams, useNavigate } from "react-router";
 import AuthContext from "../../../../context/AuthContext";
 import { addDays } from "date-fns"
 
+import URL_BASE from "../../../global/getUrlBase";
 
 const BookingCalendar = () => {
   const isMobile = useMediaQuery(624);
@@ -19,7 +20,7 @@ const BookingCalendar = () => {
   const { id } = useParams();
 
   const [disabledDates] = useFetch(
-    `http://localhost:8080/productos/fechasnodisponibles?id=${id}`
+    `${URL_BASE}/productos/fechasnodisponibles?id=${id}`
   );
 
   const fechas = disabledDates && disabledDates.fechasNoDisponibles;

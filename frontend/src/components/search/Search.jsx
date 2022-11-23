@@ -28,7 +28,7 @@ const Search = () => {
       return {
         city: selected,
         id: idCity,
-        date: reservationDate && reservationDate
+        date: reservationDate
       };
     });
     setSelectedCategory(() => {

@@ -22,7 +22,12 @@ const FilterContextProvider = ({ children }) => {
         title: null
       });
       setValuesForm({
-        city: null
+        city: null,
+        id: null,
+        date: {
+          startDate: null,
+          endDate: null
+        }
       });
     },
     handleClearCategory: () => {
@@ -36,6 +41,7 @@ const FilterContextProvider = ({ children }) => {
         return {
           ...prevState,
           city: null,
+          id: null
         };
       });
     },
