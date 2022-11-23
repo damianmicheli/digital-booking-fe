@@ -16,4 +16,7 @@ public interface IProductoRepository extends  JpaRepository <Producto, Long>{
     @Query("select p from Producto p order by RAND()")
     List<Producto> findRandom();
 
+//    @Query("select p from Producto p where ")
+//    List<Reserva> findByFechasDisponibles(LocalDate checkIn, LocalDate checkOut);
+
 }

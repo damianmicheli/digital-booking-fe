@@ -34,9 +34,13 @@ public class UsuarioService implements IUsuarioService{
             throw new NoEncontradoException("El email especificado no existe");
         }
 
-        logger.info("Se busco por email el usuario> " + usuario);
+        UsuarioDTO usuarioEncontrado = mapper.convertValue(usuario, UsuarioDTO.class);
 
-        return mapper.convertValue(usuario, UsuarioDTO.class);
+        usuarioEncontrado.setPassword("Password oculta");
+
+        logger.info("Se busco por email el usuario> " + usuarioEncontrado);
+
+        return usuarioEncontrado;
     }
 
     @Override
@@ -51,9 +55,10 @@ public class UsuarioService implements IUsuarioService{
         String encodedPassword = passwordEncoder.encode(usuarioDTO.getPassword());
         usuarioDTO.setPassword(encodedPassword);
         Usuario usuarioNuevo = usuarioRepository.save(mapper.convertValue(usuarioDTO, Usuario.class));
-        usuarioNuevo.setPassword("Password oculta");
+
 
         UsuarioDTO usuarioGuardado = mapper.convertValue(usuarioNuevo, UsuarioDTO.class);
+        usuarioGuardado.setPassword("Password oculta");
 
         logger.info("Se registró el usuario: " + usuarioGuardado.toString());
 
