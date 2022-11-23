@@ -1,9 +1,5 @@
 package com.backend.dto;
 
-import com.backend.entity.Caracteristica;
-import com.backend.entity.Categoria;
-import com.backend.entity.Ciudad;
-import com.backend.entity.Imagen;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
@@ -24,16 +20,12 @@ public class ProductoDTO {
     private String politica_de_uso;
     private String politica_de_salud_y_seguridad;
     private String politica_de_cancelacion;
-    private Categoria categoria;
-    private Ciudad ciudad;
-    private List<Imagen> imagenes;
-    private List<Caracteristica> caracteristicas;
+    private CategoriaDTO categoria;
+    private CiudadDTO ciudad;
+    private List<ImagenDTO> imagenes;
+    private List<CaracteristicaDTO> caracteristicas;
 
-    //todo
-//    private CategoriaDTO categoria;
-//    private CiudadDTO ciudad;
-//    private List<ImagenDTO> imagenes;
-//    private List<CaracteristicaDTO> caracteristicas;
+
 }
 
 

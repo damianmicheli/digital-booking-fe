@@ -1,6 +1,7 @@
 package com.backend.service;
 
 import com.backend.dto.FechasOcupadasDTO;
+import com.backend.dto.ProductoDTO;
 import com.backend.dto.ReservaDTO;
 import com.backend.entity.Producto;
 import com.backend.entity.Reserva;
@@ -36,7 +37,7 @@ public class ReservaService implements IReservaService {
     public ReservaDTO guardar(ReservaDTO reservaDTO) throws NoEncontradoException, DatosIncorrectosException {
 
         //Obtengo el producto y las fechas
-        Producto producto = reservaDTO.getProducto();
+        ProductoDTO producto = reservaDTO.getProducto();
         LocalDate fechaInicio = reservaDTO.getFecha_inicial_reserva();
         LocalDate fechaFin = reservaDTO.getFecha_final_reserva();
 
