@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useContext} from "react";
 import CardCategory from "./CardCategory";
 import styles from "./cardsCategories.module.css";
 import FilterContext from '../../context/FilterContext';

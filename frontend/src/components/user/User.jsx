@@ -1,4 +1,4 @@
-import React, {useContext} from "react";
+import React, {useContext, useState} from "react";
 import Button from "../global/Button";
 import Icon from "../global/Icon";
 import styles from "./user.module.css";
@@ -11,6 +11,8 @@ const User = ({ user }) => {
   const isMobile = useMediaQuery(768);
   const { handleAuth } = useContext(AuthContext); 
 
+ 
+    
   const user1 = {
     id: 1,
     fName: "Gloria",
