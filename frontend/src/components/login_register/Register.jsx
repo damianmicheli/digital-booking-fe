@@ -85,7 +85,7 @@ const Register = () => {
   return (
     <>
       {/* <Buscador /> */}
-      <div className="bgGray flex">
+      <div className={styles.container}>
         <p className="headings heading1">Crear cuenta</p>
 
         <form

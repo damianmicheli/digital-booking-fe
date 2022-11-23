@@ -8,7 +8,7 @@ import styles from "./pagination.module.css";
 import useFetch from "../../hooks/useFetch";
 import Cards from "../cards/Cards";
 import format from "date-fns/format";
-
+import URL_BASE from "../global/getUrlBase";
 
 const Paginate = ({ itemsPerPage }) => {
   const { valuesForm, selectedCategory } = useContext(FilterContext);
@@ -32,7 +32,7 @@ const Paginate = ({ itemsPerPage }) => {
     search = `?ciudad=${city}`
   } 
   
-  let [items] = useFetch(`http://localhost:8080/productos${search}`);
+  let [items] = useFetch(`${URL_BASE}/productos${search}`);
 
   const [currentItems, setCurrentItems] = useState(null);
   const [pageCount, setPageCount] = useState(0);

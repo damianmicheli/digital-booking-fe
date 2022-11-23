@@ -1,6 +1,7 @@
 import { useState, useContext } from "react";
 import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
+import URL_BASE from "../components/global/getUrlBase";
 
 const useForm = (initialForm, validateForm) => {
   const [form, setForm] = useState(initialForm);
@@ -22,7 +23,7 @@ const useForm = (initialForm, validateForm) => {
 
   function realizarLogin(settings) {
  
-    fetch(`http://localhost:8080/autenticar`, settings)
+    fetch(`${URL_BASE}/autenticar`, settings)
       .then((response) => {
         console.log(response);
         if (response.ok !== true) {

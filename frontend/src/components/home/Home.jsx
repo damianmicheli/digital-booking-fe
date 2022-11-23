@@ -10,9 +10,11 @@ import Pagination from "../pagination/Pagination";
 import { FilterContextProvider } from "../../context/FilterContext";
 import { FavProvider } from "../../context/FavContext";
 
+import URL_BASE from "../global/getUrlBase";
+
 const Home = () => {
   
-  const [categorias] = useFetch("http://localhost:8080/categorias");
+  const [categorias] = useFetch(`${URL_BASE}/categorias`);
 
   return (
     <>

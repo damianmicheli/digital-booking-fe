@@ -7,8 +7,10 @@ import styles from "./select.module.css";
 import Icon from "../../global/Icon";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 
+import URL_BASE from "../../global/getUrlBase";
+
 const Select = ({ selected, setSelected, setIdCity }) => {
-  const [ciudades] = useFetch("http://localhost:8080/ciudades");
+  const [ciudades] = useFetch(`${URL_BASE}/ciudades`);
 
   const [isActive, setIsActive] = useState(false);
 

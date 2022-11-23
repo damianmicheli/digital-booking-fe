@@ -11,6 +11,8 @@ import Politics from "../product/content/Politics";
 import useFetch from "../../hooks/useFetch";
 import AuthContext from "../../context/AuthContext";
 import format from "date-fns/format";
+import URL_BASE from "../global/getUrlBase";
+
 
 const BookingTemplate = () => {
   const { userLog } = useContext(AuthContext); 
@@ -19,7 +21,7 @@ const BookingTemplate = () => {
   const isMobile = useMediaQuery(624);
 
   const [disabledDates] = useFetch(
-    `http://localhost:8080/productos/fechasnodisponibles?id=${id}`
+    `${URL_BASE}/productos/fechasnodisponibles?id=${id}`
   );
 
   const fechas = disabledDates && disabledDates.fechasNoDisponibles;
@@ -35,9 +37,9 @@ const BookingTemplate = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  //const [bookings] = useFetch(`http://localhost:8080/reservas/producto/${id}`)
+  //const [bookings] = useFetch(`${URL_BASE}/reservas/producto/${id}`)
 
-  const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`);
+  const [data] = useFetch(`${URL_BASE}/productos/buscar?id=${id}`);
 
   const nombre = data && data.nombre;
   const categoria = data && data.categoria.titulo.toUpperCase();

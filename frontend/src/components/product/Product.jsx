@@ -19,13 +19,15 @@ import styles from "./product.module.css";
 
 //import FavContext from "../../context/FavContext";
 
+import URL_BASE from "../global/getUrlBase";
+
 const Product = () => {
 
   const { id } = useParams();
 
   //const idNumber = Number(id);
 
-  const [data] = useFetch(`http://localhost:8080/productos/buscar?id=${id}`);
+  const [data] = useFetch(`${URL_BASE}/productos/buscar?id=${id}`);
   
 
   const nombre = data && data.nombre;
