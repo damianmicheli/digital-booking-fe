@@ -84,9 +84,10 @@ public class CategoriaService implements ICategoriaService{
     }
 
     @Override
-    public CategoriaDTO actualizar(CategoriaDTO categoriaDTO) throws NoEncontradoException {
+    public CategoriaDTO actualizar(CategoriaDTO categoriaDTO) throws NoEncontradoException, DatosIncorrectosException {
 
         Long id = categoriaDTO.getId();
+        String titulo = categoriaDTO.getTitulo();
 
         Optional<Categoria> encontrado = categoriaRepository.findById(id);
 
@@ -94,7 +95,14 @@ public class CategoriaService implements ICategoriaService{
             throw new NoEncontradoException("No se puede actualizar porque no existe una categoria con Id: " + id + ".");
         }
 
-        //ACA SE PUEDE AGREGAR LOGICA PARA QUE NO DEJE QUE COEXISTAN 2 CATEGORIAS CON MISMO TITULO
+        // LOGICA PARA QUE NO DEJE QUE COEXISTAN 2 CATEGORIAS CON MISMO TITULO
+
+        Optional<Categoria> tituloEncontrado = categoriaRepository.findByTitulo(titulo);
+
+        if (tituloEncontrado.isPresent()){
+            throw new DatosIncorrectosException("No se puede actualizar porque ya existe una categoria con Titulo: " + titulo + ".");
+        }
+
 
         CategoriaDTO categoriaDTOParaActualizar = mapper.convertValue(encontrado,CategoriaDTO.class);
 

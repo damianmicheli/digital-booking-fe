@@ -2,6 +2,7 @@ package com.backend.controller;
 
 import com.backend.dto.CategoriaDTO;
 import com.backend.service.ConflictoException;
+import com.backend.service.DatosIncorrectosException;
 import com.backend.service.ICategoriaService;
 import com.backend.service.NoEncontradoException;
 import com.backend.util.Jsons;
@@ -46,7 +47,7 @@ public class CategoriaController {
 
     @Operation(summary = "Actualizar los datos de una Categoría")
     @PutMapping
-    public ResponseEntity<CategoriaDTO> actualizar(@RequestBody CategoriaDTO categoriaDTO) throws NoEncontradoException, ConflictoException {
+    public ResponseEntity<CategoriaDTO> actualizar(@RequestBody CategoriaDTO categoriaDTO) throws NoEncontradoException, ConflictoException, DatosIncorrectosException {
 
         return new ResponseEntity<>(categoriaService.actualizar(categoriaDTO), HttpStatus.OK);
 

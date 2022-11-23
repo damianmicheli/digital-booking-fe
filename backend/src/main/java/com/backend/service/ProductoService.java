@@ -8,6 +8,7 @@ import com.backend.repository.IProductoRepository;
 import com.backend.repository.IReservaRepository;
 import com.backend.util.Utiles;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import net.bytebuddy.asm.Advice;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -167,7 +168,12 @@ public class ProductoService implements IProductoService {
 
 
     @Override
-    public List<ProductoDTO> listarPorCiudadYFechas(LocalDate inicio, LocalDate fin, Long idCiudad) throws NoEncontradoException {
+    public List<ProductoDTO> listarPorCiudadYFechas(LocalDate inicio, LocalDate fin, Long idCiudad) throws NoEncontradoException, DatosIncorrectosException {
+        LocalDate hoy = LocalDate.now();
+
+        if (inicio.isBefore(hoy) || fin.isBefore(hoy)) {
+            throw new DatosIncorrectosException("Las fechas no pueden ser anteriores a hoy");
+        }
 
         Ciudad ciudad = new Ciudad();
         ciudad.setId(idCiudad);
@@ -192,7 +198,13 @@ public class ProductoService implements IProductoService {
 
 
     @Override
-    public List<ProductoDTO> listarPorFechas(LocalDate inicio, LocalDate fin) throws NoEncontradoException {
+    public List<ProductoDTO> listarPorFechas(LocalDate inicio, LocalDate fin) throws NoEncontradoException, DatosIncorrectosException {
+
+        LocalDate hoy = LocalDate.now();
+
+        if (inicio.isBefore(hoy) || fin.isBefore(hoy)) {
+            throw new DatosIncorrectosException("Las fechas no pueden ser anteriores a hoy");
+        }
 
         List<Producto> productos = productoRepository.findAll();
 

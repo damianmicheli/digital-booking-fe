@@ -1,7 +1,5 @@
 package com.backend.dto;
 
-import com.backend.entity.Ciudad;
-import com.backend.entity.Rol;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import lombok.Getter;
 import lombok.Setter;
@@ -19,7 +17,7 @@ public class ClienteDTO {
     private String password;
     private String email;
 
-    private Ciudad ciudad;
+    private CiudadDTO ciudad;
 
-    private Set<Rol> roles;
+    private Set<RolDTO> roles;
 }
