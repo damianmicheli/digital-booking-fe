@@ -8,7 +8,6 @@ const useForm = (initialForm, validateForm) => {
   const { handleAuth } = useContext(AuthContext);
 
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
@@ -35,7 +34,7 @@ const useForm = (initialForm, validateForm) => {
         console.log(data);
         if (data.jwt) {
           //guardo en LocalStorage el objeto con el token
-          handleAuth(data.jwt);
+          handleAuth(data.jwt);        
         }
       })
       .catch((err) => {

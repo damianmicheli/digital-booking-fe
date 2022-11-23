@@ -1,4 +1,4 @@
-import React, {useContext, useState} from "react";
+import React, {useContext} from "react";
 import Button from "../global/Button";
 import Icon from "../global/Icon";
 import styles from "./user.module.css";
@@ -6,21 +6,14 @@ import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import AuthContext from "../../context/AuthContext";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
-const User = ({ user }) => {
+const User = () => {
 
   const isMobile = useMediaQuery(768);
-  const { handleAuth } = useContext(AuthContext); 
+  const { handleAuth, userLog } = useContext(AuthContext); 
 
- 
+  console.log(userLog);
     
-  const user1 = {
-    id: 1,
-    fName: "Gloria",
-    surname: "Lunar",
-    email: "glorialunar@gmail.com",
-    password: "theghost",
-  };
-  const initials = `${user1.fName[0]} ${user1.surname[0]}`;
+  const initials = `${userLog.nombre[0]}${userLog.apellido[0]}`;
 
   return (
     <div className={styles.loggedUser}>
@@ -29,7 +22,7 @@ const User = ({ user }) => {
         Hola,
         <br />
         <span>
-          {user1.fName} {user1.surname}
+          {userLog.nombre} {userLog.apellido}
         </span>
       </p>
       {!isMobile && <Button

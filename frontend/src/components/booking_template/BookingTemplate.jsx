@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "./bookingTemplate.module.css";
 
 import { useParams } from "react-router";
@@ -9,8 +9,10 @@ import HeaderProduct from "../product/content/HeaderProduct";
 import BookingDetail from "./booking_detail/BookingDetail";
 import Politics from "../product/content/Politics";
 import useFetch from "../../hooks/useFetch";
+import AuthContext from "../../context/AuthContext";
 
 const BookingTemplate = () => {
+  const { userLog } = useContext(AuthContext); 
   const { id } = useParams();
 
   const isMobile = useMediaQuery(624);
@@ -41,7 +43,6 @@ const BookingTemplate = () => {
   const politicaDeCancelacion = data && data.politica_de_cancelacion;
   const politicaDeSaludYSeguridad = data && data.politica_de_salud_y_seguridad;
   const normasDeUso = data && data.politica_de_uso;
-  const ciudad = data && data.ciudad.ciudad;
 
   const [reservationDate, setReservationDate] = useState({
     startDate: null,
@@ -72,7 +73,7 @@ const BookingTemplate = () => {
                       type="text"
                       id="name"
                       name="name"
-                      value="Gloria"
+                      value={userLog && userLog.nombre}
                       disabled
                     />
                   </div>
@@ -82,7 +83,7 @@ const BookingTemplate = () => {
                       type="text"
                       id="surname"
                       name="surname"
-                      value="Lunar"
+                      value={userLog && userLog.apellido}
                       disabled
                     />
                   </div>
@@ -92,7 +93,7 @@ const BookingTemplate = () => {
                       type="email"
                       id="email"
                       name="email"
-                      value="glorialunar@gmail.com"
+                      value={userLog && userLog.email}
                       disabled
                     />
                   </div>
@@ -102,7 +103,7 @@ const BookingTemplate = () => {
                       type="text"
                       id="location"
                       name="location"
-                      value={ciudad}
+                      value={userLog && userLog.ciudad.ciudad}
                     />
                   </div>
                 </div>
