@@ -1,11 +1,10 @@
 package com.backend.controller;
 
 
-import com.backend.dto.ProductoDTO;
 import com.backend.dto.UsuarioDTO;
-import com.backend.service.ConflictoException;
 import com.backend.service.DatosIncorrectosException;
 import com.backend.service.IUsuarioService;
+import com.backend.service.NoEncontradoException;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -23,13 +22,11 @@ public class UsuarioController {
 
     @Operation(summary = "Recibir datos de usuario logueado")
     @GetMapping
-    public ResponseEntity<UsuarioDTO> obtenerDatosUsuario() throws Exception{
+    public ResponseEntity<UsuarioDTO> obtenerDatosUsuario() throws NoEncontradoException {
 
         UserDetails userDetails = (UserDetails) SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 
-        UsuarioDTO usuarioEncontrado = usuarioService.buscarPorEmail(userDetails.getUsername());
-        usuarioEncontrado.setPassword("Password oculta");
-        return new ResponseEntity<>(usuarioEncontrado, HttpStatus.OK);
+        return new ResponseEntity<>(usuarioService.buscarPorEmail(userDetails.getUsername()), HttpStatus.OK);
 
     }
 

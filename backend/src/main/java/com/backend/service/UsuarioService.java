@@ -4,8 +4,8 @@ import com.backend.dto.UsuarioDTO;
 import com.backend.entity.Usuario;
 import com.backend.repository.IUsuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
@@ -13,6 +13,8 @@ import java.util.Optional;
 
 @Service
 public class UsuarioService implements IUsuarioService{
+
+    private final Logger logger = Logger.getLogger(UsuarioService.class);
 
     @Autowired
     IUsuarioRepository usuarioRepository;
@@ -32,6 +34,8 @@ public class UsuarioService implements IUsuarioService{
             throw new NoEncontradoException("El email especificado no existe");
         }
 
+        logger.info("Se busco por email el usuario> " + usuario);
+
         return mapper.convertValue(usuario, UsuarioDTO.class);
     }
 
@@ -48,8 +52,12 @@ public class UsuarioService implements IUsuarioService{
         usuarioDTO.setPassword(encodedPassword);
         Usuario usuarioNuevo = usuarioRepository.save(mapper.convertValue(usuarioDTO, Usuario.class));
         usuarioNuevo.setPassword("Password oculta");
-        return mapper.convertValue(usuarioNuevo, UsuarioDTO.class);
 
+        UsuarioDTO usuarioGuardado = mapper.convertValue(usuarioNuevo, UsuarioDTO.class);
+
+        logger.info("Se registró el usuario: " + usuarioGuardado.toString());
+
+        return usuarioGuardado;
 
     }
 }

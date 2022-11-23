@@ -29,6 +29,7 @@ public class AuthenticationService implements UserDetailsService {
 
         Set<GrantedAuthority> autorizaciones = new HashSet<>();
         GrantedAuthority autorizacion = null;
+
         for (Rol rol : usuario.get().getRoles()) {
             autorizacion = new SimpleGrantedAuthority(rol.getNombre());
             autorizaciones.add(autorizacion);

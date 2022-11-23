@@ -42,7 +42,7 @@ public class ProductoController {
     public ResponseEntity<List<ProductoDTO>> listarTodos(@RequestParam(required = false) Long ciudad,
                                                          @RequestParam(required=false) Long categoria,
                                                          @RequestParam(required=false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaInicio,
-                                                         @RequestParam(required=false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaFin) throws NoEncontradoException {
+                                                         @RequestParam(required=false) @DateTimeFormat(iso = DateTimeFormat.ISO.DATE) LocalDate fechaFin) throws NoEncontradoException, DatosIncorrectosException {
 
 
         if (fechaInicio != null && fechaFin != null && ciudad != null) {
