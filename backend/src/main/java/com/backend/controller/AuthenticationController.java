@@ -29,8 +29,7 @@ public class AuthenticationController {
     public ResponseEntity<?> createAuthenticationToken(@RequestBody AuthenticationRequest authenticationRequest) throws AuthenticationException {
 
         String username =  authenticationRequest.getUsername();
-        String password =  authenticationRequest.getPassword();
-
+        String password = authenticationRequest.getPassword();
         UsernamePasswordAuthenticationToken token = new UsernamePasswordAuthenticationToken(username, password);
 
         authenticationManager.authenticate(token);

@@ -34,7 +34,7 @@ public class AuthenticationService implements UserDetailsService {
             autorizaciones.add(autorizacion);
         }
 
-        User userDetail = new User(usuario.get().getEmail(),"{noop}" + usuario.get().getPassword(),true, true, true,true, autorizaciones );
+        User userDetail = new User(usuario.get().getEmail(), usuario.get().getPassword(),true, true, true,true, autorizaciones );
 
         return userDetail;
     }
