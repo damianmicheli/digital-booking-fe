@@ -45,7 +45,7 @@
 .filterItem {
   font-size: 14px;
   font-weight: 700;
-  background-color: var(--color-principal);
+  background-color: var(--color-2);
   padding: 0.5rem 1rem;
   border-radius: 30px;
   color: white;

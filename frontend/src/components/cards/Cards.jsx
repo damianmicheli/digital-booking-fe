@@ -5,17 +5,15 @@ import FilterContext from "../../context/FilterContext";
 import Icon from "../global/Icon";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
 import styles from "./cards.module.css";
-import { getDateFormat } from "../global/getDateFormat";
+import format from "date-fns/format";
 
 const Cards = ({ data }) => {
-  const { valuesForm, selectedCategory, filterHandlers } =
-    useContext(FilterContext);
+  const { valuesForm, selectedCategory, filterHandlers } = useContext(FilterContext);
 
-  const date = valuesForm.date && valuesForm.date;
+  const { startDate, endDate } = valuesForm.date;
 
-  const checkIn = date && getDateFormat.getDate(date.startDate);
-  const checkOut = date && getDateFormat.getDate(date.endDate);
-  const dateFormat = checkIn + " / " + checkOut;
+  const checkIn = startDate !== null ? format(startDate, "dd-MM-yyyy") : null;
+  const checkOut = endDate !== null ? format(endDate, "dd-MM-yyyy") : null;
 
   return (
     <>
@@ -34,9 +32,7 @@ const Cards = ({ data }) => {
               />
             </span>
           )}
-          {valuesForm.city === null 
-          || valuesForm.city === "¿A dónde vamos?"
-          ? (
+          {valuesForm.city === null || valuesForm.city === "¿A dónde vamos?" ? (
             ""
           ) : (
             <span className={styles.filterItem}>
@@ -48,12 +44,11 @@ const Cards = ({ data }) => {
               />
             </span>
           )}
-          {valuesForm.date === undefined 
-          ? (
+          {!checkIn || !checkOut ? (
             ""
           ) : (
             <span className={styles.filterItem}>
-              {dateFormat}
+              {`${checkIn}/${checkOut}`}
               <Icon
                 css={styles.iconDelete}
                 icon={faXmark}

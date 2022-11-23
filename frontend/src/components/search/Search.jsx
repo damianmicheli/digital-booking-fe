@@ -22,18 +22,6 @@ const Search = () => {
     endDate: null,
   });
 
-  const { startDate, endDate } = reservationDate;
-
-  const formatDate = (date) => {
-    let formatted_date = null;
-    if (date) {
-      formatted_date =
-        date.getDate() + "-" + (date.getMonth() +1) + "-" + date.getFullYear();
-    }
-
-    return formatted_date;
-  };
-
   const handleSubmit = (e) => {
     e.preventDefault();
     setValuesForm(() => {
@@ -49,9 +37,6 @@ const Search = () => {
         id: null,
       };
     });
-    let startDate = formatDate(reservationDate.startDate);
-    let endDate = formatDate(reservationDate.endDate);
-    console.log(startDate, endDate);
   };
 
   const isMobile = useMediaQuery(768);
@@ -79,15 +64,11 @@ const Search = () => {
             {isMobile ? (
               <Calendar
                 months={1}
-                startDate={startDate}
-                endDate={endDate}
                 setReservationDate={setReservationDate}
               />
             ) : (
               <Calendar
                 months={2}
-                startDate={startDate}
-                endDate={endDate}
                 setReservationDate={setReservationDate}
               />
             )}

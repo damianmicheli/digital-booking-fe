@@ -28,7 +28,7 @@ const BookingCalendar = () => {
   let newDate;
 
   fechas && fechas.map((array) => {
-      newDate = addDays(new Date(array[0], array[1] - 1, array[2]), 1)
+      newDate = addDays(new Date(array[0], array[1] - 1, array[2] - 1), 1)
       return fechasInhabilitadas.push(newDate);
     });
 
