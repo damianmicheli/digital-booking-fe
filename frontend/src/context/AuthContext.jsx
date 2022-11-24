@@ -1,15 +1,13 @@
-import { createContext, useState } from "react";
+import { createContext, useEffect, useState } from "react";
 import URL_BASE from "../components/global/getUrlBase";
 
 
 const AuthContext = createContext();
 
-const initialAuth = null;
-const initialUser = null;
 
 const AuthProvider = ({ children }) => {
-  const [auth, setAuth] = useState(initialAuth);
-  const [userLog, setUserLog] = useState(initialUser);
+  const [auth, setAuth] = useState(null);
+  const [userLog, setUserLog] = useState(null);
 
 const urlAPI = `${URL_BASE}/usuario`;
 
@@ -36,12 +34,17 @@ const urlAPI = `${URL_BASE}/usuario`;
         if(data){
           setUserLog(data)
         }
-        console.log(userLog);
       });
    
   };
 
+  useEffect(()=>{
+    console.log({userLog});
+    userLog?.id && setAuth(true);
+  }, [userLog] )
+
   const handleAuth = (jwt) => {
+    console.log("entra en handleAuth", auth);
     if (auth) {
       localStorage.removeItem("jwt");
       setAuth(null);
@@ -50,8 +53,7 @@ const urlAPI = `${URL_BASE}/usuario`;
       localStorage.setItem("jwt", JSON.stringify(jwt));
       console.log("Setea como true la autenticación");
       console.log("Busca datos del usuario");
-      getUser(urlAPI, jwt);
-      setAuth(true);
+      getUser(urlAPI, jwt);      
     }
   };
 
