@@ -381,7 +381,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/categorias/4",
+							"raw": "http://localhost:8080/categorias/buscar?id=1",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -389,7 +389,13 @@
 							"port": "8080",
 							"path": [
 								"categorias",
-								"4"
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
 							]
 						}
 					},
@@ -401,7 +407,7 @@
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://localhost:8080/categorias/100",
+							"raw": "http://localhost:8080/categorias/buscar?id=100",
 							"protocol": "http",
 							"host": [
 								"localhost"
@@ -409,7 +415,13 @@
 							"port": "8080",
 							"path": [
 								"categorias",
-								"100"
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "100"
+								}
 							]
 						}
 					},

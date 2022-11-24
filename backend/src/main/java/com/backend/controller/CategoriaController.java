@@ -23,8 +23,8 @@ public class CategoriaController {
     private ICategoriaService categoriaService;
 
     @Operation(summary = "Buscar una categoria por su Id")
-    @GetMapping("/{id}")
-    public ResponseEntity<CategoriaDTO> buscar(@PathVariable Long id) throws NoEncontradoException {
+    @GetMapping("/buscar")
+    public ResponseEntity<CategoriaDTO> buscar(@RequestParam Long id) throws NoEncontradoException {
 
         return new ResponseEntity<>(categoriaService.buscar(id), HttpStatus.OK);
 
@@ -54,8 +54,8 @@ public class CategoriaController {
     }
 
     @Operation(summary = "Eliminar la categoria con el Id indicado")
-    @DeleteMapping("/{id}")
-    public ResponseEntity<String> eliminar(@PathVariable Long id) throws NoEncontradoException {
+    @DeleteMapping("eliminar")
+    public ResponseEntity<String> eliminar(@RequestParam Long id) throws NoEncontradoException {
 
         categoriaService.eliminar(id);
         String mensaje = "La categoria con ID " + id + " se eliminó correctamente.";
