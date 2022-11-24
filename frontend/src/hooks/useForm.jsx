@@ -21,6 +21,8 @@ const useForm = (initialForm, validateForm) => {
 
   const navigate = useNavigate();
 
+  /***** LOGIN *****/
+
   function realizarLogin(settings) {
  
     fetch(`${URL_BASE}/autenticar`, settings)
@@ -43,10 +45,8 @@ const useForm = (initialForm, validateForm) => {
         console.log(err);
       });
   }
-
   
-
-  const handleSubmit = (e) => {
+  const handleSubmitLogin = (e) => {
 
     e.preventDefault();
     setErrors(validateForm(form));
@@ -74,12 +74,78 @@ const useForm = (initialForm, validateForm) => {
     }     
   };
 
+/***** REGISTRO *****/
+
+  function realizarRegistro(settings) {
+ 
+    fetch(`http://localhost:8080/usuario`, settings)
+      .then((response) => {
+        console.log(response);
+        if (response.ok !== true) {
+          alert("Lamentablemente no ha podido registrarse. Por favor intente más tarde");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        if (data.jwt) {
+          //guardo en LocalStorage el objeto con el token
+          handleAuth(data.jwt);        
+        }
+      })
+      .catch((err) => {
+        console.log("Promesa rechazada:");
+        console.log(err);
+      });
+  }
+
+  const handleSubmitRegister = (e) => {
+
+    e.preventDefault();
+    setErrors(validateForm(form));
+
+    const payload = {
+        "nombre": form.fName,
+        "apellido": form.surname,
+        "password": form.password,
+        "email": form.email,
+     /*    "ciudad": {
+            "id": 1,
+            "ciudad": null,
+            "pais": null
+        }, */
+        "roles": [
+            {
+                "id": 2,
+                "nombre": "ROLE_USER"
+            }
+        ]    
+  };
+
+    const settings = {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+      },
+    };    
+ 
+    if (Object.values(errors)[0] === "") {
+      console.log(errors);
+      realizarRegistro(settings);
+      navigate("/");
+    }else{
+      return "Lamentablemente no ha podido registrarse. Por favor intente más tarde";
+    }     
+  };
+
   return {
     form,
     errors,
     handleChange,
     handleBlur,
-    handleSubmit
+    handleSubmitLogin,
+    handleSubmitRegister
   };
 };
 

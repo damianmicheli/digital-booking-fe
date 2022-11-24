@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext, useRef } from "react";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation, useNavigate, Link } from "react-router-dom";
 import Button from "../global/Button";
 import Icon from "../global/Icon";
 import styles from "./header.module.css";
@@ -12,6 +12,8 @@ import User from "../user/User";
 
 const Header = () => {
   const { auth } = useContext(AuthContext);
+
+  console.log("auth", auth);
 
   const refMenu = useRef(null);
 /*   const refBtnLogin = useRef(null);
@@ -52,9 +54,11 @@ const Header = () => {
 
   const [path, setPath] = useState(useLocation().pathname);
 
+ const pathname = useLocation().pathname;
+
   useEffect(() => {
-    setPath(path);
-  }, [path]);
+    setPath(pathname);
+  }, [pathname]);
 
   useEffect(() => {
     document.addEventListener("click", hideOnClickOutside, true);
@@ -65,12 +69,12 @@ const Header = () => {
       <div className="container">
         <div className={styles.rowHeader}>
           <div className={styles.logoSlogan}>
-            <a href="/">
+            <Link to="/">
               <img src={logo} alt="logo" className={styles.logo} />
-            </a>
-            <a href="/">
+            </Link>
+            <Link to="/">
               <span className={styles.slogan}>Sentite como en tu hogar</span>
-            </a>
+            </Link>
           </div>
           <div>
             {!auth ? (
