@@ -106,7 +106,7 @@ const BookingTemplate = () => {
                       type="text"
                       id="location"
                       name="location"
-                      value={userLog && userLog.ciudad.ciudad}
+                      value={ciudad}
                     />
                   </div>
                 </div>

@@ -22,7 +22,7 @@ const useForm = (initialForm, validateForm) => {
   const navigate = useNavigate();
 
   /***** LOGIN *****/
-
+  const token = localStorage.getItem("token");
   function realizarLogin(settings) {
  
     fetch(`${URL_BASE}/autenticar`, settings)
@@ -62,6 +62,7 @@ const useForm = (initialForm, validateForm) => {
       body: JSON.stringify(payload),
       headers: {
         "Content-Type": "application/json",
+        "Authorization": token,
       },
     };    
  
@@ -116,8 +117,7 @@ const useForm = (initialForm, validateForm) => {
         }, */
         "roles": [
             {
-                "id": 2,
-                "nombre": "ROLE_USER"
+                "id": 2
             }
         ]    
   };
@@ -133,7 +133,8 @@ const useForm = (initialForm, validateForm) => {
     if (Object.values(errors)[0] === "") {
       console.log(errors);
       realizarRegistro(settings);
-      navigate("/");
+      alert(`Bienvenida, ${form.fName}!\nHas creado tu cuenta con éxito 😊`)
+      navigate("/login");
     }else{
       return "Lamentablemente no ha podido registrarse. Por favor intente más tarde";
     }     
