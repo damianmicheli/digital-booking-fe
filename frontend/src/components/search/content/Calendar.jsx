@@ -14,7 +14,7 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { es } from "react-date-range/dist/locale";
 
-const Calendar = ({ months, setReservationDate}) => {
+const Calendar = ({ months, setReservationDate, selectedDate, setSelectedDate}) => {
   // date state
   const [range, setRange] = useState([
     {
@@ -23,7 +23,7 @@ const Calendar = ({ months, setReservationDate}) => {
       key: "selection",
     },
   ]);
-
+  
   // date value
 
   // open close
@@ -60,15 +60,20 @@ const Calendar = ({ months, setReservationDate}) => {
       <div className={`${styles.calendarWrap} ${styles.datePicker}`}>
         <Icon css={styles.icon} icon={faCalendar} />
         <input
-          value={`${format(range[0].startDate, "dd/MM/yyyy")} - ${format(
-            range[0].endDate,
-            "dd/MM/yyyy"
-          )}`}
+          value={selectedDate}
           readOnly
           className={styles.inputBox}
           onClick={() => {
             setOpen((open) => !open);
           }}
+          onChange={
+            !open ? 
+            selectedDate :
+            setSelectedDate(`${format(range[0].startDate, "dd/MM/yyyy")} - ${format(
+            range[0].endDate,
+            "dd/MM/yyyy"
+          )}`)
+        }
         />
 
         <div ref={refOne}>

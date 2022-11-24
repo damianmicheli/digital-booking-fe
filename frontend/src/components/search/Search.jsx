@@ -13,6 +13,8 @@ import useMediaQuery from "../../hooks/useMediaQuery";
 const Search = () => {
   const [selected, setSelected] = useState("¿A dónde vamos?");
 
+  const [selectedDate, setSelectedDate] = useState("Check in - Check out");
+
   const [idCity, setIdCity] = useState(null);
 
   const { setValuesForm, setSelectedCategory } = useContext(FilterContext);
@@ -65,11 +67,15 @@ const Search = () => {
               <Calendar
                 months={1}
                 setReservationDate={setReservationDate}
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
               />
             ) : (
               <Calendar
                 months={2}
                 setReservationDate={setReservationDate}
+                selectedDate={selectedDate}
+                setSelectedDate={setSelectedDate}
               />
             )}
           </div>
