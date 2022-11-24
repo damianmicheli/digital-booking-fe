@@ -208,7 +208,8 @@ li {
 
 
 .line{
-  border: 1px solid var(--color-principal);
+  background-color: var(--color-2-transparency);
+  border-bottom: 1px solid var(--color-2-transparency);
 }
 
 .marginBottom{
@@ -216,8 +217,13 @@ li {
 }
 
 .paddingTop{
-  padding-top:25px;
+  padding-top: 25px;
 }
+
+.paddingBottom{
+  padding-bottom: 15px;
+}
+
 
 @media only screen and (min-width: 624px) {
   .marginBottom{

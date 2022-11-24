@@ -1,15 +1,12 @@
-.container {
-  display: flex;
-  flex-direction: column;
-}
-
 .calendarElement {
   align-items: center;
+  padding: 0 3rem;
 }
 
 @media only screen and (min-width: 624px) {
   .calendarElement {
     align-items: stretch;
+    padding: 1rem;
   }
 }
 

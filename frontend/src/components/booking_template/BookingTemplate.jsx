@@ -12,11 +12,13 @@ import useFetch from "../../hooks/useFetch";
 import AuthContext from "../../context/AuthContext";
 import format from "date-fns/format";
 import URL_BASE from "../global/getUrlBase";
-
+import Success from "../global/modal/success/Success";
 
 const BookingTemplate = () => {
-  const { userLog } = useContext(AuthContext); 
+  const { userLog } = useContext(AuthContext);
   const { id } = useParams();
+
+  const [success, setSuccess] = useState(false);
 
   const isMobile = useMediaQuery(624);
 
@@ -40,12 +42,19 @@ const BookingTemplate = () => {
 
   const [data] = useFetch(`${URL_BASE}/productos/buscar?id=${id}`);
 
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSuccess(true);
+  };
+
   const nombre = data && data.nombre;
   const categoria = data && data.categoria.titulo.toUpperCase();
   const politicaDeCancelacion = data && data.politica_de_cancelacion;
   const politicaDeSaludYSeguridad = data && data.politica_de_salud_y_seguridad;
   const normasDeUso = data && data.politica_de_uso;
   const ciudad = data && data.ciudad.ciudad;
+  const direccion = data && data.direccion;
+  const imagen = data && data.imagenes[0];
 
   const [reservationDate, setReservationDate] = useState({
     startDate: null,
@@ -54,20 +63,32 @@ const BookingTemplate = () => {
 
   const { startDate, endDate } = reservationDate;
 
-  const checkIn = startDate === null ? "__/__/__" : `${format(startDate, "dd/MM/yyyy")}`;
-  const checkOut = endDate === null ? "__/__/__" : `${format(endDate, "dd/MM/yyyy")}`;
+  const checkIn =
+    startDate === null ? "__/__/__" : `${format(startDate, "dd/MM/yyyy")}`;
+  const checkOut =
+    endDate === null ? "__/__/__" : `${format(endDate, "dd/MM/yyyy")}`;
 
   return (
     <>
+      <Success state={success} />
       <div className={styles.title}>
-        <HeaderProduct category={categoria} title={nombre} />
+        <HeaderProduct category={categoria} title={nombre} path={"/"} />
       </div>
       <div className={styles.bookingTemplate}>
-        <div className="container">
-          <h2 className="heading2 color2 paddingTop">Completá tus datos</h2>
-          <form id="bookingForm" action="/" method="POST">
+        <div className={styles}>
+          <form
+            onSubmit={(e) => {
+              handleSubmit(e);
+            }}
+            id="bookingForm"
+            // action="/"
+            // method="POST"
+          >
             <div className={styles.content}>
               <div className={styles.contentLeft}>
+                <h2 className="heading2 color2 paddingTop">
+                  Completá tus datos
+                </h2>
                 <div className={styles.divInputs}>
                   <div className={styles.groupForm}>
                     <label className="text2">Nombre</label>
@@ -109,22 +130,34 @@ const BookingTemplate = () => {
                     />
                   </div>
                 </div>
-                {isMobile ? (
-                  <Calendar
-                    months={1}
-                    bookings={fechasInhabilitadas}
-                    setReservationDate={setReservationDate}
-                  />
-                ) : (
-                  <Calendar
-                    months={2}
-                    bookings={fechasInhabilitadas}
-                    setReservationDate={setReservationDate}
-                  />
-                )}
+                <h2 className="heading2 color2 paddingTop paddingBottom">
+                  Seleccioná tu fecha de reserva
+                </h2>
+                <div className={styles.calendar}>
+                  {isMobile ? (
+                    <Calendar
+                      months={1}
+                      bookings={fechasInhabilitadas}
+                      setReservationDate={setReservationDate}
+                    />
+                  ) : (
+                    <Calendar
+                      months={2}
+                      bookings={fechasInhabilitadas}
+                      setReservationDate={setReservationDate}
+                    />
+                  )}
+                </div>
               </div>
               <div className={styles.contentRight}>
-                <BookingDetail startDate={checkIn} endDate={checkOut}/>
+                <BookingDetail
+                  startDate={checkIn}
+                  endDate={checkOut}
+                  title={nombre}
+                  category={categoria}
+                  location={direccion}
+                  image={imagen}
+                />
               </div>
             </div>
           </form>
