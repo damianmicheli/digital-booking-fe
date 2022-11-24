@@ -20,7 +20,6 @@ const Calendar = ({months, bookings, setReservationDate}) => {
   ]);
   
   return (
-      
       <DateRange
         onChange={(item) => {
           setRange([item.selection])

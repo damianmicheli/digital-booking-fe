@@ -37,6 +37,7 @@
   position: absolute;
   bottom: 490px;
   right: 10px;
+  padding-bottom: 1rem;
 }
 
 .divNavNetwork{
@@ -98,5 +99,9 @@
   .btnWrapper{
     display: none;
   }
+  .menuUser{
+    padding-bottom: 0;
+  }
+  
  
 }

@@ -4,7 +4,7 @@ import styles from "./bookingDetail.module.css";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../global/Button";
 
-const BookingDetail = ({ startDate, endDate }) => {
+const BookingDetail = ({ startDate, endDate, title, category, location, image }) => {
 
   const onclick = () => {
 
@@ -16,28 +16,29 @@ const BookingDetail = ({ startDate, endDate }) => {
       <div className={styles.imgContent}>
         <img
           className={styles.bookingImg}
-          src="https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/categorias/placeholder.jpeg"
+          src={image
+            ? image.url
+            : "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/categorias/placeholder.jpeg"}
           alt="imagen"
         />
         <div className={styles.content}>
-          <h5>{/* {category} */}HOTEL</h5>
-          <h3 className="color2">{/* {title} */}Hermitage Hotel</h3>
+          <h5>{category}</h5>
+          <h3 className="color2">{title}</h3>
           <h6>
             <Icon css={styles.iconLocation} icon={faLocationDot} />
-            {/* {location} */}Av. Colón 1643, Buenos Aires, Ciudad Autónoma de
-            Buenos Aires, Argentina
+            {location}
           </h6>
-          <div className="line"></div>
+          <hr className="line" />
           <div className={styles.checkDate}>
             <p>Check in</p>
             <p>{startDate}</p>
           </div>
-          <div className="line"></div>
+          <hr className="line"/>
           <div className={styles.checkDate}>
             <p>Check out</p>
             <p>{endDate}</p>
           </div>
-          <div className="line marginBottom"></div>
+          <hr className="line marginBottom" />
           <Button css="buttonCard" text={"Confirmar reserva"} event={onclick}/>
         </div>
       </div>

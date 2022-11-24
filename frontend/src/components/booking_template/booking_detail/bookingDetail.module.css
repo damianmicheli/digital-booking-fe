@@ -36,14 +36,27 @@
   font-weight: 500;
 }
 
-@media only screen and (min-width: 624px) {
+.content > h6 {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 14px;
+}
+
+.content > h5 {
+  color: var(--color-2-opacity);
+}
+
+
+@media only screen and (min-width: 866px) {
   .imgContent {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
   }
   .bookingImg {
-    width: 46%;
+    width: 409px;
+    height: 300px;
     border-radius: 5px;
     margin-left: 4%;
   }
@@ -56,13 +69,14 @@
   }
 }
 
-@media only screen and (min-width: 991px) {
+@media only screen and (min-width: 1100px) {
 
   .imgContent {
     flex-direction: column;
   }
   .bookingImg {
-    width: 100%;
+    width: 409px;
+    height: 300px;
     border-radius: 0;
     margin-left: 0;
   }
@@ -72,7 +86,6 @@
 
   .bookingDetail {
     margin-top: 0;
-    margin-bottom: 50px;
   }
 
   .checkDate {
