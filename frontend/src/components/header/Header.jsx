@@ -13,11 +13,7 @@ import User from "../user/User";
 const Header = () => {
   const { auth } = useContext(AuthContext);
 
-  console.log("auth", auth);
-
   const refMenu = useRef(null);
-/*   const refBtnLogin = useRef(null);
-  const refBtnRegister = useRef(null); */
 
   /* --- menú mobile --- */
   const [open, setOpen] = useState(false);
@@ -27,15 +23,6 @@ const Header = () => {
       setOpen(false);
     }
   };
-  /* 
-  const toggleStyleButton = (e) => {
-    if (refBtnRegister.current && !refBtnRegister.current.contains(e.target)) {
-      refBtnRegister.current.classname="disabled";
-    }
-    if (refBtnRegister.current && !refBtnRegister.current.contains(e.target)) {
-      refBtnRegister.current.classname="disabled"
-    }
-  }; */
 
   const handleClick = () => {
     setOpen(!open);

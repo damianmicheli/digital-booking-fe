@@ -37,7 +37,6 @@ const BookingTemplate = () => {
     window.scrollTo(0, 0);
   }, []);
 
-  //const [bookings] = useFetch(`${URL_BASE}/reservas/producto/${id}`)
 
   const [data] = useFetch(`${URL_BASE}/productos/buscar?id=${id}`);
 
