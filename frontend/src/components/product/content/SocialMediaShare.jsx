@@ -14,8 +14,7 @@ import {
 } from "react-share";
 
 const SocialMediaShare = ({ url }) => {
-  const [isOpenModalSocialMedia, openModalSocialMedia, closeModalSocialMedia] =
-    useModal(false);
+  const [isOpenModalSocialMedia, openModalSocialMedia, closeModalSocialMedia] = useModal(false);
 
   return (
     <>

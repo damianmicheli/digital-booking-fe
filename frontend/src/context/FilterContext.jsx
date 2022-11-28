@@ -3,37 +3,32 @@ import { createContext, useState } from "react";
 const FilterContext = createContext();
 
 const FilterContextProvider = ({ children }) => {
+  const [selectedCity, setSelectedCity] = useState("¿A dónde vamos?");
+
+  const [selectedDate, setSelectedDate] = useState("Check in - Check out");
+
+  const [reservationDate, setReservationDate] = useState({
+    startDate: null,
+    endDate: null,
+  });
 
   const [selectedCategory, setSelectedCategory] = useState({
-    title: null
+    title: null,
   });
-  
+
   const [valuesForm, setValuesForm] = useState({
     city: null,
     date: {
       startDate: null,
-      endDate: null
-    }
+      endDate: null,
+    },
   });
 
   const filterHandlers = {
-    handleClearFilters: () => {
-      setSelectedCategory({
-        title: null
-      });
-      setValuesForm({
-        city: null,
-        id: null,
-        date: {
-          startDate: null,
-          endDate: null
-        }
-      });
-    },
     handleClearCategory: () => {
       setSelectedCategory({
         title: null,
-        id: null
+        id: null,
       });
     },
     handleClearCity: () => {
@@ -41,9 +36,10 @@ const FilterContextProvider = ({ children }) => {
         return {
           ...prevState,
           city: null,
-          id: null
+          id: null,
         };
       });
+      setSelectedCity("¿A dónde vamos?");
     },
     handleClearDate: () => {
       setValuesForm((prevState) => {
@@ -51,8 +47,16 @@ const FilterContextProvider = ({ children }) => {
           ...prevState,
           date: {
             startDate: null,
-            endDate: null
-          }
+            endDate: null,
+          },
+        };
+      });
+      setSelectedDate("Check in - Check out");
+      setReservationDate((prevState) => {
+        return {
+          ...prevState,
+          startDate: null,
+          endDate: null,
         };
       });
     },
@@ -65,14 +69,19 @@ const FilterContextProvider = ({ children }) => {
         setValuesForm,
         selectedCategory,
         setSelectedCategory,
-        filterHandlers
+        filterHandlers,
+        selectedCity,
+        setSelectedCity,
+        selectedDate,
+        setSelectedDate,
+        reservationDate,
+        setReservationDate,
       }}
     >
       {children}
     </FilterContext.Provider>
   );
 };
-
 
 export { FilterContextProvider };
 export default FilterContext;

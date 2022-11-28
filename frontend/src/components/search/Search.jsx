@@ -11,26 +11,26 @@ import Button from "../global/Button";
 import useMediaQuery from "../../hooks/useMediaQuery";
 
 const Search = () => {
-  const [selected, setSelected] = useState("¿A dónde vamos?");
-
-  const [selectedDate, setSelectedDate] = useState("Check in - Check out");
-
   const [idCity, setIdCity] = useState(null);
 
-  const { setValuesForm, setSelectedCategory } = useContext(FilterContext);
-
-  const [reservationDate, setReservationDate] = useState({
-    startDate: null,
-    endDate: null,
-  });
+  const {
+    setValuesForm,
+    setSelectedCategory,
+    selectedCity,
+    setSelectedCity,
+    selectedDate,
+    setSelectedDate,
+    reservationDate,
+    setReservationDate,
+  } = useContext(FilterContext);
 
   const handleSubmit = (e) => {
     e.preventDefault();
     setValuesForm(() => {
       return {
-        city: selected,
+        city: selectedCity,
         id: idCity,
-        date: reservationDate
+        date: reservationDate,
       };
     });
     setSelectedCategory(() => {
@@ -57,8 +57,8 @@ const Search = () => {
         >
           <div className={styles.select}>
             <Select
-              selected={selected}
-              setSelected={setSelected}
+              selected={selectedCity}
+              setSelected={setSelectedCity}
               setIdCity={setIdCity}
             />
           </div>

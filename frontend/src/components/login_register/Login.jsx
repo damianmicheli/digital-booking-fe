@@ -2,8 +2,12 @@ import React, { useState, useEffect } from "react";
 import styles from "./loginRegister.module.css";
 import Button from "../global/Button";
 import Icon from "../global/Icon";
-import { faEyeSlash, faEye, faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
+import {
+  faEyeSlash,
+  faEye,
+} from "@fortawesome/free-solid-svg-icons";
 import useForm from "../../hooks/useForm";
+import Alert from "../global/modal/alert/Alert";
 
 const initialForm = {
   emailLogin: "",
@@ -49,13 +53,16 @@ const Login = () => {
 
   return (
     <>
+      <Alert />
       <div className={styles.container}>
         <div className={styles.content}>
-          <div className={styles.loginRequired}>
-            <p><Icon icon={faCircleExclamation} css={styles.iconError} />  Para realizar una reserva necesitas estar logueado</p>
-          </div>
           <p className="headings heading1">Iniciar sesión</p>
-          <form id="loginForm" action="/" method="POST" onSubmit={handleSubmitLogin}>
+          <form
+            id="loginForm"
+            action="/"
+            method="POST"
+            onSubmit={handleSubmitLogin}
+          >
             <div className={styles.divInputs}>
               <div className={styles.groupForm}>
                 <label className="text2">Correo electrónico</label>
@@ -94,7 +101,7 @@ const Login = () => {
                   <p className={styles.pFormError}>{errors.passwordLogin}</p>
                 )}
               </div>
-            
+
               <div className={styles.groupForm}>
                 <Button css="buttonForm" text="Ingresar" />
                 <span className="text2 spanForm">

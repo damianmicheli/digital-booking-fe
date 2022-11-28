@@ -6,11 +6,10 @@ import Home from "../home/Home";
 import Login from "../login_register/Login";
 import Register from "../login_register/Register";
 import Product from "../product/Product";
-import Calendar from "../booking_template/Calendar";
 
 /* import { FavProvider } from "../../context/FavContext"; */
 import BookingTemplate from "../booking_template/BookingTemplate";
-import BookingDetail from "../booking_template/booking_detail/BookingDetail";
+import SuccessRegister from "../global/modal/success/SuccessRegister";
 
 const Body = () => {
   return (
@@ -20,9 +19,8 @@ const Body = () => {
         <Route path="/producto/:id" element={<Product />}></Route>
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
-        <Route path="/calendar" element={<Calendar />} />
         <Route path="/producto/:id/reserva" element={<BookingTemplate />} />
-        <Route path="/detalle" element={<BookingDetail />} />
+        <Route path="/success" element={<SuccessRegister />} />
       </Routes>
     </div>
   );

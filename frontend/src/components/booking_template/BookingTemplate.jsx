@@ -12,7 +12,7 @@ import useFetch from "../../hooks/useFetch";
 import AuthContext from "../../context/AuthContext";
 import format from "date-fns/format";
 import URL_BASE from "../global/getUrlBase";
-import Success from "../global/modal/success/Success";
+import SuccessUser from "../global/modal/success/SuccessUser";
 
 const BookingTemplate = () => {
   const { userLog } = useContext(AuthContext);
@@ -71,7 +71,7 @@ const BookingTemplate = () => {
 
   return (
     <>
-      <Success state={success} />
+      <SuccessUser state={success} />
       <div className={styles.title}>
         <HeaderProduct category={categoria} title={nombre} path={"/"} />
       </div>

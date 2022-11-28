@@ -37,7 +37,7 @@ const BookingCalendar = () => {
   const { auth } = useContext(AuthContext);
 
   const handleBooking = () => {
-    auth ? navigate(`/producto/${id}/reserva`) : navigate(`/login`);
+    auth ? navigate(`/producto/${id}/reserva`) : navigate(`/login?showAlert=true`);
   };
 
   return (

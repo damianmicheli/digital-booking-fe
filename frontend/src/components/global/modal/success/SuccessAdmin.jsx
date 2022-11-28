@@ -11,12 +11,11 @@ const Success = ({ state }) => {
           <div className={styles.backgroundContainer}/>
           <div className={styles.cardContainer}>
             <img src={successCheck} alt="success-check" />
-            <h2 className={styles.successH2}>¡Muchas Gracias!</h2>
-            <h3 className={styles.successH3}>
-              Su reserva se ha realizado con éxito
+            <h3 className={styles.successAdminH4}>
+              Tu propiedad se ha creado con éxito.
             </h3>
             <Link to={"/"}>
-              <Button css={styles.successBtn} text={"ok"} />
+              <Button css={styles.successBtn} text={"volver"} />
             </Link>
           </div>
         </div>
