@@ -39,13 +39,7 @@ const BookingTemplate = () => {
     window.scrollTo(0, 0);
   }, []);
 
-
   const [data] = useFetch(`${URL_BASE}/productos/buscar?id=${id}`);
-
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    setSuccess(true);
-  };
 
   const nombre = data && data.nombre;
   const categoria = data && data.categoria.titulo.toUpperCase();
@@ -63,10 +57,62 @@ const BookingTemplate = () => {
 
   const { startDate, endDate } = reservationDate;
 
-  const checkIn =
-    startDate === null ? "__/__/__" : `${format(startDate, "dd/MM/yyyy")}`;
-  const checkOut =
-    endDate === null ? "__/__/__" : `${format(endDate, "dd/MM/yyyy")}`;
+  const checkIn = startDate === null ? "__/__/__" : `${format(startDate, "dd/MM/yyyy")}`;
+  const checkOut = endDate === null ? "__/__/__" : `${format(endDate, "dd/MM/yyyy")}`;
+
+    function realizarReserva(settings) {
+ 
+      fetch(`http://localhost:8080/reservas`, settings)
+        .then((response) => {
+          console.log(response);
+          if (response.ok !== true) {
+            alert("Lamentablemente no se pudo realizar su reserva. Por favor intente más tarde");
+          }
+          return response.json();
+        })
+        .then((data) => {
+          console.log(data);
+          console.log("Se registro ok la reserva");
+        })
+        .catch((err) => {
+          console.log("Promesa rechazada:");
+          console.log(err);
+        });
+    }
+  
+    const handleSubmit = (e) => {
+      e.preventDefault();
+      const token = localStorage.getItem("jwt");
+      console.log(token);
+      const payload = {      
+          "producto":{
+              "id":`${id}`,
+          },
+          "fecha_inicial_reserva": format(startDate, "yyyy-MM-dd"),
+          "fecha_final_reserva": format(endDate, "yyyy-MM-dd"),
+          "hora_comienzo_reserva":"10:00:00",
+          "usuario":{
+              "id":"1"
+          },
+          "vacunado":"true",
+          "aclaraciones":""      
+      }
+      console.log(`${id}`);
+      console.log(checkIn);
+      console.log(`${checkOut}`);
+  
+      const settings = {
+        method: "POST",
+        body: JSON.stringify(payload),
+        headers: {
+          "Content-Type": "application/json",
+          "Authorization": token,
+        },
+      }; 
+      realizarReserva(settings);
+      console.log("hace reserva");
+      setSuccess(true);
+    };  
 
   return (
     <>
