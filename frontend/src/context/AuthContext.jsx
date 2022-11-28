@@ -12,8 +12,7 @@ const AuthProvider = ({ children }) => {
 const urlAPI = `${URL_BASE}/usuario`;
 
   const getUser = (url, token) => {
-    console.log("Trae token: " + token);
-
+ 
     const settings = {
       method: "GET",
       headers: {
@@ -29,9 +28,7 @@ const urlAPI = `${URL_BASE}/usuario`;
         return response.json();
       })
       .then((data) => {
-        console.log("segunda promesa");
-        console.log(data);
-        if(data){
+          if(data){
           setUserLog(data)
         }
       });
@@ -39,20 +36,15 @@ const urlAPI = `${URL_BASE}/usuario`;
   };
 
   useEffect(()=>{
-    console.log({userLog});
     userLog?.id && setAuth(true);
   }, [userLog] )
 
   const handleAuth = (jwt) => {
-    console.log("entra en handleAuth", auth);
     if (auth) {
       localStorage.removeItem("jwt");
       setAuth(null);
     } else {
-      console.log("Guarda jwt en local");
       localStorage.setItem("jwt", JSON.stringify(jwt));
-      console.log("Setea como true la autenticación");
-      console.log("Busca datos del usuario");
       getUser(urlAPI, jwt);      
     }
   };
