@@ -11,4 +11,11 @@ import lombok.ToString;
 public class RolDTO {
     private Long id;
     private String nombre;
+
+    public RolDTO(Long id) {
+        this.id = id;
+    }
+
+    public RolDTO() {
+    }
 }

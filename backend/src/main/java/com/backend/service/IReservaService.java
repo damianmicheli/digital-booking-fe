@@ -11,8 +11,8 @@ public interface IReservaService {
 
     List<ReservaDTO> findByProductoId(Long productoId) throws NoEncontradoException;
 
-    List<ReservaDTO> findByClienteId(Long clienteId);
+    List<ReservaDTO> findByUsuarioId(Long usuarioId);
 
-    FechasOcupadasDTO fechasOcupadas(Long productoId);
+//    FechasOcupadasDTO fechasOcupadas(Long productoId);
 
 }

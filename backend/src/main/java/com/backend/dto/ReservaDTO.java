@@ -18,7 +18,7 @@ public class ReservaDTO {
     private LocalDate fecha_inicial_reserva;
     private LocalDate fecha_final_reserva;
     private ProductoDTO producto;
-    private ClienteDTO cliente;
+    private UsuarioDTO usuario;
     private String aclaraciones;
     private boolean vacunado;
 }

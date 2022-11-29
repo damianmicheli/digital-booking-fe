@@ -25,7 +25,33 @@ public class ProductoDTO {
     private List<ImagenDTO> imagenes;
     private List<CaracteristicaDTO> caracteristicas;
 
+    public ProductoDTO() {
+    }
 
+    public ProductoDTO(
+                       String descripcion,
+                       String direccion,
+                       String nombre,
+                       String politica_de_cancelacion,
+                       String politica_de_salud_y_seguridad,
+                       String politica_de_uso,
+                       String titulo,
+                       CategoriaDTO categoria,
+                       CiudadDTO ciudad,
+                       List<ImagenDTO> imagenes,
+                       List<CaracteristicaDTO> caracteristicas) {
+        this.titulo = titulo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.direccion = direccion;
+        this.politica_de_uso = politica_de_uso;
+        this.politica_de_salud_y_seguridad = politica_de_salud_y_seguridad;
+        this.politica_de_cancelacion = politica_de_cancelacion;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
+    }
 }
 
 

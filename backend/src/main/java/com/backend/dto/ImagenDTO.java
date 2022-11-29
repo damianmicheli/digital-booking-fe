@@ -12,4 +12,11 @@ public class ImagenDTO {
     private String titulo;
     private String url;
 
+    public ImagenDTO() {
+    }
+
+    public ImagenDTO(String titulo, String url) {
+        this.titulo = titulo;
+        this.url = url;
+    }
 }

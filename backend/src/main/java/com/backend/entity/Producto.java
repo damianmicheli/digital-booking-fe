@@ -47,7 +47,7 @@ public class Producto {
     private Ciudad ciudad;
 
 
-    @OneToMany(cascade = CascadeType.REMOVE)
+    @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="producto_id")
     private List<Imagen> imagenes;
 
