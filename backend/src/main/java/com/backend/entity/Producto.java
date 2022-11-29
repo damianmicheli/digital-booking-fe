@@ -21,7 +21,7 @@ public class Producto {
     private String titulo;
     private String nombre;
 
-    @Lob
+    @Column(length=1000)
     private String descripcion;
 
     private String direccion;
