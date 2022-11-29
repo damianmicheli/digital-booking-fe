@@ -20,6 +20,8 @@ public class Producto {
     private Long id;
     private String titulo;
     private String nombre;
+
+    @Lob
     private String descripcion;
 
     private String direccion;
