@@ -3,10 +3,13 @@ package com.backend.service;
 import com.backend.dto.FechasOcupadasDTO;
 import com.backend.dto.ProductoDTO;
 import com.backend.dto.ReservaDTO;
+import com.backend.dto.UsuarioDTO;
 import com.backend.entity.Producto;
 import com.backend.entity.Reserva;
+import com.backend.entity.Usuario;
 import com.backend.repository.IProductoRepository;
 import com.backend.repository.IReservaRepository;
+import com.backend.repository.IUsuarioRepository;
 import com.backend.util.Utiles;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
@@ -35,14 +38,18 @@ public class ReservaService implements IReservaService {
     @Autowired
     private IProductoRepository productoRepository;
 
+    @Autowired
+    private IUsuarioService usuarioService;
 
     @Override
     public ReservaDTO guardar(ReservaDTO reservaDTO) throws NoEncontradoException, DatosIncorrectosException {
 
-        //Obtengo el producto y las fechas
+        //Obtengo el producto, el usuario, las fechas y la ciudad del usuario
         ProductoDTO producto = reservaDTO.getProducto();
+        UsuarioDTO usuario = reservaDTO.getUsuario();
         LocalDate fechaInicio = reservaDTO.getFecha_inicial_reserva();
         LocalDate fechaFin = reservaDTO.getFecha_final_reserva();
+        String ciudadNueva = usuario.getCiudad();
 
         //Verifico que el producto exista
 
@@ -51,6 +58,16 @@ public class ReservaService implements IReservaService {
         if(productoEncontrado.isEmpty()) {
 
             throw new NoEncontradoException("El producto no fue encontrado");
+
+        }
+
+        //Verifico que el usuario exista
+
+        UsuarioDTO usuarioEncontrado = usuarioService.buscarPorId(usuario.getId());
+
+        if(usuarioEncontrado == null) {
+
+            throw new NoEncontradoException("El usuario no fue encontrado");
 
         }
 
@@ -78,6 +95,15 @@ public class ReservaService implements IReservaService {
         Reserva reservaGuardado = reservaRepository.save(reserva);
 
         ReservaDTO reservaDTOGuardado = mapper.convertValue(reservaGuardado, ReservaDTO.class);
+
+
+        if (ciudadNueva != null && !usuarioEncontrado.getCiudad().equalsIgnoreCase(ciudadNueva)){
+
+            usuarioEncontrado.setCiudad(ciudadNueva);
+
+            usuarioService.actualizarCiudad(usuarioEncontrado);
+
+        }
 
         logger.info("Se creo la reserva : " + reservaDTOGuardado);
 
