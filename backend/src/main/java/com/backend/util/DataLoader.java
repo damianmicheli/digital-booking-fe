@@ -10,7 +10,6 @@ import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
-import java.sql.Time;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.ArrayList;
@@ -31,9 +30,6 @@ public class DataLoader implements ApplicationRunner {
 
     @Autowired
     ICiudadService ciudadService;
-
-    @Autowired
-    IImagenService imagenService;
 
     @Autowired
     IRolRepository rolRepository;
@@ -374,24 +370,41 @@ public class DataLoader implements ApplicationRunner {
 
             List<CaracteristicaDTO> caracteristicas = new ArrayList<>();
 
-            // crear array caracteristicas
-            {
-                caracteristicas.add(new CaracteristicaDTO("Piscina", "faSwimmer"));
-                caracteristicas.add(new CaracteristicaDTO("Parrilla", "faFire"));
-                caracteristicas.add(new CaracteristicaDTO("Aire Acondicionado", "faSnowflake"));
-                caracteristicas.add(new CaracteristicaDTO("WiFi", "faWifi"));
-                caracteristicas.add(new CaracteristicaDTO("Acceso a la playa", "faUmbrellaBeach"));
-                caracteristicas.add(new CaracteristicaDTO("Estacionamiento", "faCar"));
-                caracteristicas.add(new CaracteristicaDTO("Apto Mascotas", "faPaw"));
-                caracteristicas.add(new CaracteristicaDTO("Botiquín", "faSuitcaseMedical"));
-                caracteristicas.add(new CaracteristicaDTO("Televisión", "faTv"));
-                caracteristicas.add(new CaracteristicaDTO("Cocina", "faKitchenSet"));
-                caracteristicas.add(new CaracteristicaDTO("Calefacción", "faTemperatureArrowUp"));
-                caracteristicas.add(new CaracteristicaDTO("Caja de seguridad", "faVault"));
-                caracteristicas.add(new CaracteristicaDTO("Cámaras de Seguridad", "faVideo"));
-                caracteristicas.add(new CaracteristicaDTO("Shampoo/Acondicionador", "faPumpSoap"));
-            }
+            // crear array caracteristicas v1
+//            {
+//                caracteristicas.add(new CaracteristicaDTO("Piscina", "faSwimmer"));
+//                caracteristicas.add(new CaracteristicaDTO("Parrilla", "faFire"));
+//                caracteristicas.add(new CaracteristicaDTO("Aire Acondicionado", "faSnowflake"));
+//                caracteristicas.add(new CaracteristicaDTO("WiFi", "faWifi"));
+//                caracteristicas.add(new CaracteristicaDTO("Acceso a la playa", "faUmbrellaBeach"));
+//                caracteristicas.add(new CaracteristicaDTO("Estacionamiento", "faCar"));
+//                caracteristicas.add(new CaracteristicaDTO("Apto Mascotas", "faPaw"));
+//                caracteristicas.add(new CaracteristicaDTO("Botiquín", "faSuitcaseMedical"));
+//                caracteristicas.add(new CaracteristicaDTO("Televisión", "faTv"));
+//                caracteristicas.add(new CaracteristicaDTO("Cocina", "faKitchenSet"));
+//                caracteristicas.add(new CaracteristicaDTO("Calefacción", "faTemperatureArrowUp"));
+//                caracteristicas.add(new CaracteristicaDTO("Caja de seguridad", "faVault"));
+//                caracteristicas.add(new CaracteristicaDTO("Cámaras de Seguridad", "faVideo"));
+//                caracteristicas.add(new CaracteristicaDTO("Shampoo/Acondicionador", "faPumpSoap"));
+//            }
 
+
+            { // crear array caracteristicas v2
+                caracteristicas.add(new CaracteristicaDTO("Piscina", "swimmer"));
+                caracteristicas.add(new CaracteristicaDTO("Parrilla", "fire"));
+                caracteristicas.add(new CaracteristicaDTO("Aire Acondicionado", "snowflake"));
+                caracteristicas.add(new CaracteristicaDTO("WiFi", "wifi"));
+                caracteristicas.add(new CaracteristicaDTO("Acceso a la playa", "umbrella-beach"));
+                caracteristicas.add(new CaracteristicaDTO("Estacionamiento", "car"));
+                caracteristicas.add(new CaracteristicaDTO("Apto Mascotas", "paw"));
+                caracteristicas.add(new CaracteristicaDTO("Botiquín", "suitcase-medical"));
+                caracteristicas.add(new CaracteristicaDTO("Televisión", "tv"));
+                caracteristicas.add(new CaracteristicaDTO("Cocina", "kitchen-set"));
+                caracteristicas.add(new CaracteristicaDTO("Calefacción", "temperature-arrow-up"));
+                caracteristicas.add(new CaracteristicaDTO("Caja de seguridad", "vault"));
+                caracteristicas.add(new CaracteristicaDTO("Cámaras de Seguridad", "video"));
+                caracteristicas.add(new CaracteristicaDTO("Shampoo/Acondicionador", "pump-soap"));
+            }
 
             for (CaracteristicaDTO caracteristica : caracteristicas) {
                 caracteristicaService.guardar(caracteristica);
@@ -1014,7 +1027,7 @@ public class DataLoader implements ApplicationRunner {
             List<ReservaDTO> reservas = new ArrayList<>();
 
             reservas.add(new ReservaDTO(
-                    LocalTime.of(10,00), //hora
+                    LocalTime.of(10,0), //hora
                     LocalDate.of(2022,12,20), //fecha inicio
                     LocalDate.of(2022,12,25), // fecha fin
                     new ProductoDTO(1L), // id producto
