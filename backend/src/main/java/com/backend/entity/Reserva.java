@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Getter @Setter
 @Entity
@@ -18,7 +19,7 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Time hora_comienzo_reserva;
+    private LocalTime hora_comienzo_reserva;
 
     private LocalDate fecha_inicial_reserva;
 
@@ -42,7 +43,7 @@ public class Reserva {
     public Reserva() {
     }
 
-    public Reserva(Time hora_comienzo_reserva, LocalDate fecha_inicial_reserva, LocalDate fecha_final_reserva, String aclaraciones, boolean vacunado, Producto producto, Usuario usuario) {
+    public Reserva(LocalTime hora_comienzo_reserva, LocalDate fecha_inicial_reserva, LocalDate fecha_final_reserva, String aclaraciones, boolean vacunado, Producto producto, Usuario usuario) {
         this.hora_comienzo_reserva = hora_comienzo_reserva;
         this.fecha_inicial_reserva = fecha_inicial_reserva;
         this.fecha_final_reserva = fecha_final_reserva;

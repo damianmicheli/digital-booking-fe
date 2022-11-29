@@ -28,6 +28,10 @@ public class ProductoDTO {
     public ProductoDTO() {
     }
 
+    public ProductoDTO(Long id) {
+        this.id = id;
+    }
+
     public ProductoDTO(
                        String descripcion,
                        String direccion,

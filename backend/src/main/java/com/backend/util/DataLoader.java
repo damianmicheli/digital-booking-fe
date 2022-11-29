@@ -9,6 +9,10 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
+
+import java.sql.Time;
+import java.time.LocalDate;
+import java.time.LocalTime;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
@@ -39,6 +43,9 @@ public class DataLoader implements ApplicationRunner {
 
     @Autowired
     IProductoService productoService;
+
+    @Autowired
+    IReservaService reservaService;
 
     @Override
     public void run(ApplicationArguments args) throws Exception {
@@ -999,7 +1006,26 @@ public class DataLoader implements ApplicationRunner {
 
             for (ProductoDTO producto : productos) {
                 productoService.guardar(producto);
+            }
 
+
+            // Reservas
+
+            List<ReservaDTO> reservas = new ArrayList<>();
+
+            reservas.add(new ReservaDTO(
+                    LocalTime.of(10,00), //hora
+                    LocalDate.of(2022,12,20), //fecha inicio
+                    LocalDate.of(2022,12,25), // fecha fin
+                    new ProductoDTO(1L), // id producto
+                    new UsuarioDTO(2L), // id usuario
+                    "Sin comentarios",
+                    true));
+
+
+
+            for (ReservaDTO reserva : reservas) {
+                reservaService.guardar(reserva);
             }
 
         }
