@@ -27,6 +27,9 @@ public class ReservaService implements IReservaService {
     private IReservaRepository reservaRepository;
 
     @Autowired
+    private IProductoService productoService;
+
+    @Autowired
     private ObjectMapper mapper;
 
     @Autowired
@@ -66,7 +69,7 @@ public class ReservaService implements IReservaService {
 
         //Verifico que el producto no este reservado en esa fecha
 
-        if(!Utiles.esRangoValido(fechaInicio, fechaFin, fechasOcupadas(producto.getId()) )){
+        if(!Utiles.esRangoValido(fechaInicio, fechaFin, productoService.fechasOcupadas(producto.getId()) )){
             throw new DatosIncorrectosException("El producto posee dias reservados en el intervalo especificado");
         }
 
@@ -98,47 +101,47 @@ public class ReservaService implements IReservaService {
     }
 
     @Override
-    public List<ReservaDTO> findByClienteId(Long clienteId) {
+    public List<ReservaDTO> findByUsuarioId(Long usuarioId) {
 
-        List<Reserva> reservas = reservaRepository.findByClienteId(clienteId);
+        List<Reserva> reservas = reservaRepository.findByUsuarioId(usuarioId);
 
         List<ReservaDTO> reservasDTO = new ArrayList<>();
         for(Reserva reserva : reservas){
             reservasDTO.add(mapper.convertValue(reserva, ReservaDTO.class));
         }
-        logger.info("Se listaron todas las reservas para el cliente con ID " + clienteId);
+        logger.info("Se listaron todas las reservas para el usuario con ID " + usuarioId);
 
         return reservasDTO;
 
     }
 
-    @Override
-    public FechasOcupadasDTO fechasOcupadas(Long productoId) {
-
-        List<Reserva> reservas = reservaRepository.findByProductoId(productoId);
-        List<LocalDate> fechas = new ArrayList<>();
-
-        for (Reserva reserva : reservas) {
-
-            LocalDate in = reserva.getFecha_inicial_reserva();
-            LocalDate out = reserva.getFecha_final_reserva();
-            LocalDate actual = in;
-
-            while (actual.isBefore(out) || actual.isEqual(out)) {
-                fechas.add(actual);
-                actual = actual.plusDays(1L);
-            }
-
-        }
-
-        FechasOcupadasDTO fechasOcupadas = new FechasOcupadasDTO();
-
-        fechasOcupadas.setFechasNoDisponibles(fechas);
-
-        logger.info("Se listaron las fechas ocupadas del producto con id: " + productoId);
-
-        return fechasOcupadas;
-    }
+//    @Override
+//    public FechasOcupadasDTO fechasOcupadas(Long productoId) {
+//
+//        List<Reserva> reservas = reservaRepository.findByProductoId(productoId);
+//        List<LocalDate> fechas = new ArrayList<>();
+//
+//        for (Reserva reserva : reservas) {
+//
+//            LocalDate in = reserva.getFecha_inicial_reserva();
+//            LocalDate out = reserva.getFecha_final_reserva();
+//            LocalDate actual = in;
+//
+//            while (actual.isBefore(out) || actual.isEqual(out)) {
+//                fechas.add(actual);
+//                actual = actual.plusDays(1L);
+//            }
+//
+//        }
+//
+//        FechasOcupadasDTO fechasOcupadas = new FechasOcupadasDTO();
+//
+//        fechasOcupadas.setFechasNoDisponibles(fechas);
+//
+//        logger.info("Se listaron las fechas ocupadas del producto con id: " + productoId);
+//
+//        return fechasOcupadas;
+//    }
 
 }
 

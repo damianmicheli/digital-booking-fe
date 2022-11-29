@@ -12,6 +12,18 @@ public class CaracteristicaDTO {
     private Long id;
     private String nombre;
     private String icono;
+
+    public CaracteristicaDTO() {
+    }
+
+    public CaracteristicaDTO(String nombre, String icono) {
+        this.nombre = nombre;
+        this.icono = icono;
+    }
+
+    public CaracteristicaDTO(Long id) {
+        this.id = id;
+    }
 }
 
 

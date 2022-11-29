@@ -23,7 +23,6 @@ USE `0521PTC3N1db_GRUPO4`;
 DROP TABLE IF EXISTS `usuario_rol`;
 DROP TABLE IF EXISTS `producto_caracteristica`;
 DROP TABLE IF EXISTS `reserva`;
-DROP TABLE IF EXISTS `cliente`;
 DROP TABLE IF EXISTS `usuario`;
 DROP TABLE IF EXISTS `imagen`;
 

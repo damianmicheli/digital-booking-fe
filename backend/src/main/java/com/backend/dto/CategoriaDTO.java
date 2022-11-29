@@ -14,4 +14,16 @@ public class CategoriaDTO {
     private String descripcion;
     private String url;
 
+    public CategoriaDTO() {
+    }
+
+    public CategoriaDTO(String descripcion, String titulo, String url) {
+        this.titulo = titulo;
+        this.descripcion = descripcion;
+        this.url = url;
+    }
+
+    public CategoriaDTO(Long id) {
+        this.id = id;
+    }
 }

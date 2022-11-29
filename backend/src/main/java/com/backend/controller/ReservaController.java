@@ -27,16 +27,16 @@ public class ReservaController {
         return new ResponseEntity<>(reservaService.guardar(reservaDTO), HttpStatus.CREATED);
     }
 
-    @Operation(summary = "Listar reservas por Producto o Cliente")
+    @Operation(summary = "Listar reservas por Producto o Usuario")
     @GetMapping
     public ResponseEntity<List<ReservaDTO>> listarPorProducto(@RequestParam(required=false) Long producto,
-                                                              @RequestParam(required=false) Long cliente) throws Exception {
+                                                              @RequestParam(required=false) Long usuario) throws Exception {
 
         if(producto != null) {
             return new ResponseEntity<>(reservaService.findByProductoId(producto), HttpStatus.OK);
         }
-        else if (cliente != null){
-            return new ResponseEntity<>(reservaService.findByClienteId(cliente), HttpStatus.OK);
+        else if (usuario != null){
+            return new ResponseEntity<>(reservaService.findByUsuarioId(usuario), HttpStatus.OK);
         }
         else {
             throw new Exception("No se especifico criterio de busqueda");

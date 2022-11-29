@@ -7,6 +7,7 @@ import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.sql.Time;
 import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Getter @Setter
 @Entity
@@ -18,7 +19,7 @@ public class Reserva {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private Time hora_comienzo_reserva;
+    private LocalTime hora_comienzo_reserva;
 
     private LocalDate fecha_inicial_reserva;
 
@@ -35,20 +36,20 @@ public class Reserva {
 
     @NotBlank
     @ManyToOne
-    @JoinColumn(name = "cliente_id", nullable = false)
-    private Cliente cliente;
+    @JoinColumn(name = "usuario_id", nullable = false)
+    private Usuario usuario;
 
 
     public Reserva() {
     }
 
-    public Reserva(Time hora_comienzo_reserva, LocalDate fecha_inicial_reserva, LocalDate fecha_final_reserva, String aclaraciones, boolean vacunado, Producto producto, Cliente cliente) {
+    public Reserva(LocalTime hora_comienzo_reserva, LocalDate fecha_inicial_reserva, LocalDate fecha_final_reserva, String aclaraciones, boolean vacunado, Producto producto, Usuario usuario) {
         this.hora_comienzo_reserva = hora_comienzo_reserva;
         this.fecha_inicial_reserva = fecha_inicial_reserva;
         this.fecha_final_reserva = fecha_final_reserva;
         this.aclaraciones = aclaraciones;
         this.vacunado = vacunado;
         this.producto = producto;
-        this.cliente = cliente;
+        this.usuario = usuario;
     }
 }

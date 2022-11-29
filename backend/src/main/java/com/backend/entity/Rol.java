@@ -15,4 +15,10 @@ public class Rol {
     private Long id;
     private String nombre;
 
+    public Rol(String nombre) {
+        this.nombre = nombre;
+    }
+
+    public Rol() {
+    }
 }
