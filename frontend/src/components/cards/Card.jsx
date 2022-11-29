@@ -1,4 +1,4 @@
-import React, { useState, useEffect} from "react";
+import React, { useState, useEffect } from "react";
 
 import Icon from "../global/Icon";
 import Button from "../global/Button";
@@ -10,16 +10,27 @@ import {
 } from "@fortawesome/free-solid-svg-icons";
 import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
+import { getIcons } from "../global/getIcons";
 
-
-
-const Card = ({ id, img, category, title, location, description, favorites, toggleItemInLocalStorage }) => {
-
+const Card = ({
+  id,
+  img,
+  category,
+  title,
+  location,
+  description,
+  favorites,
+  toggleItemInLocalStorage,
+  features,
+  startDate,
+  endDate,
+  hour,
+}) => {
   const [isFavorite, setIsFavorite] = useState(false);
 
   useEffect(() => {
-    Array.isArray(favorites)&& //Valida si es un array..tenga lenght o no
-    setIsFavorite(favorites.includes(id))
+    Array.isArray(favorites) && //Valida si es un array..tenga lenght o no
+      setIsFavorite(favorites.includes(id));
   }, [favorites]);
 
   return (
@@ -27,7 +38,7 @@ const Card = ({ id, img, category, title, location, description, favorites, togg
       <div className={styles.imgContainer}>
         <img className={styles.cardImg} src={img} alt="imagen" />
         <Button
-          event={()=>toggleItemInLocalStorage(id, isFavorite)}
+          event={() => toggleItemInLocalStorage(id, isFavorite)}
           css={`
             ${styles.btnFav}
           `}
@@ -49,11 +60,30 @@ const Card = ({ id, img, category, title, location, description, favorites, togg
           <p>{location}</p>
           {/* <a className={styles.enlace} href="/">MOSTRAR EN EL MAPA</a> */}
         </div>
+        <div className={styles.features}>
+          {features.map((element, i) => {
+            return <div key={i}>{getIcons(element)}</div>;
+          })}
+        </div>
         <div className={styles.description}>
+          {startDate === undefined ? (
+            ""
+          ) : (
+            <div className={styles.reservationDates}>
+              <p>
+                <strong>Check In:</strong> {startDate}
+              </p>
+              <p>
+                <strong>Check Out:</strong> {endDate}
+              </p>
+              <div>
+                <strong>Hora de ingreso:</strong> {hour}
+              </div>
+            </div>
+          )}
           <p>{description}</p>
           <Link className="buttonCard" to={`/producto/${id}`}>
-            {" "}
-            Ver detalle{" "}
+            Ver detalle
           </Link>
         </div>
       </div>

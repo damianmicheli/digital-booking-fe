@@ -62,7 +62,7 @@ const BookingTemplate = () => {
 
     function realizarReserva(settings) {
  
-      fetch(`http://localhost:8080/reservas`, settings)
+      fetch(`${URL_BASE}/reservas`, settings)
         .then((response) => {
           console.log(response);
           if (response.ok !== true) {
