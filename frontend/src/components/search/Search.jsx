@@ -47,7 +47,7 @@ const Search = () => {
     <div className={styles.container}>
       <div className={styles.buscador}>
         <div className={styles.title}>
-          <h1>Busca ofertas en hoteles, casas y mucho más</h1>
+          <h1>Busca ofertas en casas, cabañas y mucho más</h1>
         </div>
         <form
           onSubmit={(e) => {

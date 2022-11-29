@@ -79,7 +79,7 @@ const useForm = (initialForm, validateForm) => {
 
   function realizarRegistro(settings) {
  
-    fetch(`http://localhost:8080/usuario`, settings)
+    fetch(`${URL_BASE}/usuario`, settings)
       .then((response) => {
         console.log(response);
         if (response.ok !== true) {

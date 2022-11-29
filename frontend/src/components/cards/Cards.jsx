@@ -74,6 +74,7 @@ const Cards = ({ data }) => {
                     title={producto.nombre}
                     location={`${producto.ciudad.ciudad}, ${producto.ciudad.pais}`}
                     description={producto.descripcion}
+                    features={producto.caracteristicas}
                   />
                 </div>
               ))}

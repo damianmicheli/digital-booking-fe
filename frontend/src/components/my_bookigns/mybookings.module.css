@@ -1,0 +1,53 @@
+.container {
+  height: 100vh;
+}
+
+.reservation {
+  padding-top: 10rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 2rem;
+  margin: 0 auto;
+}
+
+.backHome {
+  background-color: var(--color-2);
+  color: white;
+  font-weight: 700;
+  padding: 0.5rem;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.iconExclamation {
+  font-size: 4em;
+  color: var(--color-principal);
+}
+
+.itemContainer {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 2rem;
+  padding-top: 1.5rem;
+  margin: 0 auto;
+  height: 100%;
+  position: relative;
+  justify-items: center;
+}
+
+.containerItem {
+  display: flex;
+  padding: 3rem;
+}
+
+
+@media screen and (min-width: 1300px) {
+  .itemContainer {
+    grid-template-columns: 1fr 1fr;
+    padding: 3rem 5rem;
+    gap: 2rem;
+  }
+}

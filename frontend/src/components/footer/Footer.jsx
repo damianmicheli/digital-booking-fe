@@ -9,7 +9,7 @@ const Footer = () => {
     <footer className={styles.footer}>
       <div className="container">
         <div className={styles.rowFooter}>
-          <span>©2021 Digital Booking</span>
+          <span>©2022 Digital Booking</span>
           {!isMobile && <SocialNetworks color={"white"} />}
         </div>
       </div>
