@@ -10,6 +10,7 @@ import Product from "../product/Product";
 /* import { FavProvider } from "../../context/FavContext"; */
 import BookingTemplate from "../booking_template/BookingTemplate";
 import SuccessRegister from "../global/modal/success/SuccessRegister";
+import MyBookings from "../my_bookigns/MyBookings";
 
 const Body = () => {
   return (
@@ -21,6 +22,7 @@ const Body = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/producto/:id/reserva" element={<BookingTemplate />} />
         <Route path="/success" element={<SuccessRegister />} />
+        <Route path="/misreservas" element={<MyBookings />} />
       </Routes>
     </div>
   );
