@@ -13,7 +13,7 @@ const MyBookings = () => {
     window.scrollTo(0, 0);
   }, []);
   const { userId } = useParams();
-  const [data] = useFetch(`${URL_BASE}/reservas?cliente=1`);
+  const [data] = useFetch(`${URL_BASE}/reservas?usuario=${userId}`);
   console.log(data);
   const message = "No disponible";
 

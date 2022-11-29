@@ -2,9 +2,16 @@
     display: flex;
     position: relative;
     flex-direction: column;
-    align-items: flex-end;
     line-height: 1.3rem;
     margin-bottom: 10px;
+    align-items: center;
+}
+
+.link {
+    font-weight: 500;
+    padding: 1rem;
+    border-right: 2px solid var(--color-principal);
+    margin-right: 1rem;
 }
 
 .avatar{

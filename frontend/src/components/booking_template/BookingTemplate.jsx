@@ -57,8 +57,8 @@ const BookingTemplate = () => {
 
   const { startDate, endDate } = reservationDate;
 
-  const checkIn = startDate === null ? "__/__/__" : `${format(startDate, "dd/MM/yyyy")}`;
-  const checkOut = endDate === null ? "__/__/__" : `${format(endDate, "dd/MM/yyyy")}`;
+  const checkIn = startDate === null ? "__/__/__" : `${format(startDate, "yyyy-MM-dd")}`;
+  const checkOut = endDate === null ? "__/__/__" : `${format(endDate, "yyyy-MM-dd")}`;
 
     function realizarReserva(settings) {
  
@@ -84,18 +84,23 @@ const BookingTemplate = () => {
       e.preventDefault();
       const token = localStorage.getItem("jwt");
       console.log(token);
-      const payload = {      
-          "producto":{
-              "id":`${id}`,
+      const payload = {
+        "hora_comienzo_reserva": {
+          "hour": 10,
+          "minute": 0,
+          "second": 0,
+          "nano": 0
+        },
+        "fecha_inicial_reserva": startDate,
+        "fecha_final_reserva": endDate,
+        "producto": {
+          "id": `${id}`,
           },
-          "fecha_inicial_reserva": format(startDate, "yyyy-MM-dd"),
-          "fecha_final_reserva": format(endDate, "yyyy-MM-dd"),
-          "hora_comienzo_reserva":"10:00:00",
-          "usuario":{
-              "id":"1"
-          },
-          "vacunado":"true",
-          "aclaraciones":""      
+        "usuario": {
+          "id": `${userLog.id}`,
+        },
+        "aclaraciones": "string",
+        "vacunado": "true"
       }
       console.log(`${id}`);
       console.log(checkIn);

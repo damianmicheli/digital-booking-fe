@@ -21,8 +21,8 @@ const Body = () => {
         <Route path="/register" element={<Register />} />
         <Route path="/login" element={<Login />} />
         <Route path="/producto/:id/reserva" element={<BookingTemplate />} />
+        <Route path="/:userId/reservas" element={<MyBookings />} />
         <Route path="/success" element={<SuccessRegister />} />
-        <Route path="/misreservas" element={<MyBookings />} />
       </Routes>
     </div>
   );
