@@ -1,32 +1,32 @@
 .cardContainer {
   display: flex;
   flex-direction: column;
-  gap: 0.5rem;
+  justify-content: space-evenly;
   width: 350px;
   height: 471px;
   border-radius: 10px;
   box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
   overflow: hidden;
-  margin: 0 auto;
   background-color: #fff;
 }
 
-.imgContainer{
+.cardLeft{
+  width: 48%;
   position: relative;
 }
 
 .cardImg {
+  border-radius: 10px;
   width: 373px;
   height: 211px;
   object-fit: cover;
 }
 
-.textContainer {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 0.1rem;
-  padding: 0rem 1rem 1rem 1rem;
+.informationContainer {
+  position: relative;
+  padding: 10px;
+  width: 52%;
+  height: 100%;
 }
 
 .iconCard {
@@ -39,17 +39,19 @@
   background-color: transparent;
   position: absolute;
   top: 20px;
-  right: 15px;
+  left: 310px;
   font-size: 1.3rem;
 }
 
 .location {
   display: flex;
-  align-items: center;
+  flex-direction: column;
   gap: 0.2rem;
   font-size: 14px;
   font-weight: 700;
   color: var(--color-2);
+  position: absolute;
+  top: 28%;
 }
 
 .enlace {
@@ -57,33 +59,64 @@
   color: var(--color-principal);
 }
 
+title {
+  display: flex;
+  justify-content: space-between;
+}
+
 .title > h3 {
   font-size: 20px;
   font-weight: 700;
   color: var(--color-2);
-  margin: 0;
 }
 
 .title > h5 {
   font-size: 14px;
   color: var(--color-2);
   opacity: 0.5;
-  letter-spacing: 0.1em;
   font-weight: 700;
 }
 
 .description {
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  font-size: 15px;
+  font-size: 14px;
   font-weight: 500;
+  padding-block-start: 10px;
+  padding-block-end: 5px;
+  display: block;
+  width: 366px;
+  height: 80px;
+  position: absolute;
+  bottom: 25%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
   color: var(--color-2);
+  cursor: default;
+  line-height: 20.5px;
+}
+
+.buttonCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 5px;
+  background-color: var(--color-principal);
+  color: white;
+  border: 1px solid var(--color-principal) ;
+  position: absolute;
+  bottom: 5%;
+  width: 330px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.description::-webkit-scrollbar {
+  -webkit-appearance: none;
 }
 
 .features {
-  display: flex;
-  gap: 0.3rem;
+  display: none;
 }
 
 .reservationDates {
@@ -112,27 +145,46 @@
     gap: 0;
   }
 
+  .description {
+    width: 321px;
+    height: 60px;
+  }
+
   .cardImg {
     width: 344.11px;
     height: 303.8px;
   }
 
-  .textContainer {
-    padding: 0.5rem 1rem;
+  .informationContainer {
+    padding: 0 1rem;
     gap: 0.3rem;
   }
 
   .btnFav{
-    top: 30px;  
+    top: 30px; 
+    left: 290px; 
   }
 
+  .title > h5 {
+    margin-top: 1rem;
+  }
+
+  .features{
+    display: flex;
+    gap: 0.3rem;
+  }
 }
 
-@media screen and (min-width: 1350px) {
+@media screen and (min-width: 1300px) {
   .cardContainer {
     width: 635px;
     height: 283px;
     gap: 0.1rem;
+  }
+
+  .description {
+    width: 320px;
+    height: 60px;
   }
 
   .cardImg {
@@ -140,13 +192,13 @@
     height: 330.99px;
   }
 
-  .textContainer {
-    padding: 1rem;
-    gap: 0.5rem;
+  .buttonCard {
+    width: 296px;  
   }
 
   .btnFav{
-    top: 40px;  
+    top: 40px; 
+    left: 260px;
   }
 }
 
@@ -154,5 +206,4 @@
   .textContainer {
     gap: 0.5rem;
   }
-  
 }

@@ -13,16 +13,16 @@ const MyBookings = () => {
     window.scrollTo(0, 0);
   }, []);
   const { userId } = useParams();
-  const [data] = useFetch(`${URL_BASE}/reservas?producto=7`);
+  const [data] = useFetch(`${URL_BASE}/reservas?cliente=1`);
   console.log(data);
   const message = "No disponible";
 
   return (
-    <>
+    <div className={styles.container}>
       <HeaderProduct title={"Mis reservas"} path={"/"} />
       <div>
         { data && data.length === 0  ? (
-          <div className={styles.container}>
+          <div className={styles.reservation}>
             <Icon css={styles.iconExclamation} icon={faCircleExclamation} />
             <h2>Aún no has efectuado ninguna reserva</h2>
             <Link to={"/"}>
@@ -79,7 +79,7 @@ const MyBookings = () => {
           </div>
         )}
       </div>
-    </>
+    </div>
   );
 };
 
