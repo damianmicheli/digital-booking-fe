@@ -6,5 +6,10 @@ public interface IUsuarioService {
 
     UsuarioDTO buscarPorEmail (String email) throws NoEncontradoException;
 
+    UsuarioDTO buscarPorId (Long id) throws NoEncontradoException;
+
     UsuarioDTO registrar(UsuarioDTO usuarioDTO) throws DatosIncorrectosException;
+
+    UsuarioDTO actualizarCiudad(UsuarioDTO usuarioDTO) throws NoEncontradoException;
+
 }
