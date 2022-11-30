@@ -24,4 +24,6 @@ public interface IProductoService {
     List<ProductoDTO> listarPorCiudadYFechas(LocalDate inicio, LocalDate fin, Long idCiudad) throws NoEncontradoException, DatosIncorrectosException;
 
     List<ProductoDTO> listarPorFechas(LocalDate inicio, LocalDate fin) throws NoEncontradoException, DatosIncorrectosException;
+
+    ProductoDTO actualizar (ProductoDTO productoDTO) throws NoEncontradoException;
 }

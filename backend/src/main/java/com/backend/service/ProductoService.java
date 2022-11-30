@@ -1,5 +1,6 @@
 package com.backend.service;
 
+import com.backend.dto.CategoriaDTO;
 import com.backend.dto.FechasOcupadasDTO;
 import com.backend.dto.ProductoDTO;
 import com.backend.entity.*;
@@ -228,6 +229,33 @@ public class ProductoService implements IProductoService {
 
         return Utiles.esRangoValido(in, out, fechasOcupadas(producto.getId()));
 
+    }
+
+    @Override
+    public ProductoDTO actualizar(ProductoDTO productoDTO) throws NoEncontradoException {
+
+        Long id = productoDTO.getId();
+
+        Optional<Producto> encontrado = productoRepository.findById(id);
+
+        if (encontrado.isEmpty()){
+            throw new NoEncontradoException("No se puede actualizar porque no existe un producto con Id: " + id + ".");
+        }
+
+        ProductoDTO productoDTOParaActualizar = mapper.convertValue(encontrado,ProductoDTO.class);
+
+        logger.info("Se actualizará un producto. Datos originales: " + productoDTOParaActualizar);
+
+        Producto producto = mapper.convertValue(productoDTO, Producto.class);
+
+        Producto productoRes = productoRepository.save(producto);
+
+        ProductoDTO productoDTOActualizado = mapper.convertValue(productoRes,ProductoDTO.class);
+
+        logger.info("Datos actuales: " + productoDTOActualizado);
+
+
+        return productoDTOActualizado;
     }
 
 }

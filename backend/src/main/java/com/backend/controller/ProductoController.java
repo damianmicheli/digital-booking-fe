@@ -1,5 +1,6 @@
 package com.backend.controller;
 
+import com.backend.dto.CategoriaDTO;
 import com.backend.dto.FechasOcupadasDTO;
 import com.backend.dto.ProductoDTO;
 import com.backend.service.*;
@@ -80,4 +81,11 @@ public class ProductoController {
         return new ResponseEntity<>(productoService.fechasOcupadas(id), HttpStatus.OK);
     }
 
+    @Operation(summary = "Actualizar los datos de un Producto")
+    @PutMapping
+    public ResponseEntity<ProductoDTO> actualizar(@RequestBody ProductoDTO productoDTO) throws NoEncontradoException {
+
+        return new ResponseEntity<>(productoService.actualizar(productoDTO), HttpStatus.OK);
+
+    }
 }
