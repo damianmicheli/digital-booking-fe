@@ -42,6 +42,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
         http.csrf().disable().authorizeRequests()
                 .antMatchers(HttpMethod.POST, "/reservas").hasRole("USER")
                 .antMatchers(HttpMethod.POST, "/productos").hasRole("ADMIN")
+                .antMatchers(HttpMethod.PUT, "/productos").hasRole("ADMIN")
                 .antMatchers("/usuario","/autenticar", "/productos/**", "/ciudades/**", "/categorias/**", "/swagger-ui/**", "/v3/**", "/reservas/**" )
                 .permitAll().anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
