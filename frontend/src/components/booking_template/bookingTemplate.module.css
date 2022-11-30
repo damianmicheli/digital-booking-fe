@@ -91,7 +91,7 @@
 @media only screen and (min-width: 1200px) {
   .content {
     flex-direction: row;
-    gap: 50px;
+    gap: 10px;
   }
 }
 
