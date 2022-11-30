@@ -55,64 +55,74 @@ const BookingTemplate = () => {
     endDate: null,
   });
 
+  const [text, setText] = useState({
+    selectedOption: "Ïngrese su texto aqui"
+  });
+
+  const [value, setValue] = useState({
+    selectedOption: null
+  });
+
   const { startDate, endDate } = reservationDate;
 
   const checkIn = startDate === null ? "__/__/__" : `${format(startDate, "yyyy-MM-dd")}`;
   const checkOut = endDate === null ? "__/__/__" : `${format(endDate, "yyyy-MM-dd")}`;
 
-    function realizarReserva(settings) {
- 
-      fetch(`${URL_BASE}/reservas`, settings)
-        .then((response) => {
-          console.log(response);
-          if (response.ok !== true) {
-            alert("Lamentablemente no se pudo realizar su reserva. Por favor intente más tarde");
-          }
-          return response.json();
-        })
-        .then((data) => {
-          console.log(data);
-          console.log("Se registro ok la reserva");
-        })
-        .catch((err) => {
-          console.log("Promesa rechazada:");
-          console.log(err);
-        });
+  function realizarReserva(settings) {
+
+    fetch(`${URL_BASE}/reservas`, settings)
+      .then((response) => {
+        console.log(response);
+        if (response.ok !== true) {
+          alert("Lamentablemente no se pudo realizar su reserva. Por favor intente más tarde");
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        console.log("Se registro ok la reserva");
+      })
+      .catch((err) => {
+        console.log("Promesa rechazada:");
+        console.log(err);
+      });
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const token = "Bearer " + JSON.parse(localStorage.getItem("jwt"));
+    console.log(token);
+    const payload = {
+      "hora_comienzo_reserva": "10:00",
+      "fecha_inicial_reserva": startDate,
+      "fecha_final_reserva": endDate,
+      "producto": {
+        "id": `${id}`,
+        },
+      "usuario": {
+        "id": `${userLog.id}`,
+      },
+      "aclaraciones": text.selectedOption,
+      "vacunado": `${value.selectedOption}`
     }
-  
-    const handleSubmit = (e) => {
-      e.preventDefault();
-      const token = "Bearer " + JSON.parse(localStorage.getItem("jwt"));
-      console.log(token);
-      const payload = {
-        "hora_comienzo_reserva": "10:00",
-        "fecha_inicial_reserva": startDate,
-        "fecha_final_reserva": endDate,
-        "producto": {
-          "id": `${id}`,
-          },
-        "usuario": {
-          "id": `${userLog.id}`,
-        },
-        "aclaraciones": "string",
-        "vacunado": "true"
-      }
-      console.log(`${id}`);
-      console.log(checkIn);
-      console.log(`${checkOut}`);
-  
-      const settings = {
-        method: "POST",
-        body: JSON.stringify(payload),
-        headers: {
-          "Content-Type": "application/json",
-          "Authorization": token,
-        },
-      }; 
-      realizarReserva(settings);
-      console.log("hace reserva");
-      setSuccess(true);
-    };  
+    console.log(`${id}`);
+    console.log(checkIn);
+    console.log(`${checkOut}`);
+
+    const settings = {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+        "Authorization": token,
+      },
+    }; 
+    realizarReserva(settings);
+    console.log("hace reserva");
+    setSuccess(true);
+  };  
+
+  console.log(value);
 
   return (
     <>
@@ -127,8 +137,6 @@ const BookingTemplate = () => {
               handleSubmit(e);
             }}
             id="bookingForm"
-            // action="/"
-            // method="POST"
           >
             <div className={styles.content}>
               <div className={styles.contentLeft}>
@@ -193,6 +201,60 @@ const BookingTemplate = () => {
                       setReservationDate={setReservationDate}
                     />
                   )}
+                </div>
+                <h2 className="heading2 color2 paddingTop">
+                  Datos adicionales
+                </h2>
+                <div className={styles.divInputs}>
+                  <div className={styles.groupForm}>
+                    <label className="text2">Aclaraciones</label>
+                    <textarea
+                      id="aclaraciones"
+                      name="aclaraciones"
+                      rows="4"
+                      cols="50"
+                      className={styles.textarea}
+                      placeholder={text.selectedOption}
+                      onChange={(e) => {
+                        setText({
+                          selectedOption: e.target.value
+                        });
+                      }}
+                    />
+                  </div>
+                  <div className={styles.groupForm}>
+                    <label className="text2">
+                      ¿Está vacunado contra COVID?
+                    </label>
+                    <div>
+                      <input 
+                      type="radio" 
+                      id="vacunado"
+                      name="vacunado"
+                      value={true} 
+                      onChange={(e) => {
+                        setValue({
+                          selectedOption: e.target.value
+                        });
+                      }} 
+                      />
+                      <label className="text2">Si</label>
+                    </div>
+                    <div>
+                      <input 
+                      type="radio"
+                      id="vacunado"
+                      name="vacunado"
+                      value={false} 
+                      onChange={(e) => {
+                        setValue({
+                          selectedOption: e.target.value
+                        });
+                      }} 
+                      />
+                      <label className="text2">No</label>
+                    </div>
+                  </div>
                 </div>
               </div>
               <div className={styles.contentRight}>
