@@ -9,6 +9,7 @@ import useForm from "../../hooks/useForm";
 const initialForm = {
   fName: "",
   surname: "",
+  city: "",
   email: "",
   password: "",
   confirmPassword: "",
@@ -34,6 +35,13 @@ const validateForm = (form) => {
   } else {
     errors.surname = "";
   }
+
+    //Validación de apellido
+    if (!form.city.trim()) {
+      errors.city = isRequired;
+    } else {
+      errors.city = "";
+    }
 
   //Validación de email
   if (!form.email.trim()) {
@@ -121,6 +129,24 @@ const Register = () => {
                 <p className={styles.pFormError}>{errors.surname}</p>
               )}
             </div>
+            
+            
+            <div className={styles.groupForm}>
+              <label className="text2">Ciudad</label>
+              <input
+                type="text"
+                name="city"
+                onBlur={handleBlur}
+                onChange={handleChange}
+                value={form.city}
+              />
+              {errors.city && (
+                <p className={styles.pFormError}>{errors.city}</p>
+              )}
+            </div>
+
+            
+            
             <div className={styles.groupForm}>
               <label className="text2">Correo electrónico</label>
               <input
@@ -134,6 +160,7 @@ const Register = () => {
                 <p className={styles.pFormError}>{errors.email}</p>
               )}
             </div>
+
             <div className={styles.groupForm}>
               <label className="text2">Contraseña</label>
               <div className={styles.iconInput}>

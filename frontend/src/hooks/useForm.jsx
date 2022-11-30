@@ -108,6 +108,7 @@ const useForm = (initialForm, validateForm) => {
     const payload = {
         "nombre": form.fName,
         "apellido": form.surname,
+        "ciudad": form.city,
         "password": form.password,
         "email": form.email,
      /*    "ciudad": {
