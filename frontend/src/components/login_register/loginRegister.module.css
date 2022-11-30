@@ -1,0 +1,92 @@
+.container {
+  width: 100%;
+	height: 83vh;
+	background: #eceff1;
+	justify-content: center;
+	padding-block-start: 100px;
+	padding-block-end: 100px;
+}
+
+.divInputs {
+  width: 80%;
+  max-width: 346px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: auto;
+}
+
+.groupForm {
+  padding-top: 5px;
+}
+
+.groupForm:last-child {
+  margin-top: 25px;
+  text-align: center;
+}
+.pFormError {
+  font-size: 0.65rem;
+  text-align: right;
+  color: red;
+  margin-bottom: -15px;
+  padding: 0;
+}
+
+.spanForm > a {
+  color: #fbc02d;
+}
+
+.divInputs input {
+  width: 100%;
+  height: 40px;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 2px 2px 5px 1px rgba(0, 0, 0, 0.1);
+}
+
+.iconInput {
+  position: relative;
+  cursor: pointer;
+}
+
+.iconInput .iconEye {
+  color: var(--color-2-opacity);
+  font-size: 1.1em;
+  position: absolute;
+  top: 10px;
+  right: 15px;
+}
+
+.loginRequired {
+  width: 80%;
+  max-width: 346px;
+  height: 60px;
+  margin: 0 auto;
+  border-radius: 5px;
+  background-color: var(--color-4);
+  font-size: 11px;
+  font-weight: 700;
+  line-height: 60px;
+  text-align: center;
+  color: var(--color-3);
+}
+
+.iconError {
+  font-size: 20px;
+}
+
+@media only screen and (min-width: 991px) {
+  .divInputs {
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: space-between;
+    max-width: 448px;
+  }
+
+  .groupForm {
+    width: 100%;
+  }
+  .groupWrap {
+    width: 48%;
+  }
+}

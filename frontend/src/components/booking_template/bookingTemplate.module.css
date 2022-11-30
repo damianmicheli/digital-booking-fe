@@ -1,0 +1,123 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
+}
+
+.bookingTemplate {
+  background-color: #f2f2f2;
+}
+
+.divInputs {
+  width: 100%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+  margin: 10px auto;
+  border-radius: 5px;
+  padding-top: 10px;
+  padding-bottom: 20px;
+  background-color: white;
+  color: var(--color-2);
+  display: flex;
+  flex-direction: column;
+}
+
+.groupForm {
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: 10px auto;
+  gap: 5px;
+}
+
+.groupForm > input {
+  border: none;
+  background-color: #f2f2f2;
+  height: 40px;
+  border-radius: 5px;
+  padding-left: 10px;
+  font-weight: 600;
+}
+
+.groupForm:last-child > input {
+  background-color: white;
+}
+
+.detail {
+  padding-bottom: 35px;
+}
+
+.calendar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+@media only screen and (min-width: 624px) {
+  .content {
+    flex-direction: column;
+    padding: 1rem;
+    justify-content: center;
+    gap: 1rem;
+  }
+
+  .divInputs {
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: space-between;
+  }
+
+  .groupForm {
+    width: 45%;
+  }
+
+  .calendar {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+  }
+}
+
+@media only screen and (min-width: 1120px) {
+  .content {
+    flex-direction: row;
+    gap: 10px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .content {
+    flex-direction: row;
+    gap: 50px;
+  }
+}
+
+@media only screen and (min-width: 1300px) {
+  .content {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: baseline;
+    gap: 100px;
+    padding: 4rem;
+  }
+
+  .contentLeft {
+    display: flex;
+    flex-direction: column;
+    max-width: 66%;
+    gap: 2rem;
+  }
+
+  .divInputs {
+    width: 100%;
+    margin: 0 auto 15px auto;
+  }
+
+  .groupForm {
+    width: 45%;
+  }
+}

@@ -1,0 +1,94 @@
+.bookingDetail {
+  width: 100%;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+  margin: 20px auto;
+  border-radius: 5px;
+  padding-bottom: 25px;
+  background-color: white;
+}
+
+.bookingDetail > h2 {
+  margin-left: 5%;
+  margin-bottom: 15px;
+  padding-top: 20px;
+}
+
+.bookingImg {
+  width: 100%;
+}
+
+.content {
+  width: 90%;
+  margin: 0 auto;
+  padding-top: 25px;
+  margin-bottom: 15px;
+}
+
+.checkDate {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 22px auto;
+}
+
+.checkDate > p {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.content > h6 {
+  display: flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-size: 14px;
+}
+
+.content > h5 {
+  color: var(--color-2-opacity);
+}
+
+
+@media only screen and (min-width: 866px) {
+  .imgContent {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+  }
+  .bookingImg {
+    width: 409px;
+    height: 300px;
+    border-radius: 5px;
+    margin-left: 4%;
+  }
+  .content {
+    width: 43%;
+  }
+
+  .checkDate {
+    margin: 12px auto;
+  }
+}
+
+@media only screen and (min-width: 1100px) {
+
+  .imgContent {
+    flex-direction: column;
+  }
+  .bookingImg {
+    width: 409px;
+    height: 300px;
+    border-radius: 0;
+    margin-left: 0;
+  }
+  .content {
+    width: 90%;
+  }
+
+  .bookingDetail {
+    margin-top: 0;
+  }
+
+  .checkDate {
+    margin: 22px auto;
+  }
+}

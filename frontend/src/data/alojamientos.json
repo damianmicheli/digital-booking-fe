@@ -1,0 +1,59 @@
+[
+    {
+        "img": "https://images.pexels.com/photos/1396122/pexels-photo-1396122.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "CASA",
+        "title":"Consequatur",
+        "location":"Córdoba, Argentina",
+        "titleDescription": "Alójate en el corazón de Córdoba",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat."
+    },
+    {
+        "img": "https://images.pexels.com/photos/271618/pexels-photo-271618.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "DEPARTAMENTO",
+        "title":"Tempor",
+        "location":"Mendoza, Argentina",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat."
+    },
+    {
+        "img": "https://images.pexels.com/photos/10882330/pexels-photo-10882330.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "CABAÑA",
+        "title":"Incididunt",
+        "location":"San Juan, Argentina",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat."
+    },
+    {
+        "img": "https://images.pexels.com/photos/2476632/pexels-photo-2476632.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "CASA DE PLAYA",
+        "title":"Molestiae iste",
+        "location":"Buenos Aires, Argentina",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat."
+    },
+    {
+        "img": "https://images.pexels.com/photos/259588/pexels-photo-259588.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "CASA",
+        "title":"Magnam incidunt",
+        "location":"Rio Negro, Argentina",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat."
+    },
+    {
+        "img": "https://images.pexels.com/photos/813692/pexels-photo-813692.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "DEPARTAMENTO",
+        "title":"Cupidatat vitae",
+        "location":"Tucuman, Argentina",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat."
+    },
+    {
+        "img": "https://images.pexels.com/photos/9056663/pexels-photo-9056663.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "CABAÑA",
+        "title":"Cupidatat ullamco",
+        "location":"Neuquen, Argentina",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat."
+    },
+    {
+        "img": "https://images.pexels.com/photos/271643/pexels-photo-271643.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        "category": "CASA DE PLAYA",
+        "title":"Tempora omnis ut",
+        "location":"Buenos Aires, Argentina",
+        "description": "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.s"
+    }
+]

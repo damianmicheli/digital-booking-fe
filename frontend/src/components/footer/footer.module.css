@@ -1,0 +1,36 @@
+.footer {
+  width: 100%;
+  height: 58px;
+  background-color: #fbc02d;
+  color: white;
+  /* position: sticky;
+  bottom: 0; */
+}
+
+.rowFooter {
+  height: 58px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.rowFooter span {
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.disableMobile {
+  display: none;
+}
+
+.divSocialNetworks {
+  font-size: 26px;
+  gap: 25px;
+}
+
+@media only screen and (min-width: 624px) {
+  .disableMobile {
+    display: flex;
+  }
+}

@@ -1,0 +1,210 @@
+.cardContainer {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  width: 350px;
+  height: 471px;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2);
+  overflow: hidden;
+  background-color: #fff;
+}
+
+.cardLeft{
+  width: 48%;
+  position: relative;
+}
+
+.cardImg {
+  border-radius: 10px;
+  width: 373px;
+  height: 211px;
+  object-fit: cover;
+}
+
+.informationContainer {
+  position: relative;
+  padding: 10px;
+  width: 52%;
+  height: 100%;
+}
+
+.iconCard {
+  font-size: 0.9em;
+  color: var(--color-2);
+}
+
+.btnFav{
+  border: none;
+  background-color: transparent;
+  position: absolute;
+  top: 20px;
+  left: 310px;
+  font-size: 1.3rem;
+}
+
+.location {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--color-2);
+  position: absolute;
+  top: 28%;
+}
+
+.enlace {
+  font-size: 13px;
+  color: var(--color-principal);
+}
+
+title {
+  display: flex;
+  justify-content: space-between;
+}
+
+.title > h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: var(--color-2);
+}
+
+.title > h5 {
+  font-size: 14px;
+  color: var(--color-2);
+  opacity: 0.5;
+  font-weight: 700;
+}
+
+.description {
+  font-size: 14px;
+  font-weight: 500;
+  padding-block-start: 10px;
+  padding-block-end: 5px;
+  display: block;
+  width: 366px;
+  height: 80px;
+  position: absolute;
+  bottom: 25%;
+  overflow-y: scroll;
+  scroll-behavior: smooth;
+  color: var(--color-2);
+  cursor: default;
+  line-height: 20.5px;
+}
+
+.buttonCard {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: 700;
+  border-radius: 5px;
+  background-color: var(--color-principal);
+  color: white;
+  border: 1px solid var(--color-principal) ;
+  position: absolute;
+  bottom: 5%;
+  width: 330px;
+  height: 40px;
+  cursor: pointer;
+}
+
+.description::-webkit-scrollbar {
+  -webkit-appearance: none;
+}
+
+.features {
+  display: none;
+}
+
+.reservationDates {
+  display: flex;
+  flex-direction: column;
+  gap: 0.2rem;
+}
+
+@media screen and (min-width: 414px) {
+  .cardContainer {
+    width: 370px;
+    height: 491px;
+  }
+  .cardImg {
+    width: 393px;
+    height: 231px;
+  }
+}
+
+@media screen and (min-width: 768px) {
+  .cardContainer {
+    flex-direction: row;
+    align-items: center;
+    width: 710px;
+    height: 279px;
+    gap: 0;
+  }
+
+  .description {
+    width: 321px;
+    height: 60px;
+  }
+
+  .cardImg {
+    width: 344.11px;
+    height: 303.8px;
+  }
+
+  .informationContainer {
+    padding: 0 1rem;
+    gap: 0.3rem;
+  }
+
+  .btnFav{
+    top: 30px; 
+    left: 290px; 
+  }
+
+  .title > h5 {
+    margin-top: 1rem;
+  }
+
+  .features{
+    display: flex;
+    gap: 0.5rem;
+    align-items: center;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .cardContainer {
+    width: 635px;
+    height: 283px;
+    gap: 0.1rem;
+  }
+
+  .description {
+    width: 320px;
+    height: 60px;
+  }
+
+  .cardImg {
+    width: 311.1px;
+    height: 330.99px;
+  }
+
+  .buttonCard {
+    width: 296px;  
+  }
+
+  .btnFav{
+    top: 40px; 
+    left: 260px;
+  }
+}
+
+@media screen and (min-width: 1800px) {
+  .textContainer {
+    gap: 0.5rem;
+  }
+}

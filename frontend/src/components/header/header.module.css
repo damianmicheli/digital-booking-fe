@@ -1,0 +1,87 @@
+.header {
+  overflow: hidden;
+  width: 100%;
+  height: 93px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+  background-color: white;
+  position: sticky;
+  top: 0;
+  z-index: 99;
+}
+
+.rowHeader {
+  height: 93px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logoSlogan {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+.logo {
+  height: 50px;
+}
+
+.divButtons {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.disableMobile,
+.slogan {
+  display: none;
+}
+
+.btnWrapper{
+  background-color:transparent;
+  width: 35px;
+  height: 35px;
+  border: none;
+  display: flex;
+}
+.barsWrapper{
+  font-size: 1.5rem;
+  color: var(--color-2)
+ }
+ 
+
+
+
+@media only screen and (min-width: 624px) {
+  .disableMobile {
+    display: flex;
+  }
+
+  .disableTablet {
+    display: none;
+  }
+
+  .btnWrapper{
+    display: none;
+  }
+
+  
+}
+
+@media only screen and (min-width: 769px) {
+  .slogan {
+    display: flex;
+    font-style: italic;
+    font-weight: 300;
+    font-size: 18px;
+    color: #263238;
+    padding-left: 15px;
+    padding-top: 10px;
+  }
+  .logoSlogan :last-child {
+    margin-top: 10px;
+  }
+}

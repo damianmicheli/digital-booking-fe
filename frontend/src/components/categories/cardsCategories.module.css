@@ -1,0 +1,35 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding-bottom: 2rem;
+}
+
+.container h2 {
+  padding: 2rem 0 1rem 1rem;
+}
+
+.containerCategory {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 1rem;
+  margin: 0 auto;
+  cursor: pointer;
+}
+
+@media screen and (min-width: 768px) {
+  .container h2 {
+    padding: 2rem 0 1rem 3rem;
+  }
+  .containerCategory {
+    grid-template-columns: 1fr 1fr;
+    gap: 3rem;
+  }
+}
+
+@media screen and (min-width: 1300px) {
+  .containerCategory {
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    gap: 1rem;
+  }
+}
