@@ -82,15 +82,10 @@ const BookingTemplate = () => {
   
     const handleSubmit = (e) => {
       e.preventDefault();
-      const token = localStorage.getItem("jwt");
+      const token = "Bearer " + JSON.parse(localStorage.getItem("jwt"));
       console.log(token);
       const payload = {
-        "hora_comienzo_reserva": {
-          "hour": 10,
-          "minute": 0,
-          "second": 0,
-          "nano": 0
-        },
+        "hora_comienzo_reserva": "10:00",
         "fecha_inicial_reserva": startDate,
         "fecha_final_reserva": endDate,
         "producto": {
