@@ -22,6 +22,8 @@ const Administration = () => {
   }, []);
 
   const [categorias] = useFetch(`${URL_BASE}/categorias`);
+  const [ciudades] = useFetch(`${URL_BASE}/ciudades`);
+  const [atributos] = useFetch(`${URL_BASE}/ciudades`);
 
   const [success, setSuccess] = useState(false);
 
@@ -41,7 +43,7 @@ const Administration = () => {
             }}
             id="productForm"
           >
-            <div className={styles.content}>
+            <div>
               <h2 className="heading2 color2 paddingTop">Crear propiedad</h2>
             </div>
             <div className={styles.content}>
@@ -51,13 +53,60 @@ const Administration = () => {
               </div>
               <div className={styles.groupForm}>
                 <label className="text2">Categoría</label>
-
                 <select name="category">
+                  <option selected="selected">Elegí una categoría</option>
                   {categorias &&
                     categorias.map((categoria) => (
-                      <option key={categoria.id} value={categoria.titulo}>{categoria.titulo}</option>
+                      <option key={categoria.id} value={categoria.titulo}>
+                        {categoria.titulo}
+                      </option>
                     ))}
                 </select>
+              </div>
+              <div className={styles.groupForm}>
+                <label className="text2">Dirección</label>
+                <input type="text" id="address" name="address" />
+              </div>
+              <div className={styles.groupForm}>
+                <label className="text2">Ciudad</label>
+                <select name="city">
+                  <option selected="selected">Elegí una ciudad</option>
+                  {ciudades &&
+                    ciudades.map((ciudad) => (
+                      <option key={ciudad.id} value={ciudad.ciudad}>
+                        {ciudad.ciudad}, {ciudad.pais}
+                      </option>
+                    ))}
+                </select>
+              </div>
+              <div className={styles.groupForm}>
+                <label className="text2">Descripción</label>
+                <textarea id="description" name="description" />
+              </div>
+              <h2 className="heading2 color2 paddingTop">Atributos</h2>
+              <div>
+              <div className={styles.groupForm}>
+                <label className="text2">Nombre</label>
+                <select name="city">
+                  <option selected="selected">Elegí un atributo</option>
+                  {atributos &&
+                    atributos.map((atributo) => (
+                      <option key={atributo.id} value={atributo}>                      
+                      </option>
+                    ))}
+                </select>
+              </div>
+              <div className={styles.groupForm}>
+                <label className="text2">Ícono</label>
+                <select name="city">
+                  <option selected="selected">(icono)</option>
+                  {atributos &&
+                    atributos.map((atributo) => (
+                      <option key={atributo.id} value={atributo}>                      
+                      </option>
+                    ))}
+                </select>
+              </div>
               </div>
             </div>
           </form>
