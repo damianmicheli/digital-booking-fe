@@ -39,7 +39,7 @@ const BookingDetail = ({ startDate, endDate, title, category, location, image })
             <p>{endDate}</p>
           </div>
           <hr className="line marginBottom" />
-          <Button css="buttonCard" text={"Confirmar reserva"} event={onclick}/>
+          <Button css="buttonCard centered" text={"Confirmar reserva"} event={onclick}/>
         </div>
       </div>
     </div>

@@ -1,0 +1,95 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 15px;
+}
+
+.administration {
+  background-color: #f2f2f2;
+}
+
+.groupForm{
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: 5px auto;
+  gap: 5px;
+}
+
+.groupForm > input,
+.groupForm > select,
+.groupForm > textarea {
+  border: none;
+  height: 40px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+}
+
+.groupForm > textarea {
+  resize: none;
+  height: 120px;
+}
+
+.contentAtributes, .contentImages {
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  margin: 5px auto;
+  gap: 5px;
+  background-color: #f2f2f2;
+  padding: 15px 0;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.contentAtributes>.groupForm, .contentImages>.groupForm{
+  width: calc(100% - 80px);
+  margin-left: 5%;
+  margin-right: 8px;
+}
+
+.contentAtributes>.addIcon{
+ margin-top: 22px;
+}
+
+.addIcon{
+  font-size: 44px;
+  color: var(--color-principal);
+}
+
+.addIcon:hover{
+  color: var(--color-3);
+}
+
+.icon {
+  font-size: 14px;
+}
+
+@media only screen and (min-width: 624px) {
+  .contentAtributes>.groupForm, .contentImages>.groupForm{
+    width: calc(100% - 80px);
+    margin-left: 2%;
+  }
+}
+
+@media only screen and (min-width: 990px) {
+  .contentPolitics, .contentFlex{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+
+  .contentPolitics>.groupForm{
+    width: 30%;
+  }
+
+  .contentFlex>.groupForm{
+    width: 45%;
+  }
+
+}

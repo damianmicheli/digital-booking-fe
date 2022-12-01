@@ -131,7 +131,7 @@ const BookingTemplate = () => {
         <HeaderProduct category={categoria} title={nombre} path={"/"} />
       </div>
       <div className={styles.bookingTemplate}>
-        <div className={styles}>
+        <div className="container">
           <form
             onSubmit={(e) => {
               handleSubmit(e);
