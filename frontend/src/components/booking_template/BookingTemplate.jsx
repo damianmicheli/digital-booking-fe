@@ -100,17 +100,17 @@ const BookingTemplate = () => {
     e.preventDefault();
     const token = "Bearer " + JSON.parse(localStorage.getItem("jwt"));
     const payload = {
-      hora_comienzo_reserva: option.selectedOption,
-      fecha_inicial_reserva: format(startDate, "yyyy-MM-dd"),
-      fecha_final_reserva: format(endDate, "yyyy-MM-dd"),
-      producto: {
-        id: `${id}`,
+      "hora_comienzo_reserva": option.selectedOption,
+      "fecha_inicial_reserva": format(startDate, "yyyy-MM-dd"),
+      "fecha_final_reserva": format(endDate, "yyyy-MM-dd"),
+      "producto": {
+        "id": `${id}`,
       },
-      usuario: {
-        id: `${userLog.id}`,
+      "usuario": {
+        "id": `${userLog.id}`,
       },
-      aclaraciones: text.selectedOption,
-      vacunado: `${value.selectedOption}`,
+      "aclaraciones": text.selectedOption,
+      "vacunado": `${value.selectedOption}`,
     };
 
     const settings = {

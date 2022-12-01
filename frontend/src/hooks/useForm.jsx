@@ -111,14 +111,9 @@ const useForm = (initialForm, validateForm) => {
         "ciudad": form.city,
         "password": form.password,
         "email": form.email,
-     /*    "ciudad": {
-            "id": 1,
-            "ciudad": null,
-            "pais": null
-        }, */
         "roles": [
             {
-                "id": 2
+              "id": 2
             }
         ]    
   };

@@ -1,57 +1,70 @@
-.loggedUser{
-    display: flex;
-    position: relative;
-    flex-direction: column;
-    line-height: 1.3rem;
-    margin-bottom: 10px;
-    align-items: center;
+.loggedUser {
+  display: flex;
+  position: relative;
+  flex-direction: column;
+  line-height: 1.3rem;
+  margin-bottom: 125px;
+  align-items: flex-end;
 }
 
-.link {
+.linkDesktop {
+  display: none;
+}
+
+.linkMobile {
+    padding-top: 1.5rem;
+  }
+
+.avatar {
+  width: 37px;
+  height: 37px;
+  border-radius: 50%;
+  background-color: white;
+  color: var(--color-3);
+  text-align: center;
+  line-height: 2.3rem;
+  letter-spacing: -1px;
+  font-weight: 700;
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+
+.loggedUser > p > span {
+  color: var(--color-3);
+  font-weight: 700;
+}
+
+.closeSession {
+  position: absolute;
+  color: var(--color-3);
+  border: none;
+  top: -7px;
+  background-color: transparent;
+  cursor: pointer;
+}
+
+@media only screen and (min-width: 624px) {
+  .loggedUser {
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-top: 15px;
+    align-items: center;
+    margin-bottom: 10px;
+  }
+  .avatar {
+    background-color: var(--color-principal);
+    color: white;
+    margin-right: 10px;
+    margin-bottom: 0;
+  }
+  .linkDesktop {
     font-weight: 500;
     padding: 1rem;
     border-right: 2px solid var(--color-principal);
     margin-right: 1rem;
-}
-
-.avatar{
-    width: 37px;
-    height: 37px;
-    border-radius: 50%;
-    background-color:white;
-    color: var(--color-3);
-    text-align: center;
-    line-height: 2.3rem;
-    letter-spacing: -1px;
-    font-weight: 700;
-    font-size: 20px;
-    margin-bottom: 5px;
-}
-
-.loggedUser>p>span{
-    color: var(--color-3);
-    font-weight: 700;
-}
-
-.closeSession{
-    position: absolute;
-    color: var(--color-3);
-    border: none;
-    top: -7px;
-    background-color: transparent;
-    cursor: pointer;
-}
-
-@media only screen and (min-width: 624px) {
-    .loggedUser{
-        flex-direction: row;
-        justify-content: flex-end;
-        margin-top: 15px;
-    }
-   .avatar{
-    background-color:var(--color-principal);
-    color: white;
-    margin-right: 10px;
-    margin-bottom: 0;
-   }
+    display: block;
   }
+  .linkMobile {
+    display: none;
+  }
+}
