@@ -1,12 +1,15 @@
 package com.backend.service;
 import com.backend.dto.CaracteristicaDTO;
+import com.backend.dto.CiudadDTO;
 import com.backend.entity.Caracteristica;
+import com.backend.entity.Ciudad;
 import com.backend.repository.ICaracteristicaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -45,8 +48,18 @@ public class CaracteristicaService implements ICaracteristicaService{
 
     @Override
     public List<CaracteristicaDTO> listarTodas() {
-        return null;
+        List<Caracteristica> caracteristicas = caracteristicaRepository.findAll();
+        List<CaracteristicaDTO> caracteristicasDTO = new ArrayList<>();
+
+        for (Caracteristica caracteristica : caracteristicas){
+            caracteristicasDTO.add(mapper.convertValue(caracteristica, CaracteristicaDTO.class));
+        }
+
+        logger.info("Se listaron todas las caracterisiticas.");
+
+        return caracteristicasDTO;
     }
+
 
     @Override
     public void eliminar(Long id) throws NoEncontradoException {
