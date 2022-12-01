@@ -23,6 +23,7 @@ const Card = ({
   features,
   startDate,
   endDate,
+  location,
   hour,
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
@@ -55,8 +56,7 @@ const Card = ({
           <h3>{title}</h3>
         </div>
         <div className={styles.location}>
-          
-          <p><Icon css={styles.iconCard} icon={faLocationDot} /> A {Math.floor(Math.random() * 1000)} m del centro</p>
+          <p><Icon css={styles.iconCard} icon={faLocationDot} /> {location} </p>
           {/* <a className={styles.enlace} href="/">MOSTRAR EN EL MAPA</a> */}
           <div className={styles.features}>
             {features.map((element, i) => {

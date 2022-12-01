@@ -21,7 +21,7 @@ const MyBookings = () => {
     <div className={styles.container}>
       <HeaderProduct title={"Mis reservas"} path={"/"} />
       <div>
-        { data && data.length === 0  ? (
+        {data && data.length === 0 ? (
           <div className={styles.reservation}>
             <Icon css={styles.iconExclamation} icon={faCircleExclamation} />
             <h2>Aún no has efectuado ninguna reserva</h2>
@@ -69,10 +69,11 @@ const MyBookings = () => {
                           ? reservation.producto.caracteristicas
                           : message
                       }
-                      startDate={reservation.fecha_inicial_reserva}
-                      endDate={reservation.fecha_final_reserva}
-                      hour={reservation.hora_comienzo_reserva}
+                      startDate={`${reservation.fecha_inicial_reserva[2]}/${reservation.fecha_inicial_reserva[1]}/${reservation.fecha_inicial_reserva[0]}`}
+                      endDate={`${reservation.fecha_final_reserva[2]}/${reservation.fecha_final_reserva[1]}/${reservation.fecha_final_reserva[0]}`}
+                      hour={`${reservation.hora_comienzo_reserva[0]}hs`}
                     />
+                    {console.log(typeof reservation)}
                   </div>
                 );
               })}

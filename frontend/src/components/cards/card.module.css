@@ -51,7 +51,7 @@
   font-weight: 700;
   color: var(--color-2);
   position: absolute;
-  top: 28%;
+  top: 26%;
 }
 
 .enlace {
@@ -84,7 +84,7 @@ title {
   padding-block-end: 5px;
   display: block;
   width: 366px;
-  height: 80px;
+  height: 72px;
   position: absolute;
   bottom: 25%;
   overflow-y: scroll;
@@ -173,6 +173,10 @@ title {
     display: flex;
     gap: 0.5rem;
     align-items: center;
+  }
+
+  .location {
+    top: 26%;
   }
 }
 

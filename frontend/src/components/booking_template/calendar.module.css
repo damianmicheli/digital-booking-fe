@@ -6,7 +6,7 @@
 @media only screen and (min-width: 624px) {
   .calendarElement {
     align-items: stretch;
-    padding: 1rem;
+    padding: 0.5rem;
   }
 }
 

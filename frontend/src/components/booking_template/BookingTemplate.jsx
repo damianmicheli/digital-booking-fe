@@ -13,6 +13,8 @@ import AuthContext from "../../context/AuthContext";
 import format from "date-fns/format";
 import URL_BASE from "../global/getUrlBase";
 import SuccessUser from "../global/modal/success/SuccessUser";
+import Icon from "../global/Icon";
+import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 
 const BookingTemplate = () => {
   const { userLog } = useContext(AuthContext);
@@ -46,7 +48,6 @@ const BookingTemplate = () => {
   const politicaDeCancelacion = data && data.politica_de_cancelacion;
   const politicaDeSaludYSeguridad = data && data.politica_de_salud_y_seguridad;
   const normasDeUso = data && data.politica_de_uso;
-  const ciudad = data && data.ciudad.ciudad;
   const direccion = data && data.direccion;
   const imagen = data && data.imagenes[0];
 
@@ -56,25 +57,32 @@ const BookingTemplate = () => {
   });
 
   const [text, setText] = useState({
-    selectedOption: "Ïngrese su texto aqui"
+    selectedOption: "Ïngrese su texto aqui",
   });
 
   const [value, setValue] = useState({
-    selectedOption: null
+    selectedOption: null,
+  });
+
+  const [option, setOption] = useState({
+    selectedOption: "....hs"
   });
 
   const { startDate, endDate } = reservationDate;
 
-  const checkIn = startDate === null ? "__/__/__" : `${format(startDate, "yyyy-MM-dd")}`;
-  const checkOut = endDate === null ? "__/__/__" : `${format(endDate, "yyyy-MM-dd")}`;
+  const checkIn =
+    startDate === null ? "__/__/__" : `${format(startDate, "dd/MM/yyyy")}`;
+  const checkOut =
+    endDate === null ? "__/__/__" : `${format(endDate, "dd/MM/yyyy")}`;
 
   function realizarReserva(settings) {
-
     fetch(`${URL_BASE}/reservas`, settings)
       .then((response) => {
         console.log(response);
         if (response.ok !== true) {
-          alert("Lamentablemente no se pudo realizar su reserva. Por favor intente más tarde");
+          alert(
+            "Lamentablemente no se pudo realizar su reserva. Por favor intente más tarde"
+          );
         }
         return response.json();
       })
@@ -91,36 +99,31 @@ const BookingTemplate = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     const token = "Bearer " + JSON.parse(localStorage.getItem("jwt"));
-    console.log(token);
     const payload = {
-      "hora_comienzo_reserva": "10:00",
-      "fecha_inicial_reserva": startDate,
-      "fecha_final_reserva": endDate,
-      "producto": {
-        "id": `${id}`,
-        },
-      "usuario": {
-        "id": `${userLog.id}`,
+      hora_comienzo_reserva: option.selectedOption,
+      fecha_inicial_reserva: format(startDate, "yyyy-MM-dd"),
+      fecha_final_reserva: format(endDate, "yyyy-MM-dd"),
+      producto: {
+        id: `${id}`,
       },
-      "aclaraciones": text.selectedOption,
-      "vacunado": `${value.selectedOption}`
-    }
-    console.log(`${id}`);
-    console.log(checkIn);
-    console.log(`${checkOut}`);
+      usuario: {
+        id: `${userLog.id}`,
+      },
+      aclaraciones: text.selectedOption,
+      vacunado: `${value.selectedOption}`,
+    };
 
     const settings = {
       method: "POST",
       body: JSON.stringify(payload),
       headers: {
         "Content-Type": "application/json",
-        "Authorization": token,
+        Authorization: token,
       },
-    }; 
+    };
     realizarReserva(settings);
-    console.log("hace reserva");
     setSuccess(true);
-  };  
+  };
 
   console.log(value);
 
@@ -131,7 +134,7 @@ const BookingTemplate = () => {
         <HeaderProduct category={categoria} title={nombre} path={"/"} />
       </div>
       <div className={styles.bookingTemplate}>
-        <div className={styles}>
+        <div className={styles.container}>
           <form
             onSubmit={(e) => {
               handleSubmit(e);
@@ -140,9 +143,7 @@ const BookingTemplate = () => {
           >
             <div className={styles.content}>
               <div className={styles.contentLeft}>
-                <h2 className="heading2 color2 paddingTop">
-                  Completá tus datos
-                </h2>
+                <h2 className="heading2 color2">Completá tus datos</h2>
                 <div className={styles.divInputs}>
                   <div className={styles.groupForm}>
                     <label className="text2">Nombre</label>
@@ -180,31 +181,101 @@ const BookingTemplate = () => {
                       type="text"
                       id="location"
                       name="location"
-                      value={ciudad}
+                      value={userLog.ciudad}
+                      disabled
                     />
                   </div>
                 </div>
-                <h2 className="heading2 color2 paddingTop paddingBottom">
+                <h2 className="heading2 color2">
                   Seleccioná tu fecha de reserva
                 </h2>
-                <div className={styles.calendar}>
-                  {isMobile ? (
-                    <Calendar
-                      months={1}
-                      bookings={fechasInhabilitadas}
-                      setReservationDate={setReservationDate}
-                    />
-                  ) : (
-                    <Calendar
-                      months={2}
-                      bookings={fechasInhabilitadas}
-                      setReservationDate={setReservationDate}
-                    />
-                  )}
+                <div className={styles.calendarContainer}>
+                  <div className={styles.calendar}>
+                    {isMobile ? (
+                      <Calendar
+                        months={1}
+                        bookings={fechasInhabilitadas}
+                        setReservationDate={setReservationDate}
+                      />
+                    ) : (
+                      <Calendar
+                        months={2}
+                        bookings={fechasInhabilitadas}
+                        setReservationDate={setReservationDate}
+                      />
+                    )}
+                  </div>
                 </div>
-                <h2 className="heading2 color2 paddingTop">
-                  Datos adicionales
-                </h2>
+                <h2 className="heading2 color2">Tu horario de llegada</h2>
+                <div className={styles.divInputs}>
+                  <div className={styles.scheduleContainer}>
+                    <p className={styles.scheduleTitle}>
+                      <Icon css={styles.iconCheck} icon={faCircleCheck} />
+                      Tu alojamiento estará listo para el check-in entre las
+                      10:00 AM y las 11:00 PM
+                    </p>
+                    <div className={styles.select}>
+                      <select
+                        id="hour"
+                        name="check_in"
+                        className={styles.scheduleOptions}
+                        onChange={(e) => {
+                          setOption({
+                            selectedOption: e.target.value,
+                          });
+                        }}
+                        required
+                      >
+                        <option value="" key="default" hidden>
+                          Seleccionar hora de llegada
+                        </option>
+                        <option value={"10:00:00"} key={"10:00"}>
+                          10:00 AM
+                        </option>
+                        <option value={"11:00:00"} key={"11:00"}>
+                          11:00 AM
+                        </option>
+                        <option value={"12:00:00"} key={"12:00"}>
+                          12:00 PM
+                        </option>
+                        <option value={"13:00:00"} key={"13:00"}>
+                          01:00 PM
+                        </option>
+                        <option value={"14:00:00"} key={"14:00"}>
+                          02:00 PM
+                        </option>
+                        <option value={"15:00:00"} key={"15:00"}>
+                          03:00 PM
+                        </option>
+                        <option value={"16:00:00"} key={"16:00"}>
+                          04:00 PM
+                        </option>
+                        <option value={"17:00:00"} key={"17:00"}>
+                          05:00 PM
+                        </option>
+                        <option value={"18:00:00"} key={"18:00"}>
+                          06:00 PM
+                        </option>
+                        <option value={"19:00:00"} key={"19:00"}>
+                          07:00 PM
+                        </option>
+                        <option value={"20:00:00"} key={"20:00"}>
+                          08:00 PM
+                        </option>
+                        <option value={"21:00:00"} key={"21:00"}>
+                          09:00 PM
+                        </option>
+                        <option value={"22:00:00"} key={"22:00"}>
+                          10:00 PM
+                        </option>
+                        <option value={"23:00:00"} key={"23:00"}>
+                          11:00 PM
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <h2 className="heading2 color2">Datos adicionales</h2>
                 <div className={styles.divInputs}>
                   <div className={styles.groupForm}>
                     <label className="text2">Aclaraciones</label>
@@ -217,40 +288,43 @@ const BookingTemplate = () => {
                       placeholder={text.selectedOption}
                       onChange={(e) => {
                         setText({
-                          selectedOption: e.target.value
+                          selectedOption: e.target.value,
                         });
                       }}
                     />
                   </div>
-                  <div className={styles.groupForm}>
+                  <div className={`${styles.groupForm} ${styles.vacunado}`}>
                     <label className="text2">
                       ¿Está vacunado contra COVID?
                     </label>
                     <div>
-                      <input 
-                      type="radio" 
-                      id="vacunado"
-                      name="vacunado"
-                      value={true} 
-                      onChange={(e) => {
-                        setValue({
-                          selectedOption: e.target.value
-                        });
-                      }} 
+                      <input
+                        type="radio"
+                        id="vacunado"
+                        name="vacunado"
+                        required={true}
+                        value={true}
+                        className={styles.radioButton}
+                        onChange={(e) => {
+                          setValue({
+                            selectedOption: e.target.value,
+                          });
+                        }}
                       />
                       <label className="text2">Si</label>
                     </div>
                     <div>
-                      <input 
-                      type="radio"
-                      id="vacunado"
-                      name="vacunado"
-                      value={false} 
-                      onChange={(e) => {
-                        setValue({
-                          selectedOption: e.target.value
-                        });
-                      }} 
+                      <input
+                        type="radio"
+                        id="vacunado"
+                        name="vacunado"
+                        value={false}
+                        className={styles.radioButton}
+                        onChange={(e) => {
+                          setValue({
+                            selectedOption: e.target.value,
+                          });
+                        }}
                       />
                       <label className="text2">No</label>
                     </div>
