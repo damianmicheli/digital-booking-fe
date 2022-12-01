@@ -8,7 +8,7 @@ import useMediaQuery from "../../hooks/useMediaQuery";
 import { Link } from "react-router-dom";
 
 const User = () => {
-  
+
   const isMobile = useMediaQuery(768);
 
   const { handleAuth, userLog } = useContext(AuthContext);
@@ -39,11 +39,13 @@ const User = () => {
         {userLog.roles[0].id === 2 ? "Mis Reservas" : "Administración"}
       </Link>
       {!isMobile && (
-        <Button
-          css={styles.closeSession}
-          event={handleAuth}
-          text={<Icon css={styles.closeSession} icon={faXmark} />}
-        />
+        <Link
+          className={styles.closeSession}
+          onClick={handleAuth}
+          to={"/"}
+        >
+          <Icon css={styles.closeSession} icon={faXmark} />
+        </Link>
       )}
     </div>
   );
