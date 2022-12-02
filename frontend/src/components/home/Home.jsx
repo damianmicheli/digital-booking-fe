@@ -11,6 +11,8 @@ import Pagination from "../pagination/Pagination";
 import { FilterContextProvider } from "../../context/FilterContext";
 import { FavProvider } from "../../context/FavContext";
 
+import MapView from "../map/MapView";
+
 import URL_BASE from "../global/getUrlBase";
 
 const Home = () => {

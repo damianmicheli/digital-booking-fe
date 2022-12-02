@@ -65,7 +65,7 @@ const BookingTemplate = () => {
   });
 
   const [option, setOption] = useState({
-    selectedOption: "....hs"
+    selectedOption: null
   });
 
   const { startDate, endDate } = reservationDate;
@@ -181,8 +181,7 @@ const BookingTemplate = () => {
                       type="text"
                       id="location"
                       name="location"
-                      value={userLog.ciudad}
-                      disabled
+                      placeholder={userLog.ciudad}
                     />
                   </div>
                 </div>

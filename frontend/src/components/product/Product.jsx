@@ -20,6 +20,7 @@ import styles from "./product.module.css";
 //import FavContext from "../../context/FavContext";
 
 import URL_BASE from "../global/getUrlBase";
+import MapView from "../map/MapView";
 
 const Product = () => {
 
@@ -42,6 +43,8 @@ const Product = () => {
   const categoria = data && data.categoria.titulo.toUpperCase();
   const ciudad = data && data.ciudad.ciudad;
   const pais = data && data.ciudad.pais;
+  const longitud = data && data.longitud;
+  const latitud = data && data.latitud;
 
   useEffect(() => {
     window.scrollTo(0, 0);
@@ -83,6 +86,7 @@ const Product = () => {
       </div>
       <Features features={caracteristicas} />
       <BookingCalendar />
+      <MapView latitud={-31.3891428} longitud={-64.5708929} city={ciudad} country={pais} />
       <Politics
         normas={normasDeUso}
         politicaSalud={politicaDeSaludYSeguridad}
