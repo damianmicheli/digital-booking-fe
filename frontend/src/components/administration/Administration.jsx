@@ -11,7 +11,7 @@ import useFetch from "../../hooks/useFetch";
 import AuthContext from "../../context/AuthContext";
 import URL_BASE from "../global/getUrlBase";
 
-import SuccessAdmin from "../global/modal/success/SuccessAdmin";
+import Success from "../global/modal/success/Success";
 import Button from "../global/Button";
 
 const Administration = () => {
@@ -30,11 +30,9 @@ const Administration = () => {
   const [optionCategory, setOptionCategory] = useState({
     selectedOption: null,
   });
-
   const [optionCity, setOptionCity] = useState({
     selectedOption: null,
   });
-
   const [optionAttribute, setOptionAttribute] = useState({
     selectedOption: null,
   });
@@ -73,15 +71,15 @@ const Administration = () => {
     e.preventDefault();
     const token = "Bearer " + JSON.parse(localStorage.getItem("jwt"));
     const payload = {
-      "titulo": title,
-      "nombre": prodName,
-      "descripcion": description,
-      "direccion": address,
-      "politica_de_uso": usePolicy,
-      "politica_de_salud_y_seguridad": healthPolicy,
-      "politica_de_cancelacion": cancellationPolicy,
-      "categoria": optionCategory.selectedOption,
-      "ciudad": optionCity.selectedOption,
+      titulo: title,
+      nombre: prodName,
+      descripcion: description,
+      direccion: address,
+      politica_de_uso: usePolicy,
+      politica_de_salud_y_seguridad: healthPolicy,
+      politica_de_cancelacion: cancellationPolicy,
+      categoria: optionCategory.selectedOption,
+      ciudad: optionCity.selectedOption,
       /* "imagenes": "", */
       /* "caracteristicas": optionAttribute.selectedOption, */
     };
@@ -120,7 +118,7 @@ const Administration = () => {
 
   return (
     <>
-      <SuccessAdmin state={success} />
+      <Success state={success} text2={"Tu propiedad se ha creado con éxito."} path={"/"} textBtn={"volver"} />
       <div className={styles.title}>
         <HeaderProduct title={"Administración"} path={"/"} />
       </div>
@@ -303,7 +301,7 @@ const Administration = () => {
                 </div>
                 <Icon css={styles.addIcon} icon={faSquarePlus} />
               </div>
-              <Button text="Crear" css="button4 centered"/>
+              <Button text="Crear" css="button4 centered" />
             </div>
           </form>
         </div>

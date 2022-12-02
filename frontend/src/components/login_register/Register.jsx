@@ -4,7 +4,7 @@ import Button from "../global/Button";
 import Icon from "../global/Icon";
 import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 import useForm from "../../hooks/useForm";
-// import Buscador from "../buscador/Buscador";
+import Success from "../global/modal/success/Success";
 
 const initialForm = {
   fName: "",
@@ -90,9 +90,11 @@ const Register = () => {
     setShowPass((prevState) => !prevState);
   };
 
+  const [success, setSuccess] = useState(false);
+
   return (
     <>
-      {/* <Buscador /> */}
+      <Success state={success} text1={"¡Bienvenido/a!"} text2={"Su registro se ha realizado con éxito."} path={"/login"} textBtn={"Iniciar Sesión"}/>
       <div className={styles.container}>
         <p className="headings heading1">Crear cuenta</p>
 

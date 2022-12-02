@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 import styles from "./success.module.css";
 import Button from "../../Button";
 
-const Success = ({ state }) => {
+const Success = ({ state, text1, text2, path, textBtn }) => {
   return (
     <>
       {state && (
@@ -11,11 +11,12 @@ const Success = ({ state }) => {
           <div className={styles.backgroundContainer}/>
           <div className={styles.cardContainer}>
             <img src={successCheck} alt="success-check" />
-            <h3 className={styles.successAdminH4}>
-              Tu propiedad se ha creado con éxito.
+            <h2 className={styles.successH2}>{text1}</h2>
+            <h3 className={styles.successH3}>
+              {text2}
             </h3>
-            <Link to={"/"}>
-              <Button css={styles.successBtn} text={"volver"} />
+            <Link to={path}>
+              <Button css={styles.successBtn} text={textBtn} />
             </Link>
           </div>
         </div>
