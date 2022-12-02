@@ -6,7 +6,7 @@ import styles from "./mapview.module.css";
 
 const MapView = ({ latitud, longitud, city, country }) => {
   const position = [latitud, longitud];
-  
+
   const icon = new L.Icon({
     iconUrl:
       "https://raw.githubusercontent.com/pointhi/leaflet-color-markers/master/img/marker-icon-2x-gold.png",
