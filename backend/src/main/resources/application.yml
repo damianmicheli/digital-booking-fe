@@ -1,0 +1,6 @@
+amazonProperties:
+  endpointUrl: https://s3.us-east-2.amazonaws.com
+  accessKey: AKIASDYGBXDRXBP3NJEH
+  secretKey: 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
+  bucketName: 0521ptc3n1-grupo4-img
+  url: s3.us-east-2.amazonaws.com

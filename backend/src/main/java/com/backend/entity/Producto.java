@@ -26,6 +26,10 @@ public class Producto {
 
     private String direccion;
 
+    private String latitud;
+
+    private String longitud;
+
     private String politica_de_uso;
 
     private String politica_de_salud_y_seguridad;
@@ -62,11 +66,13 @@ public class Producto {
     public Producto() {
     }
 
-    public Producto(String titulo, String nombre, String descripcion, String direccion, String politica_de_uso, String politica_de_salud_y_seguridad, String politica_de_cancelacion, List<Caracteristica> caracteristicas, Categoria categoria, Ciudad ciudad, List<Imagen> imagenes) {
+    public Producto(String titulo, String nombre, String descripcion, String direccion, String latitud, String longitud, String politica_de_uso, String politica_de_salud_y_seguridad, String politica_de_cancelacion, List<Caracteristica> caracteristicas, Categoria categoria, Ciudad ciudad, List<Imagen> imagenes, List<Reserva> reservas) {
         this.titulo = titulo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
         this.politica_de_uso = politica_de_uso;
         this.politica_de_salud_y_seguridad = politica_de_salud_y_seguridad;
         this.politica_de_cancelacion = politica_de_cancelacion;
@@ -74,5 +80,6 @@ public class Producto {
         this.categoria = categoria;
         this.ciudad = ciudad;
         this.imagenes = imagenes;
+        this.reservas = reservas;
     }
 }
