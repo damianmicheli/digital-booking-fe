@@ -12,7 +12,7 @@ import useFetch from "../../hooks/useFetch";
 import AuthContext from "../../context/AuthContext";
 import format from "date-fns/format";
 import URL_BASE from "../global/getUrlBase";
-import SuccessUser from "../global/modal/success/SuccessUser";
+import Success from "../global/modal/success/Success";
 import Icon from "../global/Icon";
 import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 
@@ -129,7 +129,7 @@ const BookingTemplate = () => {
 
   return (
     <>
-      <SuccessUser state={success} />
+      <Success state={success} text1={"¡Muchas Gracias!"} text2={"Su reserva se ha realizado con éxito"} path={"/"} textBtn={"Ok"}/>
       <div className={styles.title}>
         <HeaderProduct category={categoria} title={nombre} path={"/"} />
       </div>
