@@ -7,10 +7,12 @@
   background-color: white;
   border-radius: 5px;
   margin-top: 15px;
+  padding-bottom: 50px;
 }
 
 .administration {
   background-color: #f2f2f2;
+  padding-bottom: 40px;
 }
 
 .groupForm{
@@ -28,6 +30,7 @@
   height: 40px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
   border-radius: 5px;
+  padding-left: 5px;
 }
 
 .groupForm > textarea {
@@ -35,7 +38,22 @@
   height: 120px;
 }
 
-.contentAtributes, .contentImages {
+.groupForm>select *{
+  outline: none;
+  border-bottom: 1px solid var(--color-principal);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+  }
+
+.groupForm>select:focus{
+  outline: none;
+  }
+
+.groupForm>select:hover {
+  border: none;
+}
+
+
+.contentAttributes, .contentImages {
   display: flex;
   flex-direction: row;
   width: 95%;
@@ -47,13 +65,13 @@
   align-items: center;
 }
 
-.contentAtributes>.groupForm, .contentImages>.groupForm{
+.contentAttributes>.groupForm, .contentImages>.groupForm{
   width: calc(100% - 80px);
   margin-left: 5%;
   margin-right: 8px;
 }
 
-.contentAtributes>.addIcon{
+.contentAttributes>.addIcon{
  margin-top: 22px;
 }
 
@@ -70,8 +88,13 @@
   font-size: 14px;
 }
 
+.contentPolitics{
+  width: 97%;
+  margin: 0 auto;
+}
+
 @media only screen and (min-width: 624px) {
-  .contentAtributes>.groupForm, .contentImages>.groupForm{
+  .contentAttributes>.groupForm, .contentImages>.groupForm{
     width: calc(100% - 80px);
     margin-left: 2%;
   }
@@ -92,4 +115,8 @@
     width: 45%;
   }
 
+  .contentAttributes>.groupForm, .contentImages>.groupForm{
+    width: calc(100% - 80px);
+    margin-left: 1%;
+  }
 }

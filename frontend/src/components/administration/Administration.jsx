@@ -27,8 +27,96 @@ const Administration = () => {
   const [atributos] = useFetch(`${URL_BASE}/caracteristicas`);
 
   const [success, setSuccess] = useState(false);
+  const [optionCategory, setOptionCategory] = useState({
+    selectedOption: null,
+  });
 
-  const handleSubmit = (e) => {};
+  const [optionCity, setOptionCity] = useState({
+    selectedOption: null,
+  });
+
+  const [optionAttribute, setOptionAttribute] = useState({
+    selectedOption: null,
+  });
+
+  const [prodName, setProdName] = useState("");
+  const [title, setTitle] = useState("");
+  const [description, setDescription] = useState("");
+  const [address, setAddress] = useState("");
+  const [cordinates, setCoordinates] = useState("");
+  const [usePolicy, setUsePolicy] = useState("");
+  const [healthPolicy, setHealthPolicy] = useState("");
+  const [cancellationPolicy, setCancellationPolicy] = useState("");
+
+  function darAltaProducto(settings) {
+    fetch(`${URL_BASE}/productos`, settings)
+      .then((response) => {
+        console.log(response);
+        if (response.ok !== true) {
+          alert(
+            "Lamentablemente no se pudo crear el producto. Por favor intente más tarde"
+          );
+        }
+        return response.json();
+      })
+      .then((data) => {
+        console.log(data);
+        console.log("Se dió de alta correctamente el producto");
+      })
+      .catch((err) => {
+        console.log("Promesa rechazada:");
+        console.log(err);
+      });
+  }
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    const token = "Bearer " + JSON.parse(localStorage.getItem("jwt"));
+    const payload = {
+      "titulo": title,
+      "nombre": prodName,
+      "descripcion": description,
+      "direccion": address,
+      "politica_de_uso": usePolicy,
+      "politica_de_salud_y_seguridad": healthPolicy,
+      "politica_de_cancelacion": cancellationPolicy,
+      "categoria": optionCategory.selectedOption,
+      "ciudad": optionCity.selectedOption,
+      /* "imagenes": "", */
+      /* "caracteristicas": optionAttribute.selectedOption, */
+    };
+
+    const settings = {
+      method: "POST",
+      body: JSON.stringify(payload),
+      headers: {
+        "Content-Type": "application/json",
+        Authorization: token,
+      },
+    };
+    darAltaProducto(settings);
+    setSuccess(true);
+  };
+
+  const handleAttribute = () => {
+    let container = document.getElementsByClassName("contentAttribute");
+    console.log(container);
+    container.innerHtml = `<div className=${styles.groupForm}>
+    <label className="text2">Nombre e ícono</label>
+    <select name="city">
+      <option selected="selected">Elegí un atributo</option>
+      ${
+        atributos &&
+        atributos.map((atributo) => (
+          <option key={atributo.id} value={atributo.id}>
+            {atributo.nombre}
+            <Icon css={styles.icon} icon={atributo.icono} />
+          </option>
+        ))
+      }
+    </select>
+  </div>`;
+  };
 
   return (
     <>
@@ -51,15 +139,39 @@ const Administration = () => {
               <div className={styles.contentFlex}>
                 <div className={styles.groupForm}>
                   <label className="text2">Nombre de la propiedad</label>
-                  <input type="text" id="name" name="name" />
+                  <input
+                    type="text"
+                    id="prodName"
+                    name="prodName"
+                    value={prodName}
+                    onChange={(e) => setProdName(e.target.value)}
+                  />
+                </div>
+                <div className={styles.groupForm}>
+                  <label className="text2">Título</label>
+                  <input
+                    type="text"
+                    id="title"
+                    name="title"
+                    value={title}
+                    onChange={(e) => setTitle(e.target.value)}
+                  />
                 </div>
                 <div className={styles.groupForm}>
                   <label className="text2">Categoría</label>
-                  <select name="category">
+                  <select
+                    name="category"
+                    onChange={(e) => {
+                      setOptionCategory({
+                        selectedOption: e.target.value,
+                      });
+                    }}
+                    required
+                  >
                     <option selected="selected">Elegí una categoría</option>
                     {categorias &&
                       categorias.map((categoria) => (
-                        <option key={categoria.id} value={categoria.titulo}>
+                        <option key={categoria.id} value={categoria.id}>
                           {categoria.titulo}
                         </option>
                       ))}
@@ -67,15 +179,40 @@ const Administration = () => {
                 </div>
                 <div className={styles.groupForm}>
                   <label className="text2">Dirección</label>
-                  <input type="text" id="address" name="address" />
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    value={address}
+                    onChange={(e) => setAddress(e.target.value)}
+                  />
+                </div>
+                <div className={styles.groupForm}>
+                  <label className="text2">Coordenadas</label>
+                  <input
+                    type="text"
+                    id="address"
+                    name="address"
+                    placeholder="Escribe las coordenadas de latitud y longitud"
+                    value={cordinates}
+                    onChange={(e) => setCoordinates(e.target.value)}
+                  />
                 </div>
                 <div className={styles.groupForm}>
                   <label className="text2">Ciudad</label>
-                  <select name="city">
+                  <select
+                    name="city"
+                    onChange={(e) => {
+                      setOptionCity({
+                        selectedOption: e.target.value,
+                      });
+                    }}
+                    required
+                  >
                     <option selected="selected">Elegí una ciudad</option>
                     {ciudades &&
                       ciudades.map((ciudad) => (
-                        <option key={ciudad.id} value={ciudad.ciudad}>
+                        <option key={ciudad.id} value={ciudad.id}>
                           {ciudad.ciudad}, {ciudad.pais}
                         </option>
                       ))}
@@ -84,25 +221,40 @@ const Administration = () => {
               </div>
               <div className={styles.groupForm}>
                 <label className="text2">Descripción</label>
-                <textarea id="description" name="description" />
+                <textarea
+                  id="description"
+                  name="description"
+                  value={description}
+                  onChange={(e) => setDescription(e.target.value)}
+                />
               </div>
               <h2 className="heading2 color2 paddingTop">Atributos</h2>
-              <div className={styles.contentAtributes}>
+              <div className={styles.contentAttributes}>
                 <div className={styles.groupForm}>
                   <label className="text2">Nombre e ícono</label>
-                  <select name="city">
+                  <select
+                    name="attribute"
+                    onChange={(e) => {
+                      setOptionAttribute({
+                        selectedOption: e.target.value,
+                      });
+                    }}
+                  >
                     <option selected="selected">Elegí un atributo</option>
                     {atributos &&
                       atributos.map((atributo) => (
-                        <option key={atributo.id} value={atributo.nombre}>
-                          {" "}
-                          {atributo.nombre}{" "}
+                        <option key={atributo.id} value={atributo.id}>
+                          {atributo.nombre}
                           <Icon css={styles.icon} icon={atributo.icono} />
                         </option>
                       ))}
                   </select>
                 </div>
-                <Icon css={styles.addIcon} icon={faSquarePlus} />
+                <Icon
+                  css={styles.addIcon}
+                  icon={faSquarePlus}
+                  event={handleAttribute}
+                />
               </div>
               <h2 className="heading2 color2 paddingTop">
                 Políticas del producto
@@ -111,17 +263,32 @@ const Administration = () => {
                 <div className={styles.groupForm}>
                   <h4 className="heading4">Normas de la casa</h4>
                   <label className="text2">Descripción</label>
-                  <textarea id="description" name="description" />
+                  <textarea
+                    id="description"
+                    name="description"
+                    value={usePolicy}
+                    onChange={(e) => setUsePolicy(e.target.value)}
+                  />
                 </div>
                 <div className={styles.groupForm}>
                   <h4 className="heading4">Salud y seguridad</h4>
                   <label className="text2">Descripción</label>
-                  <textarea id="description" name="description" />
+                  <textarea
+                    id="description"
+                    name="description"
+                    value={healthPolicy}
+                    onChange={(e) => setHealthPolicy(e.target.value)}
+                  />
                 </div>
                 <div className={styles.groupForm}>
                   <h4 className="heading4">Políticas de cancelación</h4>
                   <label className="text2">Descripción</label>
-                  <textarea id="description" name="description" />
+                  <textarea
+                    id="description"
+                    name="description"
+                    value={cancellationPolicy}
+                    onChange={(e) => setCancellationPolicy(e.target.value)}
+                  />
                 </div>
               </div>
               <h2 className="heading2 color2 paddingTop">Cargar imágenes</h2>
@@ -136,7 +303,7 @@ const Administration = () => {
                 </div>
                 <Icon css={styles.addIcon} icon={faSquarePlus} />
               </div>
-              <Button text="Crear" css="button4 centered" />
+              <Button text="Crear" css="button4 centered"/>
             </div>
           </form>
         </div>
