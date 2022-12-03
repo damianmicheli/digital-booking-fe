@@ -41,7 +41,8 @@ const Administration = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [address, setAddress] = useState("");
-  const [cordinates, setCoordinates] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [length, setLength] = useState("");
   const [usePolicy, setUsePolicy] = useState("");
   const [healthPolicy, setHealthPolicy] = useState("");
   const [cancellationPolicy, setCancellationPolicy] = useState("");
@@ -80,8 +81,8 @@ const Administration = () => {
       politica_de_cancelacion: cancellationPolicy,
       categoria: optionCategory.selectedOption,
       ciudad: optionCity.selectedOption,
-      /* "imagenes": "", */
-      /* "caracteristicas": optionAttribute.selectedOption, */
+      /* "imagenes": [], */
+      /* "caracteristicas": [] */
     };
 
     const settings = {
@@ -98,7 +99,7 @@ const Administration = () => {
 
   const handleAttribute = () => {
     let container = document.getElementsByClassName("contentAttribute");
-    console.log(container);
+    console.log({container});
     container.innerHtml = `<div className=${styles.groupForm}>
     <label className="text2">Nombre e ícono</label>
     <select name="city">
@@ -116,6 +117,7 @@ const Administration = () => {
   </div>`;
   };
 
+  console.log({atributos});
   return (
     <>
       <Success state={success} text2={"Tu propiedad se ha creado con éxito."} path={"/"} textBtn={"volver"} />
@@ -186,14 +188,25 @@ const Administration = () => {
                   />
                 </div>
                 <div className={styles.groupForm}>
-                  <label className="text2">Coordenadas</label>
+                  <label className="text2">Latitud</label>
                   <input
                     type="text"
-                    id="address"
-                    name="address"
-                    placeholder="Escribe las coordenadas de latitud y longitud"
-                    value={cordinates}
-                    onChange={(e) => setCoordinates(e.target.value)}
+                    id="latitude"
+                    name="latitude"
+                    placeholder="Escribe las coordenadas de latitud"
+                    value={latitude}
+                    onChange={(e) => setLatitude(e.target.value)}
+                  />
+                </div>
+                <div className={styles.groupForm}>
+                  <label className="text2">Longitud</label>
+                  <input
+                    type="text"
+                    id="length"
+                    name="length"
+                    placeholder="Escribe las coordenadas de longitud"
+                    value={length}
+                    onChange={(e) => setLength(e.target.value)}
                   />
                 </div>
                 <div className={styles.groupForm}>
@@ -227,33 +240,7 @@ const Administration = () => {
                 />
               </div>
               <h2 className="heading2 color2 paddingTop">Atributos</h2>
-              <div className={styles.contentAttributes}>
-                <div className={styles.groupForm}>
-                  <label className="text2">Nombre e ícono</label>
-                  <select
-                    name="attribute"
-                    onChange={(e) => {
-                      setOptionAttribute({
-                        selectedOption: e.target.value,
-                      });
-                    }}
-                  >
-                    <option selected="selected">Elegí un atributo</option>
-                    {atributos &&
-                      atributos.map((atributo) => (
-                        <option key={atributo.id} value={atributo.id}>
-                          {atributo.nombre}
-                          <Icon css={styles.icon} icon={atributo.icono} />
-                        </option>
-                      ))}
-                  </select>
-                </div>
-                <Icon
-                  css={styles.addIcon}
-                  icon={faSquarePlus}
-                  event={handleAttribute}
-                />
-              </div>
+              
               <h2 className="heading2 color2 paddingTop">
                 Políticas del producto
               </h2>
