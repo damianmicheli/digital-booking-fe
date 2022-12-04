@@ -41,7 +41,7 @@ const Administration = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [address, setAddress] = useState("");
-  const [cordinates, setCoordinates] = useState("");
+  const [coordinates, setCoordinates] = useState("");
   const [usePolicy, setUsePolicy] = useState("");
   const [healthPolicy, setHealthPolicy] = useState("");
   const [cancellationPolicy, setCancellationPolicy] = useState("");
@@ -80,6 +80,8 @@ const Administration = () => {
       politica_de_cancelacion: cancellationPolicy,
       categoria: optionCategory.selectedOption,
       ciudad: optionCity.selectedOption,
+      latitud: coordinates.split(",")[0],
+      longitud: coordinates.split(",")[1],
       /* "imagenes": "", */
       /* "caracteristicas": optionAttribute.selectedOption, */
     };
@@ -192,7 +194,7 @@ const Administration = () => {
                     id="address"
                     name="address"
                     placeholder="Escribe las coordenadas de latitud y longitud"
-                    value={cordinates}
+                    value={coordinates}
                     onChange={(e) => setCoordinates(e.target.value)}
                   />
                 </div>
