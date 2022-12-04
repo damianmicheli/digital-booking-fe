@@ -42,6 +42,11 @@ public class ProductoService implements IProductoService {
         if (productoDTO.getCiudad() == null) {
             throw new DatosIncorrectosException("No se especificó la ciudad");
         }
+        if (productoDTO.getLongitud() == null || productoDTO.getLongitud().equals("")) {
+            productoDTO.setLatitud("-34.60350925672641");
+            productoDTO.setLongitud("-58.38153821941309");
+        }
+
         Producto producto = mapper.convertValue(productoDTO, Producto.class);
 
         Producto productoGuardado = productoRepository.save(producto);
