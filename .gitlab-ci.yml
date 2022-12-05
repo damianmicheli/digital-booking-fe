@@ -7,9 +7,8 @@ build-backend:
   stage: build
   script:
     - echo "Compilando el codigo..."
-  only:
-    - main
   rules:
+    - if: $CI_COMMIT_BRANCH	 == 'main'
     - changes:
       - backend/**/*
 
@@ -17,9 +16,8 @@ build-frontend:
   stage: build
   script:
     - echo "Compilando el codigo..."
-  only:
-    - main
   rules:
+    - if: $CI_COMMIT_BRANCH	 == 'main'
     - changes:
       - frontend/**/*
 
@@ -27,9 +25,8 @@ test-backend:
   stage: test
   script:
     - echo "Ejecutando test unitarios..."
-  only:
-    - main
   rules:
+    - if: $CI_COMMIT_BRANCH	 == 'main'
     - changes:
       - backend/**/*
 
@@ -37,10 +34,8 @@ test-frontend:
   stage: test
   script:
     - echo "Ejecutando test unitarios..."
-  only:
-    - main
-
   rules:
+    - if: $CI_COMMIT_BRANCH	 == 'main'
     - changes:
       - frontend/**/*
 
@@ -48,10 +43,8 @@ deploy-backend:
   stage: deploy
   script:
     - echo "Deployando aplicacion de backend..."
-  only:
-    - main
-
   rules:
+    - if: $CI_COMMIT_BRANCH	 == 'main'
     - changes:
       - backend/**/*
 
@@ -59,9 +52,7 @@ deploy-frontend:
   stage: deploy
   script:
     - echo "Deployando aplicacion de frontend..."
-  only:
-    - main
-
   rules:
+    - if: $CI_COMMIT_BRANCH	 == 'main'
     - changes:
       - frontend/**/*
