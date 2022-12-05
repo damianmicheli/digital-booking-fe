@@ -7,6 +7,8 @@ build-backend:
   stage: build
   script:
     - echo "Compilando el codigo..."
+  only:
+    - main
   rules:
     - changes:
       - backend/**/*
@@ -15,6 +17,8 @@ build-frontend:
   stage: build
   script:
     - echo "Compilando el codigo..."
+  only:
+    - main
   rules:
     - changes:
       - frontend/**/*
@@ -23,6 +27,8 @@ test-backend:
   stage: test
   script:
     - echo "Ejecutando test unitarios..."
+  only:
+    - main
   rules:
     - changes:
       - backend/**/*
@@ -31,6 +37,9 @@ test-frontend:
   stage: test
   script:
     - echo "Ejecutando test unitarios..."
+  only:
+    - main
+
   rules:
     - changes:
       - frontend/**/*
@@ -39,6 +48,9 @@ deploy-backend:
   stage: deploy
   script:
     - echo "Deployando aplicacion de backend..."
+  only:
+    - main
+
   rules:
     - changes:
       - backend/**/*
@@ -47,6 +59,9 @@ deploy-frontend:
   stage: deploy
   script:
     - echo "Deployando aplicacion de frontend..."
+  only:
+    - main
+
   rules:
     - changes:
       - frontend/**/*
