@@ -8,7 +8,7 @@ build-backend:
   script:
     - echo "Compilando el codigo..."
   rules:
-    - if: $CI_COMMIT_BRANCH	 == 'main'
+    - if: $CI_COMMIT_REF_NAME	 == 'test_cicd'
     - changes:
       - backend/**/*
 
@@ -17,7 +17,7 @@ build-frontend:
   script:
     - echo "Compilando el codigo..."
   rules:
-    - if: $CI_COMMIT_BRANCH	 == 'main'
+    - if: $CI_COMMIT_REF_NAME	 == 'test_cicd'
     - changes:
       - frontend/**/*
 
@@ -26,7 +26,7 @@ test-backend:
   script:
     - echo "Ejecutando test unitarios..."
   rules:
-    - if: $CI_COMMIT_BRANCH	 == 'main'
+    - if: $CI_COMMIT_REF_NAME	 == 'test_cicd'
     - changes:
       - backend/**/*
 
@@ -35,7 +35,7 @@ test-frontend:
   script:
     - echo "Ejecutando test unitarios..."
   rules:
-    - if: $CI_COMMIT_BRANCH	 == 'main'
+    - if: $CI_COMMIT_REF_NAME	 == 'test_cicd'
     - changes:
       - frontend/**/*
 
@@ -44,7 +44,7 @@ deploy-backend:
   script:
     - echo "Deployando aplicacion de backend..."
   rules:
-    - if: $CI_COMMIT_BRANCH	 == 'main'
+    - if: $CI_COMMIT_REF_NAME	 == 'test_cicd'
     - changes:
       - backend/**/*
 
@@ -53,6 +53,6 @@ deploy-frontend:
   script:
     - echo "Deployando aplicacion de frontend..."
   rules:
-    - if: $CI_COMMIT_BRANCH	 == 'main'
+    - if: $CI_COMMIT_REF_NAME	 == 'test_cicd'
     - changes:
       - frontend/**/*
