@@ -17,6 +17,9 @@ class ReservaServiceTest {
 
     @Test
     void findByProductoId() {
+        // Dado
+        // Cuando
+        // Entonces
     }
 
     @Test

@@ -9,7 +9,7 @@ build-backend:
     - echo "Compilando el codigo..."
   rules:
     - if: $CI_COMMIT_REF_NAME	 == 'test_cicd'
-    - changes:
+      changes:
       - backend/**/*
 
 build-frontend:
@@ -18,8 +18,8 @@ build-frontend:
     - echo "Compilando el codigo..."
   rules:
     - if: $CI_COMMIT_REF_NAME	 == 'test_cicd'
-    - changes:
-      - frontend/**/*
+      changes:
+        - frontend/**/*
 
 test-backend:
   stage: test
@@ -27,7 +27,7 @@ test-backend:
     - echo "Ejecutando test unitarios..."
   rules:
     - if: $CI_COMMIT_REF_NAME	 == 'test_cicd'
-    - changes:
+      changes:
       - backend/**/*
 
 test-frontend:
@@ -36,7 +36,7 @@ test-frontend:
     - echo "Ejecutando test unitarios..."
   rules:
     - if: $CI_COMMIT_REF_NAME	 == 'test_cicd'
-    - changes:
+      changes:
       - frontend/**/*
 
 deploy-backend:
@@ -45,7 +45,7 @@ deploy-backend:
     - echo "Deployando aplicacion de backend..."
   rules:
     - if: $CI_COMMIT_REF_NAME	 == 'test_cicd'
-    - changes:
+      changes:
       - backend/**/*
 
 deploy-frontend:
@@ -54,5 +54,5 @@ deploy-frontend:
     - echo "Deployando aplicacion de frontend..."
   rules:
     - if: $CI_COMMIT_REF_NAME	 == 'test_cicd'
-    - changes:
+      changes:
       - frontend/**/*
