@@ -81,8 +81,10 @@ const Administration = () => {
       politica_de_cancelacion: cancellationPolicy,
       categoria: optionCategory.selectedOption,
       ciudad: optionCity.selectedOption,
-      /* "imagenes": [], */
-      /* "caracteristicas": [] */
+      latitud: coordinates.split(",")[0],
+      longitud: coordinates.split(",")[1],
+      /* "imagenes": "", */
+      /* "caracteristicas": optionAttribute.selectedOption, */
     };
 
     const settings = {
@@ -240,7 +242,33 @@ const Administration = () => {
                 />
               </div>
               <h2 className="heading2 color2 paddingTop">Atributos</h2>
-              
+              <div className={styles.contentAttributes}>
+                <div className={styles.groupForm}>
+                  <label className="text2">Nombre e ícono</label>
+                  <select
+                    name="attribute"
+                    onChange={(e) => {
+                      setOptionAttribute({
+                        selectedOption: e.target.value,
+                      });
+                    }}
+                  >
+                    <option selected="selected">Elegí un atributo</option>
+                    {atributos &&
+                      atributos.map((atributo) => (
+                        <option key={atributo.id} value={atributo.id}>
+                          {atributo.nombre}
+                          <Icon css={styles.icon} icon={atributo.icono} />
+                        </option>
+                      ))}
+                  </select>
+                </div>
+                <Icon
+                  css={styles.addIcon}
+                  icon={faSquarePlus}
+                  event={handleAttribute}
+                />
+              </div>
               <h2 className="heading2 color2 paddingTop">
                 Políticas del producto
               </h2>

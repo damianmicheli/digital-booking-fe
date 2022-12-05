@@ -1,8 +1,6 @@
 package com.backend.service;
 
-import com.backend.dto.CategoriaDTO;
 import com.backend.dto.UsuarioDTO;
-import com.backend.entity.Categoria;
 import com.backend.entity.Usuario;
 import com.backend.repository.IUsuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;

@@ -99,7 +99,7 @@ public class CategoriaService implements ICategoriaService{
 
         Optional<Categoria> tituloEncontrado = categoriaRepository.findByTitulo(titulo);
 
-        if (tituloEncontrado.isPresent()){
+        if (tituloEncontrado.isPresent() && !tituloEncontrado.get().getId().equals(encontrado.get().getId())){
             throw new DatosIncorrectosException("No se puede actualizar porque ya existe una categoria con Titulo: " + titulo + ".");
         }
 

@@ -509,6 +509,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-31.4218908","-64.1878106",
                     "Casa 1",
                     "sdf",
                     "sdf",
@@ -522,6 +523,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-31.4218908","-64.1878106",
                     "Departamento 1",
                     "No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar",
@@ -535,6 +537,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-31.4218908","-64.1878106",
                     "Cabaña 1",
                     "No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar","checkin a las 10 no mascotas",
@@ -547,6 +550,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-30.70692716","-60.94983694",
                     "Casa de playa 1",
                     "No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar",
@@ -559,7 +563,9 @@ public class DataLoader implements ApplicationRunner {
 
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
-                    "Calle falsa 123","Casa 2","No se puede cancelar, no hay devolucion",
+                    "Calle falsa 123",
+                    "-31.4218908","-64.1878106",
+                    "Casa 2","No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar",
                     "checkin a las 10 no mascotas",
                     "Alójate en el corazón de",
@@ -571,6 +577,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "A 940 m del centro",
+                    "-32.05887354","-59.20144755",
                     "Departamento 2",
                     "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
                     "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad",
@@ -585,6 +592,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "A 940 m del centro",
+                    "-24.29913445","-64.81446296",
                     "Cabaña 2",
                     "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
                     "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad",
@@ -599,6 +607,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "A 940 m del centro",
+                    "-26.87539651","-54.65169662",
                     "Casa de playa 2",
                     "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
                     "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad",
@@ -613,6 +622,8 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "A 940 m del centro",
+                    "-24.29913445","-64.81446296",
+
                     "Casa 3",
                     "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
                     "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad",
@@ -627,6 +638,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "A 940 m del centro",
+                    "-28.7743047","-57.8012192",
                     "Departamento 3",
                     "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
                     "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad",
@@ -641,6 +653,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "A 940 m del centro",
+                    "-26.38643091","-60.76583074",
                     "Cabaña 3",
                     "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
                     "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad",
@@ -655,6 +668,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "A 940 m del centro",
+                    "-30.865368","-68.88949085",
                     "Casa de playa 3",
                     "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
                     "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad",
@@ -669,6 +683,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "A 940 m del centro",
+                    "-24.89497259","-59.93244058",
                     "Casa 4",
                     "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
                     "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad",
@@ -683,6 +698,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "A 940 m del centro",
+                    "-40.40579572","-67.22932989",
                     "Departamento 4",
                     "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
                     "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad",
@@ -697,6 +713,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-31.4218908","-64.1878106",
                     "Cabaña 4",
                     "No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar",
@@ -711,6 +728,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-31.4218908","-64.1878106",
                     "Casa de playa 4",
                     "No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar",
@@ -725,6 +743,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "A 940 m del centro",
+                    "-43.78862335","-68.52675939",
                     "Casa 5",
                     "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
                     "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad",
@@ -739,6 +758,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "A 940 m del centro",
+                    "-33.75772574","-66.02812982",
                     "Departamento 5",
                     "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
                     "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad",
@@ -753,6 +773,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-31.4218908","-64.1878106",
                     "Cabaña 5",
                     "No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar",
@@ -767,6 +788,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-31.4218908","-64.1878106",
                     "Casa de playa 5",
                     "No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar",
@@ -781,6 +803,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "A 940 m del centro",
+                    "-37.13155377","-65.44665466",
                     "Casa 6",
                     "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
                     "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad",
@@ -795,6 +818,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "A 940 m del centro",
+                    "-48.81548518","-69.95576217",
                     "Departamento 6",
                     "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
                     "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad",
@@ -809,6 +833,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "A 940 m del centro",
+                    "-82.52151781","-50.7427486",
                     "Cabaña 6",
                     "Agregá las fechas de tu viaje para obtener los detalles de cancelación de esta estadía",
                     "Se aplican las pautas de distanciamiento social y otras normas relacionadas con el coronavirus, Detector de humo, Depósito de seguridad",
@@ -823,6 +848,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-31.4218908","-64.1878106",
                     "Casa de playa 6",
                     "No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar",
@@ -837,6 +863,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-24.89497259","-59.93244058",
                     "Casa 7",
                     "No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar",
@@ -851,6 +878,8 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-31.4218908","-64.1878106",
+
                     "Departamento 7",
                     "No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar",
@@ -865,6 +894,8 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-31.4218908","-64.1878106",
+
                     "Cabaña 7",
                     "No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar",
@@ -879,6 +910,8 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-31.4218908","-64.1878106",
+
                     "Casa de playa 7",
                     "No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar",
@@ -893,6 +926,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-26.87539651","-54.65169662",
                     "Casa 8",
                     "No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar",
@@ -907,6 +941,8 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-31.4218908","-64.1878106",
+
                     "Departamento 8",
                     "No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar",
@@ -921,6 +957,8 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-31.4218908","-64.1878106",
+
                     "Cabaña 8",
                     "No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar",
@@ -935,6 +973,8 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Calle falsa 123",
+                    "-31.4218908","-64.1878106",
+
                     "Casa de playa 8",
                     "No se puede cancelar, no hay devolucion",
                     "No prender fuego, no fumar",
@@ -949,6 +989,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Lorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "NULL",
+                    "-27.33583328","-66.94768243",
                     "Casa 9",
                     "NULL",
                     "NULL",
@@ -963,6 +1004,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "LoremLorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Lorem",
+                    "-30.70692716","-60.94983694",
                     "Departamento 9",
                     "NULL",
                     "NULL",
@@ -977,6 +1019,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "LoremLorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Lorem",
+                    "-34.61449341","-58.44585635",
                     "Cabaña 9",
                     "NULL",
                     "NULL",
@@ -991,6 +1034,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "LoremLorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Lorem",
+                    "-34.61449341","-58.44585635",
                     "Casa de playa 9",
                     "NULL",
                     "NULL",
@@ -1005,6 +1049,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "LoremLorem consequatur. Si proident but ullam eiusmod. Suscipit quisquam dolore adipisci so nihil ratione and quaerat.",
                     "Lorem",
+                    "-30.70692716","-60.94983694",
                     "Casa 10",
                     "NULL",
                     "NULL",

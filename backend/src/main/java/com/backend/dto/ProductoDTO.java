@@ -34,7 +34,21 @@ public class ProductoDTO {
         this.id = id;
     }
 
-    public ProductoDTO(String titulo, String nombre, String descripcion, String direccion, String latitud, String longitud, String politica_de_uso, String politica_de_salud_y_seguridad, String politica_de_cancelacion, CategoriaDTO categoria, CiudadDTO ciudad, List<ImagenDTO> imagenes, List<CaracteristicaDTO> caracteristicas) {
+    public ProductoDTO(
+            String descripcion,
+            String direccion,
+            String latitud,
+            String longitud,
+            String nombre,
+            String politica_de_cancelacion,
+            String politica_de_salud_y_seguridad,
+            String politica_de_uso,
+            String titulo,
+            CategoriaDTO categoria,
+            CiudadDTO ciudad,
+            List<ImagenDTO> imagenes,
+            List<CaracteristicaDTO> caracteristicas) {
+
         this.titulo = titulo;
         this.nombre = nombre;
         this.descripcion = descripcion;

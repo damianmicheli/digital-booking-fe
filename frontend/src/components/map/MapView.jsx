@@ -28,7 +28,7 @@ const MapView = ({ latitud, longitud, city, country }) => {
         <MapContainer
           center={position}
           zoom={15}
-          scrollWheelZoom={false}
+          scrollWheelZoom={true}
           className={styles.leafletContainer}
         >
           <TileLayer
