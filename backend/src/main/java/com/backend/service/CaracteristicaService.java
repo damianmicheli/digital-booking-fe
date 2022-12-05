@@ -1,8 +1,6 @@
 package com.backend.service;
 import com.backend.dto.CaracteristicaDTO;
-import com.backend.dto.CiudadDTO;
 import com.backend.entity.Caracteristica;
-import com.backend.entity.Ciudad;
 import com.backend.repository.ICaracteristicaRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
@@ -41,10 +39,6 @@ public class CaracteristicaService implements ICaracteristicaService{
 
     }
 
-    @Override
-    public CaracteristicaDTO buscar(Long id) throws NoEncontradoException {
-        return null;
-    }
 
     @Override
     public List<CaracteristicaDTO> listarTodas() {
@@ -61,13 +55,5 @@ public class CaracteristicaService implements ICaracteristicaService{
     }
 
 
-    @Override
-    public void eliminar(Long id) throws NoEncontradoException {
 
-    }
-
-    @Override
-    public CaracteristicaDTO actualizar(CaracteristicaDTO caracteristicaDTO) throws NoEncontradoException, DatosIncorrectosException {
-        return null;
-    }
 }

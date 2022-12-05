@@ -1,7 +1,5 @@
 package com.backend.service;
-import com.backend.dto.CaracteristicaDTO;
 import com.backend.dto.CiudadDTO;
-import com.backend.entity.Caracteristica;
 import com.backend.entity.Ciudad;
 import com.backend.repository.ICiudadRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;

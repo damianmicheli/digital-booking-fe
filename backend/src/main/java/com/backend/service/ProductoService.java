@@ -1,15 +1,12 @@
 package com.backend.service;
 
-import com.backend.dto.CategoriaDTO;
 import com.backend.dto.FechasOcupadasDTO;
 import com.backend.dto.ProductoDTO;
 import com.backend.entity.*;
 import com.backend.repository.IProductoRepository;
-
 import com.backend.repository.IReservaRepository;
 import com.backend.util.Utiles;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.bytebuddy.asm.Advice;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
