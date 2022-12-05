@@ -41,7 +41,8 @@ const Administration = () => {
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [address, setAddress] = useState("");
-  const [coordinates, setCoordinates] = useState("");
+  const [latitude, setLatitude] = useState("");
+  const [length, setLength] = useState("");
   const [usePolicy, setUsePolicy] = useState("");
   const [healthPolicy, setHealthPolicy] = useState("");
   const [cancellationPolicy, setCancellationPolicy] = useState("");
@@ -100,7 +101,7 @@ const Administration = () => {
 
   const handleAttribute = () => {
     let container = document.getElementsByClassName("contentAttribute");
-    console.log(container);
+    console.log({container});
     container.innerHtml = `<div className=${styles.groupForm}>
     <label className="text2">Nombre e ícono</label>
     <select name="city">
@@ -118,6 +119,7 @@ const Administration = () => {
   </div>`;
   };
 
+  console.log({atributos});
   return (
     <>
       <Success state={success} text2={"Tu propiedad se ha creado con éxito."} path={"/"} textBtn={"volver"} />
@@ -188,14 +190,25 @@ const Administration = () => {
                   />
                 </div>
                 <div className={styles.groupForm}>
-                  <label className="text2">Coordenadas</label>
+                  <label className="text2">Latitud</label>
                   <input
                     type="text"
-                    id="address"
-                    name="address"
-                    placeholder="Escribe las coordenadas de latitud y longitud"
-                    value={coordinates}
-                    onChange={(e) => setCoordinates(e.target.value)}
+                    id="latitude"
+                    name="latitude"
+                    placeholder="Escribe las coordenadas de latitud"
+                    value={latitude}
+                    onChange={(e) => setLatitude(e.target.value)}
+                  />
+                </div>
+                <div className={styles.groupForm}>
+                  <label className="text2">Longitud</label>
+                  <input
+                    type="text"
+                    id="length"
+                    name="length"
+                    placeholder="Escribe las coordenadas de longitud"
+                    value={length}
+                    onChange={(e) => setLength(e.target.value)}
                   />
                 </div>
                 <div className={styles.groupForm}>

@@ -52,7 +52,6 @@
   border: none;
 }
 
-
 .contentAttributes, .contentImages {
   display: flex;
   flex-direction: row;
@@ -105,6 +104,9 @@
     display: flex;
     flex-wrap: wrap;
     gap: 5px;
+  }
+  .groupForm:last-child{
+    margin-left: 2.5%;
   }
 
   .contentPolitics>.groupForm{

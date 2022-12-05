@@ -5,6 +5,7 @@ import Icon from "../global/Icon";
 import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 import useForm from "../../hooks/useForm";
 import Success from "../global/modal/success/Success";
+import Failure from "../global/modal/Failure";
 
 const initialForm = {
   fName: "",
@@ -36,12 +37,12 @@ const validateForm = (form) => {
     errors.surname = "";
   }
 
-    //Validación de apellido
-    if (!form.city.trim()) {
-      errors.city = isRequired;
-    } else {
-      errors.city = "";
-    }
+  //Validación de apellido
+  if (!form.city.trim()) {
+    errors.city = isRequired;
+  } else {
+    errors.city = "";
+  }
 
   //Validación de email
   if (!form.email.trim()) {
@@ -76,25 +77,39 @@ const validateForm = (form) => {
   return errors;
 };
 
-const message = "Su cuenta se creó exitosamente";
 
 const Register = () => {
-  const { form, errors, handleChange, handleBlur, handleSubmitRegister } = useForm(
-    initialForm,
-    validateForm,
-    message
-  );
+  const {
+    form,
+    errors,
+    successRegister,
+    failure,
+    handleChange,
+    handleBlur,
+    handleSubmitRegister,
+  } = useForm(initialForm, validateForm);
 
   const [showPass, setShowPass] = useState(false);
   const toggleBtnPass = () => {
     setShowPass((prevState) => !prevState);
   };
 
-  const [success, setSuccess] = useState(false);
-
   return (
     <>
-      <Success state={success} text1={"¡Bienvenido/a!"} text2={"Su registro se ha realizado con éxito."} path={"/login"} textBtn={"Iniciar Sesión"}/>
+      <Failure
+        state={failure}
+        text1={"Lamentablemente no ha podido registrarse."}
+        text2={"Por favor intente más tarde"}
+        path={"/"}
+        textBtn={"ok"}
+      />
+      <Success
+        state={successRegister}
+        text1={`Bienvenid@, ${form.fName}!`}
+        text2={"Has creado tu cuenta con éxito 😊"}
+        path={"/login"}
+        textBtn={"ok"}
+      />
       <div className={styles.container}>
         <p className="headings heading1">Crear cuenta</p>
 
@@ -131,8 +146,7 @@ const Register = () => {
                 <p className={styles.pFormError}>{errors.surname}</p>
               )}
             </div>
-            
-            
+
             <div className={styles.groupForm}>
               <label className="text2">Ciudad</label>
               <input
@@ -147,8 +161,6 @@ const Register = () => {
               )}
             </div>
 
-            
-            
             <div className={styles.groupForm}>
               <label className="text2">Correo electrónico</label>
               <input
