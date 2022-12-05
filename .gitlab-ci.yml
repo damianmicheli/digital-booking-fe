@@ -37,37 +37,16 @@ test-frontend:
 
 deploy-backend:
   stage: deploy
-  environment: production
   script:
     - echo "Deployando aplicacion de backend..."
-    # - cd ./backend && chmod +x backend.sh && sh backend.sh
   rules:
     - changes:
       - backend/**/*
-  # when: manual
-
-
-  # backend_deploy_job:
-  # stage: deploy 
-  # image: alpine:3.11 
-  # before_script: 
-  #     - apk update && apk add openssh-client bash 
-  #     - mkdir -p ~/.ssh 
-  #     - eval $(ssh-agent -s) 
-  #     - echo "$SSH_PRIVATE_KEY" | tr -d '\r' | ssh-add - > /dev/null 
-  #     - touch ~/.ssh/config 
-  #     - echo -e "Host *\n\tStrictHostKeyChecking no\n\n" > ~/.ssh/config 
-  #     - ssh-keyscan -H $DEPLOY_SERVER_IP >> ~/.ssh/known_hosts 
-  # script:
-  #     - ssh ubuntu@$DEPLOY_SERVER_IP "sudo apt install openjdk-18-jdk -y"
 
 deploy-frontend:
   stage: deploy
-  environment: production
   script:
     - echo "Deployando aplicacion de frontend..."
-    # - cd ./frontend && chmod +x frontend.sh && sh frontend.sh
   rules:
     - changes:
-      - backend/**/*
-  # when: manual
+      - frontend/**/*
