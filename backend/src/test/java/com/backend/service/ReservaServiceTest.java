@@ -10,6 +10,9 @@ class ReservaServiceTest {
 
     @Test
     void guardar() {
+        // Dado
+        // Cuando
+        // Entonces
     }
 
     @Test
