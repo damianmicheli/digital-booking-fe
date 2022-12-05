@@ -1,39 +1,33 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useState, useEffect } from "react";
 import styles from "./administration.module.css";
-
-import { useParams } from "react-router";
 
 import HeaderProduct from "../product/content/HeaderProduct";
 import Icon from "../global/Icon";
 import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
 
 import useFetch from "../../hooks/useFetch";
-import AuthContext from "../../context/AuthContext";
 import URL_BASE from "../global/getUrlBase";
 
-import Success from "../global/modal/success/Success";
+import Success from "../global/modal/Failure";
+import Failure from "../global/modal/success/Success";
 import Button from "../global/Button";
 
-const Administration = () => {
-  const { userLog } = useContext(AuthContext);
-  const { id } = useParams();
+import FileUpload from "./FileUpload";
+import Attribute from "./Attribute";
 
+const Administration = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
   const [categorias] = useFetch(`${URL_BASE}/categorias`);
   const [ciudades] = useFetch(`${URL_BASE}/ciudades`);
-  const [atributos] = useFetch(`${URL_BASE}/caracteristicas`);
 
   const [success, setSuccess] = useState(false);
   const [optionCategory, setOptionCategory] = useState({
     selectedOption: null,
   });
   const [optionCity, setOptionCity] = useState({
-    selectedOption: null,
-  });
-  const [optionAttribute, setOptionAttribute] = useState({
     selectedOption: null,
   });
 
@@ -47,14 +41,14 @@ const Administration = () => {
   const [healthPolicy, setHealthPolicy] = useState("");
   const [cancellationPolicy, setCancellationPolicy] = useState("");
 
-  function darAltaProducto(settings) {
+  const [failure, setFailure] = useState(false);
+
+  const darAltaProducto = (settings) => {
     fetch(`${URL_BASE}/productos`, settings)
       .then((response) => {
         console.log(response);
         if (response.ok !== true) {
-          alert(
-            "Lamentablemente no se pudo crear el producto. Por favor intente más tarde"
-          );
+          setFailure(true);
         }
         return response.json();
       })
@@ -66,7 +60,7 @@ const Administration = () => {
         console.log("Promesa rechazada:");
         console.log(err);
       });
-  }
+  };
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -81,8 +75,8 @@ const Administration = () => {
       politica_de_cancelacion: cancellationPolicy,
       categoria: optionCategory.selectedOption,
       ciudad: optionCity.selectedOption,
-      latitud: coordinates.split(",")[0],
-      longitud: coordinates.split(",")[1],
+      latitud: latitude,
+      longitud: length,
       /* "imagenes": "", */
       /* "caracteristicas": optionAttribute.selectedOption, */
     };
@@ -99,30 +93,50 @@ const Administration = () => {
     setSuccess(true);
   };
 
-  const handleAttribute = () => {
-    let container = document.getElementsByClassName("contentAttribute");
-    console.log({container});
-    container.innerHtml = `<div className=${styles.groupForm}>
-    <label className="text2">Nombre e ícono</label>
-    <select name="city">
-      <option selected="selected">Elegí un atributo</option>
-      ${
-        atributos &&
-        atributos.map((atributo) => (
-          <option key={atributo.id} value={atributo.id}>
-            {atributo.nombre}
-            <Icon css={styles.icon} icon={atributo.icono} />
-          </option>
-        ))
-      }
-    </select>
-  </div>`;
+  // *** IMAGENES ***
+  const { selectedFile, isFilePicked, handleSubmission, changeHandler } =
+    FileUpload;
+
+  useEffect(() => {
+    /*   console.log(selectedFile); */
+  }, [selectedFile]);
+
+  // *** ATRIBUTOS ***
+  const [attributeCounter, setAttributesCounter] = useState(1);
+  const [attributes, setAttributes] = useState([]);
+  const [addAttribute, setAddAttribute] = useState(false);
+  const [deleteAttribute, setDeleteAttribute] = useState(false);
+
+  const toggleAddDeleteAttribute = () => {
+    if (addAttribute) {
+      setAttributesCounter(attributeCounter + 1);
+    }else if(deleteAttribute && attributeCounter > 1 ){
+      setAttributesCounter(attributeCounter - 1);
+    }
   };
 
-  console.log({atributos});
+  const handleAttribute = () => {
+    toggleAddDeleteAttribute();
+    setAttributes([...attributes, Attribute.selected]);
+    console.log(attributes);
+    setAddAttribute(true);
+  };
+
   return (
     <>
-      <Success state={success} text2={"Tu propiedad se ha creado con éxito."} path={"/"} textBtn={"volver"} />
+      <Failure
+        state={failure}
+        text1={"Lamentablemente no ha podido registrarse."}
+        text2={"Por favor intente más tarde"}
+        path={"/"}
+        textBtn={"ok"}
+      />
+      <Success
+        state={success}
+        text2={"Tu propiedad se ha creado con éxito."}
+        path={"/"}
+        textBtn={"volver"}
+      />
       <div className={styles.title}>
         <HeaderProduct title={"Administración"} path={"/"} />
       </div>
@@ -242,33 +256,9 @@ const Administration = () => {
                 />
               </div>
               <h2 className="heading2 color2 paddingTop">Atributos</h2>
-              <div className={styles.contentAttributes}>
-                <div className={styles.groupForm}>
-                  <label className="text2">Nombre e ícono</label>
-                  <select
-                    name="attribute"
-                    onChange={(e) => {
-                      setOptionAttribute({
-                        selectedOption: e.target.value,
-                      });
-                    }}
-                  >
-                    <option selected="selected">Elegí un atributo</option>
-                    {atributos &&
-                      atributos.map((atributo) => (
-                        <option key={atributo.id} value={atributo.id}>
-                          {atributo.nombre}
-                          <Icon css={styles.icon} icon={atributo.icono} />
-                        </option>
-                      ))}
-                  </select>
-                </div>
-                <Icon
-                  css={styles.addIcon}
-                  icon={faSquarePlus}
-                  event={handleAttribute}
-                />
-              </div>
+              
+              <Attribute handleAttribute={handleAttribute} />
+              {addAttribute && <Attribute handleAttribute={handleAttribute} />}
               <h2 className="heading2 color2 paddingTop">
                 Políticas del producto
               </h2>
@@ -307,14 +297,32 @@ const Administration = () => {
               <h2 className="heading2 color2 paddingTop">Cargar imágenes</h2>
               <div className={styles.contentImages}>
                 <div className={styles.groupForm}>
+                  <label className="text2">
+                    Selecciona un archivo de imagen (.jpg)
+                  </label>
                   <input
-                    type="text"
-                    id="urlImage"
-                    name="urlImage"
-                    placeholder="Insertar https://"
+                    type="file"
+                    name="file"
+                    className={styles.inputImage}
+                    onChange={changeHandler}
                   />
+                  {isFilePicked && (
+                    <div>
+                      <p>Nombre de archivo: {selectedFile.name}</p>
+                      <p>Tipo de archivo: {selectedFile.type}</p>
+                      <p>Tamaño en bytes: {selectedFile.size}</p>
+                      <p>
+                        Fecha modificación:{" "}
+                        {selectedFile.lastModifiedDate.toLocaleDateString()}
+                      </p>
+                    </div>
+                  )}
                 </div>
-                <Icon css={styles.addIcon} icon={faSquarePlus} />
+                <Icon
+                  css={styles.addIcon}
+                  icon={faSquarePlus}
+                  event={handleSubmission}
+                />
               </div>
               <Button text="Crear" css="button4 centered" />
             </div>
