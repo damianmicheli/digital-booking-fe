@@ -10,10 +10,16 @@ class ReservaServiceTest {
 
     @Test
     void guardar() {
+        // Dado
+        // Cuando
+        // Entonces
     }
 
     @Test
     void findByProductoId() {
+        // Dado
+        // Cuando
+        // Entonces
     }
 
     @Test
