@@ -1,15 +1,14 @@
 import { useState, useContext } from "react";
-import { useNavigate } from "react-router-dom";
 import AuthContext from "../context/AuthContext";
 import URL_BASE from "../components/global/getUrlBase";
-import Success from "../components/global/modal/success/Success";
 
 const useForm = (initialForm, validateForm) => {
   const [form, setForm] = useState(initialForm);
   const [errors, setErrors] = useState({});
-  const { userLog, handleAuth } = useContext(AuthContext);
-  const [success, setSuccess] = useState(false);
-
+  const { handleAuth } = useContext(AuthContext);
+  const [successLogin, setSuccessLogin] = useState(false);
+  const [successRegister, setSuccessRegister] = useState(false);
+  const [failure, setFailure] = useState(false);
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -21,17 +20,15 @@ const useForm = (initialForm, validateForm) => {
     setErrors(validateForm(form));
   };
 
-  const navigate = useNavigate();
-
   /***** LOGIN *****/
   const token = localStorage.getItem("token");
+
   function realizarLogin(settings) {
- 
     fetch(`${URL_BASE}/autenticar`, settings)
       .then((response) => {
         console.log(response);
         if (response.ok !== true) {
-          alert("Lamentablemente no ha podido iniciar sesión. Por favor intente más tarde");
+          setFailure(true);
         }
         return response.json();
       })
@@ -39,7 +36,8 @@ const useForm = (initialForm, validateForm) => {
         console.log(data);
         if (data.jwt) {
           //guardo en LocalStorage el objeto con el token
-          handleAuth(data.jwt);        
+          handleAuth(data.jwt);
+          setSuccessLogin(true);
         }
       })
       .catch((err) => {
@@ -47,55 +45,79 @@ const useForm = (initialForm, validateForm) => {
         console.log(err);
       });
   }
-  
-  const handleSubmitLogin = (e) => {
 
+  const handleSubmitLogin = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
 
-    const payload = 
-      {
-        "username": form.emailLogin,
-        "password": form.passwordLogin,
-      }
+    const payload = {
+      username: form.emailLogin,
+      password: form.passwordLogin,
+    };
 
     const settings = {
       method: "POST",
       body: JSON.stringify(payload),
       headers: {
         "Content-Type": "application/json",
-        "Authorization": token,
+        Authorization: token,
       },
-    };    
- 
+    };
+
     if (Object.values(errors)[0] === "") {
       console.log(errors);
       realizarLogin(settings);
-      setSuccess(true);
-      return <Success state={success} text1={`¡Bienvenid@ ${userLog?.nombre}`} text2={"Iniciaste sesión exitosamente"} path={"/"} textBtn={"ok"}  />
-    }else{
-      return "Lamentablemente no ha podido iniciar sesión. Por favor intente más tarde";
-    }     
+    } else {
+      console.log("No se pudo completar el login");
+    }
   };
 
-/***** REGISTRO *****/
+  /***** REGISTRO *****/
 
   function realizarRegistro(settings) {
- 
     fetch(`${URL_BASE}/usuario`, settings)
       .then((response) => {
         console.log(response);
         if (response.ok !== true) {
-          return <Success text2={"Lamentablemente no ha podido registrarse. Por favor intente más tarde"} />
+          setFailure(true);
         }
         return response.json();
       })
       .then((data) => {
         console.log(data);
-        if (data.jwt) {                   
-           //Se guarda en LocalStorage el objeto con el token
-          handleAuth(data.jwt);        
-        }
+
+     /*    const payloadLogin = {
+          username: data.email,
+          password: data.password,
+        };
+
+        const settingsLogin = {
+          method: "POST",
+          body: JSON.stringify(payloadLogin),
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: token,
+          },
+        };
+        fetch(`${URL_BASE}/autenticar`, settingsLogin)
+          .then((response) => {
+            console.log(response);
+            if (response.ok !== true) {
+              setFailure(true);
+            }
+            return response.json();
+          })
+          .then((data) => {
+            console.log(data);
+            if (data.jwt) {
+              //guardo en LocalStorage el objeto con el token
+              handleAuth(data.jwt);
+            }
+          })
+          .catch((err) => {
+            console.log("Promesa rechazada:");
+            console.log(err);
+          }); */
       })
       .catch((err) => {
         console.log("Promesa rechazada:");
@@ -103,23 +125,23 @@ const useForm = (initialForm, validateForm) => {
       });
   }
 
-  const handleSubmitRegister = (e) => {
 
+  const handleSubmitRegister = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
 
     const payload = {
-        "nombre": form.fName,
-        "apellido": form.surname,
-        "ciudad": form.city,
-        "password": form.password,
-        "email": form.email,
-        "roles": [
-            {
-              "id": 2
-            }
-        ]    
-  };
+      nombre: form.fName,
+      apellido: form.surname,
+      ciudad: form.city,
+      password: form.password,
+      email: form.email,
+      roles: [
+        {
+          id: 2,
+        },
+      ],
+    };
 
     const settings = {
       method: "POST",
@@ -127,29 +149,28 @@ const useForm = (initialForm, validateForm) => {
       headers: {
         "Content-Type": "application/json",
       },
-    };    
- 
+    };
+
     if (Object.values(errors)[0] === "") {
       console.log(errors);
       realizarRegistro(settings);
-      setSuccess(true);
-     /*  <Success state={success} text1={"¡Bienvenid@!"} text2={"Tu registro se ha realizado con éxito."} path={"/login"} textBtn={"Iniciar Sesión"}/> */
-     /*  alert(`Bienvenida, ${form.fName}!\nHas creado tu cuenta con éxito 😊`)
-      navigate("/login"); */
-    }else{
-      return "Lamentablemente no ha podido registrarse. Por favor intente más tarde";
-    }     
+      setSuccessRegister(true);
+    } else {
+      console.log("No se pudo completar el registro");
+    }
   };
 
   return {
     form,
     errors,
+    successLogin,
+    successRegister,
+    failure,
     handleChange,
     handleBlur,
     handleSubmitLogin,
-    handleSubmitRegister
+    handleSubmitRegister,
   };
 };
 
 export default useForm;
-

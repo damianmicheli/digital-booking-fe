@@ -51,7 +51,7 @@ const MenuDrawer = ({ open, handleClick }) => {
       <div className={styles.divNavNetwork}>
         {!auth ? (
           <div className={styles.divNavlinks}>
-            <NavLink to="/register">Crear cuenta</NavLink>
+            <NavLink to="/registro">Crear cuenta</NavLink>
             <div className={styles.lineTop}></div>
             <NavLink to="/login">Iniciar sesión</NavLink>
           </div>

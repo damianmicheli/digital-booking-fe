@@ -2,13 +2,11 @@ import React, { useState, useEffect } from "react";
 import styles from "./loginRegister.module.css";
 import Button from "../global/Button";
 import Icon from "../global/Icon";
-import {
-  faEyeSlash,
-  faEye,
-} from "@fortawesome/free-solid-svg-icons";
+import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 import useForm from "../../hooks/useForm";
 import Alert from "../global/modal/alert/Alert";
-
+import Success from "../global/modal/success/Success";
+import Failure from "../global/modal/Failure";
 
 const initialForm = {
   emailLogin: "",
@@ -38,10 +36,8 @@ const validateForm = (form) => {
 };
 
 const Login = () => {
-  const { form, errors, handleChange, handleBlur, handleSubmitLogin } = useForm(
-    initialForm,
-    validateForm
-  );
+  const { form, errors, successLogin, failure, handleChange, handleBlur, handleSubmitLogin } =
+    useForm(initialForm, validateForm);
 
   const [showPass, setShowPass] = useState(false);
   const toggleBtnPass = () => {
@@ -55,6 +51,20 @@ const Login = () => {
   return (
     <>
       <Alert />
+      <Failure
+        state={failure}
+        text1={"Lamentablemente no ha podido iniciar sesión."}
+        text2={"Por favor intente más tarde"}
+        path={"/"}
+        textBtn={"ok"}
+      />
+      <Success
+        state={successLogin}
+        text1={`Hola!`}
+        text2={"Un placer volvernos a encontrar 😊"}
+        path={"/"}
+        textBtn={"ok"}
+      />
       <div className={styles.container}>
         <div className={styles.content}>
           <p className="headings heading1">Iniciar sesión</p>
@@ -106,7 +116,7 @@ const Login = () => {
               <div className={styles.groupForm}>
                 <Button css="buttonForm" text="Ingresar" />
                 <span className="text2 spanForm">
-                  ¿Aún tienes una cuenta? <a href="/register">Registrate</a>
+                  ¿Aún tienes una cuenta? <a href="/registro">Registrate</a>
                 </span>
               </div>
             </div>

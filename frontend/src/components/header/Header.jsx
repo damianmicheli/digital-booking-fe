@@ -36,7 +36,7 @@ const Header = () => {
   
   };
   const linkToRegister = () => {
-    navigate("/register");
+    navigate("/registro");
   };
 
   const [path, setPath] = useState(useLocation().pathname);
@@ -77,7 +77,7 @@ const Header = () => {
                 <Button
                   id="btnLogin"
                   css={`button6 ${
-                    path === "/" || path === "/register" ? "" : "disabled"
+                    path === "/" || path === "/registro" ? "" : "disabled"
                   }`}
                   text="Iniciar sesión"
                   event={linkToLogin}

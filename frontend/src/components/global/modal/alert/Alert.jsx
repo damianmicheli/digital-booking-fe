@@ -5,7 +5,7 @@ import styles from "./alert.module.css";
 import { useLocation } from 'react-router-dom';
 
 
-export default function Alert() {
+const Alert = ()=> {
   const location = useLocation();
   const showAlert = new URLSearchParams(location.search).get('showAlert');
 
@@ -19,3 +19,5 @@ export default function Alert() {
 
   );
 }
+
+export default Alert;
