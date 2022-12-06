@@ -8,7 +8,7 @@ import org.springframework.data.jpa.repository.Query;
 
 import java.util.List;
 
-public interface IProductoRepository extends  JpaRepository <Producto, Long>{
+public interface IProductoRepository extends JpaRepository <Producto, Long>{
 
     List<Producto> findByCiudad(Ciudad ciudad);
     List<Producto> findByCategoria(Categoria categoria);

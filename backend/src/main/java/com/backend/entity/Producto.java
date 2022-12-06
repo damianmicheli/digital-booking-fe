@@ -3,13 +3,14 @@ package com.backend.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Getter @Setter
-@Entity
+@Entity @ToString
 @Table
 
 public class Producto {
@@ -61,6 +62,12 @@ public class Producto {
     @OneToMany(mappedBy = "producto", cascade = CascadeType.REMOVE)
     @JsonIgnore
     private List<Reserva> reservas;
+
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    private List<Puntuacion> puntuaciones;
+
+    private float puntajePromedio = 0;
 
 
     public Producto() {

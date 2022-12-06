@@ -26,6 +26,8 @@ public class ProductoDTO {
     private CiudadDTO ciudad;
     private List<ImagenDTO> imagenes;
     private List<CaracteristicaDTO> caracteristicas;
+    private float puntajePromedio;
+
 
     public ProductoDTO() {
     }

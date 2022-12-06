@@ -10,6 +10,6 @@ public interface IUsuarioService {
 
     UsuarioDTO registrar(UsuarioDTO usuarioDTO) throws DatosIncorrectosException;
 
-    UsuarioDTO actualizarCiudad(UsuarioDTO usuarioDTO) throws NoEncontradoException;
+    UsuarioDTO actualizar(UsuarioDTO usuarioDTO) throws NoEncontradoException;
 
 }

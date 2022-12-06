@@ -98,7 +98,7 @@ public class ReservaService implements IReservaService {
 
             usuarioEncontrado.setCiudad(ciudadNueva);
 
-            usuarioService.actualizarCiudad(usuarioEncontrado);
+            usuarioService.actualizar(usuarioEncontrado);
 
         }
 
