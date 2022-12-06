@@ -3,6 +3,7 @@ package com.backend.service;
 import com.backend.dto.FechasOcupadasDTO;
 import com.backend.dto.ProductoDTO;
 import com.backend.dto.PuntuacionDTO;
+import com.backend.dto.UsuarioDTO;
 import com.backend.entity.*;
 import com.backend.repository.IProductoRepository;
 import com.backend.repository.IPuntuacionRepository;
@@ -31,6 +32,9 @@ public class ProductoService implements IProductoService {
 
     @Autowired
     private IPuntuacionRepository puntuacionRepository;
+
+    @Autowired
+    private IUsuarioService usuarioService;
 
     @Autowired
     private ObjectMapper mapper;
@@ -97,7 +101,7 @@ public class ProductoService implements IProductoService {
 
 
         ProductoDTO productoDTO = this.buscar(productoId);
-
+        UsuarioDTO usuarioDTO = usuarioService.buscarPorId(usuarioId);
 
         Optional<Puntuacion> puntuacionExistente = puntuacionRepository.findByProductoIdAndUsuarioId(productoId, usuarioId);
 
