@@ -23,6 +23,5 @@ public class Imagen {
         this.id = id;
         this.titulo = titulo;
         this.url = url;
-        ;
     }
 }

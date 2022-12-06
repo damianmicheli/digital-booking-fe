@@ -3,6 +3,7 @@ package com.backend.controller;
 import com.backend.dto.CategoriaDTO;
 import com.backend.dto.FechasOcupadasDTO;
 import com.backend.dto.ProductoDTO;
+import com.backend.dto.PuntuacionDTO;
 import com.backend.service.*;
 import io.swagger.v3.oas.annotations.Operation;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -71,6 +72,13 @@ public class ProductoController {
     @GetMapping("/random")
     public ResponseEntity<List<ProductoDTO>> listarRandom(){
         return new ResponseEntity<>(productoService.listarRandom(), HttpStatus.OK);
+
+    }
+
+    @Operation(summary = "Puntuar un producto")
+    @PostMapping("/puntuar")
+    public ResponseEntity<PuntuacionDTO> puntuarProducto(@RequestBody PuntuacionDTO puntuacionDTO) throws NoEncontradoException {
+        return new ResponseEntity<>(productoService.guardarPuntuacion(puntuacionDTO), HttpStatus.OK);
 
     }
 
