@@ -12,29 +12,30 @@ import Success from "../global/modal/Failure";
 import Failure from "../global/modal/success/Success";
 import Button from "../global/Button";
 
-import FileUpload from "./FileUpload";
-import Attribute from "./Attribute";
+import FileUpload from "./content/FileUpload";
+import Attribute from "./content/Attribute";
+import City from "./content/City";
+import Category from "./content/Category";
 
 const Administration = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
 
-  const [categorias] = useFetch(`${URL_BASE}/categorias`);
-  const [ciudades] = useFetch(`${URL_BASE}/ciudades`);
-
   const [success, setSuccess] = useState(false);
-  const [optionCategory, setOptionCategory] = useState({
+ /*  const [optionCategory, setOptionCategory] = useState({
     selectedOption: null,
   });
   const [optionCity, setOptionCity] = useState({
     selectedOption: null,
   });
-
+ */
   const [prodName, setProdName] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [address, setAddress] = useState("");
+  const [city, setCity]= useState("");
+  const [category, setCategory] = useState ("");
   const [latitude, setLatitude] = useState("");
   const [length, setLength] = useState("");
   const [usePolicy, setUsePolicy] = useState("");
@@ -73,8 +74,8 @@ const Administration = () => {
       politica_de_uso: usePolicy,
       politica_de_salud_y_seguridad: healthPolicy,
       politica_de_cancelacion: cancellationPolicy,
-      categoria: optionCategory.selectedOption,
-      ciudad: optionCity.selectedOption,
+      categoria: category,
+      ciudad: city,
       latitud: latitude,
       longitud: length,
       /* "imagenes": "", */
@@ -103,24 +104,45 @@ const Administration = () => {
 
   // *** ATRIBUTOS ***
   const [attributeCounter, setAttributesCounter] = useState(1);
-  const [attributes, setAttributes] = useState([]);
-  const [addAttribute, setAddAttribute] = useState(false);
-  const [deleteAttribute, setDeleteAttribute] = useState(false);
+  const [attributeInputs, setAttributeInputs] = useState([]);
+  const [attributesList, setAttributesList] = useState([]);
+  const [addInput, setAddInput] = useState(true);
 
-  const toggleAddDeleteAttribute = () => {
-    if (addAttribute) {
-      setAttributesCounter(attributeCounter + 1);
-    }else if(deleteAttribute && attributeCounter > 1 ){
-      setAttributesCounter(attributeCounter - 1);
+  const AddAttribute = () => {
+    setAttributesCounter(attributeCounter + 1);
+    console.log({ attributeCounter });
+    console.log("Se agregó un input de atributo");
+  };
+
+  const DeleteAttribute = (key) => {
+    if (attributeCounter > 2) {
+      attributeInputs.filter((input) => input.key !== key);
+      console.log({ attributeCounter });
+      console.log("Se eliminó un input");
     }
   };
 
-  const handleAttribute = () => {
-    toggleAddDeleteAttribute();
-    setAttributes([...attributes, Attribute.selected]);
-    console.log(attributes);
-    setAddAttribute(true);
+  const handleAttribute = (e) => {
+    console.log({ e });
+    addInput ? AddAttribute() : DeleteAttribute(e.target.key);
+    setAttributesList([...attributesList, Attribute.selected]);
+    console.log({ attributesList });
+    setAddInput(!addInput);
   };
+
+  useEffect(() => {
+    for (let i = 1; i < attributeCounter; i++) {
+      setAttributeInputs(
+        attributeInputs.concat(
+          <Attribute
+            key={Math.random() + i}
+            handleAttribute={handleAttribute}
+            addInput={addInput}
+          />
+        )
+      );
+    }
+  }, [attributeCounter]);
 
   return (
     <>
@@ -163,6 +185,7 @@ const Administration = () => {
                     onChange={(e) => setProdName(e.target.value)}
                   />
                 </div>
+
                 <div className={styles.groupForm}>
                   <label className="text2">Título</label>
                   <input
@@ -173,25 +196,10 @@ const Administration = () => {
                     onChange={(e) => setTitle(e.target.value)}
                   />
                 </div>
+
                 <div className={styles.groupForm}>
                   <label className="text2">Categoría</label>
-                  <select
-                    name="category"
-                    onChange={(e) => {
-                      setOptionCategory({
-                        selectedOption: e.target.value,
-                      });
-                    }}
-                    required
-                  >
-                    <option selected="selected">Elegí una categoría</option>
-                    {categorias &&
-                      categorias.map((categoria) => (
-                        <option key={categoria.id} value={categoria.id}>
-                          {categoria.titulo}
-                        </option>
-                      ))}
-                  </select>
+                  <Category setCategory={setCategory}  />
                 </div>
                 <div className={styles.groupForm}>
                   <label className="text2">Dirección</label>
@@ -204,46 +212,34 @@ const Administration = () => {
                   />
                 </div>
                 <div className={styles.groupForm}>
-                  <label className="text2">Latitud</label>
+                  <label className="text2">
+                    Latitud (en coordinadas decimales)
+                  </label>
                   <input
                     type="text"
                     id="latitude"
                     name="latitude"
-                    placeholder="Escribe las coordenadas de latitud"
+                    placeholder="Ejemplo: -31.4218908"
                     value={latitude}
                     onChange={(e) => setLatitude(e.target.value)}
                   />
                 </div>
                 <div className={styles.groupForm}>
-                  <label className="text2">Longitud</label>
+                  <label className="text2">
+                    Longitud (en coordinadas decimales)
+                  </label>
                   <input
                     type="text"
                     id="length"
                     name="length"
-                    placeholder="Escribe las coordenadas de longitud"
+                    placeholder="Ejemplo: -64.1878106"
                     value={length}
                     onChange={(e) => setLength(e.target.value)}
                   />
                 </div>
                 <div className={styles.groupForm}>
                   <label className="text2">Ciudad</label>
-                  <select
-                    name="city"
-                    onChange={(e) => {
-                      setOptionCity({
-                        selectedOption: e.target.value,
-                      });
-                    }}
-                    required
-                  >
-                    <option selected="selected">Elegí una ciudad</option>
-                    {ciudades &&
-                      ciudades.map((ciudad) => (
-                        <option key={ciudad.id} value={ciudad.id}>
-                          {ciudad.ciudad}, {ciudad.pais}
-                        </option>
-                      ))}
-                  </select>
+                  <City setCity={setCity} />
                 </div>
               </div>
               <div className={styles.groupForm}>
@@ -256,9 +252,12 @@ const Administration = () => {
                 />
               </div>
               <h2 className="heading2 color2 paddingTop">Atributos</h2>
-              
-              <Attribute handleAttribute={handleAttribute} />
-              {addAttribute && <Attribute handleAttribute={handleAttribute} />}
+
+              <Attribute
+                handleAttribute={handleAttribute}
+                addInput={addInput}
+              />
+              {attributeInputs}
               <h2 className="heading2 color2 paddingTop">
                 Políticas del producto
               </h2>
@@ -269,6 +268,7 @@ const Administration = () => {
                   <textarea
                     id="description"
                     name="description"
+                    placeholder="Ingresar las políticas separadas por una coma (,)"
                     value={usePolicy}
                     onChange={(e) => setUsePolicy(e.target.value)}
                   />
@@ -279,6 +279,7 @@ const Administration = () => {
                   <textarea
                     id="description"
                     name="description"
+                    placeholder="Ingresar las políticas separadas por una coma (,)"
                     value={healthPolicy}
                     onChange={(e) => setHealthPolicy(e.target.value)}
                   />
@@ -289,6 +290,7 @@ const Administration = () => {
                   <textarea
                     id="description"
                     name="description"
+                    placeholder="Ingresar las políticas separadas por una coma (,)"
                     value={cancellationPolicy}
                     onChange={(e) => setCancellationPolicy(e.target.value)}
                   />
@@ -334,3 +336,60 @@ const Administration = () => {
 };
 
 export default Administration;
+
+/*  const addAttribute = (e) => {
+    setAttributes(attributes.concat(<Attribute key={attributes.length} handleAttribute={handleAttribute} />));
+  };
+ */
+
+/* attributeInputs.push(<Attribute key={i} handleAttribute={handleAttribute} />) */
+
+/*   const toggleAddDeleteAttribute = () => {
+    if (addAttribute) {
+      setAttributesCounter(attributeCounter + 1);
+      console.log({attributeCounter});
+      console.log("Se agregó un input de atributo");
+    }else if(!addAttribute && attributeCounter > 1 ){
+      setAttributesCounter(attributeCounter - 1);
+      console.log({attributeCounter});
+      console.log("Se eliminó un input de atributo");
+    }
+  }; */
+
+{
+  /*   <select
+                    name="city"
+                    onChange={(e) => {
+                      setOptionCity({
+                        selectedOption: e.target.value,
+                      });
+                    }}
+                    required
+                  >
+                    <option selected="selected">Elegí una ciudad</option>
+                    {ciudades &&
+                      ciudades.map((ciudad) => (
+                        <option key={ciudad.id} value={ciudad.id}>
+                          {ciudad.ciudad}, {ciudad.pais}
+                        </option>
+                      ))}
+                  </select> */
+}
+
+/*    <select
+                    name="category"
+                    onChange={(e) => {
+                      setOptionCategory({
+                        selectedOption: e.target.value,
+                      });
+                    }}
+                    required
+                  >
+                    <option selected="selected">Elegí una categoría</option>
+                    {categorias &&
+                      categorias.map((categoria) => (
+                        <option key={categoria.id} value={categoria.id}>
+                          {categoria.titulo}
+                        </option>
+                      ))}
+                  </select> */

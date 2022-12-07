@@ -1,6 +1,6 @@
 import {useState} from 'react';
 
-import URL_BASE from "../global/getUrlBase";
+import URL_BASE from "../../global/getUrlBase";
 
 function FileUpload(){
 	const [selectedFile, setSelectedFile] = useState();
@@ -24,8 +24,8 @@ function FileUpload(){
 		)
 			.then((response) => {
 				return response.json()})
-			.then((result) => {
-				console.log(result);
+			.then((data) => {
+				console.log(data);
 			})
 			.catch((error) => {
 				console.error('Error:', error);

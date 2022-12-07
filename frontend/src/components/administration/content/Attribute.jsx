@@ -1,14 +1,15 @@
 import React, { useState } from "react";
-import styles from "./administration.module.css";
+import styles from "../administration.module.css";
 
-import { getIcons } from "../global/getIcons";
-import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
-import Icon from "../global/Icon";
+import { getIcons } from "../../global/getIcons";
+import { faSquarePlus , faSquareXmark } from "@fortawesome/free-solid-svg-icons";
+import Icon from "../../global/Icon";
 
-import useFetch from "../../hooks/useFetch";
-import URL_BASE from "../global/getUrlBase";
+import useFetch from "../../../hooks/useFetch";
+import URL_BASE from "../../global/getUrlBase";
 
-const Attribute = ({handleAttribute}) => {
+const Attribute = ({handleAttribute, addInput}) => {
+
   const [atributos] = useFetch(`${URL_BASE}/caracteristicas`);
 
   const [selected, setSelected] = useState("Elegí un atributo");
@@ -47,8 +48,8 @@ const Attribute = ({handleAttribute}) => {
             </div>
           )}
         </div>
-      </div>
-      <Icon css={styles.addIcon} icon={faSquarePlus} event={handleAttribute} />
+      </div>      
+      <Icon css={styles.addIcon} icon={addInput ? faSquarePlus : faSquareXmark} event={handleAttribute} />
     </div>
   );
 };

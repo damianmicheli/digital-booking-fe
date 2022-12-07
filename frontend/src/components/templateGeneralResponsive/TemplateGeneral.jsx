@@ -1,7 +1,7 @@
 import React from "react";
 import { Route, Routes } from "react-router-dom";
 
-import styles from "./body.module.css";
+import styles from "./templateGeneral.module.css";
 import Home from "../home/Home";
 import Login from "../login_register/Login";
 import Register from "../login_register/Register";
@@ -12,7 +12,7 @@ import BookingTemplate from "../booking_template/BookingTemplate";
 import MyBookings from "../my_bookigns/MyBookings";
 import Administration from "../administration/Administration";
 
-const Body = () => {
+const TemplateGeneral = () => {
   return (
     <div className={styles.body}>
       <Routes>
@@ -29,4 +29,4 @@ const Body = () => {
   );
 };
 
-export default Body;
+export default TemplateGeneral;
