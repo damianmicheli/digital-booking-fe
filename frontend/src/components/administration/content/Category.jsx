@@ -4,7 +4,7 @@ import styles from "../administration.module.css";
 import useFetch from "../../../hooks/useFetch";
 import URL_BASE from "../../global/getUrlBase";
 
-const Category = () => {
+const Category = ({setCategory}) => {
   const [categorias] = useFetch(`${URL_BASE}/categorias`);
 
   const [selected, setSelected] = useState("Elegí una categoria");
@@ -26,6 +26,7 @@ const Category = () => {
               onClick={() => {
                 setSelected(`${categoria.titulo}`);
                 setIsActive(false);
+                setCategory(categoria.id);
               }}
               className={styles.dropdownItem}
             >

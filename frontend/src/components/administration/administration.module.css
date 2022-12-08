@@ -104,8 +104,14 @@
   margin-right: 8px;
 }
 
-.contentAttributes>.addIcon{
+.contentAttributes>.addIcon, .contentAttributes>.addIconDisabled {
  margin-top: 22px;
+}
+
+.addIconDisabled{
+  font-size: 44px;
+  color: var(--color-4);
+  transition: all 0.5s;
 }
 
 .addIcon{
@@ -114,7 +120,7 @@
   transition: all 0.5s;
 }
 
-.addIcon:hover{
+.addIcon.addIcon:hover{
   color: var(--color-3);
 }
 

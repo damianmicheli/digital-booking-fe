@@ -3,9 +3,8 @@ import styles from "./administration.module.css";
 
 import HeaderProduct from "../product/content/HeaderProduct";
 import Icon from "../global/Icon";
-import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
+import { faSquarePlus, faSquareXmark } from "@fortawesome/free-solid-svg-icons";
 
-import useFetch from "../../hooks/useFetch";
 import URL_BASE from "../global/getUrlBase";
 
 import Success from "../global/modal/Failure";
@@ -23,19 +22,13 @@ const Administration = () => {
   }, []);
 
   const [success, setSuccess] = useState(false);
- /*  const [optionCategory, setOptionCategory] = useState({
-    selectedOption: null,
-  });
-  const [optionCity, setOptionCity] = useState({
-    selectedOption: null,
-  });
- */
+
   const [prodName, setProdName] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [address, setAddress] = useState("");
-  const [city, setCity]= useState("");
-  const [category, setCategory] = useState ("");
+  const [city, setCity] = useState("");
+  const [category, setCategory] = useState("");
   const [latitude, setLatitude] = useState("");
   const [length, setLength] = useState("");
   const [usePolicy, setUsePolicy] = useState("");
@@ -103,41 +96,50 @@ const Administration = () => {
   }, [selectedFile]);
 
   // *** ATRIBUTOS ***
-  const [attributeCounter, setAttributesCounter] = useState(1);
+  const [attributeCounter, setAttributesCounter] = useState([1]);
   const [attributeInputs, setAttributeInputs] = useState([]);
   const [attributesList, setAttributesList] = useState([]);
-  const [addInput, setAddInput] = useState(true);
+  const [selected, setSelected] = useState("Elegí un atributo");
+  const [iconInput, setIconInput] = useState(faSquarePlus);
 
-  const AddAttribute = () => {
-    setAttributesCounter(attributeCounter + 1);
-    console.log({ attributeCounter });
+  const addAttribute = () => {
+    const newIndex = Number(attributeCounter[attributeCounter.length - 1] + 1);
+    console.log({ newIndex });
+    setAttributesCounter((prev) => [...prev, newIndex]);
+
     console.log("Se agregó un input de atributo");
   };
 
-  const DeleteAttribute = (key) => {
-    if (attributeCounter > 2) {
-      attributeInputs.filter((input) => input.key !== key);
-      console.log({ attributeCounter });
-      console.log("Se eliminó un input");
-    }
+  const deleteAttribute = (number) => {
+    console.log({ number });
+    const newAttribute = [];
+
+    attributeInputs.forEach((input) => {
+      console.log({ input });
+      input !== number && newAttribute.push(input);
+    });
+    console.log({ newAttribute });
+    setAttributeInputs(newAttribute);
+    console.log({ attributeCounter });
+    console.log("Se eliminó un input");
   };
 
-  const handleAttribute = (e) => {
-    console.log({ e });
-    addInput ? AddAttribute() : DeleteAttribute(e.target.key);
+  const handleAttribute = (boolean, number) => {
+    console.log({ boolean, number });
+    boolean ? addAttribute() : deleteAttribute(number);
     setAttributesList([...attributesList, Attribute.selected]);
-    console.log({ attributesList });
-    setAddInput(!addInput);
+    /* console.log({ attributesList }); */
+    /*  setAddInput(!addInput); */
   };
 
   useEffect(() => {
+    console.log({ attributeCounter });
     for (let i = 1; i < attributeCounter; i++) {
       setAttributeInputs(
         attributeInputs.concat(
           <Attribute
             key={Math.random() + i}
             handleAttribute={handleAttribute}
-            addInput={addInput}
           />
         )
       );
@@ -199,7 +201,7 @@ const Administration = () => {
 
                 <div className={styles.groupForm}>
                   <label className="text2">Categoría</label>
-                  <Category setCategory={setCategory}  />
+                  <Category setCategory={setCategory} />
                 </div>
                 <div className={styles.groupForm}>
                   <label className="text2">Dirección</label>
@@ -252,12 +254,22 @@ const Administration = () => {
                 />
               </div>
               <h2 className="heading2 color2 paddingTop">Atributos</h2>
-
-              <Attribute
+              {/*  <Attribute
                 handleAttribute={handleAttribute}
-                addInput={addInput}
-              />
-              {attributeInputs}
+                //addInput={addInput}
+              /> */}
+              {/*   {attributeInputs} */}
+
+              {attributeCounter.map((number, index) => (
+                <Attribute
+                  handleAttribute={handleAttribute}
+                  key={index}
+                  number={number}
+                  selected={selected}
+                  setSelected={setSelected}
+                  iconInput={iconInput}    
+                />
+              ))}
               <h2 className="heading2 color2 paddingTop">
                 Políticas del producto
               </h2>
@@ -336,7 +348,7 @@ const Administration = () => {
 };
 
 export default Administration;
-
+{
 /*  const addAttribute = (e) => {
     setAttributes(attributes.concat(<Attribute key={attributes.length} handleAttribute={handleAttribute} />));
   };
@@ -356,40 +368,48 @@ export default Administration;
     }
   }; */
 
-{
-  /*   <select
-                    name="city"
-                    onChange={(e) => {
-                      setOptionCity({
-                        selectedOption: e.target.value,
-                      });
-                    }}
-                    required
-                  >
-                    <option selected="selected">Elegí una ciudad</option>
-                    {ciudades &&
-                      ciudades.map((ciudad) => (
-                        <option key={ciudad.id} value={ciudad.id}>
-                          {ciudad.ciudad}, {ciudad.pais}
-                        </option>
-                      ))}
-                  </select> */
-}
 
-/*    <select
-                    name="category"
-                    onChange={(e) => {
-                      setOptionCategory({
-                        selectedOption: e.target.value,
-                      });
-                    }}
-                    required
-                  >
-                    <option selected="selected">Elegí una categoría</option>
-                    {categorias &&
-                      categorias.map((categoria) => (
-                        <option key={categoria.id} value={categoria.id}>
-                          {categoria.titulo}
-                        </option>
-                      ))}
-                  </select> */
+/*   <select
+    name="city"
+    onChange={(e) => {
+      setOptionCity({
+        selectedOption: e.target.value,
+      });
+    }}
+    required
+  >
+    <option selected="selected">Elegí una ciudad</option>
+    {ciudades &&
+      ciudades.map((ciudad) => (
+        <option key={ciudad.id} value={ciudad.id}>
+          {ciudad.ciudad}, {ciudad.pais}
+        </option>
+      ))}
+  </select>; */
+
+  /* <select
+  name="category"
+  onChange={(e) => {
+    setOptionCategory({
+      selectedOption: e.target.value,
+    });
+  }}
+  required
+>
+  <option selected="selected">Elegí una categoría</option>
+  {categorias &&
+    categorias.map((categoria) => (
+      <option key={categoria.id} value={categoria.id}>
+        {categoria.titulo}
+      </option>
+    ))}
+</select>; */
+
+/*  const [optionCategory, setOptionCategory] = useState({
+    selectedOption: null,
+  });
+  const [optionCity, setOptionCity] = useState({
+    selectedOption: null,
+  });
+ */
+}

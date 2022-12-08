@@ -1,21 +1,23 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "../administration.module.css";
 
 import { getIcons } from "../../global/getIcons";
-import { faSquarePlus , faSquareXmark } from "@fortawesome/free-solid-svg-icons";
+
 import Icon from "../../global/Icon";
 
 import useFetch from "../../../hooks/useFetch";
 import URL_BASE from "../../global/getUrlBase";
 
-const Attribute = ({handleAttribute, addInput}) => {
-
+const Attribute = ({ handleAttribute, number, selected, setSelected, iconInput }) => {
   const [atributos] = useFetch(`${URL_BASE}/caracteristicas`);
-
-  const [selected, setSelected] = useState("Elegí un atributo");
 
   const [isActive, setIsActive] = useState(false);
 
+  const [value, setValue] = useState(false);
+
+  useEffect(()=>{
+    setValue(selected !== "Elegí un atributo")
+  }, [selected])
 
   return (
     <div className={styles.contentAttributes}>
@@ -39,8 +41,8 @@ const Attribute = ({handleAttribute, addInput}) => {
                   }}
                   className={styles.dropdownItem}
                 >
-                <div className={styles.dropdownItemAttribute}>
-                  {getIcons(atributo)}                  
+                  <div className={styles.dropdownItemAttribute}>
+                    {getIcons(atributo)}
                     <p>{atributo.nombre}</p>
                   </div>
                 </div>
@@ -48,8 +50,15 @@ const Attribute = ({handleAttribute, addInput}) => {
             </div>
           )}
         </div>
-      </div>      
-      <Icon css={styles.addIcon} icon={addInput ? faSquarePlus : faSquareXmark} event={handleAttribute} />
+      </div>
+      <Icon
+        css={value ? styles.addIcon : styles.addIconDisabled}
+        icon={iconInput}
+        //icon={selected === "Elegí un atributo" ? faSquarePlus : faSquareXmark}
+        event={() =>
+         value && handleAttribute(selected === "Elegí un atributo", number)
+        }
+      />
     </div>
   );
 };
