@@ -1,11 +1,14 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import styles from "./administration.module.css";
 
 import HeaderProduct from "../product/content/HeaderProduct";
 import Icon from "../global/Icon";
-import { faSquarePlus, faSquareXmark } from "@fortawesome/free-solid-svg-icons";
+import { faSquarePlus} from "@fortawesome/free-solid-svg-icons";
+
 
 import URL_BASE from "../global/getUrlBase";
+
+import AttributeContext from "../../context/AttributeContext"
 
 import Success from "../global/modal/Failure";
 import Failure from "../global/modal/success/Success";
@@ -20,6 +23,7 @@ const Administration = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
 
   const [success, setSuccess] = useState(false);
 
@@ -96,55 +100,7 @@ const Administration = () => {
   }, [selectedFile]);
 
   // *** ATRIBUTOS ***
-  const [attributeCounter, setAttributesCounter] = useState([1]);
-  const [attributeInputs, setAttributeInputs] = useState([]);
-  const [attributesList, setAttributesList] = useState([]);
-  const [selected, setSelected] = useState("Elegí un atributo");
-  const [iconInput, setIconInput] = useState(faSquarePlus);
-
-  const addAttribute = () => {
-    const newIndex = Number(attributeCounter[attributeCounter.length - 1] + 1);
-    console.log({ newIndex });
-    setAttributesCounter((prev) => [...prev, newIndex]);
-
-    console.log("Se agregó un input de atributo");
-  };
-
-  const deleteAttribute = (number) => {
-    console.log({ number });
-    const newAttribute = [];
-
-    attributeInputs.forEach((input) => {
-      console.log({ input });
-      input !== number && newAttribute.push(input);
-    });
-    console.log({ newAttribute });
-    setAttributeInputs(newAttribute);
-    console.log({ attributeCounter });
-    console.log("Se eliminó un input");
-  };
-
-  const handleAttribute = (boolean, number) => {
-    console.log({ boolean, number });
-    boolean ? addAttribute() : deleteAttribute(number);
-    setAttributesList([...attributesList, Attribute.selected]);
-    /* console.log({ attributesList }); */
-    /*  setAddInput(!addInput); */
-  };
-
-  useEffect(() => {
-    console.log({ attributeCounter });
-    for (let i = 1; i < attributeCounter; i++) {
-      setAttributeInputs(
-        attributeInputs.concat(
-          <Attribute
-            key={Math.random() + i}
-            handleAttribute={handleAttribute}
-          />
-        )
-      );
-    }
-  }, [attributeCounter]);
+  const {attributeCounter, handleAttribute, selected, setSelected, iconInput} = useContext(AttributeContext);
 
   return (
     <>

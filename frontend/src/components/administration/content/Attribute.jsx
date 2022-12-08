@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, useContext } from "react";
 import styles from "../administration.module.css";
 
 import { getIcons } from "../../global/getIcons";
@@ -8,7 +8,12 @@ import Icon from "../../global/Icon";
 import useFetch from "../../../hooks/useFetch";
 import URL_BASE from "../../global/getUrlBase";
 
-const Attribute = ({ handleAttribute, number, selected, setSelected, iconInput }) => {
+import AttributeContext from "../../../context/AttributeContext";
+
+const Attribute = ({number}) => {
+
+  const {handleAttribute, selected, setSelected, iconInput} = useContext(AttributeContext);
+
   const [atributos] = useFetch(`${URL_BASE}/caracteristicas`);
 
   const [isActive, setIsActive] = useState(false);

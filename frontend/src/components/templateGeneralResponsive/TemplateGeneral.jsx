@@ -11,6 +11,7 @@ import Product from "../product/Product";
 import BookingTemplate from "../booking_template/BookingTemplate";
 import MyBookings from "../my_bookigns/MyBookings";
 import Administration from "../administration/Administration";
+import { AttributeProvider } from "../../context/AttributeContext";
 
 const TemplateGeneral = () => {
   return (
@@ -23,7 +24,7 @@ const TemplateGeneral = () => {
         <Route path="/producto/:id/reserva" element={<BookingTemplate />} />
         <Route path="/:userId/reservas" element={<MyBookings />} />
         <Route path="/misreservas" element={<MyBookings />} />
-        <Route path="/administracion" element={<Administration />} />
+        <Route path="/administracion" element={<AttributeProvider><Administration /></AttributeProvider>} />
       </Routes>
     </div>
   );
