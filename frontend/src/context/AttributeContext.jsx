@@ -2,11 +2,9 @@ import { createContext, useEffect, useState } from "react";
 import Attribute from "../components/administration/content/Attribute";
 import { faSquarePlus, faSquareXmark } from "@fortawesome/free-solid-svg-icons";
 
-
 const AttributeContext = createContext();
 
 const AttributeProvider = ({ children }) => {
-
   const [attributeCounter, setAttributesCounter] = useState([1]);
   const [attributeInputs, setAttributeInputs] = useState([]);
   const [attributesList, setAttributesList] = useState([]);
@@ -37,10 +35,11 @@ const AttributeProvider = ({ children }) => {
 
   const handleAttribute = (boolean, number) => {
     console.log({ boolean, number });
-    !boolean && setIconInput()
-    boolean ? addAttribute() : deleteAttribute(number);
-    setAttributesList([...attributesList, Attribute.selected]);
-   
+    !boolean && setIconInput(faSquarePlus);
+    /* boolean ? addAttribute() : deleteAttribute(number); */
+    console.log({selected});
+    setAttributesList([...attributesList, selected]);
+    console.log({attributesList});
   };
 
   useEffect(() => {
@@ -51,15 +50,30 @@ const AttributeProvider = ({ children }) => {
           <Attribute
             key={Math.random() + i}
             handleAttribute={handleAttribute}
+            selected={selected}
           />
         )
       );
     }
   }, [attributeCounter]);
 
-  const data = {attributeCounter, attributeInputs, attributesList, addAttribute, deleteAttribute, handleAttribute  };
+  const data = {
+    attributeCounter,
+    attributeInputs,
+    attributesList,
+    addAttribute,
+    deleteAttribute,
+    handleAttribute,
+    iconInput,
+    selected,
+    setSelected,
+  };
 
-  return <AttributeContext.Provider value={data}>{children}</AttributeContext.Provider>;
+  return (
+    <AttributeContext.Provider value={data}>
+      {children}
+    </AttributeContext.Provider>
+  );
 };
 
 export { AttributeProvider };

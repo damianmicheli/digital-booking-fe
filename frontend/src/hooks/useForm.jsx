@@ -78,15 +78,22 @@ const useForm = (initialForm, validateForm) => {
     fetch(`${URL_BASE}/usuario`, settings)
       .then((response) => {
         console.log(response);
-        if (response.ok !== true) {
+        if (!response.ok) {
+          console.log("Pasó por aca");
           setFailure(true);
+          setSuccessRegister(false);
+          console.log({ successRegister });
+        } else {
+          return response.json();
         }
-        return response.json();
       })
       .then((data) => {
         console.log(data);
+        if (data) {
+          setSuccessRegister(true);
+        }
 
-     /*    const payloadLogin = {
+        /*    const payloadLogin = {
           username: data.email,
           password: data.password,
         };
@@ -125,7 +132,6 @@ const useForm = (initialForm, validateForm) => {
       });
   }
 
-
   const handleSubmitRegister = (e) => {
     e.preventDefault();
     setErrors(validateForm(form));
@@ -154,7 +160,6 @@ const useForm = (initialForm, validateForm) => {
     if (Object.values(errors)[0] === "") {
       console.log(errors);
       realizarRegistro(settings);
-      setSuccessRegister(true);
     } else {
       console.log("No se pudo completar el registro");
     }

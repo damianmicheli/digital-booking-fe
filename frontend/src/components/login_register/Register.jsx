@@ -89,6 +89,7 @@ const Register = () => {
     handleSubmitRegister,
   } = useForm(initialForm, validateForm);
 
+  console.log({failure});
   const [showPass, setShowPass] = useState(false);
   const toggleBtnPass = () => {
     setShowPass((prevState) => !prevState);
