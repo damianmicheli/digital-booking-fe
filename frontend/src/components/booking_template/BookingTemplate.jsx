@@ -78,7 +78,7 @@ const BookingTemplate = () => {
       .then((data) => {
         console.log(data);
         console.log("Se registro ok la reserva");
-        data && setSuccess(true);
+        if(data){setSuccess(true)};
       })
       .catch((err) => {
         console.log("Promesa rechazada:");
