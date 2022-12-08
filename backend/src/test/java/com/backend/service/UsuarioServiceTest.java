@@ -21,6 +21,6 @@ class UsuarioServiceTest {
     }
 
     @Test
-    void actualizarCiudad() {
+    void actualizar() {
     }
 }
