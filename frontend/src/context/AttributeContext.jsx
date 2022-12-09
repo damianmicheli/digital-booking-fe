@@ -8,14 +8,11 @@ const AttributeProvider = ({ children }) => {
   const [attributeCounter, setAttributesCounter] = useState([1]);
   const [attributeInputs, setAttributeInputs] = useState([]);
   const [attributesList, setAttributesList] = useState([]);
-  const [selected, setSelected] = useState("Elegí un atributo");
-  const [iconInput, setIconInput] = useState(faSquarePlus);
-
-  const addAttribute = () => {
+ 
+    const addAttribute = () => {
     const newIndex = Number(attributeCounter[attributeCounter.length - 1] + 1);
     console.log({ newIndex });
     setAttributesCounter((prev) => [...prev, newIndex]);
-
     console.log("Se agregó un input de atributo");
   };
 
@@ -33,14 +30,14 @@ const AttributeProvider = ({ children }) => {
     console.log("Se eliminó un input");
   };
 
-  const handleAttribute = (boolean, number) => {
+  const handleAttribute = (boolean, number, id, iconInput, setIconInput) => {
     console.log({ boolean, number });
-    !boolean && setIconInput(faSquarePlus);
-    /* boolean ? addAttribute() : deleteAttribute(number); */
-    console.log({selected});
-    setAttributesList([...attributesList, selected]);
-    console.log({attributesList});
+    setAttributesList([...attributesList, {id}]);
+    iconInput === faSquarePlus && addAttribute();
+    setIconInput(faSquareXmark);       
   };
+
+  console.log({attributesList});
 
   useEffect(() => {
     console.log({ attributeCounter });
@@ -50,7 +47,6 @@ const AttributeProvider = ({ children }) => {
           <Attribute
             key={Math.random() + i}
             handleAttribute={handleAttribute}
-            selected={selected}
           />
         )
       );
@@ -63,10 +59,7 @@ const AttributeProvider = ({ children }) => {
     attributesList,
     addAttribute,
     deleteAttribute,
-    handleAttribute,
-    iconInput,
-    selected,
-    setSelected,
+    handleAttribute
   };
 
   return (

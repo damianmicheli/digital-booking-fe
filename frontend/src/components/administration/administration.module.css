@@ -35,8 +35,9 @@
 
 .groupForm > textarea {
   padding-top: 10px;
-  color: var(--color-principal);
+  padding-right: 10px;
   font-family: inherit;
+  outline: none;
 }
 
 .groupForm > textarea {

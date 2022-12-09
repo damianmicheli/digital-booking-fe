@@ -3,12 +3,11 @@ import styles from "./administration.module.css";
 
 import HeaderProduct from "../product/content/HeaderProduct";
 import Icon from "../global/Icon";
-import { faSquarePlus} from "@fortawesome/free-solid-svg-icons";
-
+import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
 
 import URL_BASE from "../global/getUrlBase";
 
-import AttributeContext from "../../context/AttributeContext"
+import AttributeContext from "../../context/AttributeContext";
 
 import Success from "../global/modal/Failure";
 import Failure from "../global/modal/success/Success";
@@ -24,7 +23,6 @@ const Administration = () => {
     window.scrollTo(0, 0);
   }, []);
 
-
   const [success, setSuccess] = useState(false);
 
   const [prodName, setProdName] = useState("");
@@ -39,6 +37,10 @@ const Administration = () => {
   const [healthPolicy, setHealthPolicy] = useState("");
   const [cancellationPolicy, setCancellationPolicy] = useState("");
 
+  // *** ATRIBUTOS ***
+  const { attributeCounter, handleAttribute, attributeList } =
+    useContext(AttributeContext);
+
   const [failure, setFailure] = useState(false);
 
   const darAltaProducto = (settings) => {
@@ -51,8 +53,11 @@ const Administration = () => {
         return response.json();
       })
       .then((data) => {
-        console.log(data);
-        console.log("Se dió de alta correctamente el producto");
+        console.log({ data });
+        if (data) {
+          setSuccess(true);
+          console.log("Se dió de alta correctamente el producto");
+        }
       })
       .catch((err) => {
         console.log("Promesa rechazada:");
@@ -76,7 +81,7 @@ const Administration = () => {
       latitud: latitude,
       longitud: length,
       /* "imagenes": "", */
-      /* "caracteristicas": optionAttribute.selectedOption, */
+      caracteristicas: attributeList,
     };
 
     const settings = {
@@ -88,7 +93,6 @@ const Administration = () => {
       },
     };
     darAltaProducto(settings);
-    setSuccess(true);
   };
 
   // *** IMAGENES ***
@@ -98,9 +102,6 @@ const Administration = () => {
   useEffect(() => {
     /*   console.log(selectedFile); */
   }, [selectedFile]);
-
-  // *** ATRIBUTOS ***
-  const {attributeCounter, handleAttribute, selected, setSelected, iconInput} = useContext(AttributeContext);
 
   return (
     <>
@@ -221,9 +222,6 @@ const Administration = () => {
                   handleAttribute={handleAttribute}
                   key={index}
                   number={number}
-                  selected={selected}
-                  setSelected={setSelected}
-                  iconInput={iconInput}    
                 />
               ))}
               <h2 className="heading2 color2 paddingTop">
@@ -305,14 +303,12 @@ const Administration = () => {
 
 export default Administration;
 {
-/*  const addAttribute = (e) => {
+  /*  const addAttribute = (e) => {
     setAttributes(attributes.concat(<Attribute key={attributes.length} handleAttribute={handleAttribute} />));
   };
  */
-
-/* attributeInputs.push(<Attribute key={i} handleAttribute={handleAttribute} />) */
-
-/*   const toggleAddDeleteAttribute = () => {
+  /* attributeInputs.push(<Attribute key={i} handleAttribute={handleAttribute} />) */
+  /*   const toggleAddDeleteAttribute = () => {
     if (addAttribute) {
       setAttributesCounter(attributeCounter + 1);
       console.log({attributeCounter});
@@ -323,9 +319,7 @@ export default Administration;
       console.log("Se eliminó un input de atributo");
     }
   }; */
-
-
-/*   <select
+  /*   <select
     name="city"
     onChange={(e) => {
       setOptionCity({
@@ -342,7 +336,6 @@ export default Administration;
         </option>
       ))}
   </select>; */
-
   /* <select
   name="category"
   onChange={(e) => {
@@ -360,8 +353,7 @@ export default Administration;
       </option>
     ))}
 </select>; */
-
-/*  const [optionCategory, setOptionCategory] = useState({
+  /*  const [optionCategory, setOptionCategory] = useState({
     selectedOption: null,
   });
   const [optionCity, setOptionCity] = useState({
