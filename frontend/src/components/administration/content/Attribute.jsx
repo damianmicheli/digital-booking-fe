@@ -22,7 +22,6 @@ const Attribute = ({ number }) => {
 
   useEffect(() => {
     setValue(selected !== "Elegí un atributo");
-    
   }, [selected]);
 
   return (

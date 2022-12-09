@@ -8,6 +8,7 @@ const AttributeProvider = ({ children }) => {
   const [attributeCounter, setAttributesCounter] = useState([1]);
   const [attributeInputs, setAttributeInputs] = useState([]);
   const [attributesList, setAttributesList] = useState([]);
+  const [attributesLoaded, setAttributesLoaded] = useState([]);
  
     const addAttribute = () => {
     const newIndex = Number(attributeCounter[attributeCounter.length - 1] + 1);
@@ -30,14 +31,20 @@ const AttributeProvider = ({ children }) => {
     console.log("Se eliminó un input");
   };
 
+ ;
+
   const handleAttribute = (boolean, number, id, iconInput, setIconInput) => {
     console.log({ boolean, number });
-    setAttributesList([...attributesList, {id}]);
+    setAttributesList([...attributesList, {id}]);    
     iconInput === faSquarePlus && addAttribute();
-    setIconInput(faSquareXmark);       
+    setIconInput(faSquareXmark);         
   };
 
-  console.log({attributesList});
+  useEffect(()=>{
+    setAttributesLoaded(attributesList)
+  },[handleAttribute])
+
+  console.log({attributesLoaded});
 
   useEffect(() => {
     console.log({ attributeCounter });
@@ -56,6 +63,7 @@ const AttributeProvider = ({ children }) => {
   const data = {
     attributeCounter,
     attributeInputs,
+    attributesLoaded,
     attributesList,
     addAttribute,
     deleteAttribute,

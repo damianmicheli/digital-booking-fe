@@ -9,8 +9,8 @@ import URL_BASE from "../global/getUrlBase";
 
 import AttributeContext from "../../context/AttributeContext";
 
-import Success from "../global/modal/Failure";
-import Failure from "../global/modal/success/Success";
+import Failure from "../global/modal/Failure";
+import Success from "../global/modal/success/Success";
 import Button from "../global/Button";
 
 import FileUpload from "./content/FileUpload";
@@ -24,6 +24,7 @@ const Administration = () => {
   }, []);
 
   const [success, setSuccess] = useState(false);
+  const [failure, setFailure] = useState(false);
 
   const [prodName, setProdName] = useState("");
   const [title, setTitle] = useState("");
@@ -38,10 +39,10 @@ const Administration = () => {
   const [cancellationPolicy, setCancellationPolicy] = useState("");
 
   // *** ATRIBUTOS ***
-  const { attributeCounter, handleAttribute, attributeList } =
+  const { attributeCounter, handleAttribute, attributesLoaded, attributesList} =
     useContext(AttributeContext);
-
-  const [failure, setFailure] = useState(false);
+  console.log({ attributesLoaded });
+  console.log({ attributesList });
 
   const darAltaProducto = (settings) => {
     fetch(`${URL_BASE}/productos`, settings)
@@ -81,7 +82,7 @@ const Administration = () => {
       latitud: latitude,
       longitud: length,
       /* "imagenes": "", */
-      caracteristicas: attributeList,
+      caracteristicas: attributesLoaded,
     };
 
     const settings = {
