@@ -35,7 +35,7 @@
 .groupForm {
   display: flex;
   flex-direction: column;
-  width: 847px;
+  width: 95%;
   margin: 10px auto;
   gap: 5px;
 }
@@ -65,10 +65,11 @@
 }
 
 .textarea {
-  font-family: 'Poppins', sans-serif;
+  font-family: inherit;
   resize: none;
-  outline: none !important; 
-  border: 2px solid var(--color-2);
+  outline: none; 
+  border: none;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
   padding: 0.5rem;
   font-size: 14px;
 }
@@ -126,6 +127,7 @@
 
   .calendar {
     display: flex;
+    width: 100%;
     flex-direction: column;
     align-items: center;
     justify-content: center;
@@ -141,18 +143,15 @@
 
 @media only screen and (min-width: 1200px) {
   .content {
-    flex-direction: row;
-    gap: 10px;
+    gap: 20px;
   }
 }
 
 @media only screen and (min-width: 1300px) {
   .content {
-    display: flex;
-    flex-direction: row;
     justify-content: center;
-    gap: 100px;
-    padding: 4rem;
+    gap: 80px;
+    padding: 4rem 0;    
   }
 
   .contentLeft {
@@ -162,6 +161,9 @@
     gap: 0.5rem;
   }
 
+  .contentRight {
+    margin-top: 37px;
+  }
   .divInputs {
     width: 100%;
     margin: 0 auto 15px auto;

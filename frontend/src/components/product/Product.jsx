@@ -57,11 +57,18 @@ const Product = () => {
           }
         />*/}
       </div>
-      {
-        data &&
+      {data && (
         <>
-          <HeaderProduct category={data?.categoria.titulo.toUpperCase()} title={data?.nombre} path={"/"} />
-          <LocationProduct direction={data?.direccion} city={data?.ciudad.ciudad} country={data?.ciudad.pais} />
+          <HeaderProduct
+            category={data?.categoria.titulo.toUpperCase()}
+            title={data?.nombre}
+            path={"/"}
+          />
+          <LocationProduct
+            direction={data?.direccion}
+            city={data?.ciudad.ciudad}
+            country={data?.ciudad.pais}
+          />
           <GalleryContainer images={data?.imagenes} />
           <div className={styles.descriptionContainer}>
             <DescriptionProduct
@@ -84,7 +91,7 @@ const Product = () => {
             politicaCancelacion={data?.politica_de_cancelacion}
           />
         </>
-      }
+      )}
     </div>
   );
 };
