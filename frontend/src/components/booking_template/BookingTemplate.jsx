@@ -11,6 +11,7 @@ import AuthContext from "../../context/AuthContext";
 import format from "date-fns/format";
 import URL_BASE from "../global/getUrlBase";
 import Success from "../global/modal/success/Success";
+import Failure from "../global/modal/Failure";
 import Icon from "../global/Icon";
 import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 
@@ -19,6 +20,8 @@ const BookingTemplate = () => {
   const { id } = useParams();
 
   const [success, setSuccess] = useState(false);
+  const [failure, setFailure] = useState(false);
+
 
   const isMobile = useMediaQuery(624);
 
@@ -359,7 +362,7 @@ const BookingTemplate = () => {
                     image={data?.imagenes[0]}
                     score={data?.puntajePromedio}
                   />
-                  }
+                  )}
                 </div>
               </div>
             </form>
