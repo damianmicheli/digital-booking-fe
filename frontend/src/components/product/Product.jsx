@@ -74,6 +74,19 @@ const Product = () => {
             /> 
           }
         />*/}
+      </div>
+      {data && (
+        <>
+          <HeaderProduct
+            category={data?.categoria.titulo.toUpperCase()}
+            title={data?.nombre}
+            path={"/"}
+          />
+          <LocationProduct
+            direction={data?.direccion}
+            city={data?.ciudad.ciudad}
+            country={data?.ciudad.pais}
+          />
           </div>
           <GalleryContainer images={data?.imagenes} />
           <div className={styles.descriptionContainer}>
@@ -98,7 +111,7 @@ const Product = () => {
           />
           <Score />
         </>
-      )}
+      }
     </div>
   );
 };

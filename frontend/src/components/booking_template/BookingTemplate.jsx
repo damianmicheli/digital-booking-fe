@@ -11,6 +11,7 @@ import AuthContext from "../../context/AuthContext";
 import format from "date-fns/format";
 import URL_BASE from "../global/getUrlBase";
 import Success from "../global/modal/success/Success";
+import Failure from "../global/modal/Failure";
 import Icon from "../global/Icon";
 import { faCircleCheck } from "@fortawesome/free-regular-svg-icons";
 
@@ -19,6 +20,7 @@ const BookingTemplate = () => {
   const { id } = useParams();
 
   const [success, setSuccess] = useState(false);
+  const [failure, setFailure] = useState(false);
 
   const isMobile = useMediaQuery(624);
 
@@ -29,7 +31,7 @@ const BookingTemplate = () => {
   let fechasInhabilitadas = [];
   let newDate;
   disabledDates &&
-  disabledDates?.fechasNoDisponibles.map((array) => {
+    disabledDates?.fechasNoDisponibles.map((array) => {
       newDate = new Date(array[0], array[1] - 1, array[2]);
       return fechasInhabilitadas.push(newDate);
     });
@@ -54,7 +56,7 @@ const BookingTemplate = () => {
   });
 
   const [option, setOption] = useState({
-    selectedOption: null
+    selectedOption: null,
   });
 
   const { startDate, endDate } = reservationDate;
@@ -69,15 +71,14 @@ const BookingTemplate = () => {
       .then((response) => {
         console.log(response);
         if (response.ok !== true) {
-          alert(
-            "Lamentablemente no se pudo realizar su reserva. Por favor intente más tarde"
-          );
+          setFailure(true);
         }
         return response.json();
       })
       .then((data) => {
         console.log(data);
         console.log("Se registro ok la reserva");
+        if(data){setSuccess(true)};
       })
       .catch((err) => {
         console.log("Promesa rechazada:");
@@ -89,17 +90,17 @@ const BookingTemplate = () => {
     e.preventDefault();
     const token = "Bearer " + JSON.parse(localStorage.getItem("jwt"));
     const payload = {
-      "hora_comienzo_reserva": option.selectedOption,
-      "fecha_inicial_reserva": format(startDate, "yyyy-MM-dd"),
-      "fecha_final_reserva": format(endDate, "yyyy-MM-dd"),
-      "producto": {
-        "id": `${id}`,
+      hora_comienzo_reserva: option.selectedOption,
+      fecha_inicial_reserva: format(startDate, "yyyy-MM-dd"),
+      fecha_final_reserva: format(endDate, "yyyy-MM-dd"),
+      producto: {
+        id: `${id}`,
       },
-      "usuario": {
-        "id": `${userLog.id}`,
+      usuario: {
+        id: `${userLog.id}`,
       },
-      "aclaraciones": text.selectedOption,
-      "vacunado": `${value.selectedOption}`,
+      aclaraciones: text.selectedOption,
+      vacunado: `${value.selectedOption}`,
     };
 
     const settings = {
@@ -111,216 +112,233 @@ const BookingTemplate = () => {
       },
     };
     realizarReserva(settings);
-    setSuccess(true);
   };
 
   return (
     <>
-      <Success state={success} text1={"¡Muchas Gracias!"} text2={"Su reserva se ha realizado con éxito"} path={"/"} textBtn={"Ok"}/>
-        <div className={styles.title}>
-          {data && <HeaderProduct category={data?.categoria.titulo.toUpperCase()} title={data?.nombre} path={"/"} />}
-        </div>
-        <div className={styles.bookingTemplate}>
-          <div className="container">
-            <form
-              onSubmit={(e) => {
-                handleSubmit(e);
-              }}
-              id="bookingForm"
-            >
-              <div className={styles.content}>
-                <div className={styles.contentLeft}>
-                  <h2 className="heading2 color2">Completá tus datos</h2>
-                  <div className={styles.divInputs}>
-                    <div className={styles.groupForm}>
-                      <label className="text2">Nombre</label>
-                      <input
-                        type="text"
-                        id="name"
-                        name="name"
-                        value={userLog && userLog.nombre}
-                        disabled
-                      />
-                    </div>
-                    <div className={styles.groupForm}>
-                      <label className="text2">Apellido</label>
-                      <input
-                        type="text"
-                        id="surname"
-                        name="surname"
-                        value={userLog && userLog.apellido}
-                        disabled
-                      />
-                    </div>
-                    <div className={styles.groupForm}>
-                      <label className="text2">Correo electrónico</label>
-                      <input
-                        type="email"
-                        id="email"
-                        name="email"
-                        value={userLog && userLog.email}
-                        disabled
-                      />
-                    </div>
-                    <div className={styles.groupForm}>
-                      <label className="text2">Ciudad</label>
-                      <input
-                        type="text"
-                        id="location"
-                        name="location"
-                        placeholder={userLog && userLog.ciudad}
-                      />
-                    </div>
+      <Failure
+        state={failure}
+        text1={"Lamentablemente no se ha podido realizar su reserva."}
+        text2={"Por favor intente más tarde"}
+        path={"/"}
+        textBtn={"ok"}
+      />
+      <Success
+        state={success}
+        text1={"¡Muchas Gracias!"}
+        text2={"Su reserva se ha realizado con éxito"}
+        path={"/"}
+        textBtn={"Ok"}
+      />
+      <div className={styles.title}>
+        {data && (
+          <HeaderProduct
+            category={data?.categoria.titulo.toUpperCase()}
+            title={data?.nombre}
+            path={"/"}
+          />
+        )}
+      </div>
+      <div className={styles.bookingTemplate}>
+        <div className="container">
+          <form
+            onSubmit={(e) => {
+              handleSubmit(e);
+            }}
+            id="bookingForm"
+          >
+            <div className={styles.content}>
+              <div className={styles.contentLeft}>
+                <h2 className="heading2 color2">Completá tus datos</h2>
+                <div className={styles.divInputs}>
+                  <div className={styles.groupForm}>
+                    <label className="text2">Nombre</label>
+                    <input
+                      type="text"
+                      id="name"
+                      name="name"
+                      value={userLog && userLog.nombre}
+                      disabled
+                    />
                   </div>
-                  <h2 className="heading2 color2">
-                    Seleccioná tu fecha de reserva
-                  </h2>
-                  <div className={styles.calendarContainer}>
-                    <div className={styles.calendar}>
-                      {isMobile ? (
-                        <Calendar
-                          months={1}
-                          bookings={fechasInhabilitadas}
-                          setReservationDate={setReservationDate}
-                        />
-                      ) : (
-                        <Calendar
-                          months={2}
-                          bookings={fechasInhabilitadas}
-                          setReservationDate={setReservationDate}
-                        />
-                      )}
-                    </div>
+                  <div className={styles.groupForm}>
+                    <label className="text2">Apellido</label>
+                    <input
+                      type="text"
+                      id="surname"
+                      name="surname"
+                      value={userLog && userLog.apellido}
+                      disabled
+                    />
                   </div>
-                  <h2 className="heading2 color2">Tu horario de llegada</h2>
-                  <div className={styles.divInputs}>
-                    <div className={styles.scheduleContainer}>
-                      <p className={styles.scheduleTitle}>
-                        <Icon css={styles.iconCheck} icon={faCircleCheck} />
-                        Tu alojamiento estará listo para el check-in entre las
-                        10:00 AM y las 11:00 PM
-                      </p>
-                      <div className={styles.select}>
-                        <select
-                          id="hour"
-                          name="check_in"
-                          className={styles.scheduleOptions}
-                          onChange={(e) => {
-                            setOption({
-                              selectedOption: e.target.value,
-                            });
-                          }}
-                          required
-                        >
-                          <option value="" key="default" hidden>
-                            Seleccionar hora de llegada
-                          </option>
-                          <option value={"10:00:00"} key={"10:00"}>
-                            10:00 AM
-                          </option>
-                          <option value={"11:00:00"} key={"11:00"}>
-                            11:00 AM
-                          </option>
-                          <option value={"12:00:00"} key={"12:00"}>
-                            12:00 PM
-                          </option>
-                          <option value={"13:00:00"} key={"13:00"}>
-                            01:00 PM
-                          </option>
-                          <option value={"14:00:00"} key={"14:00"}>
-                            02:00 PM
-                          </option>
-                          <option value={"15:00:00"} key={"15:00"}>
-                            03:00 PM
-                          </option>
-                          <option value={"16:00:00"} key={"16:00"}>
-                            04:00 PM
-                          </option>
-                          <option value={"17:00:00"} key={"17:00"}>
-                            05:00 PM
-                          </option>
-                          <option value={"18:00:00"} key={"18:00"}>
-                            06:00 PM
-                          </option>
-                          <option value={"19:00:00"} key={"19:00"}>
-                            07:00 PM
-                          </option>
-                          <option value={"20:00:00"} key={"20:00"}>
-                            08:00 PM
-                          </option>
-                          <option value={"21:00:00"} key={"21:00"}>
-                            09:00 PM
-                          </option>
-                          <option value={"22:00:00"} key={"22:00"}>
-                            10:00 PM
-                          </option>
-                          <option value={"23:00:00"} key={"23:00"}>
-                            11:00 PM
-                          </option>
-                        </select>
-                      </div>
-                    </div>
+                  <div className={styles.groupForm}>
+                    <label className="text2">Correo electrónico</label>
+                    <input
+                      type="email"
+                      id="email"
+                      name="email"
+                      value={userLog && userLog.email}
+                      disabled
+                    />
                   </div>
-                  <h2 className="heading2 color2">Datos adicionales</h2>
-                  <div className={styles.divInputs}>
-                    <div className={styles.groupForm}>
-                      <label className="text2">Aclaraciones</label>
-                      <textarea
-                        id="aclaraciones"
-                        name="aclaraciones"
-                        rows="4"
-                        cols="50"
-                        className={styles.textarea}
-                        placeholder={text.selectedOption}
+                  <div className={styles.groupForm}>
+                    <label className="text2">Ciudad</label>
+                    <input
+                      type="text"
+                      id="location"
+                      name="location"
+                      placeholder={userLog && userLog.ciudad}
+                    />
+                  </div>
+                </div>
+                <h2 className="heading2 color2">
+                  Seleccioná tu fecha de reserva
+                </h2>
+                <div className={styles.calendarContainer}>
+                  <div className={styles.calendar}>
+                    {isMobile ? (
+                      <Calendar
+                        months={1}
+                        bookings={fechasInhabilitadas}
+                        setReservationDate={setReservationDate}
+                      />
+                    ) : (
+                      <Calendar
+                        months={2}
+                        bookings={fechasInhabilitadas}
+                        setReservationDate={setReservationDate}
+                      />
+                    )}
+                  </div>
+                </div>
+                <h2 className="heading2 color2">Tu horario de llegada</h2>
+                <div className={styles.divInputs}>
+                  <div className={styles.scheduleContainer}>
+                    <p className={styles.scheduleTitle}>
+                      <Icon css={styles.iconCheck} icon={faCircleCheck} />
+                      Tu alojamiento estará listo para el check-in entre las
+                      10:00 AM y las 11:00 PM
+                    </p>
+                    <div className={styles.select}>
+                      <select
+                        id="hour"
+                        name="check_in"
+                        className={styles.scheduleOptions}
                         onChange={(e) => {
-                          setText({
+                          setOption({
+                            selectedOption: e.target.value,
+                          });
+                        }}
+                        required
+                      >
+                        <option value="" key="default" hidden>
+                          Seleccionar hora de llegada
+                        </option>
+                        <option value={"10:00:00"} key={"10:00"}>
+                          10:00 AM
+                        </option>
+                        <option value={"11:00:00"} key={"11:00"}>
+                          11:00 AM
+                        </option>
+                        <option value={"12:00:00"} key={"12:00"}>
+                          12:00 PM
+                        </option>
+                        <option value={"13:00:00"} key={"13:00"}>
+                          01:00 PM
+                        </option>
+                        <option value={"14:00:00"} key={"14:00"}>
+                          02:00 PM
+                        </option>
+                        <option value={"15:00:00"} key={"15:00"}>
+                          03:00 PM
+                        </option>
+                        <option value={"16:00:00"} key={"16:00"}>
+                          04:00 PM
+                        </option>
+                        <option value={"17:00:00"} key={"17:00"}>
+                          05:00 PM
+                        </option>
+                        <option value={"18:00:00"} key={"18:00"}>
+                          06:00 PM
+                        </option>
+                        <option value={"19:00:00"} key={"19:00"}>
+                          07:00 PM
+                        </option>
+                        <option value={"20:00:00"} key={"20:00"}>
+                          08:00 PM
+                        </option>
+                        <option value={"21:00:00"} key={"21:00"}>
+                          09:00 PM
+                        </option>
+                        <option value={"22:00:00"} key={"22:00"}>
+                          10:00 PM
+                        </option>
+                        <option value={"23:00:00"} key={"23:00"}>
+                          11:00 PM
+                        </option>
+                      </select>
+                    </div>
+                  </div>
+                </div>
+                <h2 className="heading2 color2">Datos adicionales</h2>
+                <div className={styles.divInputs}>
+                  <div className={styles.groupForm}>
+                    <label className="text2">Aclaraciones</label>
+                    <textarea
+                      id="aclaraciones"
+                      name="aclaraciones"
+                      rows="4"
+                      cols="50"
+                      className={styles.textarea}
+                      placeholder={text.selectedOption}
+                      onChange={(e) => {
+                        setText({
+                          selectedOption: e.target.value,
+                        });
+                      }}
+                    />
+                  </div>
+                  <div className={`${styles.groupForm} ${styles.vacunado}`}>
+                    <label className="text2">
+                      ¿Está vacunado contra COVID?
+                    </label>
+                    <div>
+                      <input
+                        type="radio"
+                        id="vacunado"
+                        name="vacunado"
+                        required={true}
+                        value={true}
+                        className={styles.radioButton}
+                        onChange={(e) => {
+                          setValue({
                             selectedOption: e.target.value,
                           });
                         }}
                       />
+                      <label className="text2">Si</label>
                     </div>
-                    <div className={`${styles.groupForm} ${styles.vacunado}`}>
-                      <label className="text2">
-                        ¿Está vacunado contra COVID?
-                      </label>
-                      <div>
-                        <input
-                          type="radio"
-                          id="vacunado"
-                          name="vacunado"
-                          required={true}
-                          value={true}
-                          className={styles.radioButton}
-                          onChange={(e) => {
-                            setValue({
-                              selectedOption: e.target.value,
-                            });
-                          }}
-                        />
-                        <label className="text2">Si</label>
-                      </div>
-                      <div>
-                        <input
-                          type="radio"
-                          id="vacunado"
-                          name="vacunado"
-                          value={false}
-                          className={styles.radioButton}
-                          onChange={(e) => {
-                            setValue({
-                              selectedOption: e.target.value,
-                            });
-                          }}
-                        />
-                        <label className="text2">No</label>
-                      </div>
+                    <div>
+                      <input
+                        type="radio"
+                        id="vacunado"
+                        name="vacunado"
+                        value={false}
+                        className={styles.radioButton}
+                        onChange={(e) => {
+                          setValue({
+                            selectedOption: e.target.value,
+                          });
+                        }}
+                      />
+                      <label className="text2">No</label>
                     </div>
                   </div>
                 </div>
-                <div className={styles.contentRight}>
-                  {
-                    data &&
-                    <BookingDetail
+              </div>
+              <div className={styles.contentRight}>
+                {data && (
+                  <BookingDetail
                     startDate={checkIn}
                     endDate={checkOut}
                     title={data?.nombre}
@@ -328,20 +346,19 @@ const BookingTemplate = () => {
                     location={data?.direccion}
                     image={data?.imagenes[0]}
                   />
-                  }
-                </div>
+                )}
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
-        {
-          data &&
-          <Politics
+      </div>
+      {data && (
+        <Politics
           normas={data?.politica_de_uso}
           politicaSalud={data?.politica_de_salud_y_seguridad}
           politicaCancelacion={data?.politica_de_cancelacion}
         />
-        }
+      )}
     </>
   );
 };

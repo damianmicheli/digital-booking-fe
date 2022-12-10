@@ -1,6 +1,7 @@
 .calendarElement {
   align-items: center;
-  padding: 0 3rem;
+  /* padding: 0 3rem; */
+  width: 100%;
 }
 
 @media only screen and (min-width: 624px) {
@@ -17,9 +18,9 @@
   }
 
   @media only screen and (min-width: 985px) {
-    .calendarElement {
+  /*   .calendarElement {
       align-items: stretch;
-    }
+    } */
   }
 
   @media only screen and (min-width: 1335px) {

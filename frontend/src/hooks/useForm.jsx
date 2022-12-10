@@ -77,22 +77,19 @@ const useForm = (initialForm, validateForm) => {
   function realizarRegistro(settings) {
     fetch(`${URL_BASE}/usuario`, settings)
       .then((response) => {
-        console.log(response);
+        console.log({response});
         if (!response.ok) {
-          console.log("Pasó por aca");
           setFailure(true);
-          setSuccessRegister(false);
-          console.log({ successRegister });
+        /*   setSuccessRegister(false); */
         } else {
           return response.json();
         }
       })
       .then((data) => {
-        console.log(data);
+        console.log({data});
         if (data) {
           setSuccessRegister(true);
         }
-
         /*    const payloadLogin = {
           username: data.email,
           password: data.password,
@@ -128,9 +125,11 @@ const useForm = (initialForm, validateForm) => {
       })
       .catch((err) => {
         console.log("Promesa rechazada:");
-        console.log(err);
+        console.log({err});
       });
   }
+
+  const [errorsFree, setErrorsFree] = useState();
 
   const handleSubmitRegister = (e) => {
     e.preventDefault();
@@ -156,9 +155,13 @@ const useForm = (initialForm, validateForm) => {
         "Content-Type": "application/json",
       },
     };
+   
+    setErrorsFree(Object.values(errors).find(error => error !== ""));
 
-    if (Object.values(errors)[0] === "") {
-      console.log(errors);
+    console.log({errorsFree});
+
+    if (errorsFree === undefined) {
+      console.log({ errors });
       realizarRegistro(settings);
     } else {
       console.log("No se pudo completar el registro");
