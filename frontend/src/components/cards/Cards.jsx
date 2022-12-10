@@ -17,7 +17,7 @@ const Cards = ({ data }) => {
 
  
   return (
-    <>
+    
       <div className={styles.container}>
         <h2>{selectedCategory.title === null && valuesForm.date.startDate === null && valuesForm.date.endDate === null && valuesForm.city === null ? "Recomendaciones" : "Resultado de tu búsqueda"}</h2>       
         <div className={styles.filterContainer}>
@@ -82,7 +82,7 @@ const Cards = ({ data }) => {
               ))}
         </div>
       </div>
-    </>
+   
   );
 };
 

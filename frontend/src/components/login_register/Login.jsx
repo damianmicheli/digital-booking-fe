@@ -36,8 +36,15 @@ const validateForm = (form) => {
 };
 
 const Login = () => {
-  const { form, errors, successLogin, failure, handleChange, handleBlur, handleSubmitLogin } =
-    useForm(initialForm, validateForm);
+  const {
+    form,
+    errors,
+    successLogin,
+    failure,
+    handleChange,
+    handleBlur,
+    handleSubmitLogin,
+  } = useForm(initialForm, validateForm);
 
   const [showPass, setShowPass] = useState(false);
   const toggleBtnPass = () => {
@@ -47,6 +54,11 @@ const Login = () => {
   useEffect(() => {
     window.scrollTo(0, 0);
   }, []);
+
+  const errorFree =
+    Object.values(errors).find((error) => error !== "") === undefined
+      ? true
+      : false;
 
   return (
     <>
@@ -65,7 +77,9 @@ const Login = () => {
         textBtn={"ok"}
       />
       <div className={styles.container}>
-      <AlertUser text={"Para realizar una reserva necesitas estar logueado"}/>
+        <AlertUser
+          text={"Para realizar una reserva necesitas estar logueado"}
+        />
         <div className={styles.content}>
           <p className="headings heading1">Iniciar sesión</p>
           <form
@@ -84,6 +98,7 @@ const Login = () => {
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={form.emailLogin}
+                  className={errors.emailLogin && styles.errorInput}
                 />
                 {errors.emailLogin && (
                   <p className={styles.pFormError}>{errors.emailLogin}</p>
@@ -99,6 +114,7 @@ const Login = () => {
                     onBlur={handleBlur}
                     onChange={handleChange}
                     value={form.passwordLogin}
+                    className={errors.passwordLogin && styles.errorInput}
                   />
                   <span onClick={toggleBtnPass}>
                     {showPass ? (
@@ -114,7 +130,16 @@ const Login = () => {
               </div>
 
               <div className={styles.groupForm}>
-                <Button css="buttonForm" text="Ingresar" />
+                {errorFree ? (
+                  <Button css="buttonForm" text="Ingresar" />
+                ) : (
+                  <Button
+                    css="buttonFormDisabled"
+                    text="Ingresar"
+                    isDisabled={!errorFree}
+                  />
+                )}
+
                 <span className="text2 spanForm">
                   ¿Aún tienes una cuenta? <a href="/registro">Registrate</a>
                 </span>

@@ -5,26 +5,31 @@ import { faSquarePlus, faSquareXmark } from "@fortawesome/free-solid-svg-icons";
 const AttributeContext = createContext();
 
 const AttributeProvider = ({ children }) => {
-  const [attributeCounter, setAttributesCounter] = useState([{id:"", name:""}]);
+  const [attributeCounter, setAttributesCounter] = useState([
+    { id: "", name: "" },
+  ]);
   const [attributeInputs, setAttributeInputs] = useState([]);
   const [attributesList, setAttributesList] = useState([]);
   const [attributesLoaded, setAttributesLoaded] = useState([]);
 
-  const addAttribute = ({id, name}) => {
-   /*  const newIndex = Number(attributeCounter[attributeCounter.length - 1] + 1);
+  const addAttribute = ({ id, name }) => {
+    /*  const newIndex = Number(attributeCounter[attributeCounter.length - 1] + 1);
     console.log({ newIndex }); */
-    attributeCounter[0].id ? setAttributesCounter( [{id, name}]) : setAttributesCounter((prev) => [...prev, {id, name}]);
+    attributeCounter[0].id
+      ? setAttributesCounter([{ id, name }])
+      : setAttributesCounter((prev) => [...prev, { id, name }]);
     console.log("Se agregó un input de atributo");
-    console.log({ attributeCounter});
+    console.log({ attributeCounter });
   };
 
   const deleteAttribute = (number) => {
-    
-    setAttributesCounter(attributeCounter.filter((attribute)=> attribute.id !== number));
-    console.log({ number, attributeCounter});
+    setAttributesCounter(
+      attributeCounter.filter((attribute) => attribute.id !== number)
+    );
+    console.log({ number, attributeCounter });
     const newAttribute = [];
-    console.log({attributeInputs});
-    console.log({attributesList});
+    console.log({ attributeInputs });
+    console.log({ attributesList });
     attributeInputs.forEach((input) => {
       console.log({ input });
       input !== number && newAttribute.push(input);
@@ -32,25 +37,23 @@ const AttributeProvider = ({ children }) => {
     console.log({ newAttribute });
     setAttributesList(attributesList.filter((id) => id !== number));
     setAttributeInputs(newAttribute);
-    
   };
 
-  console.log({attributesList});
-  console.log({attributeCounter});
-  const handleAttribute = ( number, id, iconInput, setIconInput, name) => {
-/*     console.log({ boolean, number, iconInput }); */
+  console.log({ attributesList });
+  console.log({ attributeCounter });
+  const handleAttribute = (number, id, iconInput, setIconInput, name) => {
+    /*     console.log({ boolean, number, iconInput }); */
     if (iconInput === faSquarePlus) {
-      addAttribute({id, name});
-       setIconInput(faSquareXmark);  
+      addAttribute({ id, name });
+      setIconInput(faSquareXmark);
     } else {
       deleteAttribute(id);
-    }    
+    }
   };
 
   useEffect(() => {
     setAttributesLoaded(attributesList);
   }, [handleAttribute /* , deleteAttribute */]);
-
 
   useEffect(() => {
     for (let i = 1; i < attributeCounter; i++) {

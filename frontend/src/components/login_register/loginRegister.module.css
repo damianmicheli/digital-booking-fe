@@ -1,10 +1,10 @@
 .container {
   width: 100%;
-	height: 83vh;
-	background: #eceff1;
-	justify-content: center;
-	padding-block-start: 100px;
-	padding-block-end: 100px;
+  height: 83vh;
+  background: #eceff1;
+  justify-content: center;
+  padding-block-start: 100px;
+  padding-block-end: 100px;
 }
 
 .divInputs {
@@ -73,6 +73,10 @@
 
 .iconError {
   font-size: 20px;
+}
+.errorInput {
+  background-color: #ffe1e1;
+  border: 1px solid #ff0000 !important;
 }
 
 @media only screen and (min-width: 991px) {
