@@ -1,10 +1,9 @@
 import React, { useContext } from "react";
 
-import Calendar from "./Calendar";
+import CalendarBooking from "./CalendarBooking";
 import Button from "../../../global/Button";
 
 import useMediaQuery from "../../../../hooks/useMediaQuery";
-import styles from "./booking.module.css";
 
 import useFetch from "../../../../hooks/useFetch";
 import { useParams, useNavigate } from "react-router";
@@ -14,8 +13,10 @@ import { addDays } from "date-fns"
 
 import URL_BASE from "../../../global/getUrlBase";
 
+import styles from "./booking.module.css";
+
 const BookingCalendar = () => {
-  const isMobile = useMediaQuery(624);
+  const isMobile = useMediaQuery(768);
 
   const { id } = useParams();
 
@@ -48,9 +49,9 @@ const BookingCalendar = () => {
           <div className={styles.calendarPButton}>
             <div className={styles.calendar}>
               {isMobile ? (
-                <Calendar months={1} bookings={fechasInhabilitadas} />
+                <CalendarBooking months={1} bookings={fechasInhabilitadas} />
               ) : (
-                <Calendar months={2} bookings={fechasInhabilitadas} />
+                <CalendarBooking months={2} bookings={fechasInhabilitadas} />
               )}
             </div>
             <div className={styles.pButton}>

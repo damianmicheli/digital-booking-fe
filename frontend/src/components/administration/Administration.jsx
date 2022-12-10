@@ -41,13 +41,12 @@ const Administration = () => {
   // *** ATRIBUTOS ***
   const { attributeCounter, handleAttribute, attributesLoaded, attributesList} =
     useContext(AttributeContext);
-  console.log({ attributesLoaded });
-  console.log({ attributesList });
+
 
   const darAltaProducto = (settings) => {
     fetch(`${URL_BASE}/productos`, settings)
       .then((response) => {
-        console.log(response);
+        console.log({response});
         if (response.ok !== true) {
           setFailure(true);
         }
@@ -62,7 +61,7 @@ const Administration = () => {
       })
       .catch((err) => {
         console.log("Promesa rechazada:");
-        console.log(err);
+        console.log({err});
       });
   };
 
@@ -218,11 +217,12 @@ const Administration = () => {
               /> */}
               {/*   {attributeInputs} */}
 
-              {attributeCounter.map((number, index) => (
+              { attributeCounter.map((number, index) => (
                 <Attribute
                   handleAttribute={handleAttribute}
                   key={index}
                   number={number}
+
                 />
               ))}
               <h2 className="heading2 color2 paddingTop">

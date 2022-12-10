@@ -12,7 +12,8 @@ import URL_BASE from "../../global/getUrlBase";
 import AttributeContext from "../../../context/AttributeContext";
 
 const Attribute = ({ number }) => {
-  const { handleAttribute } = useContext(AttributeContext);
+  const { handleAttribute, attributesList, setAttributesList } =
+    useContext(AttributeContext);
   const [atributos] = useFetch(`${URL_BASE}/caracteristicas`);
   const [isActive, setIsActive] = useState(false);
   const [value, setValue] = useState(false);
@@ -22,6 +23,7 @@ const Attribute = ({ number }) => {
 
   useEffect(() => {
     setValue(selected !== "Elegí un atributo");
+    /*  selected !== "Elegí un atributo" && setIconInput(faSquareXmark); */
   }, [selected]);
 
   return (
@@ -41,9 +43,10 @@ const Attribute = ({ number }) => {
                 <div
                   key={atributo.id}
                   onClick={() => {
-                    setSelected(`${atributo.nombre}`);
+                    setSelected(atributo.nombre);
                     setIsActive(false);
                     setId(atributo.id);
+                    setAttributesList([...attributesList, { id: atributo.id }]);
                   }}
                   className={styles.dropdownItem}
                 >
@@ -60,16 +63,15 @@ const Attribute = ({ number }) => {
       <Icon
         css={value ? styles.addIcon : styles.addIconDisabled}
         icon={iconInput}
-        event={() =>
+        event={() => 
           value &&
-          handleAttribute(
-            //selected === "Elegí un atributo",
-            value,
-            number,
-            id,
-            iconInput,
-            setIconInput
-          )
+            handleAttribute(
+              number,
+              id,
+              iconInput,
+              setIconInput,
+              selected
+            )
         }
       />
     </div>

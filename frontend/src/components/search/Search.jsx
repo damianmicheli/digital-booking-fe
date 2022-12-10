@@ -6,9 +6,10 @@ import styles from "./search.module.css";
 
 //Components
 import Select from "./content/Select";
-import Calendar from "./content/Calendar";
+import CalendarSearch from "./content/CalendarSearch";
 import Button from "../global/Button";
 import useMediaQuery from "../../hooks/useMediaQuery";
+
 
 const Search = () => {
   const [idCity, setIdCity] = useState(null);
@@ -64,14 +65,14 @@ const Search = () => {
           </div>
           <div className={styles.datepicker}>
             {isMobile ? (
-              <Calendar
+              <CalendarSearch
                 months={1}
                 setReservationDate={setReservationDate}
                 selectedDate={selectedDate}
                 setSelectedDate={setSelectedDate}
               />
             ) : (
-              <Calendar
+              <CalendarSearch
                 months={2}
                 setReservationDate={setReservationDate}
                 selectedDate={selectedDate}
