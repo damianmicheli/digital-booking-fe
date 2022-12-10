@@ -59,6 +59,8 @@ const BookingTemplate = () => {
     selectedOption: null,
   });
 
+  const [location, setLocation] = useState("");
+
   const { startDate, endDate } = reservationDate;
 
   const checkIn =
@@ -69,16 +71,18 @@ const BookingTemplate = () => {
   function realizarReserva(settings) {
     fetch(`${URL_BASE}/reservas`, settings)
       .then((response) => {
-        console.log(response);
+        console.log({ response });
         if (response.ok !== true) {
           setFailure(true);
         }
         return response.json();
       })
       .then((data) => {
-        console.log(data);
+        console.log({ data });
         console.log("Se registro ok la reserva");
-        if(data){setSuccess(true)};
+        if (data) {
+          setSuccess(true);
+        }
       })
       .catch((err) => {
         console.log("Promesa rechazada:");
@@ -98,10 +102,13 @@ const BookingTemplate = () => {
       },
       usuario: {
         id: `${userLog.id}`,
+        ciudad: `${location}`,
       },
       aclaraciones: text.selectedOption,
       vacunado: `${value.selectedOption}`,
     };
+
+    console.log({ location });
 
     const settings = {
       method: "POST",
@@ -188,6 +195,10 @@ const BookingTemplate = () => {
                       id="location"
                       name="location"
                       placeholder={userLog && userLog.ciudad}
+                      value={location}
+                      onChange={(e) => {
+                        setLocation(e.target.value);
+                      }}
                     />
                   </div>
                 </div>
