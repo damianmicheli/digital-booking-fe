@@ -1,23 +1,23 @@
 import React from "react";
 import Icon from "../../Icon";
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
-import styles from "./alert.module.css";
+import styles from "./alertUser.module.css";
 import { useLocation } from 'react-router-dom';
 
 
-const Alert = ()=> {
+const AlertUser = ({ text })=> {
   const location = useLocation();
   const showAlert = new URLSearchParams(location.search).get('showAlert');
 
   return (
     <div className={styles.container}>
-      <div className={!showAlert ? styles.alertHidden : styles.alertErrorAlert}>
+      <div className={!showAlert ? styles.alertHidden : styles.alertError}>
         <Icon icon={faCircleExclamation} css={styles.iconAlert} />
-        <h4 className={styles.alertTxt}>Para realizar una reserva necesitas estar logueado</h4>
+        <h4 className={styles.alertTxt}>{text}</h4>
       </div>
     </div>
 
   );
 }
 
-export default Alert;
+export default AlertUser;

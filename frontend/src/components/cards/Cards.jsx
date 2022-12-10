@@ -72,6 +72,7 @@ const Cards = ({ data }) => {
                     }
                     category={producto.categoria.titulo.toUpperCase()}
                     title={producto.nombre}
+                    score={producto.puntajePromedio}
                     location={`${producto.ciudad.ciudad}, ${producto.ciudad.pais}`}
                     description={producto.descripcion}
                     features={producto.caracteristicas}

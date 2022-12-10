@@ -4,7 +4,7 @@ import Button from "../global/Button";
 import Icon from "../global/Icon";
 import { faEyeSlash, faEye } from "@fortawesome/free-solid-svg-icons";
 import useForm from "../../hooks/useForm";
-import Alert from "../global/modal/alert/Alert";
+import AlertUser from "../global/modal/alert/AlertUser";
 import Success from "../global/modal/success/Success";
 import Failure from "../global/modal/Failure";
 
@@ -50,7 +50,6 @@ const Login = () => {
 
   return (
     <>
-      <Alert />
       <Failure
         state={failure}
         text1={"Lamentablemente no ha podido iniciar sesión."}
@@ -66,6 +65,7 @@ const Login = () => {
         textBtn={"ok"}
       />
       <div className={styles.container}>
+      <AlertUser text={"Para realizar una reserva necesitas estar logueado"}/>
         <div className={styles.content}>
           <p className="headings heading1">Iniciar sesión</p>
           <form

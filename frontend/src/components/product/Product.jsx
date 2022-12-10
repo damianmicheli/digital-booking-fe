@@ -10,6 +10,7 @@ import Politics from "./content/Politics";
 import BookingCalendar from "./content/booking_calendar/BookingCalendar";
 import GalleryContainer from "../gallery/GalleryContainer";
 import SocialMediaShare from "./content/SocialMediaShare";
+import Score from "./content/Score";
 
 /* import Button from "../global/Button";
 import Icon from "../global/Icon";
@@ -43,9 +44,26 @@ const Product = () => {
 
   return (
     <div className={styles.containerProduct}>
-      <div className={styles.socialMediaContainer}>
-        <SocialMediaShare url={`http://www.digitalbooking.ar/producto/${id}`} />
-        {/* <Button
+      {data && (
+        <>
+          <HeaderProduct
+            category={data?.categoria.titulo.toUpperCase()}
+            title={data?.nombre}
+            path={"/"}
+          />
+          <LocationProduct
+            direction={data?.direccion}
+            city={data?.ciudad.ciudad}
+            country={data?.ciudad.pais}
+            score={data?.puntajePromedio}
+          />
+          <div className={styles.socialMediaContainer}>
+            <SocialMediaShare
+              url={`http://www.digitalbooking.ar/producto/${id}`}
+              category={data?.categoria.titulo.toUpperCase()}
+              title={data?.nombre}
+            />
+            {/* <Button
           event={toggleItemInLocalStorage(idNumber, isFavorite)}
           css="btnFav"
           text={
@@ -56,12 +74,7 @@ const Product = () => {
             /> 
           }
         />*/}
-      </div>
-      {
-        data &&
-        <>
-          <HeaderProduct category={data?.categoria.titulo.toUpperCase()} title={data?.nombre} path={"/"} />
-          <LocationProduct direction={data?.direccion} city={data?.ciudad.ciudad} country={data?.ciudad.pais} />
+          </div>
           <GalleryContainer images={data?.imagenes} />
           <div className={styles.descriptionContainer}>
             <DescriptionProduct
@@ -83,8 +96,9 @@ const Product = () => {
             politicaSalud={data?.politica_de_salud_y_seguridad}
             politicaCancelacion={data?.politica_de_cancelacion}
           />
+          <Score />
         </>
-      }
+      )}
     </div>
   );
 };
