@@ -42,7 +42,14 @@
 
 .scoreContainer {
     display: flex;
+    align-items: center;
     gap: 0.5rem;
+}
+
+.descriptionScoreContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .score {
@@ -61,6 +68,7 @@
   .scoreText {
     font-size: 14px;
     font-weight: 700;
+    margin-bottom: -0.3rem;
   }
   
 

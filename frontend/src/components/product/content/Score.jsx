@@ -23,15 +23,16 @@ const Score = () => {
       .then((response) => {
         console.log(response);
         if (response.ok !== true) {
-          alert(
-            "Lamentablemente no se pudo realizar su puntuacion. Por favor intente más tarde"
-          );
+          setFailure(true);
         }
         return response.json();
       })
       .then((data) => {
         console.log(data);
         console.log("Se registro ok la puntuacion");
+        if (data) {
+          setSuccess(true);
+        }
       })
       .catch((err) => {
         console.log("Promesa rechazada:");
@@ -59,12 +60,8 @@ const Score = () => {
         Authorization: token,
       },
     };
-    if (auth) {
-      realizarPuntuacion(settings)
-      setSuccess(true)
-    } else {
-      setFailure(true)
-    }
+
+    realizarPuntuacion(settings);
   };
 
   return (
@@ -79,7 +76,7 @@ const Score = () => {
       <Failure
         state={failure}
         text1={"¡Atención!"}
-        text2={"Para poder puntuar un producto necesitas estar logueado"}
+        text2={"Para poder calificar un producto necesitas estar logueado"}
         path={"/"}
         textBtn={"Ok"}
       />

@@ -12,6 +12,7 @@ import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import { getIcons } from "../global/getIcons";
 import { getDescriptionScore } from "../global/getDescriptionScore";
+import { getStarNum } from "../global/getStarNum";
 
 const Card = ({
   id,
@@ -55,7 +56,10 @@ const Card = ({
       <div className={styles.informationContainer}>
         <div className={styles.cardHeader}>
           <div className={styles.title}>
-            <h5>{category}</h5>
+            <div className={styles.categoryStarsContainer}>
+              <h5>{category}</h5>
+              <p className="stars">{getStarNum(score)}</p>
+            </div>
             <h3>{title}</h3>
           </div>
           {

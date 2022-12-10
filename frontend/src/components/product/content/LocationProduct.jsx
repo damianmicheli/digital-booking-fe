@@ -4,6 +4,7 @@ import Icon from "../../global/Icon";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import useMediaQuery from "../../../hooks/useMediaQuery";
 import { getDescriptionScore } from "../../global/getDescriptionScore";
+import { getStarNum } from "../../global/getStarNum";
 
 const LocationProduct = ({ direction, city, country, score }) => {
   const isMobile = useMediaQuery(624);
@@ -26,7 +27,12 @@ const LocationProduct = ({ direction, city, country, score }) => {
               ""
             ) : (
               <div className={styles.scoreContainer}>
-                <p className={styles.scoreText}>{getDescriptionScore(score)}</p>
+                <div className={styles.descriptionScoreContainer}>
+                  <p className={styles.scoreText}>
+                    {getDescriptionScore(score)}
+                  </p>
+                  <p className="stars">{getStarNum(score)}</p>
+                </div>
                 <div className={styles.score}>{score.toFixed()}</div>
               </div>
             )}
