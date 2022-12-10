@@ -123,10 +123,10 @@ title {
   padding-block-start: 10px;
   padding-block-end: 5px;
   display: block;
-  width: 366px;
-  height: 72px;
+  width: 340px;
+  height: 60px;
   position: absolute;
-  bottom: 25%;
+  bottom: 29%;
   overflow-y: scroll;
   scroll-behavior: smooth;
   color: var(--color-2);
@@ -188,6 +188,7 @@ title {
   .description {
     width: 321px;
     height: 60px;
+    bottom: 25%;
   }
 
   .cardImg {
