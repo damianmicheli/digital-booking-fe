@@ -7,6 +7,7 @@ import Icon from "../global/Icon";
 import { faCircleExclamation } from "@fortawesome/free-solid-svg-icons";
 import Card from "../cards/Card";
 import HeaderProduct from "../product/content/HeaderProduct";
+import Button from "../global/Button";
 
 const MyBookings = () => {
   useEffect(() => {
@@ -25,9 +26,13 @@ const MyBookings = () => {
           <div className={styles.reservation}>
             <Icon css={styles.iconExclamation} icon={faCircleExclamation} />
             <h2>Aún no has efectuado ninguna reserva</h2>
-            <Link to={"/"}>
+            {/* <Link to={"/"}>
               <p className={styles.backHome}>Volver a home</p>
+            </Link> */}
+            <Link to={"/"}>
+              <Button css="button6" text={"Volver al inicio"} />
             </Link>
+          
           </div>
         ) : (
           <div className={styles.itemContainer}>
