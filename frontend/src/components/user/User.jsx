@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Button from "../global/Button";
 import Icon from "../global/Icon";
 import styles from "./user.module.css";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -9,7 +8,7 @@ import { Link } from "react-router-dom";
 
 const User = () => {
 
-  const isMobile = useMediaQuery(768);
+  const isMobile = useMediaQuery(624);
 
   const { handleAuth, userLog } = useContext(AuthContext);
 
