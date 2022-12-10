@@ -4,7 +4,7 @@ import styles from './descriptionProduct.module.css';
 const DescriptionProduct = ( {title, description, ciudad} ) => {
   return (
     <div className={styles.container}>
-        <h1 className={styles.title}>{`${title} ${ciudad}`}</h1>
+        <h1 className={styles.title}>{title}</h1>
         <p className={styles.description}>
           {description}
         </p>

@@ -232,6 +232,11 @@ li {
 margin: 0 auto;
 }
 
+.iconStar {
+  color: var(--color-principal);
+  font-size: 0.8em;
+}
+
 @media only screen and (min-width: 624px) {
   .marginBottom{
     margin-bottom: 20px;

@@ -72,6 +72,7 @@ const MyBookings = () => {
                       startDate={`${reservation.fecha_inicial_reserva[2]}/${reservation.fecha_inicial_reserva[1]}/${reservation.fecha_inicial_reserva[0]}`}
                       endDate={`${reservation.fecha_final_reserva[2]}/${reservation.fecha_final_reserva[1]}/${reservation.fecha_final_reserva[0]}`}
                       hour={`${reservation.hora_comienzo_reserva[0]}hs`}
+                      score={reservation.producto.puntajePromedio}
                     />
                     {console.log(typeof reservation)}
                   </div>

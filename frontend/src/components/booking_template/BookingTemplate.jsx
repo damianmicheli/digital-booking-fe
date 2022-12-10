@@ -345,6 +345,7 @@ const BookingTemplate = () => {
                     category={data?.categoria.titulo.toUpperCase()}
                     location={data?.direccion}
                     image={data?.imagenes[0]}
+                    score={data?.puntajePromedio}
                   />
                 )}
               </div>

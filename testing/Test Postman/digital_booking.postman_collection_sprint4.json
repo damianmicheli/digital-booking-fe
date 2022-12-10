@@ -1,0 +1,942 @@
+{
+	"info": {
+		"_postman_id": "4593bf27-4c03-4ccb-bc85-a1bce5f8e9e5",
+		"name": "digital_booking",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "listar productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/productos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar producto con id inexistente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/productos/buscar?id=100",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"productos",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar producto por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/productos/buscar?id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"productos",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "guardar producto con datos completos",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"titulo\":\"Un Titulo\",\r\n\"nombre\": \"Un Nombre\",\r\n\"descripcion\":\"Una descripcion\",\r\n\"direccion\": \"Calle falsa 123\",\r\n\"politica_de_uso\": \"checkin a las 10 no mascotas\",\r\n\"politica_de_salud_y_seguridad\":\"No prender fuego, no fumar\",\r\n\"politica_de_cancelacion\": \"No se puede cancelar, no hay devolucion\",\r\n\"categoria\": {\r\n    \"id\":\"1\"\r\n},\r\n\"ciudad\": {\r\n    \"id\":\"1\"\r\n},\r\n\"imagenes\": [\r\n        {\r\n            \"titulo\": \"casa-01-01\",\r\n            \"url\": \"https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-01-01.webp\"\r\n        },\r\n        {\r\n            \"titulo\": \"casa-01-02\",\r\n            \"url\": \"https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-01-02.webp\"\r\n        },\r\n        {\r\n            \"titulo\": \"casa-01-03\",\r\n            \"url\": \"https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-01-03.webp\"\r\n        },\r\n        {\r\n            \"titulo\": \"casa-01-04\",\r\n            \"url\": \"https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-01-04.webp\"\r\n        },\r\n        {\r\n            \"titulo\": \"casa-01-05\",\r\n            \"url\": \"https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-01-05.webp\"\r\n        }\r\n    ],\r\n\"caracteristicas\": [\r\n    {\"id\":\"1\"},\r\n    {\"id\":\"2\"}, \r\n    {\"id\":\"3\"}\r\n]\r\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/productos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "guardar producto con datos parciales",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titulo\": \"Casa Prueba 1\",\n    \"nombre\": \"Casa 1\",\n    \"descripcion\": \"casa 1\",\n    \"direccion\": \"direccion 1\",\n    \"politica_de_uso\" : \"politica 1\",\n    \"politica_de_salud_y_seguridad\" : \"politica1\",\n    \"politica_de_cancelacion\" : \"politica 1\",\n    \"categoria\": {\"id\": 1},\n    \"ciudad\" : {\"id\": 1}\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/productos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar productos de forma aleatoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/productos/random",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"productos",
+								"random"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar productos por ciudad",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/productos?ciudad=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"productos"
+							],
+							"query": [
+								{
+									"key": "ciudad",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar productos por categoria",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/productos?categoria=2",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"productos"
+							],
+							"query": [
+								{
+									"key": "categoria",
+									"value": "2"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar productos por fechas pasadas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/productos?fechaInicio=2023-01-10&&fechaFin=2022-01-11",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"productos"
+							],
+							"query": [
+								{
+									"key": "fechaInicio",
+									"value": "2023-01-10"
+								},
+								{
+									"key": null,
+									"value": null
+								},
+								{
+									"key": "fechaFin",
+									"value": "2022-01-11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar productos por fechas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/productos?fechaInicio=2023-01-10&&fechaFin=2023-01-11",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"productos"
+							],
+							"query": [
+								{
+									"key": "fechaInicio",
+									"value": "2023-01-10"
+								},
+								{
+									"key": null,
+									"value": null
+								},
+								{
+									"key": "fechaFin",
+									"value": "2023-01-11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar productos por ciudad y fechas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/productos?ciudad=1&&fechaInicio=2023-01-10&&fechaFin=2023-01-11",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"productos"
+							],
+							"query": [
+								{
+									"key": "ciudad",
+									"value": "1"
+								},
+								{
+									"key": null,
+									"value": null
+								},
+								{
+									"key": "fechaInicio",
+									"value": "2023-01-10"
+								},
+								{
+									"key": null,
+									"value": null
+								},
+								{
+									"key": "fechaFin",
+									"value": "2023-01-11"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar un producto",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": 38,\n    \"titulo\": \"Un Titulo Cambiado\",\n    \"nombre\": \"Un Nombre Cambiado\",\n    \"descripcion\": \"Una descripcion\",\n    \"direccion\": \"Calle falsa 123\",\n    \"politica_de_uso\": \"checkin a las 10 no mascotas\",\n    \"politica_de_salud_y_seguridad\": \"No prender fuego, no fumar\",\n    \"politica_de_cancelacion\": \"No se puede cancelar, no hay devolucion\",\n    \"categoria\": {\n        \"id\": 1,\n        \"titulo\": null,\n        \"descripcion\": null,\n        \"url\": null\n    },\n    \"ciudad\": {\n        \"id\": 2,\n        \"ciudad\": null,\n        \"pais\": null\n    },\n    \"imagenes\": [\n        {\n            \"titulo\": \"casa-01-01\",\n            \"url\": \"https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-01-01.webp\"\n        },\n        {\n            \"titulo\": \"casa-01-02\",\n            \"url\": \"https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-01-02.webp\"\n        },\n        {\n            \"titulo\": \"casa-01-03\",\n            \"url\": \"https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-01-03.webp\"\n        },\n        {\n            \"titulo\": \"casa-01-04\",\n            \"url\": \"https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-01-04.webp\"\n        },\n        {\n            \"titulo\": \"casa-01-05\",\n            \"url\": \"https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-01-05.webp\"\n        }\n    ],\n    \"caracteristicas\": [\n    {\"id\":\"1\"},\n    {\"id\":\"2\"}, \n    {\"id\":\"3\"}\n]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/productos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar producto con id inexistente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJhZG1pbjFAbWFpbC5jb20iLCJleHAiOjE2Njk4MDg3NTgsImlhdCI6MTY2OTc3Mjc1OH0.GybplbmAKsQ2G4O22ErDGY_Xxn34pAKGm-P3HMAgIKk",
+									"type": "string"
+								}
+							]
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n\"id\": 1000,\n\"titulo\":\"Un Titulo\",\n\"nombre\": \"Un Nombre\",\n\"descripcion\":\"Una descripcion\",\n\"direccion\": \"Calle falsa 123\",\n\"politica_de_uso\": \"checkin a las 10 no mascotas\",\n\"politica_de_salud_y_seguridad\":\"No prender fuego, no fumar\",\n\"politica_de_cancelacion\": \"No se puede cancelar, no hay devolucion\",\n\"categoria\": {\n    \"id\":\"1\"\n},\n\"ciudad\": {\n    \"id\":\"1\"\n},\n\"imagenes\": [\n        {\n            \"titulo\": \"casa-01-01\",\n            \"url\": \"https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-01-01.webp\"\n        },\n        {\n            \"titulo\": \"casa-01-02\",\n            \"url\": \"https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-01-02.webp\"\n        },\n        {\n            \"titulo\": \"casa-01-03\",\n            \"url\": \"https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-01-03.webp\"\n        },\n        {\n            \"titulo\": \"casa-01-04\",\n            \"url\": \"https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-01-04.webp\"\n        },\n        {\n            \"titulo\": \"casa-01-05\",\n            \"url\": \"https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-01-05.webp\"\n        }\n    ],\n\"caracteristicas\": [\n    {\"id\":\"1\"},\n    {\"id\":\"2\"}, \n    {\"id\":\"3\"}\n]\n} ",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/productos",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"productos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categorias",
+			"item": [
+				{
+					"name": "listar categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/categorias",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "guardar categoria",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"titulo\": \"Casa\",\n    \"descripcion\": \"Casa completa\",\n    \"url\": \"https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/categorias",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar categoria exitosamente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"5\",\n    \"titulo\": \"Casita\",\n    \"descripcion\": \"2 ambientes\",\n    \"url\": \"https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/categorias",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "actualizar categoria con id inexistente",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"10\",\n    \"titulo\": \"Departamento\",\n    \"descripcion\": \"2 ambientes\",\n    \"url\": \"https://images.unsplash.com/photo-1572120360610-d971b9d7767c?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=870&q=80\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/categorias",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar categoria por id",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/categorias/buscar?id=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categorias",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "buscar categoria con id inexistente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/categorias/buscar?id=100",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"categorias",
+								"buscar"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar categoria por id",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/categorias/eliminar?id=5",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categorias",
+								"eliminar"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "5"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "eliminar categoria con id inexistente",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/categorias/eliminar?id=100",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"categorias",
+								"eliminar"
+							],
+							"query": [
+								{
+									"key": "id",
+									"value": "100"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ciudades",
+			"item": [
+				{
+					"name": "listar todas las ciudades",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/ciudades",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"ciudades"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Reservas",
+			"item": [
+				{
+					"name": "crear una reserva",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c3VhcmlvQG1haWwuY29tIiwiZXhwIjoxNjcwNjgwNjYyLCJpYXQiOjE2NzA2NDQ2NjJ9.ckldJkZiIbOktjY2iQgAC_VvLEMTYW9ZgWXR1EnMRCY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"producto\":{\n        \"id\":\"2\"\n    },\n    \"fecha_inicial_reserva\":\"2022-12-20\",\n    \"fecha_final_reserva\":\"2022-12-25\",\n    \"hora_comienzo_reserva\":\"10:00:00\",\n    \"usuario\":{\n        \"id\":\"7\"\n    },\n    \"vacunado\":\"true\",\n    \"aclaraciones\":\"\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/reservas",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reservas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "crear una reserva con producto inexistente",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c3VhcmlvQG1haWwuY29tIiwiZXhwIjoxNjcwNjgwNjYyLCJpYXQiOjE2NzA2NDQ2NjJ9.ckldJkZiIbOktjY2iQgAC_VvLEMTYW9ZgWXR1EnMRCY",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"producto\":{\n        \"id\":\"1000\"\n    },\n    \"fecha_inicial_reserva\":\"2022-12-20\",\n    \"fecha_final_reserva\":\"2022-12-25\",\n    \"hora_comienzo_reserva\":\"10:00:00\",\n    \"usuario\":{\n        \"id\":\"7\"\n    },\n    \"vacunado\":\"true\",\n    \"aclaraciones\":\"\"\n\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/reservas",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reservas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar reservas por producto",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/reservas?producto=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reservas"
+							],
+							"query": [
+								{
+									"key": "producto",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "listar reservas por cliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/reservas?usuario=1",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"reservas"
+							],
+							"query": [
+								{
+									"key": "usuario",
+									"value": "1"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Autenticacion",
+			"item": [
+				{
+					"name": "iniciar sesion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"usuario@mail.com\",\n    \"password\":\"Digital2022\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/autenticar",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"autenticar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "iniciar sesion con Admin",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"administrador@mail.com\",\n    \"password\":\"Digital2022\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/autenticar",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"autenticar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "iniciar sesion con credenciales invalidas",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"username\":\"grupo4\",\n    \"password\":\"Grupo42022\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/autenticar",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"autenticar"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Ciudades",
+			"item": [
+				{
+					"name": "listar ciudades",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "localhost:8080/ciudades",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ciudades"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Usuarios",
+			"item": [
+				{
+					"name": "registrar",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\":\"Nombre Usuario\",\r\n    \"apellido\":\"Apellido Usuario\",\r\n    \"email\":\"usuario@mail.com\",\r\n    \"ciudad\":\"Ciudad Usuario\",\r\n    \"password\":\"Digital2022\",\r\n        \"roles\": [\r\n        {\r\n            \"id\": 1\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/usuario",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "datos de usuario",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiJ9.eyJzdWIiOiJ1c3VhcmlvQG1haWwuY29tIiwiZXhwIjoxNjcwNjgwMzgwLCJpYXQiOjE2NzA2NDQzODB9.eml9xzUKw0GvTw3_msComdjekM1iuEU29FaL9_sFuk4",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/usuario",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "registar usuario ya registrado",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"nombre\":\"Un nombre\",\n    \"apellido\":\"Un apellido\",\n    \"email\":\"usuario@mail.com\",\n    \"ciudad\":\"Una ciudad\",\n    \"password\":\"Digital2022\",\n        \"roles\": [\n        {\n            \"id\": 2\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{url}}/usuario",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"usuario"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Caracteristicas",
+			"item": [
+				{
+					"name": "listar todas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{url}}/caracteristicas",
+							"host": [
+								"{{url}}"
+							],
+							"path": [
+								"caracteristicas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "url",
+			"value": "localhost:8080"
+		}
+	]
+}
