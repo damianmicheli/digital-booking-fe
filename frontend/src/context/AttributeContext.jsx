@@ -51,14 +51,8 @@ const AttributeProvider = ({ children }) => {
     setAttributesLoaded(attributesList);
   }, [handleAttribute /* , deleteAttribute */]);
 
-/*   console.log({ attributesLoaded }) */;
-
-  /*   useEffect(()=>{
-    deleteAttribute(id)
-  },[iconInput]) */
 
   useEffect(() => {
-   /*  console.log({ attributeCounter }); */
     for (let i = 1; i < attributeCounter; i++) {
       setAttributeInputs(
         attributeInputs.concat(

@@ -8,7 +8,7 @@ import Failure from "../../global/modal/Failure";
 import AuthContext from "../../../context/AuthContext";
 
 const Score = () => {
-  const { userLog, auth } = useContext(AuthContext);
+  const { userLog } = useContext(AuthContext);
   const { id } = useParams();
 
   const [success, setSuccess] = useState(false);
@@ -21,14 +21,14 @@ const Score = () => {
   function realizarPuntuacion(settings) {
     fetch(`${URL_BASE}/productos/puntuar`, settings)
       .then((response) => {
-        console.log(response);
+        console.log({response});
         if (response.ok !== true) {
           setFailure(true);
         }
         return response.json();
       })
       .then((data) => {
-        console.log(data);
+        console.log({data});
         console.log("Se registro ok la puntuacion");
         if (data) {
           setSuccess(true);
@@ -36,7 +36,7 @@ const Score = () => {
       })
       .catch((err) => {
         console.log("Promesa rechazada:");
-        console.log(err);
+        console.log({err});
       });
   }
 
@@ -60,7 +60,6 @@ const Score = () => {
         Authorization: token,
       },
     };
-
     realizarPuntuacion(settings);
   };
 
@@ -77,7 +76,7 @@ const Score = () => {
         state={failure}
         text1={"¡Atención!"}
         text2={"Para poder calificar un producto necesitas estar logueado"}
-        path={"/"}
+        path={"/login"}
         textBtn={"Ok"}
       />
       <div className={styles.container}>
