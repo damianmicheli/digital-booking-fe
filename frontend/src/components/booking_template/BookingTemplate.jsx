@@ -22,6 +22,10 @@ const BookingTemplate = () => {
   const [success, setSuccess] = useState(false);
   const [failure, setFailure] = useState(false);
 
+  const [isEmpty, setIsEmpty] = useState(false);
+  const [dateRangeIsRequired, setDateRangeIsRequired] = useState(false);
+  const [scheduleIsRequired, setScheduleIsRequired] = useState(false);
+  const [vaccinationIsRequired, setVaccinationIsRequired] = useState(false);
 
   const isMobile = useMediaQuery(624);
 
@@ -32,7 +36,7 @@ const BookingTemplate = () => {
   let fechasInhabilitadas = [];
   let newDate;
   disabledDates &&
-  disabledDates?.fechasNoDisponibles.map((array) => {
+    disabledDates?.fechasNoDisponibles.map((array) => {
       newDate = new Date(array[0], array[1] - 1, array[2]);
       return fechasInhabilitadas.push(newDate);
     });
@@ -57,7 +61,7 @@ const BookingTemplate = () => {
   });
 
   const [option, setOption] = useState({
-    selectedOption: null
+    selectedOption: null,
   });
 
   const [location, setLocation] = useState("");
@@ -97,18 +101,18 @@ const BookingTemplate = () => {
     e.preventDefault();
     const token = "Bearer " + JSON.parse(localStorage.getItem("jwt"));
     const payload = {
-      "hora_comienzo_reserva": option.selectedOption,
-      "fecha_inicial_reserva": format(startDate, "yyyy-MM-dd"),
-      "fecha_final_reserva": format(endDate, "yyyy-MM-dd"),
-      "producto": {
-        "id": `${id}`,
+      hora_comienzo_reserva: option.selectedOption,
+      fecha_inicial_reserva: format(startDate, "yyyy-MM-dd"),
+      fecha_final_reserva: format(endDate, "yyyy-MM-dd"),
+      producto: {
+        id: `${id}`,
       },
       usuario: {
         id: `${userLog.id}`,
         ciudad: `${location}`,
       },
-      "aclaraciones": text.selectedOption,
-      "vacunado": `${value.selectedOption}`,
+      aclaraciones: text.selectedOption,
+      vacunado: `${value.selectedOption}`,
     };
 
     console.log({ location });
@@ -121,10 +125,35 @@ const BookingTemplate = () => {
         Authorization: token,
       },
     };
-    realizarReserva(settings);
-    setSuccess(true);
+    console.log({ isEmpty });
+    if (
+      startDate === null ||
+      endDate === null ||
+      option.selectedOption === null ||
+      value.selectedOption === null
+    ) {
+      if (startDate === null) {
+        setIsEmpty(true);
+      } else if (endDate === null) {
+        setIsEmpty(true);
+      } else {
+        setIsEmpty(true);
+      }
+      console.log({ isEmpty });
+      console.log("Hay campos obligatorios vacíos");
+    } else {
+      realizarReserva(settings);
+      setSuccess(true);
+    }
   };
 
+  useEffect(() => {
+    startDate === null || (endDate === null && setDateRangeIsRequired(true));
+    value.selectedOption === null && setVaccinationIsRequired(true);
+    option.selectedOption === null && setScheduleIsRequired(true);
+  }, [isEmpty]);
+
+  console.log({ isEmpty });
   return (
     <>
       <Failure
@@ -225,6 +254,11 @@ const BookingTemplate = () => {
                       />
                     )}
                   </div>
+                  {dateRangeIsRequired && (
+                    <p className={styles.pFormError}>
+                      Campo obligatorio. Debe seleccionar una opción
+                    </p>
+                  )}
                 </div>
                 <h2 className="heading2 color2">Tu horario de llegada</h2>
                 <div className={styles.divInputs}>
@@ -244,7 +278,7 @@ const BookingTemplate = () => {
                             selectedOption: e.target.value,
                           });
                         }}
-                        required
+                        //required
                       >
                         <option value="" key="default" hidden>
                           Seleccionar hora de llegada
@@ -322,7 +356,7 @@ const BookingTemplate = () => {
                         type="radio"
                         id="vacunado"
                         name="vacunado"
-                        required={true}
+                        //required={true}
                         value={true}
                         className={styles.radioButton}
                         onChange={(e) => {
@@ -362,20 +396,19 @@ const BookingTemplate = () => {
                     image={data?.imagenes[0]}
                     score={data?.puntajePromedio}
                   />
-                  )}
-                </div>
+                )}
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
-        {
-          data &&
-          <Politics
+      </div>
+      {data && (
+        <Politics
           normas={data?.politica_de_uso}
           politicaSalud={data?.politica_de_salud_y_seguridad}
           politicaCancelacion={data?.politica_de_cancelacion}
         />
-        }
+      )}
     </>
   );
 };

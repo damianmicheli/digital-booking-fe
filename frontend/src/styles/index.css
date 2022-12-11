@@ -126,7 +126,7 @@ input:-webkit-autofill:active  {
   cursor: pointer;
 }
 
-.button1:hover, .buttonCard:hover, .buttonForm:hover, .button4:hover{
+.button1:hover, .buttonCard:hover, .buttonForm:hover, .button4:hover, .buttonCard:hover{
   background-color: var(--color-3);
   transition: all 0.5s;
 }
