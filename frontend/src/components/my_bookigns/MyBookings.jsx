@@ -21,7 +21,7 @@ const MyBookings = () => {
   return (
     <div className={styles.container}>
       <HeaderProduct title={"Mis reservas"} path={"/"} />
-      <div>
+      <div className={styles.containerReservation}>
         {data && data.length === 0 ? (
           <div className={styles.reservation}>
             <Icon css={styles.iconExclamation} icon={faCircleExclamation} />

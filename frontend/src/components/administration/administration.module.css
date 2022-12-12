@@ -20,6 +20,7 @@
   flex-direction: column;
   width: 95%;
   margin: 5px auto;
+  padding: 2.5px 0;
   gap: 5px;
 }
 
@@ -59,6 +60,14 @@
   border: none;
 }
 
+.pFormError {
+  font-size: 0.65rem;
+  text-align: right;
+  color: red;
+  margin-bottom: -10px;
+  padding-bottom: 5px;
+}
+
 .inputImage{
   size:70%
 }
@@ -86,7 +95,9 @@
   background:white;
 }
 
-
+.contentAttributes_pError>p{
+  margin-right: 2.5%;
+}
 .contentAttributes, .contentImages {
   display: flex;
   flex-direction: row;
@@ -151,7 +162,7 @@
   background-color: #fcfcfc;
   border-radius: 5px;
   font-size: 12px;
-  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
   padding-left: 10px;
   line-height: 40px;
 }
@@ -220,4 +231,9 @@ padding-left: 15px;
     width: calc(100% - 80px);
     margin-left: 1%;
   }
+
+  .pFormError {
+    padding-bottom: 0;
+  }
+  
 }

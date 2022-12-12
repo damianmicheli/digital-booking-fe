@@ -26,27 +26,141 @@ const Administration = () => {
   const [success, setSuccess] = useState(false);
   const [failure, setFailure] = useState(false);
 
-  const [prodName, setProdName] = useState("");
+  /*  const [prodName, setProdName] = useState("");
   const [title, setTitle] = useState("");
   const [description, setDescription] = useState("");
   const [address, setAddress] = useState("");
-  const [city, setCity] = useState("");
-  const [category, setCategory] = useState("");
   const [latitude, setLatitude] = useState("");
   const [length, setLength] = useState("");
   const [usePolicy, setUsePolicy] = useState("");
   const [healthPolicy, setHealthPolicy] = useState("");
-  const [cancellationPolicy, setCancellationPolicy] = useState("");
+  const [cancellationPolicy, setCancellationPolicy] = useState(""); */
+
+  const [city, setCity] = useState("");
+  const [cityIsEmpty, setCityIsEmpty] = useState(null);
+  const [category, setCategory] = useState("");
+  const [categoryIsEmpty, setCategoryIsEmpty] = useState(null);
 
   // *** ATRIBUTOS ***
-  const { attributeCounter, handleAttribute, attributesLoaded, attributesList} =
+  const { attributeCounter, handleAttribute, attributesLoaded } =
     useContext(AttributeContext);
+  const [attributesLoadedIsEmpty, setAttributesLoadedIsEmpty] = useState(null);
 
+  console.log({ attributesLoaded });
+
+  const [errors, setErrors] = useState([]);
+  const [errorsFree, setErrorsFree] = useState();
+
+  // *** VALIDACIONES ***
+
+  const [form, setForm] = useState({
+    prodName: "",
+    title: "",
+    address: "",
+    latitude: "",
+    lengthMap: "",
+    city: "",
+    category: "",
+    description: "",
+    usePolicy: "",
+    healthPolicy: "",
+    cancellationPolicy: "",
+  });
+
+  let isRequired = "Este campo es obligatorio";
+
+  const validateForm = (form) => {
+    let errorsForm = {};
+
+    //Validación de nombre del producto
+    if (!form.prodName.trim()) {
+      errorsForm.prodName = isRequired;
+    } else {
+      errorsForm.prodName = "";
+    }
+
+    //Validación de titulo
+    if (!form.title.trim()) {
+      errorsForm.title = isRequired;
+    } else {
+      errorsForm.title = "";
+    }
+
+    //Validación de dirección
+    if (!form.address.trim()) {
+      errorsForm.address = isRequired;
+    } else {
+      errorsForm.address = "";
+    }
+
+    //Validación de latitud
+    if (!form.latitude.trim()) {
+      errorsForm.latitude = isRequired;
+    } else {
+      errorsForm.latitude = "";
+    }
+
+    //Validación de longitud
+    if (!form.lengthMap.trim()) {
+      errorsForm.lengthMap = isRequired;
+    } else {
+      errorsForm.lengthMap = "";
+    }
+
+    //Validación de descripción
+    if (!form.description.trim()) {
+      errorsForm.description = isRequired;
+    } else {
+      errorsForm.description = "";
+    }
+
+    //Validación de politicas de uso
+    if (!form.usePolicy.trim()) {
+      errorsForm.usePolicy = isRequired;
+    } else {
+      errorsForm.usePolicy = "";
+    }
+
+    //Validación de politicas de salud
+    if (!form.healthPolicy.trim()) {
+      errorsForm.healthPolicy = isRequired;
+    } else {
+      errorsForm.healthPolicy = "";
+    }
+
+    //Validación de politicas de cancelación
+    if (!form.cancellationPolicy.trim()) {
+      errorsForm.cancellationPolicy = isRequired;
+    } else {
+      errorsForm.cancellationPolicy = "";
+    }
+
+    /*    console.log({ attributesLoaded });
+
+    //Validación de atributos
+    if (form.attributesLoaded.length === 0) {
+      errorsForm.attributesLoaded = isRequired;
+    } else {
+      errorsForm.attributesLoaded = "";
+    } */
+
+    return errorsForm;
+  };
+
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setForm({ ...form, [name]: value });
+  };
+
+  const handleBlur = (e) => {
+    handleChange(e);
+    setErrors(validateForm(form));
+  };
 
   const darAltaProducto = (settings) => {
     fetch(`${URL_BASE}/productos`, settings)
       .then((response) => {
-        console.log({response});
+        console.log({ response });
         if (response.ok !== true) {
           setFailure(true);
         }
@@ -61,25 +175,28 @@ const Administration = () => {
       })
       .catch((err) => {
         console.log("Promesa rechazada:");
-        console.log({err});
+        console.log({ err });
       });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+
+    setErrors(validateForm(form));
+
     const token = "Bearer " + JSON.parse(localStorage.getItem("jwt"));
     const payload = {
-      titulo: title,
-      nombre: prodName,
-      descripcion: description,
-      direccion: address,
-      politica_de_uso: usePolicy,
-      politica_de_salud_y_seguridad: healthPolicy,
-      politica_de_cancelacion: cancellationPolicy,
+      titulo: form.title,
+      nombre: form.prodName,
+      descripcion: form.description,
+      direccion: form.address,
+      politica_de_uso: form.usePolicy,
+      politica_de_salud_y_seguridad: form.healthPolicy,
+      politica_de_cancelacion: form.cancellationPolicy,
       categoria: category,
       ciudad: city,
-      latitud: latitude,
-      longitud: length,
+      latitud: form.latitude,
+      longitud: form.lengthMap,
       /* "imagenes": "", */
       caracteristicas: attributesLoaded,
     };
@@ -92,7 +209,28 @@ const Administration = () => {
         Authorization: token,
       },
     };
-    darAltaProducto(settings);
+
+    setErrorsFree(Object.values(errors).find((error) => error !== ""));
+
+    console.log({ errorsFree });
+
+    if (
+      errorsFree === undefined &&
+      (cityIsEmpty === false || cityIsEmpty === null) &&
+      (categoryIsEmpty === false || categoryIsEmpty === null) &&
+      (attributesLoadedIsEmpty == false || attributesLoadedIsEmpty === null)
+    ) {
+      console.log(errors);
+      darAltaProducto(settings);
+    } else {
+      console.log(
+        errors,
+        cityIsEmpty,
+        categoryIsEmpty,
+        attributesLoadedIsEmpty
+      );
+      console.log("No se pudo completar el alta de producto");
+    }
   };
 
   // *** IMAGENES ***
@@ -107,7 +245,7 @@ const Administration = () => {
     <>
       <Failure
         state={failure}
-        text1={"Lamentablemente no ha podido registrarse."}
+        text1={"Lamentablemente el producto no ha podido crearse."}
         text2={"Por favor intente más tarde"}
         path={"/"}
         textBtn={"ok"}
@@ -140,9 +278,14 @@ const Administration = () => {
                     type="text"
                     id="prodName"
                     name="prodName"
-                    value={prodName}
-                    onChange={(e) => setProdName(e.target.value)}
+                    value={form.prodName}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
+                    className={errors.prodName && styles.errorInput}
                   />
+                  {errors.prodName && (
+                    <p className={styles.pFormError}>{errors.prodName}</p>
+                  )}
                 </div>
 
                 <div className={styles.groupForm}>
@@ -151,14 +294,24 @@ const Administration = () => {
                     type="text"
                     id="title"
                     name="title"
-                    value={title}
-                    onChange={(e) => setTitle(e.target.value)}
+                    value={form.title}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
+                  {errors.title && (
+                    <p className={styles.pFormError}>{errors.title}</p>
+                  )}
                 </div>
 
                 <div className={styles.groupForm}>
                   <label className="text2">Categoría</label>
-                  <Category setCategory={setCategory} />
+                  <Category
+                    setCategory={setCategory}
+                    setCategoryIsEmpty={setCategoryIsEmpty}
+                  />
+                  {categoryIsEmpty && (
+                    <p className={styles.pFormError}>{isRequired}</p>
+                  )}
                 </div>
                 <div className={styles.groupForm}>
                   <label className="text2">Dirección</label>
@@ -166,9 +319,13 @@ const Administration = () => {
                     type="text"
                     id="address"
                     name="address"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
+                    value={form.address}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
+                  {errors.address && (
+                    <p className={styles.pFormError}>{errors.address}</p>
+                  )}
                 </div>
                 <div className={styles.groupForm}>
                   <label className="text2">
@@ -179,9 +336,13 @@ const Administration = () => {
                     id="latitude"
                     name="latitude"
                     placeholder="Ejemplo: -31.4218908"
-                    value={latitude}
-                    onChange={(e) => setLatitude(e.target.value)}
+                    value={form.latitude}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
+                  {errors.latitude && (
+                    <p className={styles.pFormError}>{errors.latitude}</p>
+                  )}
                 </div>
                 <div className={styles.groupForm}>
                   <label className="text2">
@@ -189,16 +350,23 @@ const Administration = () => {
                   </label>
                   <input
                     type="text"
-                    id="length"
-                    name="length"
+                    id="lengthMap"
+                    name="lengthMap"
                     placeholder="Ejemplo: -64.1878106"
-                    value={length}
-                    onChange={(e) => setLength(e.target.value)}
+                    value={form.lengthMap}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
+                  {errors.lengthMap && (
+                    <p className={styles.pFormError}>{errors.lengthMap}</p>
+                  )}
                 </div>
                 <div className={styles.groupForm}>
                   <label className="text2">Ciudad</label>
-                  <City setCity={setCity} />
+                  <City setCity={setCity} setCityIsEmpty={setCityIsEmpty} />
+                  {cityIsEmpty && (
+                    <p className={styles.pFormError}>{isRequired}</p>
+                  )}
                 </div>
               </div>
               <div className={styles.groupForm}>
@@ -206,25 +374,28 @@ const Administration = () => {
                 <textarea
                   id="description"
                   name="description"
-                  value={description}
-                  onChange={(e) => setDescription(e.target.value)}
+                  value={form.description}
+                  onChange={handleChange}
+                  onBlur={handleBlur}
                 />
+                {errors.description && (
+                  <p className={styles.pFormError}>{errors.description}</p>
+                )}
               </div>
               <h2 className="heading2 color2 paddingTop">Atributos</h2>
-              {/*  <Attribute
-                handleAttribute={handleAttribute}
-                //addInput={addInput}
-              /> */}
-              {/*   {attributeInputs} */}
-
-              { attributeCounter.map((number, index) => (
-                <Attribute
-                  handleAttribute={handleAttribute}
-                  key={index}
-                  number={number}
-
-                />
-              ))}
+              <div className={styles.contentAttributes_pError}>
+                {attributeCounter.map((number, index) => (
+                  <Attribute
+                    handleAttribute={handleAttribute}
+                    key={index}
+                    number={number}
+                    setAttributesLoadedIsEmpty={setAttributesLoadedIsEmpty}
+                  />
+                ))}
+                {attributesLoadedIsEmpty && (
+                  <p className={styles.pFormError}>{isRequired}</p>
+                )}
+              </div>
               <h2 className="heading2 color2 paddingTop">
                 Políticas del producto
               </h2>
@@ -233,34 +404,48 @@ const Administration = () => {
                   <h4 className="heading4">Normas de la casa</h4>
                   <label className="text2">Descripción</label>
                   <textarea
-                    id="description"
-                    name="description"
+                    id="usePolicy"
+                    name="usePolicy"
                     placeholder="Ingresar las políticas separadas por una coma (,)"
-                    value={usePolicy}
-                    onChange={(e) => setUsePolicy(e.target.value)}
+                    value={form.usePolicy}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
+                  {errors.usePolicy && (
+                    <p className={styles.pFormError}>{errors.usePolicy}</p>
+                  )}
                 </div>
                 <div className={styles.groupForm}>
                   <h4 className="heading4">Salud y seguridad</h4>
                   <label className="text2">Descripción</label>
                   <textarea
-                    id="description"
-                    name="description"
+                    id="healthPolicy"
+                    name="healthPolicy"
                     placeholder="Ingresar las políticas separadas por una coma (,)"
-                    value={healthPolicy}
-                    onChange={(e) => setHealthPolicy(e.target.value)}
+                    value={form.healthPolicy}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
+                  {errors.healthPolicy && (
+                    <p className={styles.pFormError}>{errors.healthPolicy}</p>
+                  )}
                 </div>
                 <div className={styles.groupForm}>
                   <h4 className="heading4">Políticas de cancelación</h4>
                   <label className="text2">Descripción</label>
                   <textarea
-                    id="description"
-                    name="description"
+                    id="cancellationPolicy"
+                    name="cancellationPolicy"
                     placeholder="Ingresar las políticas separadas por una coma (,)"
-                    value={cancellationPolicy}
-                    onChange={(e) => setCancellationPolicy(e.target.value)}
+                    value={form.cancellationPolicy}
+                    onChange={handleChange}
+                    onBlur={handleBlur}
                   />
+                  {errors.cancellationPolicy && (
+                    <p className={styles.pFormError}>
+                      {errors.cancellationPolicy}
+                    </p>
+                  )}
                 </div>
               </div>
               <h2 className="heading2 color2 paddingTop">Cargar imágenes</h2>
@@ -303,62 +488,3 @@ const Administration = () => {
 };
 
 export default Administration;
-{
-  /*  const addAttribute = (e) => {
-    setAttributes(attributes.concat(<Attribute key={attributes.length} handleAttribute={handleAttribute} />));
-  };
- */
-  /* attributeInputs.push(<Attribute key={i} handleAttribute={handleAttribute} />) */
-  /*   const toggleAddDeleteAttribute = () => {
-    if (addAttribute) {
-      setAttributesCounter(attributeCounter + 1);
-      console.log({attributeCounter});
-      console.log("Se agregó un input de atributo");
-    }else if(!addAttribute && attributeCounter > 1 ){
-      setAttributesCounter(attributeCounter - 1);
-      console.log({attributeCounter});
-      console.log("Se eliminó un input de atributo");
-    }
-  }; */
-  /*   <select
-    name="city"
-    onChange={(e) => {
-      setOptionCity({
-        selectedOption: e.target.value,
-      });
-    }}
-    required
-  >
-    <option selected="selected">Elegí una ciudad</option>
-    {ciudades &&
-      ciudades.map((ciudad) => (
-        <option key={ciudad.id} value={ciudad.id}>
-          {ciudad.ciudad}, {ciudad.pais}
-        </option>
-      ))}
-  </select>; */
-  /* <select
-  name="category"
-  onChange={(e) => {
-    setOptionCategory({
-      selectedOption: e.target.value,
-    });
-  }}
-  required
->
-  <option selected="selected">Elegí una categoría</option>
-  {categorias &&
-    categorias.map((categoria) => (
-      <option key={categoria.id} value={categoria.id}>
-        {categoria.titulo}
-      </option>
-    ))}
-</select>; */
-  /*  const [optionCategory, setOptionCategory] = useState({
-    selectedOption: null,
-  });
-  const [optionCity, setOptionCity] = useState({
-    selectedOption: null,
-  });
- */
-}

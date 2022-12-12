@@ -37,7 +37,7 @@ const validateForm = (form) => {
     errors.surname = "";
   }
 
-  //Validación de apellido
+  //Validación de ciudad
   if (!form.city.trim()) {
     errors.city = isRequired;
   } else {

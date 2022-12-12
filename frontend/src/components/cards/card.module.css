@@ -151,6 +151,11 @@ title {
   cursor: pointer;
 }
 
+.buttonCard:hover {
+  background-color: var(--color-3);
+  transition: all 0.5s;
+}
+
 .description::-webkit-scrollbar {
   -webkit-appearance: none;
 }
