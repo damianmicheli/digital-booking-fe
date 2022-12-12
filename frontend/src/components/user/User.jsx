@@ -1,5 +1,4 @@
 import React, { useContext } from "react";
-import Button from "../global/Button";
 import Icon from "../global/Icon";
 import styles from "./user.module.css";
 import { faXmark } from "@fortawesome/free-solid-svg-icons";
@@ -8,8 +7,7 @@ import useMediaQuery from "../../hooks/useMediaQuery";
 import { Link } from "react-router-dom";
 
 const User = () => {
-
-  const isMobile = useMediaQuery(768);
+  const isMobile = useMediaQuery(624);
 
   const { handleAuth, userLog } = useContext(AuthContext);
 
@@ -35,15 +33,18 @@ const User = () => {
           {userLog.nombre} {userLog.apellido}
         </span>
       </p>
-      <Link className={styles.linkMobile} to={`/${userLog.id}/reservas`}>
+      <Link
+        className={styles.linkMobile}
+        to={
+          userLog.roles[0].id === 2
+            ? `/${userLog.id}/reservas`
+            : "/administracion"
+        }
+      >
         {userLog.roles[0].id === 2 ? "Mis Reservas" : "Administración"}
       </Link>
       {!isMobile && (
-        <Link
-          className={styles.closeSession}
-          onClick={handleAuth}
-          to={"/"}
-        >
+        <Link className={styles.closeSession} onClick={handleAuth} to={"/"}>
           <Icon css={styles.closeSession} icon={faXmark} />
         </Link>
       )}

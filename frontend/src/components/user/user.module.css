@@ -3,7 +3,7 @@
   position: relative;
   flex-direction: column;
   line-height: 1.3rem;
-  margin-bottom: 125px;
+  margin-bottom: -37px;
   align-items: flex-end;
 }
 
@@ -38,7 +38,7 @@
   position: absolute;
   color: var(--color-3);
   border: none;
-  top: -7px;
+  top: 0;
   background-color: transparent;
   cursor: pointer;
 }

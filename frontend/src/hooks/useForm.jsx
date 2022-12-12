@@ -9,6 +9,7 @@ const useForm = (initialForm, validateForm) => {
   const [successLogin, setSuccessLogin] = useState(false);
   const [successRegister, setSuccessRegister] = useState(false);
   const [failure, setFailure] = useState(false);
+  const [errorsFree, setErrorsFree] = useState();
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -17,7 +18,7 @@ const useForm = (initialForm, validateForm) => {
 
   const handleBlur = (e) => {
     handleChange(e);
-    setErrors(validateForm(form));
+    setErrors(validateForm(form));    
   };
 
   /***** LOGIN *****/
@@ -129,7 +130,7 @@ const useForm = (initialForm, validateForm) => {
       });
   }
 
-  const [errorsFree, setErrorsFree] = useState();
+
 
   const handleSubmitRegister = (e) => {
     e.preventDefault();

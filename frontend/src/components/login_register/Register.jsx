@@ -37,7 +37,7 @@ const validateForm = (form) => {
     errors.surname = "";
   }
 
-  //Validación de apellido
+  //Validación de ciudad
   if (!form.city.trim()) {
     errors.city = isRequired;
   } else {
@@ -77,7 +77,6 @@ const validateForm = (form) => {
   return errors;
 };
 
-
 const Register = () => {
   const {
     form,
@@ -89,11 +88,15 @@ const Register = () => {
     handleSubmitRegister,
   } = useForm(initialForm, validateForm);
 
-
   const [showPass, setShowPass] = useState(false);
   const toggleBtnPass = () => {
     setShowPass((prevState) => !prevState);
   };
+
+  const errorFree =
+    Object.values(errors).find((error) => error !== "") === undefined
+      ? true
+      : false;
 
   return (
     <>
@@ -116,9 +119,9 @@ const Register = () => {
 
         <form
           id="registrationForm"
-          action="/"
+          //action="/"
           method="POST"
-          onSubmit={handleSubmitRegister}
+          onSubmit={errorFree && handleSubmitRegister}
         >
           <div className={styles.divInputs}>
             <div className={`${styles.groupForm} ${styles.groupWrap}`}>
@@ -129,6 +132,7 @@ const Register = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.fName}
+                className={errors.fName && styles.errorInput}
               />
               {errors.fName && (
                 <p className={styles.pFormError}>{errors.fName}</p>
@@ -142,6 +146,7 @@ const Register = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.surname}
+                className={errors.surname && styles.errorInput}
               />
               {errors.surname && (
                 <p className={styles.pFormError}>{errors.surname}</p>
@@ -156,6 +161,7 @@ const Register = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.city}
+                className={errors.city && styles.errorInput}
               />
               {errors.city && (
                 <p className={styles.pFormError}>{errors.city}</p>
@@ -170,6 +176,7 @@ const Register = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.email}
+                className={errors.email && styles.errorInput}
               />
               {errors.email && (
                 <p className={styles.pFormError}>{errors.email}</p>
@@ -185,6 +192,7 @@ const Register = () => {
                   onBlur={handleBlur}
                   onChange={handleChange}
                   value={form.password}
+                  className={errors.password && styles.errorInput}
                 />
                 <span onClick={toggleBtnPass}>
                   {showPass ? (
@@ -206,14 +214,23 @@ const Register = () => {
                 onBlur={handleBlur}
                 onChange={handleChange}
                 value={form.confirmPassword}
+                className={errors.confirmPassword && styles.errorInput}
               />
               {errors.confirmPassword && (
                 <p className={styles.pFormError}>{errors.confirmPassword}</p>
               )}
             </div>
             <div className={styles.groupForm}>
-              {/* <button className="buttonForm" type="submit" /> */}
-              <Button css="buttonForm" text="Crear cuenta" />
+              {errorFree ? (
+                <Button css="buttonForm" text="Crear cuenta" />
+              ) : (
+                <Button
+                  css="buttonFormDisabled"
+                  text="Crear cuenta"
+                  isDisabled={!errorFree}
+                />
+              )}
+
               <span className="text2 spanForm">
                 ¿Ya tienes una cuenta? <a href="/login">Iniciar sesión</a>
               </span>

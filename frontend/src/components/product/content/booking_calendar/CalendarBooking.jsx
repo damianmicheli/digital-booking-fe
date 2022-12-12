@@ -1,16 +1,16 @@
 import React from 'react';
 import { DateRange } from "react-date-range";
-import "react-date-range/dist/styles.css"; // main css file
+import "./stylesCalendar.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { es } from "react-date-range/dist/locale";
 import styles from "./booking.module.css";
 
-const Calendar = ({months, bookings}) => {
+const CalendarBooking = ({months, bookings}) => {
  
   return (
     <DateRange 
         months={months}
-        direction="horizontal"
+        direction={"horizontal"}
         className={styles.calendarElement}
         minDate={new Date()}
         monthDisplayFormat={"MMMM yyyy"}
@@ -21,4 +21,4 @@ const Calendar = ({months, bookings}) => {
   )
 }
 
-export default Calendar
+export default CalendarBooking;

@@ -11,8 +11,13 @@ import URL_BASE from "../../global/getUrlBase";
 
 import AttributeContext from "../../../context/AttributeContext";
 
-const Attribute = ({ number }) => {
-  const { handleAttribute } = useContext(AttributeContext);
+const Attribute = ({ number, setAttributesLoadedIsEmpty}) => {
+  const {
+    handleAttribute,
+    attributesList,
+    setAttributesList,
+    attributesLoaded,
+  } = useContext(AttributeContext);
   const [atributos] = useFetch(`${URL_BASE}/caracteristicas`);
   const [isActive, setIsActive] = useState(false);
   const [value, setValue] = useState(false);
@@ -22,7 +27,12 @@ const Attribute = ({ number }) => {
 
   useEffect(() => {
     setValue(selected !== "Elegí un atributo");
+    /*  selected !== "Elegí un atributo" && setIconInput(faSquareXmark); */
   }, [selected]);
+
+  useEffect(() => {
+    attributesLoaded.length > 0 && setAttributesLoadedIsEmpty(false);
+  }, [attributesLoaded]);
 
   return (
     <div className={styles.contentAttributes}>
@@ -32,6 +42,14 @@ const Attribute = ({ number }) => {
           <div
             className={styles.dropdownBtn}
             onClick={(e) => setIsActive(!isActive)}
+            tabIndex={0}
+            onFocus={() => {
+              // console.log("focus attribute");
+            }}
+            onBlur={() => {
+              //console.log("blur attribute");
+              setAttributesLoadedIsEmpty(true);
+            }}
           >
             {selected}
           </div>
@@ -41,9 +59,10 @@ const Attribute = ({ number }) => {
                 <div
                   key={atributo.id}
                   onClick={() => {
-                    setSelected(`${atributo.nombre}`);
+                    setSelected(atributo.nombre);
                     setIsActive(false);
                     setId(atributo.id);
+                    setAttributesList([...attributesList, { id: atributo.id }]);
                   }}
                   className={styles.dropdownItem}
                 >
@@ -62,14 +81,7 @@ const Attribute = ({ number }) => {
         icon={iconInput}
         event={() =>
           value &&
-          handleAttribute(
-            //selected === "Elegí un atributo",
-            value,
-            number,
-            id,
-            iconInput,
-            setIconInput
-          )
+          handleAttribute(number, id, iconInput, setIconInput, selected)
         }
       />
     </div>

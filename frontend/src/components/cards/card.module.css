@@ -25,7 +25,7 @@
 .informationContainer {
   position: relative;
   padding: 10px;
-  width: 52%;
+  width: 95%;
   height: 100%;
 }
 
@@ -70,10 +70,50 @@ title {
   color: var(--color-2);
 }
 
-.title > h5 {
+.categoryStarsContainer > h5 {
   font-size: 14px;
   color: var(--color-2);
   opacity: 0.5;
+  font-weight: 700;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+}
+
+.categoryStarsContainer {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+}
+
+.scoreContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  gap: 3px;
+  position: absolute;
+  right: 3%;
+}
+
+.score {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 39px;
+  height: 32px;
+  background-color: var(--color-2);
+  font-size: 20px;
+  border-radius: 10px;
+  color: white;
+  margin-left: 13px;
+  font-weight: 700;
+}
+
+.scoreText {
+  font-size: 14px;
+  text-align: center;
   font-weight: 700;
 }
 
@@ -83,10 +123,10 @@ title {
   padding-block-start: 10px;
   padding-block-end: 5px;
   display: block;
-  width: 366px;
-  height: 72px;
+  width: 340px;
+  height: 60px;
   position: absolute;
-  bottom: 25%;
+  bottom: 29%;
   overflow-y: scroll;
   scroll-behavior: smooth;
   color: var(--color-2);
@@ -111,6 +151,11 @@ title {
   cursor: pointer;
 }
 
+.buttonCard:hover {
+  background-color: var(--color-3);
+  transition: all 0.5s;
+}
+
 .description::-webkit-scrollbar {
   -webkit-appearance: none;
 }
@@ -126,10 +171,6 @@ title {
 }
 
 @media screen and (min-width: 414px) {
-  .cardContainer {
-    width: 370px;
-    height: 491px;
-  }
   .cardImg {
     width: 393px;
     height: 231px;
@@ -145,9 +186,14 @@ title {
     gap: 0;
   }
 
+  .categoryStarsContainer {
+    margin-top: 0.5rem;
+  }
+
   .description {
     width: 321px;
     height: 60px;
+    bottom: 25%;
   }
 
   .cardImg {
@@ -166,7 +212,11 @@ title {
   }
 
   .title > h5 {
-    margin-top: 1rem;
+    margin-top: 0.7rem;
+  }
+
+  .score {
+    margin-top: 0.7rem;
   }
 
   .features{

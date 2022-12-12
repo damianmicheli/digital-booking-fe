@@ -1,7 +1,9 @@
 .container {
-  height: 100vh;
+  min-height: 100vh;
 }
-
+.containerReservation{
+  margin-bottom: 30px;
+}
 .reservation {
   padding-top: 10rem;
   display: flex;
@@ -9,6 +11,7 @@
   align-items: center;
   gap: 2rem;
   margin: 0 auto;
+  text-align: center;
 }
 
 .backHome {

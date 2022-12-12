@@ -14,7 +14,7 @@ import "react-date-range/dist/styles.css"; // main css file
 import "react-date-range/dist/theme/default.css"; // theme css file
 import { es } from "react-date-range/dist/locale";
 
-const Calendar = ({ months, setReservationDate, selectedDate, setSelectedDate}) => {
+const CalendarSearch = ({ months, setReservationDate, selectedDate, setSelectedDate}) => {
   // date state
   const [range, setRange] = useState([
     {
@@ -104,4 +104,4 @@ const Calendar = ({ months, setReservationDate, selectedDate, setSelectedDate}) 
   );
 };
 
-export default Calendar;
+export default CalendarSearch;

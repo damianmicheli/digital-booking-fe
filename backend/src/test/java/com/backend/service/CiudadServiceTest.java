@@ -20,7 +20,7 @@ class CiudadServiceTest {
 
     @Test
     void guardar() throws ConflictoException {
-        // Dado: Creo una instancia de Ciudad
+        // Dado:  Creo una instancia de Ciudad
         CiudadDTO ciudad = new CiudadDTO("Bariloche", "Argentina");
 
         // Cuando: uso el service para presistir la instancia
