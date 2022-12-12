@@ -236,12 +236,11 @@ public class DataLoader implements ApplicationRunner {
                 imagenes40.add(new ImagenDTO("casa-10-03", "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-10-03.webp"));
                 imagenes40.add(new ImagenDTO("casa-10-04", "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-10-04.webp"));
                 imagenes40.add(new ImagenDTO("casa-10-05", "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-10-05.webp"));
-
-                imagenes41.add(new ImagenDTO("casa-11-01", "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casaplaya-09-01.webp"));
-                imagenes41.add(new ImagenDTO("casa-11-02", "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casaplaya-09-02.webp"));
-                imagenes41.add(new ImagenDTO("casa-11-03", "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casaplaya-09-03.webp"));
-                imagenes41.add(new ImagenDTO("casa-11-04", "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casaplaya-09-04.webp"));
-                imagenes41.add(new ImagenDTO("casa-11-05", "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casaplaya-09-05.webp"));
+                imagenes41.add(new ImagenDTO("casa-11-01", "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-11-02.webp"));
+                imagenes41.add(new ImagenDTO("casa-11-02", "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-11-06.webp"));
+                imagenes41.add(new ImagenDTO("casa-11-03", "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-11-03.webp"));
+                imagenes41.add(new ImagenDTO("casa-11-04", "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-11-04.webp"));
+                imagenes41.add(new ImagenDTO("casa-11-05", "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/casa-11-05.jpg"));
 
 
                 imagenes3.add(new ImagenDTO("cabana-01-01", "https://0521ptc3n1-grupo4-img.s3.us-east-2.amazonaws.com/cabana-01-01.webp"));
