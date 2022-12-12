@@ -544,7 +544,7 @@ public class DataLoader implements ApplicationRunner {
             productos.add(new ProductoDTO(
                     "Si estás buscando un lugar tranquilo, ésta es la casa ideal. Está ubicada a 10km de la Villa de Tafí del Valle, a 1km de la ruta provincial 325 en un terreno de una hectárea que comparte con otra casa. Lugar perfecto para desconectarse, descansar, hacer caminatas, cabalgatas, etc. En las inmediaciones hay cascadas, arroyos, yacimientos arqueológicos y la ruta de los artesanos..\",\n",
                     "Paysandú 2400, Tafí Viejo, Tucumán",
-                    "-26.8118341","-65.3317237",
+                    "-26.8118342","-65.3317237",
                     "Casa Roja",
                     "Cancelación gratuita, Consultá la política de cancelación completa del anfitrión que se aplica incluso si cancelás por contagio o algún otro problema causado por el COVID-19.",
                     "No se indicó si hay detector de monóxido de carbono, No se indicó si hay detector de humo, No apto para bebés (menores de 2 años)",
