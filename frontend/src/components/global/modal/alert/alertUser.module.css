@@ -13,6 +13,7 @@
 
 .alertHidden {
   visibility: hidden;
+  display: none;
 }
 
 .alertTxt {
