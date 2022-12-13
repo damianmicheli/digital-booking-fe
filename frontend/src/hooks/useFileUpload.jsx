@@ -13,7 +13,7 @@ const useFileUpload = () => {
     setIsFilePicked(true);
   };
 
-  console.log({ selectedFile, isFilePicked, uploadSuccess});
+  console.log({ selectedFile, isFilePicked, uploadSuccess });
 
   const handleSubmission = () => {
     console.log("Se disparó el submission");
@@ -21,23 +21,23 @@ const useFileUpload = () => {
     formData.append("file", selectedFile);
 
     setUploadSuccess("Cargando imagen...");
-    
-	fetch(`${URL_BASE}/s3/subir`, {
+
+    fetch(`${URL_BASE}/s3/subir`, {
       method: "POST",
       body: formData,
     })
       .then((response) => {
         if (!response.ok) {
           alert("No se pudo generar la url de aws");
+        } else {
+          return response.json();
         }
-        return response.json();
       })
       .then((data) => {
         console.log(data);
         if (data) {
           setUrlImageAws(data);
           setUploadSuccess("Carga de imagen finalizada");
-          //return data;
         }
       })
       .catch((error) => {
