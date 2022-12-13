@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect, useContext } from "react";
 
 import Icon from "../global/Icon";
 import Button from "../global/Button";
@@ -13,6 +13,7 @@ import { Link } from "react-router-dom";
 import { getIcons } from "../global/getIcons";
 import { getDescriptionScore } from "../global/getDescriptionScore";
 import { getStarNum } from "../global/getStarNum";
+import FavContext from "../../context/FavContext";
 
 const Card = ({
   id,
@@ -21,7 +22,6 @@ const Card = ({
   title,
   description,
   favorites,
-  toggleItemInLocalStorage,
   features,
   startDate,
   endDate,
@@ -30,6 +30,8 @@ const Card = ({
   score,
 }) => {
   const [isFavorite, setIsFavorite] = useState(false);
+
+  const {toggleItemInLocalStorage} = useContext(FavContext);
 
   useEffect(() => {
     Array.isArray(favorites) && //Valida si es un array..tenga lenght o no

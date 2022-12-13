@@ -22,6 +22,9 @@ const BookingTemplate = () => {
   const [success, setSuccess] = useState(false);
   const [failure, setFailure] = useState(false);
 
+  const [dateRangeIsRequired, setDateRangeIsRequired] = useState(false);
+  const [scheduleIsRequired, setScheduleIsRequired] = useState(false);
+  const [vaccinationIsRequired, setVaccinationIsRequired] = useState(false);
 
   const isMobile = useMediaQuery(624);
 
@@ -32,7 +35,7 @@ const BookingTemplate = () => {
   let fechasInhabilitadas = [];
   let newDate;
   disabledDates &&
-  disabledDates?.fechasNoDisponibles.map((array) => {
+    disabledDates?.fechasNoDisponibles.map((array) => {
       newDate = new Date(array[0], array[1] - 1, array[2]);
       return fechasInhabilitadas.push(newDate);
     });
@@ -57,7 +60,7 @@ const BookingTemplate = () => {
   });
 
   const [option, setOption] = useState({
-    selectedOption: null
+    selectedOption: null,
   });
 
   const [location, setLocation] = useState("");
@@ -93,22 +96,45 @@ const BookingTemplate = () => {
       });
   }
 
+  const handleClick = () => {
+    if (startDate !== null) {
+      setDateRangeIsRequired(false)
+    }
+    if(option.selectedOption !== null){
+      setScheduleIsRequired(false)
+    }
+    if(value.selectedOption !== null){
+      setVaccinationIsRequired(false)
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (startDate === null || option.selectedOption === null || value.selectedOption === null) {
+      if (startDate === null) {
+        setDateRangeIsRequired(true);
+      } 
+      if (option.selectedOption === null) {
+        setScheduleIsRequired(true);
+      } 
+      if (value.selectedOption === null) {
+        setVaccinationIsRequired(true)
+      }
+    } 
     const token = "Bearer " + JSON.parse(localStorage.getItem("jwt"));
     const payload = {
-      "hora_comienzo_reserva": option.selectedOption,
-      "fecha_inicial_reserva": format(startDate, "yyyy-MM-dd"),
-      "fecha_final_reserva": format(endDate, "yyyy-MM-dd"),
-      "producto": {
-        "id": `${id}`,
+      hora_comienzo_reserva: option.selectedOption,
+      fecha_inicial_reserva: format(startDate, "yyyy-MM-dd"),
+      fecha_final_reserva: format(endDate, "yyyy-MM-dd"),
+      producto: {
+        id: `${id}`,
       },
       usuario: {
         id: `${userLog.id}`,
         ciudad: `${location}`,
       },
-      "aclaraciones": text.selectedOption,
-      "vacunado": `${value.selectedOption}`,
+      aclaraciones: text.selectedOption,
+      vacunado: `${value.selectedOption}`,
     };
 
     console.log({ location });
@@ -121,8 +147,10 @@ const BookingTemplate = () => {
         Authorization: token,
       },
     };
-    realizarReserva(settings);
-    setSuccess(true);
+    if(startDate !== null && option.selectedOption !== null && value.selectedOption !== null) {
+      realizarReserva(settings);
+      setSuccess(true);
+    }
   };
 
   return (
@@ -216,16 +244,23 @@ const BookingTemplate = () => {
                         months={1}
                         bookings={fechasInhabilitadas}
                         setReservationDate={setReservationDate}
+                        onClick={handleClick}
                       />
                     ) : (
                       <Calendar
                         months={2}
                         bookings={fechasInhabilitadas}
                         setReservationDate={setReservationDate}
+                        onClick={handleClick}
                       />
                     )}
                   </div>
                 </div>
+                {dateRangeIsRequired && (
+                    <p className={styles.pFormError}>
+                      Campo obligatorio. Debe seleccionar una opción
+                    </p>
+                  )}
                 <h2 className="heading2 color2">Tu horario de llegada</h2>
                 <div className={styles.divInputs}>
                   <div className={styles.scheduleContainer}>
@@ -244,7 +279,7 @@ const BookingTemplate = () => {
                             selectedOption: e.target.value,
                           });
                         }}
-                        required
+                        onClick={handleClick}
                       >
                         <option value="" key="default" hidden>
                           Seleccionar hora de llegada
@@ -295,6 +330,11 @@ const BookingTemplate = () => {
                     </div>
                   </div>
                 </div>
+                {scheduleIsRequired && (
+                    <p className={styles.pFormError}>
+                      Campo obligatorio. Debe seleccionar una opción
+                    </p>
+                  )}
                 <h2 className="heading2 color2">Datos adicionales</h2>
                 <div className={styles.divInputs}>
                   <div className={styles.groupForm}>
@@ -322,7 +362,7 @@ const BookingTemplate = () => {
                         type="radio"
                         id="vacunado"
                         name="vacunado"
-                        required={true}
+                        onClick={handleClick}
                         value={true}
                         className={styles.radioButton}
                         onChange={(e) => {
@@ -338,6 +378,7 @@ const BookingTemplate = () => {
                         type="radio"
                         id="vacunado"
                         name="vacunado"
+                        onClick={handleClick}
                         value={false}
                         className={styles.radioButton}
                         onChange={(e) => {
@@ -348,8 +389,15 @@ const BookingTemplate = () => {
                       />
                       <label className="text2">No</label>
                     </div>
+
                   </div>
                 </div>
+                {
+                  vaccinationIsRequired && (
+                    <p className={styles.pFormError}>
+                      Campo obligatorio. Debe seleccionar una opción
+                    </p>
+                  )}
               </div>
               <div className={styles.contentRight}>
                 {data && (
@@ -362,20 +410,19 @@ const BookingTemplate = () => {
                     image={data?.imagenes[0]}
                     score={data?.puntajePromedio}
                   />
-                  )}
-                </div>
+                )}
               </div>
-            </form>
-          </div>
+            </div>
+          </form>
         </div>
-        {
-          data &&
-          <Politics
+      </div>
+      {data && (
+        <Politics
           normas={data?.politica_de_uso}
           politicaSalud={data?.politica_de_salud_y_seguridad}
           politicaCancelacion={data?.politica_de_cancelacion}
         />
-        }
+      )}
     </>
   );
 };

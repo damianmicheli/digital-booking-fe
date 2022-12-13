@@ -1,7 +1,9 @@
 .container {
   min-height: 100vh;
 }
-
+.containerReservation{
+  margin-bottom: 30px;
+}
 .reservation {
   padding-top: 10rem;
   display: flex;

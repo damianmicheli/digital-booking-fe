@@ -11,9 +11,13 @@ import URL_BASE from "../../global/getUrlBase";
 
 import AttributeContext from "../../../context/AttributeContext";
 
-const Attribute = ({ number }) => {
-  const { handleAttribute, attributesList, setAttributesList } =
-    useContext(AttributeContext);
+const Attribute = ({ number, setAttributesLoadedIsEmpty}) => {
+  const {
+    handleAttribute,
+    attributesList,
+    setAttributesList,
+    attributesLoaded,
+  } = useContext(AttributeContext);
   const [atributos] = useFetch(`${URL_BASE}/caracteristicas`);
   const [isActive, setIsActive] = useState(false);
   const [value, setValue] = useState(false);
@@ -26,6 +30,10 @@ const Attribute = ({ number }) => {
     /*  selected !== "Elegí un atributo" && setIconInput(faSquareXmark); */
   }, [selected]);
 
+  useEffect(() => {
+    attributesLoaded.length > 0 && setAttributesLoadedIsEmpty(false);
+  }, [attributesLoaded]);
+
   return (
     <div className={styles.contentAttributes}>
       <div className={styles.groupForm}>
@@ -34,6 +42,14 @@ const Attribute = ({ number }) => {
           <div
             className={styles.dropdownBtn}
             onClick={(e) => setIsActive(!isActive)}
+            tabIndex={0}
+            onFocus={() => {
+              // console.log("focus attribute");
+            }}
+            onBlur={() => {
+              //console.log("blur attribute");
+              setAttributesLoadedIsEmpty(true);
+            }}
           >
             {selected}
           </div>
@@ -63,15 +79,9 @@ const Attribute = ({ number }) => {
       <Icon
         css={value ? styles.addIcon : styles.addIconDisabled}
         icon={iconInput}
-        event={() => 
+        event={() =>
           value &&
-            handleAttribute(
-              number,
-              id,
-              iconInput,
-              setIconInput,
-              selected
-            )
+          handleAttribute(number, id, iconInput, setIconInput, selected)
         }
       />
     </div>
