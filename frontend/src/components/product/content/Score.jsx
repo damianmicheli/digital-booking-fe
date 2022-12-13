@@ -6,9 +6,10 @@ import URL_BASE from "../../global/getUrlBase";
 import Success from "../../global/modal/success/Success";
 import Failure from "../../global/modal/Failure";
 import AuthContext from "../../../context/AuthContext";
+import AlertUser from "../../global/modal/alert/AlertUser";
 
 const Score = () => {
-  const { userLog } = useContext(AuthContext);
+  const { userLog, auth } = useContext(AuthContext);
   const { id } = useParams();
 
   const [success, setSuccess] = useState(false);
@@ -21,14 +22,14 @@ const Score = () => {
   function realizarPuntuacion(settings) {
     fetch(`${URL_BASE}/productos/puntuar`, settings)
       .then((response) => {
-        console.log({response});
+        console.log({ response });
         if (response.ok !== true) {
-          setFailure(true);
+          console.log("fallo");
         }
         return response.json();
       })
       .then((data) => {
-        console.log({data});
+        console.log({ data });
         console.log("Se registro ok la puntuacion");
         if (data) {
           setSuccess(true);
@@ -36,12 +37,15 @@ const Score = () => {
       })
       .catch((err) => {
         console.log("Promesa rechazada:");
-        console.log({err});
+        console.log({ err });
       });
   }
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (!auth) {
+      setFailure(true)
+    }
     const token = "Bearer " + JSON.parse(localStorage.getItem("jwt"));
     const payload = {
       puntuacion: score.selectedOption,
@@ -70,19 +74,19 @@ const Score = () => {
         text1={"¡Muchas Gracias!"}
         text2={"Su puntuación se ha realizado con éxito"}
         path={"/"}
-        textBtn={"Ok"}
+        textBtn={"ok"}
       />
       <Failure
         state={failure}
-        text1={"¡Atención!"}
         text2={"Para poder calificar un producto necesitas estar logueado"}
         path={"/login"}
-        textBtn={"Ok"}
+        textBtn={"ok"}
       />
       <div className={styles.container}>
         <div className={styles.titleContainer}>
           <h1 className={styles.title}>¿Qué te pareció?</h1>
         </div>
+        <AlertUser text={"Para puntuar un producto necesitas estar logueado"} />
         <div className={styles.contentContainer}>
           <p>
             Te invitamos a calificar el producto. Tu opinión es muy importante

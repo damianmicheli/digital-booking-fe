@@ -10,7 +10,7 @@
   background-color: #fff;
 }
 
-.cardLeft{
+.cardLeft {
   width: 48%;
   position: relative;
 }
@@ -34,7 +34,7 @@
   color: var(--color-2);
 }
 
-.btnFav{
+.btnFav {
   border: none;
   background-color: transparent;
   position: absolute;
@@ -205,9 +205,9 @@ title {
     gap: 0.3rem;
   }
 
-  .btnFav{
-    top: 30px; 
-    left: 290px; 
+  .btnFav {
+    top: 30px;
+    left: 290px;
   }
 
   .title > h5 {
@@ -218,7 +218,7 @@ title {
     margin-top: 0.7rem;
   }
 
-  .features{
+  .features {
     display: flex;
     gap: 0.5rem;
     align-items: center;
@@ -247,11 +247,11 @@ title {
   }
 
   .buttonCard {
-    width: 296px;  
+    width: 296px;
   }
 
-  .btnFav{
-    top: 40px; 
+  .btnFav {
+    top: 40px;
     left: 260px;
   }
 }

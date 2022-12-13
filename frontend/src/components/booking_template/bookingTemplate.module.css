@@ -29,7 +29,16 @@
   border-radius: 5px;
   background-color: white;
   display: flex;
+  flex-direction: column;
   justify-content: center;
+ 
+}
+.pFormError {
+  font-size: 0.65rem;
+  text-align: center;
+  color: red;
+  margin-bottom: 10px;
+  padding:0;
 }
 
 .groupForm {
@@ -107,6 +116,8 @@
   color: var(--color-2);
 }
 
+
+
 @media only screen and (min-width: 624px) {
   .content {
     flex-direction: column;
@@ -132,6 +143,11 @@
     align-items: center;
     justify-content: center;
   }
+  .pFormError {    
+    text-align: right;   
+    padding:0 25px 0 0;
+  }
+  
 }
 
 @media only screen and (min-width: 1120px) {

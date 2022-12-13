@@ -20,6 +20,7 @@
   .contentContainer > p {
     padding: 0 0.5rem;
     text-align: center;
+    font-size: 14px;
   }
 
   .contentContainer {
@@ -140,5 +141,10 @@
     .contentContainer {
       padding: 1rem 4rem;
     }
+
+    .contentContainer > p {
+      font-size: 16px;
+    }
+  
   }
   
