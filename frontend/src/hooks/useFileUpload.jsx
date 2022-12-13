@@ -1,4 +1,4 @@
-import { useState } from "react";
+import {  useState } from "react";
 
 import URL_BASE from "../components/global/getUrlBase";
 
@@ -16,7 +16,7 @@ const useFileUpload = () => {
     setFiles(e.target.files);
   };
 
-  console.log(files);
+  //console.log(files);
 
   const uploadImage = async (i, formData) => {
     const response = await fetch(`${URL_BASE}/s3/subir`, {
@@ -27,9 +27,9 @@ const useFileUpload = () => {
       alert("No se pudo generar la url de aws");
     }
     const data = await response.json();
-    console.log(typeof(data));
+    console.log(typeof data);
     if (data) {
-      setUrlImagesAws((urlImagesAws)=>[...urlImagesAws, data]);
+      setUrlImagesAws((urlImagesAws) => [...urlImagesAws, data]);
       return data;
     }
   };
@@ -39,8 +39,6 @@ const useFileUpload = () => {
 
     setFileUploadProgress(true);
     setFileUploadResponse(null);
-
-    //setUploadSuccess("Cargando imagen...");
 
     for (let i = 0; i < files.length; i++) {
       const formData = new FormData();
@@ -57,6 +55,8 @@ const useFileUpload = () => {
     fileUploadProgress,
     fileUploadResponse,
     urlImagesAws,
+    setFileUploadProgress,
+    setFileUploadResponse,
     handleSubmission,
     changeHandler,
   };

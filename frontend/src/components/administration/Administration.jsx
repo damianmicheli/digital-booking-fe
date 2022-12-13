@@ -46,6 +46,8 @@ const Administration = () => {
     fileUploadProgress,
     fileUploadResponse,
     urlImagesAws,
+    setFileUploadProgress,
+    setFileUploadResponse,
     handleSubmission,
     changeHandler,
   } = useFileUpload();
@@ -177,7 +179,7 @@ const Administration = () => {
       });
   };
 
- // console.log({urlImagesAws});
+  // console.log({urlImagesAws});
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -245,14 +247,15 @@ const Administration = () => {
     }
   };
 
-/*   useEffect(() => {
-    if (
-      uploadSuccess !== null ||
-      uploadSuccess === "Carga de imagen finalizada"
-    ) {
+  useEffect(() => {
+    if (files.length !== 0 && urlImagesAws.length === files.length) {
+      setFileUploadProgress(false);
+      setFileUploadResponse(true);
       setIconUpload(faSquareCheck);
     }
-  }, [uploadSuccess]); */
+  }, [urlImagesAws]);
+
+  console.log({ fileUploadResponse });
 
   return (
     <>
@@ -475,20 +478,14 @@ const Administration = () => {
                     className={styles.inputImage}
                     onChange={changeHandler}
                   />
-                 {/*  {uploadSuccess !== null && (
-                    <p className={styles.filePicked}>{uploadSuccess}</p>
-                  )} */}
-                  {/* {isFilePicked && (
-                    <div className={styles.filePicked}>
-                      <p>Nombre de archivo: {selectedFile.name}</p>
-                      <p>Tipo de archivo: {selectedFile.type}</p>
-                      <p>Tamaño: {selectedFile.size / 1000000} mb</p>
-                      <p>
-                        Fecha modificación:{" "}
-                        {selectedFile.lastModifiedDate.toLocaleDateString()}
-                      </p>
-                    </div>
-                  )} */}
+                  {fileUploadProgress && (
+                    <p className={styles.filePicked}>Cargando imágenes...</p>
+                  )}
+                  {fileUploadResponse && fileUploadResponse !== null && (
+                    <p className={styles.filePicked}>
+                      Carga de imágenes finalizada
+                    </p>
+                  )}
                 </div>
                 <Icon
                   css={styles.addIcon}

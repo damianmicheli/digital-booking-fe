@@ -42,7 +42,7 @@ const Card = ({
     <div className={styles.cardContainer} key={id}>
       <div className={styles.cardLeft}>
         <img className={styles.cardImg} src={img} alt="imagen" />
-        <Button
+        {/* <Button
           // event={() => toggleItemInLocalStorage(id, isFavorite)}
           css={`
             ${styles.btnFav}
@@ -53,7 +53,7 @@ const Card = ({
               // icon={isFavorite ? faSolideHeart : faRegularHeart}
             />
           }
-        />
+        /> */}
       </div>
       <div className={styles.informationContainer}>
         <div className={styles.cardHeader}>
