@@ -22,7 +22,6 @@ const BookingTemplate = () => {
   const [success, setSuccess] = useState(false);
   const [failure, setFailure] = useState(false);
 
-  const [isEmpty, setIsEmpty] = useState(false);
   const [dateRangeIsRequired, setDateRangeIsRequired] = useState(false);
   const [scheduleIsRequired, setScheduleIsRequired] = useState(false);
   const [vaccinationIsRequired, setVaccinationIsRequired] = useState(false);
@@ -97,8 +96,31 @@ const BookingTemplate = () => {
       });
   }
 
+  const handleClick = () => {
+    if (startDate !== null) {
+      setDateRangeIsRequired(false)
+    }
+    if(option.selectedOption !== null){
+      setScheduleIsRequired(false)
+    }
+    if(value.selectedOption !== null){
+      setVaccinationIsRequired(false)
+    }
+  }
+
   const handleSubmit = (e) => {
     e.preventDefault();
+    if (startDate === null || option.selectedOption === null || value.selectedOption === null) {
+      if (startDate === null) {
+        setDateRangeIsRequired(true);
+      } 
+      if (option.selectedOption === null) {
+        setScheduleIsRequired(true);
+      } 
+      if (value.selectedOption === null) {
+        setVaccinationIsRequired(true)
+      }
+    } 
     const token = "Bearer " + JSON.parse(localStorage.getItem("jwt"));
     const payload = {
       hora_comienzo_reserva: option.selectedOption,
@@ -125,35 +147,12 @@ const BookingTemplate = () => {
         Authorization: token,
       },
     };
-    console.log({ isEmpty });
-    if (
-      startDate === null ||
-      endDate === null ||
-      option.selectedOption === null ||
-      value.selectedOption === null
-    ) {
-      if (startDate === null) {
-        setIsEmpty(true);
-      } else if (endDate === null) {
-        setIsEmpty(true);
-      } else {
-        setIsEmpty(true);
-      }
-      console.log({ isEmpty });
-      console.log("Hay campos obligatorios vacíos");
-    } else {
+    if(startDate !== null && option.selectedOption !== null && value.selectedOption !== null) {
       realizarReserva(settings);
       setSuccess(true);
     }
   };
 
-  useEffect(() => {
-    startDate === null || (endDate === null && setDateRangeIsRequired(true));
-    value.selectedOption === null && setVaccinationIsRequired(true);
-    option.selectedOption === null && setScheduleIsRequired(true);
-  }, [isEmpty]);
-
-  console.log({ isEmpty });
   return (
     <>
       <Failure
@@ -245,21 +244,23 @@ const BookingTemplate = () => {
                         months={1}
                         bookings={fechasInhabilitadas}
                         setReservationDate={setReservationDate}
+                        onClick={handleClick}
                       />
                     ) : (
                       <Calendar
                         months={2}
                         bookings={fechasInhabilitadas}
                         setReservationDate={setReservationDate}
+                        onClick={handleClick}
                       />
                     )}
                   </div>
-                  {dateRangeIsRequired && (
+                </div>
+                {dateRangeIsRequired && (
                     <p className={styles.pFormError}>
                       Campo obligatorio. Debe seleccionar una opción
                     </p>
                   )}
-                </div>
                 <h2 className="heading2 color2">Tu horario de llegada</h2>
                 <div className={styles.divInputs}>
                   <div className={styles.scheduleContainer}>
@@ -278,7 +279,7 @@ const BookingTemplate = () => {
                             selectedOption: e.target.value,
                           });
                         }}
-                        //required
+                        onClick={handleClick}
                       >
                         <option value="" key="default" hidden>
                           Seleccionar hora de llegada
@@ -329,6 +330,11 @@ const BookingTemplate = () => {
                     </div>
                   </div>
                 </div>
+                {scheduleIsRequired && (
+                    <p className={styles.pFormError}>
+                      Campo obligatorio. Debe seleccionar una opción
+                    </p>
+                  )}
                 <h2 className="heading2 color2">Datos adicionales</h2>
                 <div className={styles.divInputs}>
                   <div className={styles.groupForm}>
@@ -356,7 +362,7 @@ const BookingTemplate = () => {
                         type="radio"
                         id="vacunado"
                         name="vacunado"
-                        //required={true}
+                        onClick={handleClick}
                         value={true}
                         className={styles.radioButton}
                         onChange={(e) => {
@@ -372,6 +378,7 @@ const BookingTemplate = () => {
                         type="radio"
                         id="vacunado"
                         name="vacunado"
+                        onClick={handleClick}
                         value={false}
                         className={styles.radioButton}
                         onChange={(e) => {
@@ -382,8 +389,15 @@ const BookingTemplate = () => {
                       />
                       <label className="text2">No</label>
                     </div>
+
                   </div>
                 </div>
+                {
+                  vaccinationIsRequired && (
+                    <p className={styles.pFormError}>
+                      Campo obligatorio. Debe seleccionar una opción
+                    </p>
+                  )}
               </div>
               <div className={styles.contentRight}>
                 {data && (
