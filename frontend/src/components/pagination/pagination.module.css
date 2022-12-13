@@ -1,5 +1,5 @@
 .iconPagination {
-    color: var(--color-2);
+    color: var(--color-4);
     font-size: 1em;
     cursor: pointer;
   }
@@ -14,7 +14,7 @@
     align-items: center;
     gap: 1rem;
     padding: 1.5rem;
-    background-color: var(--color-2-transparency);
+    background-color: var(--color-2);
   }
   
   .itemPagination {
@@ -24,16 +24,36 @@
   }
   
   .itemPagination:hover {
-    background-color: var(--color-2-opacity);
+    background-color: var(--color-3);
     transition: all 0.2s;
   }
   
   .itemLinkPagination {
     padding: 0.5rem;
     font-weight: 700;
-    color: var(--color-2);
+    color: var(--color-4);
   }
   
   .activePagination {
-    background-color: var(--color-2-opacity);
+    background-color: var(--color-3);
+  }
+
+  @media screen and (min-width: 768px) {
+    .containerPagination {
+      background-color: var(--color-2-transparency);
+    }
+    .iconPagination {
+      color: var(--color-2);
+      font-size: 1em;
+      cursor: pointer;
+    }
+    .iconPaginate:hover {
+      color: var(--color-3);
+    }
+    .itemLinkPagination {
+      color: var(--color-2);
+    }
+    .activePagination {
+      background-color: var(--color-3-opacity);
+    }
   }

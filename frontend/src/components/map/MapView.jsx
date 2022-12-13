@@ -19,7 +19,7 @@ const MapView = ({ latitud, longitud, city, country }) => {
   });
 
   return (
-    <div className="container">
+    <div className={styles.container}>
       <div className={styles.titleContainer}>
         <h2 className={styles.title}>¿Dónde vas a estar?</h2>
       </div>
