@@ -177,7 +177,7 @@ const Administration = () => {
       });
   };
 
-  console.log({urlImagesAws});
+ // console.log({urlImagesAws});
 
   const handleSubmit = (e) => {
     e.preventDefault();

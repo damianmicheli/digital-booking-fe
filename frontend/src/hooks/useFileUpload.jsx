@@ -18,8 +18,6 @@ const useFileUpload = () => {
 
   console.log(files);
 
-  
-
   const uploadImage = async (i, formData) => {
     const response = await fetch(`${URL_BASE}/s3/subir`, {
       method: "POST",
@@ -28,17 +26,16 @@ const useFileUpload = () => {
 
     if (!response.ok) {
       alert("No se pudo generar la url de aws");
-    } 
+    }
     const data = await response.json();
 
-	console.log({data});
+    console.log({ data });
+    return data;
 
-    if (data) {
-		
+    /* if (data) {		
       setUrlImagesAws([...urlImagesAws, data]);
-      console.log("se cargó imagen " + i);
-      //setUploadSuccess("Carga de imagen finalizada");
-    }
+      console.log("se cargó imagen " + i);*/
+    //setUploadSuccess("Carga de imagen finalizada");
   };
 
   const handleSubmission = () => {
@@ -50,12 +47,14 @@ const useFileUpload = () => {
     //setUploadSuccess("Cargando imagen...");
 
     for (let i = 0; i < files.length; i++) {
-	  const formData = new FormData();
+      const formData = new FormData();
       formData.append("file", files[i]);
-	  console.log(files[i]);
-      uploadImage(i, formData);
+      console.log(files[i]);
+      const data = uploadImage(i, formData);
+      setUrlImagesAws([...urlImagesAws, data]);
     }
   };
+  console.log({ urlImagesAws });
 
   return {
     files,
@@ -68,28 +67,3 @@ const useFileUpload = () => {
 };
 
 export default useFileUpload;
-
-/* const uploadImage = async (i) => {
-    await fetch(`${URL_BASE}/s3/subir`, {
-      method: "POST",
-      body: formData,
-    })
-      .then((response) => {
-        if (!response.ok) {
-          alert("No se pudo generar la url de aws");
-        } else {
-          return response.json();
-        }
-      })
-      .then((data) => {
-        console.log(data);
-        if (data) {
-          setUrlImagesAws([...urlImagesAws, data]);
-          console.log("se cargó imagen " + i);
-          //setUploadSuccess("Carga de imagen finalizada");
-        }
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-      });
-  }; */
