@@ -202,6 +202,12 @@ flex-direction: row;
 gap: 15px;
 padding-left: 15px;
 }
+
+.filePicked{
+  font-size: 12px;
+  font-family: inherit;
+}
+
 @media only screen and (min-width: 624px) {
   .contentAttributes>.groupForm, .contentImages>.groupForm{
     width: calc(100% - 80px);

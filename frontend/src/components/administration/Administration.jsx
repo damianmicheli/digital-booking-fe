@@ -13,7 +13,7 @@ import Failure from "../global/modal/Failure";
 import Success from "../global/modal/success/Success";
 import Button from "../global/Button";
 
-import FileUpload from "./content/FileUpload";
+import useFileUpload from "../../hooks/useFileUpload";
 import Attribute from "./content/Attribute";
 import City from "./content/City";
 import Category from "./content/Category";
@@ -26,16 +26,6 @@ const Administration = () => {
   const [success, setSuccess] = useState(false);
   const [failure, setFailure] = useState(false);
 
-  /*  const [prodName, setProdName] = useState("");
-  const [title, setTitle] = useState("");
-  const [description, setDescription] = useState("");
-  const [address, setAddress] = useState("");
-  const [latitude, setLatitude] = useState("");
-  const [length, setLength] = useState("");
-  const [usePolicy, setUsePolicy] = useState("");
-  const [healthPolicy, setHealthPolicy] = useState("");
-  const [cancellationPolicy, setCancellationPolicy] = useState(""); */
-
   const [city, setCity] = useState("");
   const [cityIsEmpty, setCityIsEmpty] = useState(null);
   const [category, setCategory] = useState("");
@@ -46,7 +36,24 @@ const Administration = () => {
     useContext(AttributeContext);
   const [attributesLoadedIsEmpty, setAttributesLoadedIsEmpty] = useState(null);
 
-  console.log({ attributesLoaded });
+  //console.log({ attributesLoaded });
+
+  // *** IMAGENES ***
+  const [images, setImages] = useState([]);
+  const {
+    selectedFile,
+    isFilePicked,
+    urlImageAws,
+    handleSubmission,
+    changeHandler,
+  } = useFileUpload();
+
+  useEffect(() => {
+  
+  }, [selectedFile]);
+
+
+  // *** Errores ***
 
   const [errors, setErrors] = useState([]);
   const [errorsFree, setErrorsFree] = useState();
@@ -135,17 +142,9 @@ const Administration = () => {
       errorsForm.cancellationPolicy = "";
     }
 
-    /*    console.log({ attributesLoaded });
-
-    //Validación de atributos
-    if (form.attributesLoaded.length === 0) {
-      errorsForm.attributesLoaded = isRequired;
-    } else {
-      errorsForm.attributesLoaded = "";
-    } */
-
     return errorsForm;
   };
+
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -161,7 +160,7 @@ const Administration = () => {
     fetch(`${URL_BASE}/productos`, settings)
       .then((response) => {
         console.log({ response });
-        if (response.ok !== true) {
+        if (!response.ok) {
           setFailure(true);
         }
         return response.json();
@@ -182,7 +181,13 @@ const Administration = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
 
+    if (urlImageAws !== "") {
+      setImages([...images, { titulo: selectedFile.name, url: urlImageAws }]);
+    }
+    // handleSubmission();
     setErrors(validateForm(form));
+
+    console.log({ images });
 
     const token = "Bearer " + JSON.parse(localStorage.getItem("jwt"));
     const payload = {
@@ -197,7 +202,7 @@ const Administration = () => {
       ciudad: city,
       latitud: form.latitude,
       longitud: form.lengthMap,
-      /* "imagenes": "", */
+      imagenes: images,
       caracteristicas: attributesLoaded,
     };
 
@@ -212,34 +217,30 @@ const Administration = () => {
 
     setErrorsFree(Object.values(errors).find((error) => error !== ""));
 
-    console.log({ errorsFree });
+    //console.log({ errorsFree });
 
-    if (
-      errorsFree === undefined &&
-      (cityIsEmpty === false || cityIsEmpty === null) &&
-      (categoryIsEmpty === false || categoryIsEmpty === null) &&
-      (attributesLoadedIsEmpty == false || attributesLoadedIsEmpty === null)
-    ) {
-      console.log(errors);
-      darAltaProducto(settings);
-    } else {
-      console.log(
-        errors,
-        cityIsEmpty,
-        categoryIsEmpty,
-        attributesLoadedIsEmpty
-      );
-      console.log("No se pudo completar el alta de producto");
+    console.log({ images });
+
+    if (images?.length) {
+      if (
+        errorsFree === undefined &&
+        (cityIsEmpty === false || cityIsEmpty === null) &&
+        (categoryIsEmpty === false || categoryIsEmpty === null) &&
+        (attributesLoadedIsEmpty === false || attributesLoadedIsEmpty === null)
+      ) {
+        console.log(errors);
+        darAltaProducto(settings);
+      } else {
+        console.log(
+          errors,
+          cityIsEmpty,
+          categoryIsEmpty,
+          attributesLoadedIsEmpty
+        );
+        console.log("No se pudo completar el alta de producto");
+      }
     }
   };
-
-  // *** IMAGENES ***
-  const { selectedFile, isFilePicked, handleSubmission, changeHandler } =
-    FileUpload;
-
-  useEffect(() => {
-    /*   console.log(selectedFile); */
-  }, [selectedFile]);
 
   return (
     <>
@@ -461,10 +462,10 @@ const Administration = () => {
                     onChange={changeHandler}
                   />
                   {isFilePicked && (
-                    <div>
+                    <div className={styles.filePicked}>
                       <p>Nombre de archivo: {selectedFile.name}</p>
                       <p>Tipo de archivo: {selectedFile.type}</p>
-                      <p>Tamaño en bytes: {selectedFile.size}</p>
+                      <p>Tamaño: {selectedFile.size / 1000000} mb</p>
                       <p>
                         Fecha modificación:{" "}
                         {selectedFile.lastModifiedDate.toLocaleDateString()}

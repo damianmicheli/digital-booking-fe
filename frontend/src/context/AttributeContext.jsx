@@ -1,6 +1,6 @@
 import { createContext, useEffect, useState } from "react";
 import Attribute from "../components/administration/content/Attribute";
-import { faSquarePlus, faSquareXmark } from "@fortawesome/free-solid-svg-icons";
+import { faSquarePlus, faSquareCheck } from "@fortawesome/free-solid-svg-icons";
 
 const AttributeContext = createContext();
 
@@ -39,13 +39,14 @@ const AttributeProvider = ({ children }) => {
     setAttributeInputs(newAttribute);
   };
 
-  console.log({ attributesList });
-  console.log({ attributeCounter });
+ // console.log({ attributesList });
+//  console.log({ attributeCounter });
   const handleAttribute = (number, id, iconInput, setIconInput, name) => {
     /*     console.log({ boolean, number, iconInput }); */
     if (iconInput === faSquarePlus) {
       addAttribute({ id, name });
-      setIconInput(faSquareXmark);
+      //setIconInput(faSquareXmark);
+      setIconInput(faSquareCheck);
     } else {
       deleteAttribute(id);
     }
