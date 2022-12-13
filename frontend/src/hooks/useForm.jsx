@@ -81,7 +81,6 @@ const useForm = (initialForm, validateForm) => {
         console.log({response});
         if (!response.ok) {
           setFailure(true);
-        /*   setSuccessRegister(false); */
         } else {
           return response.json();
         }

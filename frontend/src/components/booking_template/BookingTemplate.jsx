@@ -76,12 +76,12 @@ const BookingTemplate = () => {
     fetch(`${URL_BASE}/reservas`, settings)
       .then((response) => {
         console.log({ response });
-        if (response.ok !== true) {
-          alert(
-            "Lamentablemente no se pudo realizar su reserva. Por favor intente más tarde"
-          );
+        if (!response.ok) {
+          setFailure(true)
+        }else{
+          return response.json();
         }
-        return response.json();
+        
       })
       .then((data) => {
         console.log({ data });

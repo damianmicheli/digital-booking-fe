@@ -452,9 +452,9 @@ public class DataLoader implements ApplicationRunner {
                 ciudades.add(new CiudadDTO("Mar del Plata", "Argentina"));
                 ciudades.add(new CiudadDTO("Miramar", "Argentina"));
                 ciudades.add(new CiudadDTO("Pinamar", "Argentina"));
-                ciudades.add(new CiudadDTO("CABA", "Argentina"));
+                ciudades.add(new CiudadDTO("Ciudad Autónoma de Buenos Aires", "Argentina"));
                 ciudades.add(new CiudadDTO("Las Toninas", "Argentina"));
-                ciudades.add(new CiudadDTO("Lujan de Cuyo", "Argentina"));
+                ciudades.add(new CiudadDTO("Luján de Cuyo", "Argentina"));
                 ciudades.add(new CiudadDTO("San Miguel de Tucumán", "Argentina"));
                 ciudades.add(new CiudadDTO("Paraná", "Argentina"));
                 ciudades.add(new CiudadDTO("Gualeguaychú", "Argentina"));
@@ -467,7 +467,7 @@ public class DataLoader implements ApplicationRunner {
                 ciudades.add(new CiudadDTO("San Carlos de Bariloche", "Argentina"));
                 ciudades.add(new CiudadDTO("San Martín de los Andes", "Argentina"));
                 ciudades.add(new CiudadDTO("Villa La Angostura", "Argentina"));
-                ciudades.add(new CiudadDTO("Neuquen", "Argentina"));
+                ciudades.add(new CiudadDTO("Neuquén", "Argentina"));
                 ciudades.add(new CiudadDTO("Comodoro Rivadavia", "Argentina"));
                 ciudades.add(new CiudadDTO("Trelew", "Argentina"));
                 ciudades.add(new CiudadDTO("Villa Mercedes", "Argentina"));
@@ -884,11 +884,11 @@ public class DataLoader implements ApplicationRunner {
                     "Vivi el campo y el mar a 400 metros de la playa Cruz del Sur. Disfrutá de un entorno natural y relajante. Se trata de una casa que construimos para disfrutar en familia y que decidimos alquilar en épocas de año en las que no la usamos. Pueden alojarse hasta 4 personas. Posee un dormitorio principal y un segundo dormitorio integrado al living (sin pared divisoria). Tiene dos camas matrimoniales que se pueden transformar en 4 singles.",
                     "3RP11, Miramar, Provincia de Buenos Aires",
                     "-38.18704813564518","-57.66135692435719",
-                    "Casa Acogerdora",
+                    "Casa Acogedora",
                     "No se puede cancelar, No hay devolucion",
                     "No prender fuego, No fumar",
                     "Check-in a las 10, No se permiten mascotas",
-                    "Acogerdora casa en entorno natural",
+                    "Acogedora casa en entorno natural",
                     new CategoriaDTO(4L),
                     new CiudadDTO(5L),
                     imagenes24,

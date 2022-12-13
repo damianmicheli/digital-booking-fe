@@ -48,7 +48,8 @@ const AttributeProvider = ({ children }) => {
       //setIconInput(faSquareXmark);
       setIconInput(faSquareCheck);
     } else {
-      deleteAttribute(id);
+      //deleteAttribute(id);
+      
     }
   };
 

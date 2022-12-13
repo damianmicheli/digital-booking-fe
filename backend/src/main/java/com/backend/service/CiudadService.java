@@ -24,7 +24,7 @@ public class CiudadService implements ICiudadService{
     @Override
     public List<CiudadDTO> listarTodos() {
 
-        List<Ciudad> ciudades = ciudadRepository.findAll();
+        List<Ciudad> ciudades = ciudadRepository.findAllByOrderByCiudadAsc();
         List<CiudadDTO> ciudadesDTO = new ArrayList<>();
 
         for (Ciudad ciudad : ciudades){
