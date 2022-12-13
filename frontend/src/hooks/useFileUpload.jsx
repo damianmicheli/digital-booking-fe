@@ -23,19 +23,15 @@ const useFileUpload = () => {
       method: "POST",
       body: formData,
     });
-
     if (!response.ok) {
       alert("No se pudo generar la url de aws");
     }
     const data = await response.json();
-
-    console.log({ data });
-    return data;
-
-    /* if (data) {		
-      setUrlImagesAws([...urlImagesAws, data]);
-      console.log("se cargó imagen " + i);*/
-    //setUploadSuccess("Carga de imagen finalizada");
+    console.log(typeof(data));
+    if (data) {
+      setUrlImagesAws((urlImagesAws)=>[...urlImagesAws, data]);
+      return data;
+    }
   };
 
   const handleSubmission = () => {
@@ -50,10 +46,10 @@ const useFileUpload = () => {
       const formData = new FormData();
       formData.append("file", files[i]);
       console.log(files[i]);
-      const data = uploadImage(i, formData);
-      setUrlImagesAws([...urlImagesAws, data]);
+      uploadImage(i, formData);
     }
   };
+
   console.log({ urlImagesAws });
 
   return {
