@@ -42,9 +42,10 @@ const Administration = () => {
   const [iconUpload, setIconUpload] = useState(faSquarePlus);
   const images = [];
   const {
-    selectedFile,
-    urlImageAws,
-    uploadSuccess,
+    files,
+    fileUploadProgress,
+    fileUploadResponse,
+    urlImagesAws,
     handleSubmission,
     changeHandler,
   } = useFileUpload();
@@ -151,7 +152,7 @@ const Administration = () => {
     setErrors(validateForm(form));
   };
 
-console.log({errors});
+  //console.log({ errors });
 
   const darAltaProducto = (settings) => {
     fetch(`${URL_BASE}/productos`, settings)
@@ -159,7 +160,7 @@ console.log({errors});
         console.log({ response });
         if (response.ok === false) {
           setFailure(true);
-        }else {
+        } else {
           return response.json();
         }
       })
@@ -176,16 +177,18 @@ console.log({errors});
       });
   };
 
+ // console.log({urlImagesAws});
+
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    if (urlImageAws !== "") {
-      images.push({ titulo: selectedFile.name, url: urlImageAws });
+    for (let i = 0; i < files.length; i++) {
+      images.push({ titulo: files[i].name, url: urlImagesAws[i] });
     }
 
     setErrors(validateForm(form));
 
-   // console.log({ images });
+    console.log({ images });
 
     const token = "Bearer " + JSON.parse(localStorage.getItem("jwt"));
     const payload = {
@@ -242,11 +245,14 @@ console.log({errors});
     }
   };
 
-  useEffect(()=>{
-   if(uploadSuccess !== null || uploadSuccess === "Carga de imagen finalizada") {
-      setIconUpload(faSquareCheck)
-   } 
-  },[uploadSuccess])
+/*   useEffect(() => {
+    if (
+      uploadSuccess !== null ||
+      uploadSuccess === "Carga de imagen finalizada"
+    ) {
+      setIconUpload(faSquareCheck);
+    }
+  }, [uploadSuccess]); */
 
   return (
     <>
@@ -465,12 +471,13 @@ console.log({errors});
                   <input
                     type="file"
                     name="file"
+                    multiple
                     className={styles.inputImage}
                     onChange={changeHandler}
                   />
-                  {uploadSuccess !== null && (
+                 {/*  {uploadSuccess !== null && (
                     <p className={styles.filePicked}>{uploadSuccess}</p>
-                  )}
+                  )} */}
                   {/* {isFilePicked && (
                     <div className={styles.filePicked}>
                       <p>Nombre de archivo: {selectedFile.name}</p>
