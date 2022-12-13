@@ -3,7 +3,7 @@ import styles from "./administration.module.css";
 
 import HeaderProduct from "../product/content/HeaderProduct";
 import Icon from "../global/Icon";
-import { faSquarePlus } from "@fortawesome/free-solid-svg-icons";
+import { faSquareCheck, faSquarePlus } from "@fortawesome/free-solid-svg-icons";
 
 import URL_BASE from "../global/getUrlBase";
 
@@ -39,19 +39,15 @@ const Administration = () => {
   //console.log({ attributesLoaded });
 
   // *** IMAGENES ***
-  const [images, setImages] = useState([]);
+  const [iconUpload, setIconUpload] = useState(faSquarePlus);
+  const images = [];
   const {
     selectedFile,
-    isFilePicked,
     urlImageAws,
+    uploadSuccess,
     handleSubmission,
     changeHandler,
   } = useFileUpload();
-
-  useEffect(() => {
-  
-  }, [selectedFile]);
-
 
   // *** Errores ***
 
@@ -145,7 +141,6 @@ const Administration = () => {
     return errorsForm;
   };
 
-
   const handleChange = (e) => {
     const { name, value } = e.target;
     setForm({ ...form, [name]: value });
@@ -156,14 +151,17 @@ const Administration = () => {
     setErrors(validateForm(form));
   };
 
+console.log({errors});
+
   const darAltaProducto = (settings) => {
     fetch(`${URL_BASE}/productos`, settings)
       .then((response) => {
         console.log({ response });
-        if (!response.ok) {
+        if (response.ok === false) {
           setFailure(true);
+        }else {
+          return response.json();
         }
-        return response.json();
       })
       .then((data) => {
         console.log({ data });
@@ -182,12 +180,12 @@ const Administration = () => {
     e.preventDefault();
 
     if (urlImageAws !== "") {
-      setImages([...images, { titulo: selectedFile.name, url: urlImageAws }]);
+      images.push({ titulo: selectedFile.name, url: urlImageAws });
     }
-    // handleSubmission();
+
     setErrors(validateForm(form));
 
-    console.log({ images });
+   // console.log({ images });
 
     const token = "Bearer " + JSON.parse(localStorage.getItem("jwt"));
     const payload = {
@@ -222,12 +220,14 @@ const Administration = () => {
     console.log({ images });
 
     if (images?.length) {
+      console.log("entra porque hay imagenes");
       if (
         errorsFree === undefined &&
         (cityIsEmpty === false || cityIsEmpty === null) &&
         (categoryIsEmpty === false || categoryIsEmpty === null) &&
         (attributesLoadedIsEmpty === false || attributesLoadedIsEmpty === null)
       ) {
+        console.log("entra porque no hay errores");
         console.log(errors);
         darAltaProducto(settings);
       } else {
@@ -241,6 +241,12 @@ const Administration = () => {
       }
     }
   };
+
+  useEffect(()=>{
+   if(uploadSuccess !== null || uploadSuccess === "Carga de imagen finalizada") {
+      setIconUpload(faSquareCheck)
+   } 
+  },[uploadSuccess])
 
   return (
     <>
@@ -257,6 +263,7 @@ const Administration = () => {
         path={"/"}
         textBtn={"volver"}
       />
+
       <div className={styles.title}>
         <HeaderProduct title={"Administración"} path={"/"} />
       </div>
@@ -461,7 +468,10 @@ const Administration = () => {
                     className={styles.inputImage}
                     onChange={changeHandler}
                   />
-                  {isFilePicked && (
+                  {uploadSuccess !== null && (
+                    <p className={styles.filePicked}>{uploadSuccess}</p>
+                  )}
+                  {/* {isFilePicked && (
                     <div className={styles.filePicked}>
                       <p>Nombre de archivo: {selectedFile.name}</p>
                       <p>Tipo de archivo: {selectedFile.type}</p>
@@ -471,11 +481,11 @@ const Administration = () => {
                         {selectedFile.lastModifiedDate.toLocaleDateString()}
                       </p>
                     </div>
-                  )}
+                  )} */}
                 </div>
                 <Icon
                   css={styles.addIcon}
-                  icon={faSquarePlus}
+                  icon={iconUpload}
                   event={handleSubmission}
                 />
               </div>

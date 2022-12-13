@@ -6,20 +6,23 @@ const useFileUpload = () => {
   const [selectedFile, setSelectedFile] = useState();
   const [isFilePicked, setIsFilePicked] = useState(false);
   const [urlImageAws, setUrlImageAws] = useState("");
+  const [uploadSuccess, setUploadSuccess] = useState(null);
 
   const changeHandler = (e) => {
     setSelectedFile(e.target.files[0]);
     setIsFilePicked(true);
   };
 
-  console.log({ selectedFile, isFilePicked });
+  console.log({ selectedFile, isFilePicked, uploadSuccess});
 
   const handleSubmission = () => {
-	console.log("Se disparó el submission");
+    console.log("Se disparó el submission");
     const formData = new FormData();
     formData.append("file", selectedFile);
 
-    fetch(`${URL_BASE}/s3/subir`, {
+    setUploadSuccess("Cargando imagen...");
+    
+	fetch(`${URL_BASE}/s3/subir`, {
       method: "POST",
       body: formData,
     })
@@ -33,7 +36,8 @@ const useFileUpload = () => {
         console.log(data);
         if (data) {
           setUrlImageAws(data);
-          return data;
+          setUploadSuccess("Carga de imagen finalizada");
+          //return data;
         }
       })
       .catch((error) => {
@@ -45,6 +49,7 @@ const useFileUpload = () => {
     selectedFile,
     isFilePicked,
     urlImageAws,
+    uploadSuccess,
     handleSubmission,
     changeHandler,
   };
