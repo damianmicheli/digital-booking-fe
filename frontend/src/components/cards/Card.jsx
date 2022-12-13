@@ -13,7 +13,7 @@ import { Link } from "react-router-dom";
 import { getIcons } from "../global/getIcons";
 import { getDescriptionScore } from "../global/getDescriptionScore";
 import { getStarNum } from "../global/getStarNum";
-import FavContext from "../../context/FavContext";
+// import FavContext from "../../context/FavContext";
 
 const Card = ({
   id,
@@ -29,28 +29,28 @@ const Card = ({
   hour,
   score,
 }) => {
-  const [isFavorite, setIsFavorite] = useState(false);
+  // const [isFavorite, setIsFavorite] = useState(false);
 
-  const {toggleItemInLocalStorage} = useContext(FavContext);
+  // const {toggleItemInLocalStorage} = useContext(FavContext);
 
-  useEffect(() => {
-    Array.isArray(favorites) && //Valida si es un array..tenga lenght o no
-      setIsFavorite(favorites.includes(id));
-  }, [favorites]);
+  // useEffect(() => {
+  //   Array.isArray(favorites) && //Valida si es un array..tenga lenght o no
+  //     setIsFavorite(favorites.includes(id));
+  // }, [favorites]);
 
   return (
     <div className={styles.cardContainer} key={id}>
       <div className={styles.cardLeft}>
         <img className={styles.cardImg} src={img} alt="imagen" />
         <Button
-          event={() => toggleItemInLocalStorage(id, isFavorite)}
+          // event={() => toggleItemInLocalStorage(id, isFavorite)}
           css={`
             ${styles.btnFav}
           `}
           text={
             <Icon
               css="iconFav"
-              icon={isFavorite ? faSolideHeart : faRegularHeart}
+              // icon={isFavorite ? faSolideHeart : faRegularHeart}
             />
           }
         />
