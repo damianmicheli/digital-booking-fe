@@ -18,9 +18,9 @@ const useFileUpload = () => {
 
   console.log(files);
 
-  const formData = new FormData();
+  
 
-  const uploadImage = async (i) => {
+  const uploadImage = async (i, formData) => {
     const response = await fetch(`${URL_BASE}/s3/subir`, {
       method: "POST",
       body: formData,
@@ -30,7 +30,11 @@ const useFileUpload = () => {
       alert("No se pudo generar la url de aws");
     } 
     const data = await response.json();
+
+	console.log({data});
+
     if (data) {
+		
       setUrlImagesAws([...urlImagesAws, data]);
       console.log("se cargó imagen " + i);
       //setUploadSuccess("Carga de imagen finalizada");
@@ -46,8 +50,10 @@ const useFileUpload = () => {
     //setUploadSuccess("Cargando imagen...");
 
     for (let i = 0; i < files.length; i++) {
+	  const formData = new FormData();
       formData.append("file", files[i]);
-      uploadImage(i);
+	  console.log(files[i]);
+      uploadImage(i, formData);
     }
   };
 
