@@ -1,4 +1,4 @@
-import React, { useEffect, useContext } from "react";
+import React, { useEffect/* , useContext */ } from "react";
 import { useParams } from "react-router";
 import useFetch from "../../hooks/useFetch";
 
@@ -12,10 +12,10 @@ import GalleryContainer from "../gallery/GalleryContainer";
 import SocialMediaShare from "./content/SocialMediaShare";
 import Score from "./content/Score";
 
-import Button from "../global/Button";
-import Icon from "../global/Icon";
-import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
-import { faHeart as faSolideHeart } from "@fortawesome/free-solid-svg-icons";
+//import Button from "../global/Button";
+//import Icon from "../global/Icon";
+//import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
+//import { faHeart as faSolideHeart } from "@fortawesome/free-solid-svg-icons";
 import styles from "./product.module.css";
 
 //import FavContext from "../../context/FavContext";
@@ -26,7 +26,7 @@ import MapView from "../map/MapView";
 const Product = () => {
   const { id } = useParams();
 
-  const idNumber = Number(id);
+ // const idNumber = Number(id);
 
   const [data] = useFetch(`${URL_BASE}/productos/buscar?id=${id}`);
 

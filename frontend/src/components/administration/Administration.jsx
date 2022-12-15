@@ -28,15 +28,13 @@ const Administration = () => {
 
   const [city, setCity] = useState("");
   const [cityIsEmpty, setCityIsEmpty] = useState(null);
-  const [category, setCategory] = useState("");
+  const [category, setCategory] = useState(null);
   const [categoryIsEmpty, setCategoryIsEmpty] = useState(null);
 
   // *** ATRIBUTOS ***
   const { attributeCounter, handleAttribute, attributesLoaded } =
     useContext(AttributeContext);
   const [attributesLoadedIsEmpty, setAttributesLoadedIsEmpty] = useState(null);
-
-  //console.log({ attributesLoaded });
 
   // *** IMAGENES ***
   const [iconUpload, setIconUpload] = useState(faSquarePlus);
@@ -46,10 +44,13 @@ const Administration = () => {
     fileUploadProgress,
     fileUploadResponse,
     urlImagesAws,
+    errorImages,
+    setErrorImages,
     setFileUploadProgress,
     setFileUploadResponse,
     handleSubmission,
     changeHandler,
+    blurHandler,
   } = useFileUpload();
 
   // *** Errores ***
@@ -154,8 +155,6 @@ const Administration = () => {
     setErrors(validateForm(form));
   };
 
-  //console.log({ errors });
-
   const darAltaProducto = (settings) => {
     fetch(`${URL_BASE}/productos`, settings)
       .then((response) => {
@@ -179,10 +178,14 @@ const Administration = () => {
       });
   };
 
-  // console.log({urlImagesAws});
-
   const handleSubmit = (e) => {
     e.preventDefault();
+
+   // console.log({fileUploadResponse});
+    setErrorImages(images.length === 0 && fileUploadResponse === null)
+    setCategoryIsEmpty(categoryIsEmpty === null);
+    setCityIsEmpty(cityIsEmpty === null);
+    setAttributesLoadedIsEmpty(attributesLoadedIsEmpty === null);
 
     for (let i = 0; i < files.length; i++) {
       images.push({ titulo: files[i].name, url: urlImagesAws[i] });
@@ -220,30 +223,27 @@ const Administration = () => {
 
     setErrorsFree(Object.values(errors).find((error) => error !== ""));
 
-    //console.log({ errorsFree });
-
     console.log({ images });
 
-    if (images?.length) {
-      console.log("entra porque hay imagenes");
-      if (
-        errorsFree === undefined &&
-        (cityIsEmpty === false || cityIsEmpty === null) &&
-        (categoryIsEmpty === false || categoryIsEmpty === null) &&
-        (attributesLoadedIsEmpty === false || attributesLoadedIsEmpty === null)
-      ) {
-        console.log("entra porque no hay errores");
-        console.log(errors);
-        darAltaProducto(settings);
-      } else {
-        console.log(
-          errors,
-          cityIsEmpty,
-          categoryIsEmpty,
-          attributesLoadedIsEmpty
-        );
-        console.log("No se pudo completar el alta de producto");
-      }
+    if (
+      errorsFree === undefined &&
+      cityIsEmpty === false &&
+      categoryIsEmpty === false &&
+      attributesLoadedIsEmpty === false &&
+      errorImages === false
+    ) {
+      console.log("entra porque no hay errores");
+      console.log(errors);
+      darAltaProducto(settings);
+    } else {
+      console.log({
+        errors,
+        cityIsEmpty,
+        categoryIsEmpty,
+        attributesLoadedIsEmpty,
+        images,
+      });
+      console.log("No se pudo completar el alta de producto");
     }
   };
 
@@ -252,6 +252,7 @@ const Administration = () => {
       setFileUploadProgress(false);
       setFileUploadResponse(true);
       setIconUpload(faSquareCheck);
+      setErrorImages(false);
     }
   }, [urlImagesAws]);
 
@@ -469,12 +470,13 @@ const Administration = () => {
               <div className={styles.contentImages}>
                 <div className={styles.groupForm}>
                   <label className="text2">
-                    Selecciona un archivo de imagen (.jpg)
+                    Selecciona uno o varios archivos de imagen (.jpg)
                   </label>
                   <input
                     type="file"
                     name="file"
                     multiple
+                    onBlur={blurHandler}
                     className={styles.inputImage}
                     onChange={changeHandler}
                   />
@@ -485,6 +487,9 @@ const Administration = () => {
                     <p className={styles.filePicked}>
                       Carga de imágenes finalizada
                     </p>
+                  )}
+                  {errorImages && (
+                    <p className={styles.pFormError}>{isRequired}</p>
                   )}
                 </div>
                 <Icon

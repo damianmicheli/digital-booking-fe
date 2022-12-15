@@ -1,14 +1,15 @@
-import React, { useState, useEffect, useContext } from "react";
+//import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 
 import Icon from "../global/Icon";
-import Button from "../global/Button";
+//import Button from "../global/Button";
 
 import styles from "./card.module.css";
 import {
   faLocationDot,
-  faHeart as faSolideHeart,
+  /* faHeart as faSolideHeart, */
 } from "@fortawesome/free-solid-svg-icons";
-import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
+//import { faHeart as faRegularHeart } from "@fortawesome/free-regular-svg-icons";
 import { Link } from "react-router-dom";
 import { getIcons } from "../global/getIcons";
 import { getDescriptionScore } from "../global/getDescriptionScore";

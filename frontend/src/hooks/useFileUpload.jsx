@@ -1,22 +1,22 @@
-import {  useState } from "react";
+import { useEffect, useState } from "react";
 
 import URL_BASE from "../components/global/getUrlBase";
 
 const useFileUpload = () => {
-  // const [selectedFile, setSelectedFile] = useState();
-  // const [isFilePicked, setIsFilePicked] = useState(false);
   const [urlImagesAws, setUrlImagesAws] = useState([]);
-  // const [uploadSuccess, setUploadSuccess] = useState(null);
-  const [files, setFiles] = useState("");
-  const [fileUploadProgress, setFileUploadProgress] = useState(false);
-  //for displaying response message
+  const [files, setFiles] = useState([]);
+  const [fileUploadProgress, setFileUploadProgress] = useState(null);
   const [fileUploadResponse, setFileUploadResponse] = useState(null);
+  const [errorImages, setErrorImages] = useState(null);
 
   const changeHandler = (e) => {
     setFiles(e.target.files);
   };
 
-  //console.log(files);
+  const blurHandler = (e) => {
+    e.target.files === null && setErrorImages(true);
+  };
+  console.log(files);
 
   const uploadImage = async (i, formData) => {
     const response = await fetch(`${URL_BASE}/s3/subir`, {
@@ -48,17 +48,24 @@ const useFileUpload = () => {
     }
   };
 
-  console.log({ urlImagesAws });
+  //console.log({ urlImagesAws });
+
+  useEffect(() => {
+    setErrorImages(files === []);
+  }, [files]);
 
   return {
     files,
     fileUploadProgress,
     fileUploadResponse,
     urlImagesAws,
+    errorImages,
+    setErrorImages,
     setFileUploadProgress,
     setFileUploadResponse,
     handleSubmission,
     changeHandler,
+    blurHandler,
   };
 };
 
