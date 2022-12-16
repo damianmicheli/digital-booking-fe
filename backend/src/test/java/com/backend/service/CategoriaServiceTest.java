@@ -23,7 +23,7 @@ class CategoriaServiceTest {
     }
 
     @Test
-    void categoriaGuardarTest() throws NoEncontradoException, ConflictoException {
+    void categoriaGuardarTest() throws NoEncontradoException {
 
         CategoriaDTO categoria = crearNuevaCategoria();
 
