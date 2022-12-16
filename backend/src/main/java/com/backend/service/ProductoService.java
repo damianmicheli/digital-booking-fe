@@ -45,12 +45,33 @@ public class ProductoService implements IProductoService {
         if (productoDTO.getCategoria() == null) {
             throw new DatosIncorrectosException("No se especificó la categoría");
         }
+
+        if (productoDTO.getNombre() == null) {
+            throw new DatosIncorrectosException("No se especifica el nombre");
+        }
+
+        if (productoDTO.getDireccion() == null) {
+            throw new DatosIncorrectosException("No se especificó la direccion");
+        }
+
+        if (productoDTO.getDescripcion() == null) {
+            throw new DatosIncorrectosException("No se especificó la descripcion");
+        }
+
+        if (productoDTO.getTitulo() == null) {
+            throw new DatosIncorrectosException("No se especificó el titulo");
+        }
+
         if (productoDTO.getCiudad() == null) {
             throw new DatosIncorrectosException("No se especificó la ciudad");
         }
+
         if (productoDTO.getLongitud() == null || productoDTO.getLongitud().equals("")) {
-            productoDTO.setLatitud("-34.60350925672641");
             productoDTO.setLongitud("-58.38153821941309");
+        }
+
+        if (productoDTO.getLatitud() == null || productoDTO.getLatitud().equals("")) {
+            productoDTO.setLatitud("-34.60350925672641");
         }
 
         Producto producto = mapper.convertValue(productoDTO, Producto.class);

@@ -8,6 +8,6 @@ public interface ICiudadService {
 
     List<CiudadDTO> listarTodos();
 
-    CiudadDTO guardar(CiudadDTO ciudadDTO) throws ConflictoException;
+    CiudadDTO guardar(CiudadDTO ciudadDTO);
 
 }
