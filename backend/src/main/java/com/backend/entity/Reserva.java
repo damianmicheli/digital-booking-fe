@@ -21,8 +21,10 @@ public class Reserva {
 
     private LocalTime hora_comienzo_reserva;
 
+    @NotBlank
     private LocalDate fecha_inicial_reserva;
 
+    @NotBlank
     private LocalDate fecha_final_reserva;
 
     private String aclaraciones;

@@ -16,6 +16,7 @@ public class Puntuacion {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @NotBlank
     private int puntuacion;
 
     @NotBlank

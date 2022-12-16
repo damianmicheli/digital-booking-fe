@@ -17,14 +17,19 @@ public class Producto {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-
     private Long id;
+
+    @NotBlank
     private String titulo;
+
+    @NotBlank
     private String nombre;
 
+    @NotBlank
     @Column(length=1000)
     private String descripcion;
 
+    @NotBlank
     private String direccion;
 
     private String latitud;
