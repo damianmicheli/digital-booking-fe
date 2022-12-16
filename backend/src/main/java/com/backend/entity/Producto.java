@@ -37,7 +37,7 @@ public class Producto {
 
     private String politica_de_cancelacion;
 
-    @ManyToMany(cascade=CascadeType.REMOVE)
+    @ManyToMany(cascade=CascadeType.REMOVE, fetch = FetchType.EAGER)
     @JoinTable(name = "producto_caracteristica",
             joinColumns = @JoinColumn(name = "producto_id"),
             inverseJoinColumns = @JoinColumn(name = "caracteristica_id"))

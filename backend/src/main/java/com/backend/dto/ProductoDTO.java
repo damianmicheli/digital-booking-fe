@@ -65,7 +65,32 @@ public class ProductoDTO {
         this.imagenes = imagenes;
         this.caracteristicas = caracteristicas;
     }
+    public ProductoDTO(
+            String descripcion,
+            String direccion,
+            String latitud,
+            String longitud,
+            String nombre,
+            String politica_de_cancelacion,
+            String politica_de_salud_y_seguridad,
+            String politica_de_uso,
+            String titulo,
+            CategoriaDTO categoria,
+            CiudadDTO ciudad){
 
+        this.titulo = titulo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.politica_de_uso = politica_de_uso;
+        this.politica_de_salud_y_seguridad = politica_de_salud_y_seguridad;
+        this.politica_de_cancelacion = politica_de_cancelacion;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+
+    }
     public ProductoDTO(
                        String descripcion,
                        String direccion,

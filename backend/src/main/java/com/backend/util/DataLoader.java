@@ -399,24 +399,6 @@ public class DataLoader implements ApplicationRunner {
 
             List<CaracteristicaDTO> caracteristicas = new ArrayList<>();
 
-            // crear array caracteristicas v1
-//            {
-//                caracteristicas.add(new CaracteristicaDTO("Piscina", "faSwimmer"));
-//                caracteristicas.add(new CaracteristicaDTO("Parrilla", "faFire"));
-//                caracteristicas.add(new CaracteristicaDTO("Aire Acondicionado", "faSnowflake"));
-//                caracteristicas.add(new CaracteristicaDTO("WiFi", "faWifi"));
-//                caracteristicas.add(new CaracteristicaDTO("Acceso a la playa", "faUmbrellaBeach"));
-//                caracteristicas.add(new CaracteristicaDTO("Estacionamiento", "faCar"));
-//                caracteristicas.add(new CaracteristicaDTO("Apto Mascotas", "faPaw"));
-//                caracteristicas.add(new CaracteristicaDTO("Botiquín", "faSuitcaseMedical"));
-//                caracteristicas.add(new CaracteristicaDTO("Televisión", "faTv"));
-//                caracteristicas.add(new CaracteristicaDTO("Cocina", "faKitchenSet"));
-//                caracteristicas.add(new CaracteristicaDTO("Calefacción", "faTemperatureArrowUp"));
-//                caracteristicas.add(new CaracteristicaDTO("Caja de seguridad", "faVault"));
-//                caracteristicas.add(new CaracteristicaDTO("Cámaras de Seguridad", "faVideo"));
-//                caracteristicas.add(new CaracteristicaDTO("Shampoo/Acondicionador", "faPumpSoap"));
-//            }
-
 
             { // crear array caracteristicas v2
                 caracteristicas.add(new CaracteristicaDTO("Piscina", "swimmer"));
