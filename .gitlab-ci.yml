@@ -46,7 +46,7 @@ deploy-backend:
     - echo "Deployando aplicacion de backend..."
     - cd ./backend
     - chmod 400 ./0521PTC3N1-grupo4.pem
-    - scp -o StrictHostKeyChecking=no -i ./0521PTC3N1-grupo4.pem ./target/backend-0.0.1-SNAPSHOT.jar ec2-user@ec2-3-141-106-232.us-east-2.compute.amazonaws.com:~
+    - scp -o StrictHostKeyChecking=no -i ./0521PTC3N1-grupo4.pem ./target/backend-0.0.1-SNAPSHOT.jar ec2-user@ec2-18-222-64-171.us-east-2.compute.amazonaws.com:~
   rules:
     - if: $CI_COMMIT_REF_NAME	 == 'dev'
       changes:
