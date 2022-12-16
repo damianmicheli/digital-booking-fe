@@ -1,15 +1,15 @@
 package com.backend.service;
 
-import com.backend.dto.CategoriaDTO;
 import com.backend.dto.FechasOcupadasDTO;
 import com.backend.dto.ProductoDTO;
+import com.backend.dto.PuntuacionDTO;
+import com.backend.dto.UsuarioDTO;
 import com.backend.entity.*;
 import com.backend.repository.IProductoRepository;
-
+import com.backend.repository.IPuntuacionRepository;
 import com.backend.repository.IReservaRepository;
 import com.backend.util.Utiles;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import net.bytebuddy.asm.Advice;
 import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -31,6 +31,12 @@ public class ProductoService implements IProductoService {
     private IReservaRepository reservaRepository;
 
     @Autowired
+    private IPuntuacionRepository puntuacionRepository;
+
+    @Autowired
+    private IUsuarioService usuarioService;
+
+    @Autowired
     private ObjectMapper mapper;
 
     @Override
@@ -42,6 +48,11 @@ public class ProductoService implements IProductoService {
         if (productoDTO.getCiudad() == null) {
             throw new DatosIncorrectosException("No se especificó la ciudad");
         }
+        if (productoDTO.getLongitud() == null || productoDTO.getLongitud().equals("")) {
+            productoDTO.setLatitud("-34.60350925672641");
+            productoDTO.setLongitud("-58.38153821941309");
+        }
+
         Producto producto = mapper.convertValue(productoDTO, Producto.class);
 
         Producto productoGuardado = productoRepository.save(producto);
@@ -79,6 +90,46 @@ public class ProductoService implements IProductoService {
         logger.info("Se listaron todos los productos.");
 
         return productosDTO;
+    }
+
+    public PuntuacionDTO guardarPuntuacion(PuntuacionDTO puntuacionDTO) throws NoEncontradoException {
+
+        Puntuacion puntuacion = mapper.convertValue(puntuacionDTO, Puntuacion.class);
+
+        Long productoId = puntuacion.getProducto().getId();
+        Long usuarioId = puntuacion.getUsuario().getId();
+
+
+        ProductoDTO productoDTO = this.buscar(productoId);
+        UsuarioDTO usuarioDTO = usuarioService.buscarPorId(usuarioId);
+
+        Optional<Puntuacion> puntuacionExistente = puntuacionRepository.findByProductoIdAndUsuarioId(productoId, usuarioId);
+
+        if (puntuacionExistente.isPresent()){
+            puntuacion.setId(puntuacionExistente.get().getId());
+        }
+
+        Puntuacion puntuacionGuardada = puntuacionRepository.save(puntuacion);
+
+        PuntuacionDTO puntuacionGuardadaDTO = mapper.convertValue(puntuacionGuardada, PuntuacionDTO.class);
+
+
+        List<Puntuacion> puntuaciones = puntuacionRepository.findByProductoId(productoDTO.getId());
+
+        float suma = 0;
+
+        for (Puntuacion p: puntuaciones) {
+            suma += p.getPuntuacion();
+        }
+
+        productoDTO.setPuntajePromedio(suma / puntuaciones.size());
+
+        this.actualizar(productoDTO);
+
+        logger.info("Se registro la puntuacion: "+ puntuacionDTO );
+
+        return puntuacionGuardadaDTO;
+
     }
 
     @Override
@@ -242,7 +293,7 @@ public class ProductoService implements IProductoService {
             throw new NoEncontradoException("No se puede actualizar porque no existe un producto con Id: " + id + ".");
         }
 
-        ProductoDTO productoDTOParaActualizar = mapper.convertValue(encontrado,ProductoDTO.class);
+        ProductoDTO productoDTOParaActualizar = mapper.convertValue(encontrado.get(),ProductoDTO.class);
 
         logger.info("Se actualizará un producto. Datos originales: " + productoDTOParaActualizar);
 

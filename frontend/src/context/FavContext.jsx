@@ -9,11 +9,15 @@ const FavProvider = ({ children }) => {
     else return [];
   });
 
-  const toggleItemInLocalStorage = useCallback(
+ console.log({favorites});
+
+  const toggleItemInLocalStorage = useCallback(    
     (id, isFavorite) => {
+      console.log({isFavorite, id});
       if (isFavorite) {
         setFavorites((prev) => prev.filter((b) => b !== id));
       } else {
+       console.log("entra");
         const newFavorites = [...favorites, id];
         setFavorites(newFavorites);
       }

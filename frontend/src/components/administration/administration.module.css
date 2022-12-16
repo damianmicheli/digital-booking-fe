@@ -1,0 +1,247 @@
+.content {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  padding: 1rem;
+  gap: 1rem;
+  background-color: white;
+  border-radius: 5px;
+  margin-top: 15px;
+  padding-bottom: 50px;
+}
+
+.administration {
+  background-color: #f2f2f2;
+  padding-bottom: 40px;
+}
+
+.groupForm{
+  display: flex;
+  flex-direction: column;
+  width: 95%;
+  margin: 5px auto;
+  padding: 2.5px 0;
+  gap: 5px;
+}
+
+.groupForm > input,
+.groupForm > select,
+.groupForm > textarea {
+  border: none;
+  height: 40px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+  border-radius: 5px;
+  padding-left: 10px;
+}
+
+.groupForm > textarea {
+  padding-top: 10px;
+  padding-right: 10px;
+  font-family: inherit;
+  outline: none;
+}
+
+.groupForm > textarea {
+  resize: none;
+  height: 120px;
+}
+
+.groupForm>select *{
+  outline: none;
+  border-bottom: 1px solid var(--color-principal);
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+  }
+
+.groupForm>select:focus{
+  outline: none;
+  }
+
+.groupForm>select:hover {
+  border: none;
+}
+
+.pFormError {
+  font-size: 0.65rem;
+  text-align: right;
+  color: red;
+  margin-bottom: -10px;
+  padding-bottom: 5px;
+}
+
+.inputImage{
+  size:70%
+}
+
+::-webkit-file-upload-button {
+  background:white;
+ padding: 11px; 
+ border: none;
+ border-radius: 5px;
+ box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+ width: 50%;
+ min-width: 150px;
+ margin-right: 15px;
+ margin-left: -10px;
+ transition: all 0.5s;
+}
+
+::-webkit-file-upload-button:hover {
+  background:#f2f2f2;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+::-webkit-file-upload-button:visited {
+  background:white;
+}
+
+.contentAttributes_pError>p{
+  margin-right: 2.5%;
+}
+.contentAttributes, .contentImages {
+  display: flex;
+  flex-direction: row;
+  width: 95%;
+  margin: 5px auto;
+  gap: 5px;
+  background-color: #f2f2f2;
+  padding: 15px 0;
+  border-radius: 5px;
+  align-items: center;
+}
+
+.contentAttributes>.groupForm, .contentImages>.groupForm{
+  width: calc(100% - 80px);
+  margin-left: 5%;
+  margin-right: 8px;
+}
+
+.contentAttributes>.addIcon, .contentAttributes>.addIconDisabled {
+ margin-top: 22px;
+}
+
+.addIconDisabled{
+  font-size: 44px;
+  color: var(--color-4);
+  transition: all 0.5s;
+}
+
+.addIcon{
+  font-size: 44px;
+  color: var(--color-principal);
+  transition: all 0.5s;
+}
+
+.addIcon.addIcon:hover{
+  color: var(--color-3);
+}
+
+.icon {
+  font-size: 14px;
+}
+
+.contentPolitics{
+  width: 97%;
+  margin: 0 auto;
+}
+
+.dropdown {
+  width: 100%;
+  height: 38px;
+  min-height: 38px;
+  margin: 0 auto;
+  position: relative;
+  cursor: pointer;
+  user-select: none;
+}
+
+.dropdownBtn{
+  display: flex;
+  height: 40px;
+  gap: 0.5rem;
+  background-color: #fcfcfc;
+  border-radius: 5px;
+  font-size: 12px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.12);
+  padding-left: 10px;
+  line-height: 40px;
+}
+.dropdownContent {
+  position: absolute;
+  width: 100%;
+  top: 110%;
+  left: 0;
+  background: #fff;
+  box-shadow: 3px 3px 10px 6px rgba(0, 0, 0, 0.06);
+  width: 100%;
+  font-size: 16px;
+  z-index: 1;
+  overflow-y: scroll;
+  padding: 0 0 15px;  
+}
+
+.dropdownItem {
+  border-bottom: 1.5px solid var(--color-principal);
+  padding: 7px 0;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: flex;
+  align-items: center;
+  gap: 0.7rem;
+  font-size: 15px;
+  height: 40px;
+}
+
+.dropdownItem:hover {
+background-color: var(--color-4);
+}
+
+.dropdownItemAttribute{
+display: flex;
+flex-direction: row;
+gap: 15px;
+padding-left: 15px;
+}
+
+.filePicked{
+  font-size: 12px;
+  font-family: inherit;
+  font-weight: 700;
+  
+}
+
+@media only screen and (min-width: 624px) {
+  .contentAttributes>.groupForm, .contentImages>.groupForm{
+    width: calc(100% - 80px);
+    margin-left: 2%;
+  }
+}
+
+@media only screen and (min-width: 990px) {
+  .contentPolitics, .contentFlex{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+  }
+  .groupForm:last-child{
+    margin-left: 2.5%;
+  }
+
+  .contentPolitics>.groupForm{
+    width: 30%;
+  }
+
+  .contentFlex>.groupForm{
+    width: 45%;
+  }
+
+  .contentAttributes>.groupForm, .contentImages>.groupForm{
+    width: calc(100% - 80px);
+    margin-left: 1%;
+  }
+
+  .pFormError {
+    padding-bottom: 0;
+  }
+  
+}

@@ -1,7 +1,5 @@
 package com.backend.service;
-import com.backend.dto.CaracteristicaDTO;
 import com.backend.dto.CiudadDTO;
-import com.backend.entity.Caracteristica;
 import com.backend.entity.Ciudad;
 import com.backend.repository.ICiudadRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -26,7 +24,7 @@ public class CiudadService implements ICiudadService{
     @Override
     public List<CiudadDTO> listarTodos() {
 
-        List<Ciudad> ciudades = ciudadRepository.findAll();
+        List<Ciudad> ciudades = ciudadRepository.findAllByOrderByCiudadAsc();
         List<CiudadDTO> ciudadesDTO = new ArrayList<>();
 
         for (Ciudad ciudad : ciudades){

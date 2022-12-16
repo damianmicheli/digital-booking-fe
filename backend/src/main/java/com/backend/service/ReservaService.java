@@ -1,15 +1,12 @@
 package com.backend.service;
 
-import com.backend.dto.FechasOcupadasDTO;
 import com.backend.dto.ProductoDTO;
 import com.backend.dto.ReservaDTO;
 import com.backend.dto.UsuarioDTO;
 import com.backend.entity.Producto;
 import com.backend.entity.Reserva;
-import com.backend.entity.Usuario;
 import com.backend.repository.IProductoRepository;
 import com.backend.repository.IReservaRepository;
-import com.backend.repository.IUsuarioRepository;
 import com.backend.util.Utiles;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.apache.log4j.Logger;
@@ -101,7 +98,7 @@ public class ReservaService implements IReservaService {
 
             usuarioEncontrado.setCiudad(ciudadNueva);
 
-            usuarioService.actualizarCiudad(usuarioEncontrado);
+            usuarioService.actualizar(usuarioEncontrado);
 
         }
 
@@ -140,34 +137,6 @@ public class ReservaService implements IReservaService {
         return reservasDTO;
 
     }
-
-//    @Override
-//    public FechasOcupadasDTO fechasOcupadas(Long productoId) {
-//
-//        List<Reserva> reservas = reservaRepository.findByProductoId(productoId);
-//        List<LocalDate> fechas = new ArrayList<>();
-//
-//        for (Reserva reserva : reservas) {
-//
-//            LocalDate in = reserva.getFecha_inicial_reserva();
-//            LocalDate out = reserva.getFecha_final_reserva();
-//            LocalDate actual = in;
-//
-//            while (actual.isBefore(out) || actual.isEqual(out)) {
-//                fechas.add(actual);
-//                actual = actual.plusDays(1L);
-//            }
-//
-//        }
-//
-//        FechasOcupadasDTO fechasOcupadas = new FechasOcupadasDTO();
-//
-//        fechasOcupadas.setFechasNoDisponibles(fechas);
-//
-//        logger.info("Se listaron las fechas ocupadas del producto con id: " + productoId);
-//
-//        return fechasOcupadas;
-//    }
 
 }
 

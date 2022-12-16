@@ -3,8 +3,9 @@ import Icon from "../../global/Icon";
 import styles from "./bookingDetail.module.css";
 import { faLocationDot } from "@fortawesome/free-solid-svg-icons";
 import Button from "../../global/Button";
+import { getStarNum } from "../../global/getStarNum";
 
-const BookingDetail = ({ startDate, endDate, title, category, location, image }) => {
+const BookingDetail = ({ startDate, endDate, title, category, location, image, score }) => {
 
   const onclick = () => {
 
@@ -24,6 +25,7 @@ const BookingDetail = ({ startDate, endDate, title, category, location, image })
         <div className={styles.content}>
           <h5>{category}</h5>
           <h3 className="color2">{title}</h3>
+          <p className="stars">{getStarNum(score)}</p>
           <h6>
             <Icon css={styles.iconLocation} icon={faLocationDot} />
             {location}
@@ -39,7 +41,7 @@ const BookingDetail = ({ startDate, endDate, title, category, location, image })
             <p>{endDate}</p>
           </div>
           <hr className="line marginBottom" />
-          <Button css="buttonCard" text={"Confirmar reserva"} event={onclick}/>
+          <Button css="buttonCard centered" text={"Confirmar reserva"} event={onclick}/>
         </div>
       </div>
     </div>

@@ -5,6 +5,8 @@ import java.util.List;
 
 import com.backend.dto.FechasOcupadasDTO;
 import com.backend.dto.ProductoDTO;
+import com.backend.dto.PuntuacionDTO;
+
 public interface IProductoService {
 
     ProductoDTO guardar (ProductoDTO productoDTO) throws ConflictoException, DatosIncorrectosException;
@@ -26,4 +28,7 @@ public interface IProductoService {
     List<ProductoDTO> listarPorFechas(LocalDate inicio, LocalDate fin) throws NoEncontradoException, DatosIncorrectosException;
 
     ProductoDTO actualizar (ProductoDTO productoDTO) throws NoEncontradoException;
-}
+
+    PuntuacionDTO guardarPuntuacion(PuntuacionDTO puntuacionDTO) throws NoEncontradoException;
+
+    }

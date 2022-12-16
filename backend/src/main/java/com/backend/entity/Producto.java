@@ -3,13 +3,14 @@ package com.backend.entity;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
+import lombok.ToString;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
 import java.util.List;
 
 @Getter @Setter
-@Entity
+@Entity @ToString
 @Table
 
 public class Producto {
@@ -25,6 +26,10 @@ public class Producto {
     private String descripcion;
 
     private String direccion;
+
+    private String latitud;
+
+    private String longitud;
 
     private String politica_de_uso;
 
@@ -58,15 +63,23 @@ public class Producto {
     @JsonIgnore
     private List<Reserva> reservas;
 
+    @OneToMany(mappedBy = "producto", cascade = CascadeType.REMOVE)
+    @JsonIgnore
+    private List<Puntuacion> puntuaciones;
+
+    private float puntajePromedio = 0;
+
 
     public Producto() {
     }
 
-    public Producto(String titulo, String nombre, String descripcion, String direccion, String politica_de_uso, String politica_de_salud_y_seguridad, String politica_de_cancelacion, List<Caracteristica> caracteristicas, Categoria categoria, Ciudad ciudad, List<Imagen> imagenes) {
+    public Producto(String titulo, String nombre, String descripcion, String direccion, String latitud, String longitud, String politica_de_uso, String politica_de_salud_y_seguridad, String politica_de_cancelacion, List<Caracteristica> caracteristicas, Categoria categoria, Ciudad ciudad, List<Imagen> imagenes, List<Reserva> reservas) {
         this.titulo = titulo;
         this.nombre = nombre;
         this.descripcion = descripcion;
         this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
         this.politica_de_uso = politica_de_uso;
         this.politica_de_salud_y_seguridad = politica_de_salud_y_seguridad;
         this.politica_de_cancelacion = politica_de_cancelacion;
@@ -74,5 +87,6 @@ public class Producto {
         this.categoria = categoria;
         this.ciudad = ciudad;
         this.imagenes = imagenes;
+        this.reservas = reservas;
     }
 }

@@ -17,6 +17,8 @@ public class ProductoDTO {
     private String nombre;
     private String descripcion;
     private String direccion;
+    private String latitud;
+    private String longitud;
     private String politica_de_uso;
     private String politica_de_salud_y_seguridad;
     private String politica_de_cancelacion;
@@ -24,12 +26,44 @@ public class ProductoDTO {
     private CiudadDTO ciudad;
     private List<ImagenDTO> imagenes;
     private List<CaracteristicaDTO> caracteristicas;
+    private float puntajePromedio;
+
 
     public ProductoDTO() {
     }
 
     public ProductoDTO(Long id) {
         this.id = id;
+    }
+
+    public ProductoDTO(
+            String descripcion,
+            String direccion,
+            String latitud,
+            String longitud,
+            String nombre,
+            String politica_de_cancelacion,
+            String politica_de_salud_y_seguridad,
+            String politica_de_uso,
+            String titulo,
+            CategoriaDTO categoria,
+            CiudadDTO ciudad,
+            List<ImagenDTO> imagenes,
+            List<CaracteristicaDTO> caracteristicas) {
+
+        this.titulo = titulo;
+        this.nombre = nombre;
+        this.descripcion = descripcion;
+        this.direccion = direccion;
+        this.latitud = latitud;
+        this.longitud = longitud;
+        this.politica_de_uso = politica_de_uso;
+        this.politica_de_salud_y_seguridad = politica_de_salud_y_seguridad;
+        this.politica_de_cancelacion = politica_de_cancelacion;
+        this.categoria = categoria;
+        this.ciudad = ciudad;
+        this.imagenes = imagenes;
+        this.caracteristicas = caracteristicas;
     }
 
     public ProductoDTO(

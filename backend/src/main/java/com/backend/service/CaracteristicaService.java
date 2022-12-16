@@ -7,6 +7,7 @@ import org.apache.log4j.Logger;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
 import java.util.List;
 
 
@@ -38,23 +39,21 @@ public class CaracteristicaService implements ICaracteristicaService{
 
     }
 
-    @Override
-    public CaracteristicaDTO buscar(Long id) throws NoEncontradoException {
-        return null;
-    }
 
     @Override
     public List<CaracteristicaDTO> listarTodas() {
-        return null;
+        List<Caracteristica> caracteristicas = caracteristicaRepository.findAll();
+        List<CaracteristicaDTO> caracteristicasDTO = new ArrayList<>();
+
+        for (Caracteristica caracteristica : caracteristicas){
+            caracteristicasDTO.add(mapper.convertValue(caracteristica, CaracteristicaDTO.class));
+        }
+
+        logger.info("Se listaron todas las caracterisiticas.");
+
+        return caracteristicasDTO;
     }
 
-    @Override
-    public void eliminar(Long id) throws NoEncontradoException {
 
-    }
 
-    @Override
-    public CaracteristicaDTO actualizar(CaracteristicaDTO caracteristicaDTO) throws NoEncontradoException, DatosIncorrectosException {
-        return null;
-    }
 }

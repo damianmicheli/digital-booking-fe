@@ -1,8 +1,6 @@
 package com.backend.service;
 
-import com.backend.dto.CategoriaDTO;
 import com.backend.dto.UsuarioDTO;
-import com.backend.entity.Categoria;
 import com.backend.entity.Usuario;
 import com.backend.repository.IUsuarioRepository;
 import com.fasterxml.jackson.databind.ObjectMapper;
@@ -40,7 +38,7 @@ public class UsuarioService implements IUsuarioService{
 
         usuarioEncontrado.setPassword("Password oculta");
 
-        logger.info("Se busco por id el usuario> " + usuarioEncontrado);
+        logger.info("Se busco por id el usuario: " + usuarioEncontrado);
 
         return usuarioEncontrado;
     };
@@ -87,19 +85,23 @@ public class UsuarioService implements IUsuarioService{
     }
 
     @Override
-    public UsuarioDTO actualizarCiudad(UsuarioDTO usuarioDTO) throws NoEncontradoException {
+    public UsuarioDTO actualizar(UsuarioDTO usuarioDTO) throws NoEncontradoException {
 
-        Long id = usuarioDTO.getId();
-
-        Optional<Usuario> encontrado = usuarioRepository.findById(id);
+        Optional<Usuario> encontrado = usuarioRepository.findById(usuarioDTO.getId());
 
         if (encontrado.isEmpty()){
-            throw new NoEncontradoException("No se puede actualizar porque no existe un usuario con Id: " + id + ".");
+            throw new NoEncontradoException("No se puede actualizar porque no existe un usuario con Id: " + usuarioDTO.getId() + ".");
         }
 
-        Usuario usuarioModificado = encontrado.get();
+        UsuarioDTO usuarioDTOParaActualizar = mapper.convertValue(encontrado.get(),UsuarioDTO.class);
 
-        usuarioModificado.setCiudad(usuarioDTO.getCiudad());
+        usuarioDTOParaActualizar.setPassword("Password oculta");
+
+        logger.info("Se actualizará un usuario. Datos originales: " + usuarioDTOParaActualizar);
+
+        Usuario usuarioModificado = mapper.convertValue(usuarioDTO,Usuario.class);
+
+        usuarioModificado.setPassword(encontrado.get().getPassword());
 
         Usuario usuarioRes = usuarioRepository.save(usuarioModificado);
 

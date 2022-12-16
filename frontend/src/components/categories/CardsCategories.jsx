@@ -31,7 +31,7 @@ const CardsCategorias = ({ items }) => {
             <CardCategory
               img={category.url}
               category={category.titulo}
-              description="807.105"
+              description={category.descripcion}
             />
           </div>
         ))}

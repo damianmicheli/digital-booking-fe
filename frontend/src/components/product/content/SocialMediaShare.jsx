@@ -13,9 +13,9 @@ import {
   TwitterIcon,
 } from "react-share";
 
-const SocialMediaShare = ({ url }) => {
+const SocialMediaShare = ({ url, category, title }) => {
   const [isOpenModalSocialMedia, openModalSocialMedia, closeModalSocialMedia] = useModal(false);
-
+  const text = `Mira este alojamiento! \nNombre: ${title} \nCategoria: ${category}`;
   return (
     <>
       <button onClick={openModalSocialMedia} className={styles.button}>
@@ -35,7 +35,7 @@ const SocialMediaShare = ({ url }) => {
             <FacebookShareButton url={url} hashtag="#DigitalBooking">
               <FacebookIcon logofillcolor="white" round={true} size={50} />
             </FacebookShareButton>
-            <WhatsappShareButton title="Mira este alojamiento!" url={url}>
+            <WhatsappShareButton title={text} url={url}>
               <WhatsappIcon logofillcolor="white" round={true} size={50} />
             </WhatsappShareButton>
             <TwitterShareButton

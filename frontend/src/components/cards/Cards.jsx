@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext} from "react";
 
 import Card from "./Card";
 import FilterContext from "../../context/FilterContext";
@@ -15,10 +15,11 @@ const Cards = ({ data }) => {
   const checkIn = startDate !== null ? format(startDate, "dd-MM-yyyy") : null;
   const checkOut = endDate !== null ? format(endDate, "dd-MM-yyyy") : null;
 
+ 
   return (
-    <>
+    
       <div className={styles.container}>
-        <h2>Recomendaciones</h2>
+        <h2>{selectedCategory.title === null && valuesForm.date.startDate === null && valuesForm.date.endDate === null && valuesForm.city === null ? "Recomendaciones" : "Resultado de tu búsqueda"}</h2>       
         <div className={styles.filterContainer}>
           {selectedCategory.title === null ? (
             ""
@@ -72,6 +73,7 @@ const Cards = ({ data }) => {
                     }
                     category={producto.categoria.titulo.toUpperCase()}
                     title={producto.nombre}
+                    score={producto.puntajePromedio}
                     location={`${producto.ciudad.ciudad}, ${producto.ciudad.pais}`}
                     description={producto.descripcion}
                     features={producto.caracteristicas}
@@ -80,7 +82,7 @@ const Cards = ({ data }) => {
               ))}
         </div>
       </div>
-    </>
+   
   );
 };
 

@@ -1,0 +1,85 @@
+.container {
+  width: 100%;
+  margin: 0 auto;
+}
+
+.leafletContainer {
+  width: 394px;
+  height: 307px;
+  z-index: -1;
+}
+
+.titleContainer {
+  border-bottom: 2px solid var(--color-principal);
+  padding: 1rem 0;
+  margin-top: 1.5rem;
+}
+
+.title {
+  padding: 0 0.8rem;
+  color: var(--color-2);
+  font-size: 20px;
+  font-weight: 700;
+}
+
+.city {
+  font-size: 16px;
+  font-weight: 700;
+  color: rgba(79, 79, 80, 1);
+  padding: 0 0.9rem;
+  margin-top: 1.5rem;
+}
+
+.mapContainer {
+  display: flex;
+  justify-content: center;
+  padding: 2rem 0;
+}
+
+@media only screen and (min-width: 624px) {
+  .title {
+    padding: 0 1.5rem;
+  }
+  
+  .city {
+    padding: 0 1.7rem;
+  }
+
+  .contentContainer {
+    flex-direction: row;
+    flex-wrap: wrap;
+    padding: 1rem 1.5rem;
+  }
+
+  .contentItem {
+    width: 47%;
+  }
+  .leafletContainer {
+    width: 705px;
+    height: 500.49px;
+    z-index: -1;
+  }
+}
+
+@media only screen and (min-width: 769px) {
+  .title {
+    padding: 0 4rem;
+  }
+
+  .city {
+    padding: 0 4.3rem;
+  }
+
+  .contentContainer {
+    padding: 1rem 4rem;
+  }
+
+  .contentItem {
+    width: 30%;
+  }
+  .leafletContainer {
+    width: 1386px;
+    height: 640px;
+    z-index: -1;
+  }
+}

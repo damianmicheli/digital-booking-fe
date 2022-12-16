@@ -43,7 +43,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.POST, "/reservas").hasRole("USER")
                 .antMatchers(HttpMethod.POST, "/productos").hasRole("ADMIN")
                 .antMatchers(HttpMethod.PUT, "/productos").hasRole("ADMIN")
-                .antMatchers("/usuario","/autenticar", "/productos/**", "/ciudades/**", "/categorias/**", "/swagger-ui/**", "/v3/**", "/reservas/**" )
+                .antMatchers("/s3/**", "/usuario","/autenticar", "/productos/**", "/ciudades/**", "/categorias/**","/caracteristicas", "/swagger-ui/**", "/v3/**", "/reservas/**" )
                 .permitAll().anyRequest().authenticated()
                 .and().sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
         http.addFilterBefore(jwtRequestFilter, UsernamePasswordAuthenticationFilter.class);
