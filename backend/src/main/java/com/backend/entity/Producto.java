@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Getter;
 import lombok.Setter;
 import lombok.ToString;
+import org.hibernate.annotations.LazyCollection;
+import org.hibernate.annotations.LazyCollectionOption;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotBlank;
@@ -42,7 +44,8 @@ public class Producto {
 
     private String politica_de_cancelacion;
 
-    @ManyToMany(cascade=CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @LazyCollection(LazyCollectionOption.FALSE)
+    @ManyToMany(cascade=CascadeType.REMOVE)
     @JoinTable(name = "producto_caracteristica",
             joinColumns = @JoinColumn(name = "producto_id"),
             inverseJoinColumns = @JoinColumn(name = "caracteristica_id"))
@@ -58,7 +61,7 @@ public class Producto {
     @JoinColumn(name = "ciudad_id", nullable = false)
     private Ciudad ciudad;
 
-
+    @LazyCollection(LazyCollectionOption.FALSE)
     @OneToMany(cascade = CascadeType.ALL)
     @JoinColumn(name="producto_id")
     private List<Imagen> imagenes;
